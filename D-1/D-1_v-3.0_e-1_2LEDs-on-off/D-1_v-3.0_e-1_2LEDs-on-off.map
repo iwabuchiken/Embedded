@@ -1,0 +1,60 @@
+MPLINK 4.45, Linker
+Linker Map File - Created Sun Aug 11 18:43:21 2013
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00009e
+                   .cinit    romdata   0x00004f    program   0x000004
+.config_0FFF_D-1_V-3.0_E-1_2LEDS-ON-OFF.O       code   0x000fff    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000050      
+                            0x000fff    0x000fff      
+            82 out of 261 program addresses used, program memory utilization is 31%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                Check_GP2   0x000010    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+        Check_GP2_AND_GP3   0x000010    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+         Chk_GP3__GP2_OFF   0x000016    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+          Chk_GP3__GP2_ON   0x000013    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                     DLP1   0x000044    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                     DLP2   0x000046    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                      DLY   0x000041    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                  DLY_100   0x000042    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+           LED_ALTER_FAST   0x00002e    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+         LED_ALTER_NORMAL   0x000025    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+           LED_ONOFF_BOTH   0x000039    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+              LED_ON_BOTH   0x000036    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                    Set_W   0x000019    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                main_loop   0x00000e    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                main_loop   0x00000e    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                Check_GP2   0x000010    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+        Check_GP2_AND_GP3   0x000010    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+          Chk_GP3__GP2_ON   0x000013    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+         Chk_GP3__GP2_OFF   0x000016    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                    Set_W   0x000019    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+         LED_ALTER_NORMAL   0x000025    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+           LED_ALTER_FAST   0x00002e    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+              LED_ON_BOTH   0x000036    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+           LED_ONOFF_BOTH   0x000039    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                      DLY   0x000041    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                  DLY_100   0x000042    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                     DLP1   0x000044    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+                     DLP2   0x000046    program     static C:\WORKS\WS\Electronics\Embedded\D-1\D-1_v-3.0_e-1_2LEDs-on-off\D-1_v-3.0_e-1_2LEDs-on-off.asm
+
+

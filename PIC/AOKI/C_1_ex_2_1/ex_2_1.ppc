@@ -1,0 +1,33 @@
+[DeviceName]
+Value=P16F84A
+[DeviceClock]
+Value=20
+[MainUnit]
+Value=ex_2_1.c
+[DeviceFlags]
+Count=3
+Value0=_CP_OFF = $3FFF
+Value1=_PWRTE_ON = $3FF7
+Value2=_HS_OSC = $3FFE
+[BuildType]
+bType=0
+[ProjectFiles]
+Count=1
+Value0=ex_2_1.c
+[HeaderFiles]
+Count=0
+[ObjLibFiles]
+Count=0
+[PLDFiles]
+Count=0
+[EEPROMinfo]
+isused=0
+[SearchPath]
+Count=5
+Value0=C:\WORKS\WS\Electronics\PIC\AOKI\C_1_ex_2_1\
+Value1=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Defs\
+Value2=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Uses\p16\
+Value3=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Examples\EasyPic5\p16f887\LED_blinking\
+Value4=C:\WORKS\WS\Electronics\PIC\AOKI\C_1_ex_2_1\
+[IncludePath]
+Count=0

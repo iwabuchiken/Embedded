@@ -1,0 +1,42 @@
+MPLINK 4.45, Linker
+Linker Map File - Created Thu Aug 01 17:38:05 2013
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000030
+                   .cinit    romdata   0x000018    program   0x000004
+.config_0FFF_D-1_PIC10_TAKAHASHI_FIRST.O       code   0x000fff    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000019      
+                            0x000fff    0x000fff      
+            27 out of 261 program addresses used, program memory utilization is 10%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     DLP1   0x00000d    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                     DLP2   0x00000f    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                  DLY_100   0x00000b    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                   DLY_1S   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                main_loop   0x000004    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                main_loop   0x000004    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                   DLY_1S   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                  DLY_100   0x00000b    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                     DLP1   0x00000d    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+                     DLP2   0x00000f    program     static C:\WORKS\WS\Electronics\Embedded\D-1_PIC10_Takahashi_First\D-1_PIC10_Takahashi_First.asm
+
+

@@ -1,0 +1,2 @@
+main
+	GlobalIniex_2_1
