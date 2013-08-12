@@ -11,22 +11,6 @@
 		__CONFIG		_CP_OFF & _WDT_OFF & _MCLRE_OFF & _IntRC_OSC
 
 ;********* VARIABLES ******************
-;{
-CNT1	EQU		0x10
-CNT2	EQU		0x11
-CNT3	EQU		0x12
-
-NUM		EQU		0x13
-TEMP	EQU		0x14
-
-ONE		EQU		0x15
-TWO		EQU		0x16
-THREE	EQU		0x17
-FOUR	EQU		0x18
-
-INPUT_RESULT	EQU		0x19
-;}
-;
 
 ;********* SETUP: ENVIRONMENT ********
 	ORG			0x00
@@ -38,271 +22,49 @@ INPUT_RESULT	EQU		0x19
 	TRIS		GPIO
 	
 ;********* INITIALIZE: Variables ********
-;{
-	movlw		d'0'	; Initialize "TEMP" variable
-	movwf		TEMP
-
-	movlw		d'1'
-	movwf		ONE
-
-	movlw		d'2'
-	movwf		TWO
-
-	movlw		d'3'
-	movwf		THREE
-
-	movlw		d'4'
-	movwf		FOUR
-;}
-;
 
 ;********* MAIN ******************
-main_loop
+MAIN
 	
-	;************************
-	; Set: W register
-	;************************
-	call		Check_GP2_AND_GP3
+	BTFSS		GPIO,3	; GP3 => Set?
 	
-	;************************
-	; Save the value in Wreg into a freg
-	;************************
-	movwf		INPUT_RESULT
+	; If GP3 is not set, then make sure
+	;	the both LEDS are off. Then, go
+	;	back to MAIN
+	goto		BOTH_OFF	; Not set
 	
-	;************************
-	; Execute
-	;************************
-	goto		Set_W
+	; GP3 is set => Then go to the next step,
+	;	i.e. check the status of GP2
+	goto		CHCK_GP2
+	
+;********* FUNCTIONS ******************
+CHCK_GP2
+	
+	BTFSS		GPIO,2	; GP2 => Set?
+	
+	GOTO		PATTERN_2	; Not set
+	GOTO		PATTERN_1	; Set
+	
+PATTERN_1
+	
+	BSF			GPIO,0		; GP0 => Set
+	BCF			GPIO,1		; GP1 => Clear
+	
+	GOTO		MAIN		; Back to MAIN
 
-;********* FUNCTIONS ******************	
-;Check_GP2_AND_GP3
-Check_GP2_AND_GP3
-;{
-Check_GP2
-	BTFSC		GPIO,2
+PATTERN_2
 	
-	goto		Chk_GP3__GP2_ON
-	goto		Chk_GP3__GP2_OFF
-
-
-;}
-;
-
-;Chk_GP3__GP2_ON
-Chk_GP3__GP2_ON
-;{
-	BTFSC		GPIO,3
+	BCF			GPIO,0		; GP0 => Clear
+	BSF			GPIO,1		; GP1 => Set
 	
-	retlw		d'1'
-	retlw		d'2'
-;}
-;
+	GOTO		MAIN		; Back to MAIN
 
-;Chk_GP3__GP2_OFF
-Chk_GP3__GP2_OFF
-;{
-	BTFSC		GPIO,3
+BOTH_OFF
 	
-	retlw		d'3'
-	retlw		d'4'		
+	BCF			GPIO,0		; GP0 => Clear
+	BCF			GPIO,1		; GP1 => Clear
 	
-;}
-;
-
-
-
-;Set_W
-;{
-Set_W
-	;-----------------------
-	; GP2=ON, GP3=ON (W=1)
-	;-----------------------
-	
-	; Move the value in INPUT_RESULT
-	;	into Wreg
-	;	=> i.e. Reset Wreg
-	movf		INPUT_RESULT,W
-	
-	;SUBWF		ONE,TEMP
-	SUBWF		ONE,W
-	
-	BTFSC		STATUS,Z
-	
-	goto		LED_ON_BOTH
-
-	;-----------------------
-	; GP2=ON, GP3=OFF (W=2)
-	;-----------------------
-	; Move the value in INPUT_RESULT
-	;	into Wreg
-	;	=> i.e. Reset Wreg
-	;movwf		INPUT_RESULT,W	;=> Illegal character (,)
-	movf		INPUT_RESULT,W
-	
-	;SUBWF		TWO,TEMP
-	SUBWF		TWO,W
-	
-	BTFSC		STATUS,Z
-	
-	;goto		LED_ALTER_FAST
-	goto		LED_ALTER_NORMAL
-
-	;-----------------------
-	; GP2=OFF, GP3=ON (W=3)
-	;-----------------------
-
-	; Move the value in INPUT_RESULT
-	;	into Wreg
-	;	=> i.e. Reset Wreg
-	movf		INPUT_RESULT,W
-	
-	;SUBWF		THREE,TEMP
-	SUBWF		THREE,W
-	
-	BTFSC		STATUS,Z
-	
-	;goto		LED_ONOFF_BOTH
-	goto		LED_ALTER_NORMAL
-	
-	;-----------------------
-	; GP2=OFF, GP3=OFF (W=4)
-	;-----------------------
-
-	; Move the value in INPUT_RESULT
-	;	into Wreg
-	;	=> i.e. Reset Wreg
-	movf		INPUT_RESULT,W
-	
-	;SUBWF		FOUR,TEMP
-	SUBWF		FOUR,W
-	
-	BTFSC		STATUS,Z
-	
-	;goto		LED_ALTER_NORMAL
-	goto		LED_ON_BOTH
-;}
-
-;
-
-;LED_ALTER_NORMAL
-;{
-LED_ALTER_NORMAL
-
-	movlw		d'10'
-
-	; GP0=ON, GP1=OFF
-	BSF			GPIO,0
-	BCF			GPIO,1
-	
-	
-	call		DLY
-
-	;e-3-p1-t2
-	movlw		d'10'
-
-	; GP0=OFF, GP1=ON
-	BCF			GPIO,0
-	BSF			GPIO,1
-	
-	call		DLY
-	
-	goto		main_loop
-
-;}
-;
-
-;LED_ALTER_FAST
-;{
-LED_ALTER_FAST
-
-	movlw		d'2'
-
-	; GP0=ON, GP1=OFF
-	BSF			GPIO,0
-	BCF			GPIO,1
-	
-	call		DLY
-
-	; GP0=OFF, GP1=ON
-	BCF			GPIO,0
-	BSF			GPIO,1
-	
-	call		DLY
-	
-	goto		main_loop
-
-;}
-;
-
-;LED_ON_BOTH
-;{
-LED_ON_BOTH
-
-	; GP0=ON, GP1=ON
-	BSF			GPIO,0
-	BSF			GPIO,1
-	
-	goto		main_loop
-
-;}
-;
-
-;LED_ONOFF_BOTH
-;{
-LED_ONOFF_BOTH
-
-	movlw		d'10'
-
-	; GP0=ON, GP1=ON
-	BSF			GPIO,0
-	BSF			GPIO,1
-	
-	call		DLY
-
-	; GP0=OFF, GP1=OFF
-	BCF			GPIO,0
-	BCF			GPIO,1
-	
-	call		DLY
-		
-	goto		main_loop
-
-;}
-;
-
-
-;DLY
-;{
-DLY
-	;movlw		d'10'
-	movwf		CNT3
-	
-DLY_100
-	movlw		d'100'
-	movwf		CNT1
-
-DLP1
-	movlw		d'200'
-	movwf		CNT2
-	
-DLP2
-	nop
-	nop
-	
-	decfsz		CNT2,f
-	goto		DLP2
-	
-	decfsz		CNT1,f
-	goto		DLP1
-	
-	decfsz		CNT3,f
-	goto		DLY_100
-	
-	retlw		0
-	;goto		main_loop
-;}
-
-;
+	GOTO		MAIN		; Back to MAIN
 
 ;******** END ******************
 	END
