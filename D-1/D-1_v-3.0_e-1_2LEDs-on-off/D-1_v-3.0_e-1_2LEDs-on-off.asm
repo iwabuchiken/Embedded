@@ -161,8 +161,9 @@ Set_W
 	
 	BTFSC		STATUS,Z
 	
-	goto		LED_ONOFF_BOTH
-
+	;goto		LED_ONOFF_BOTH
+	goto		LED_ALTER_NORMAL
+	
 	;-----------------------
 	; GP2=OFF, GP3=OFF (W=4)
 	;-----------------------
@@ -177,7 +178,8 @@ Set_W
 	
 	BTFSC		STATUS,Z
 	
-	goto		LED_ALTER_NORMAL
+	;goto		LED_ALTER_NORMAL
+	goto		LED_ON_BOTH
 ;}
 
 ;

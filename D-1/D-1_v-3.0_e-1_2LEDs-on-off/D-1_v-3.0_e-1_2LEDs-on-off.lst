@@ -1,4 +1,4 @@
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  1
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0004   0C00           00042         movlw           d'0'    ; Initialize "TEMP" variable
 0005   0034           00043         movwf           TEMP
                       00044 
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  2
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00095         
 0015   0801           00096         retlw           d'1'
 0016   0802           00097         retlw           d'2'
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  3
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0021   0A??           00148         goto            LED_ALTER_NORMAL
                       00149 
                       00150         ;-----------------------
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  4
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -194,162 +194,164 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00161         
 0024   0643           00162         BTFSC           STATUS,Z
                       00163         
-0025   0A??           00164         goto            LED_ONOFF_BOTH
-                      00165 
-                      00166         ;-----------------------
-                      00167         ; GP2=OFF, GP3=OFF (W=4)
-                      00168         ;-----------------------
-                      00169 
-                      00170         ; Move the value in INPUT_RESULT
-                      00171         ;       into Wreg
-                      00172         ;       => i.e. Reset Wreg
-0026   0219           00173         movf            INPUT_RESULT,W
-                      00174         
-                      00175         ;SUBWF          FOUR,TEMP
-0027   0098           00176         SUBWF           FOUR,W
-                      00177         
-0028   0643           00178         BTFSC           STATUS,Z
-                      00179         
-0029   0A??           00180         goto            LED_ALTER_NORMAL
-                      00181 ;}
-                      00182 
-                      00183 ;
+                      00164         ;goto           LED_ONOFF_BOTH
+0025   0A??           00165         goto            LED_ALTER_NORMAL
+                      00166         
+                      00167         ;-----------------------
+                      00168         ; GP2=OFF, GP3=OFF (W=4)
+                      00169         ;-----------------------
+                      00170 
+                      00171         ; Move the value in INPUT_RESULT
+                      00172         ;       into Wreg
+                      00173         ;       => i.e. Reset Wreg
+0026   0219           00174         movf            INPUT_RESULT,W
+                      00175         
+                      00176         ;SUBWF          FOUR,TEMP
+0027   0098           00177         SUBWF           FOUR,W
+                      00178         
+0028   0643           00179         BTFSC           STATUS,Z
+                      00180         
+                      00181         ;goto           LED_ALTER_NORMAL
+0029   0A??           00182         goto            LED_ON_BOTH
+                      00183 ;}
                       00184 
-                      00185 ;LED_ALTER_NORMAL
-                      00186 ;{
-002A                  00187 LED_ALTER_NORMAL
-                      00188 
-002A   0C0A           00189         movlw           d'10'
+                      00185 ;
+                      00186 
+                      00187 ;LED_ALTER_NORMAL
+                      00188 ;{
+002A                  00189 LED_ALTER_NORMAL
                       00190 
-                      00191         ; GP0=ON, GP1=OFF
-002B   0506           00192         BSF                     GPIO,0
-002C   0426           00193         BCF                     GPIO,1
-                      00194         
-                      00195         
-002D   09??           00196         call            DLY
-                      00197 
-                      00198         ;e-3-p1-t2
-002E   0C0A           00199         movlw           d'10'
-                      00200 
-                      00201         ; GP0=OFF, GP1=ON
-002F   0406           00202         BCF                     GPIO,0
-0030   0526           00203         BSF                     GPIO,1
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  5
+002A   0C0A           00191         movlw           d'10'
+                      00192 
+                      00193         ; GP0=ON, GP1=OFF
+002B   0506           00194         BSF                     GPIO,0
+002C   0426           00195         BCF                     GPIO,1
+                      00196         
+                      00197         
+002D   09??           00198         call            DLY
+                      00199 
+                      00200         ;e-3-p1-t2
+002E   0C0A           00201         movlw           d'10'
+                      00202 
+                      00203         ; GP0=OFF, GP1=ON
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00204         
-0031   09??           00205         call            DLY
+002F   0406           00204         BCF                     GPIO,0
+0030   0526           00205         BSF                     GPIO,1
                       00206         
-0032   0A??           00207         goto            main_loop
-                      00208 
-                      00209 ;}
-                      00210 ;
-                      00211 
-                      00212 ;LED_ALTER_FAST
-                      00213 ;{
-0033                  00214 LED_ALTER_FAST
-                      00215 
-0033   0C02           00216         movlw           d'2'
+0031   09??           00207         call            DLY
+                      00208         
+0032   0A??           00209         goto            main_loop
+                      00210 
+                      00211 ;}
+                      00212 ;
+                      00213 
+                      00214 ;LED_ALTER_FAST
+                      00215 ;{
+0033                  00216 LED_ALTER_FAST
                       00217 
-                      00218         ; GP0=ON, GP1=OFF
-0034   0506           00219         BSF                     GPIO,0
-0035   0426           00220         BCF                     GPIO,1
-                      00221         
-0036   09??           00222         call            DLY
-                      00223 
-                      00224         ; GP0=OFF, GP1=ON
-0037   0406           00225         BCF                     GPIO,0
-0038   0526           00226         BSF                     GPIO,1
-                      00227         
-0039   09??           00228         call            DLY
+0033   0C02           00218         movlw           d'2'
+                      00219 
+                      00220         ; GP0=ON, GP1=OFF
+0034   0506           00221         BSF                     GPIO,0
+0035   0426           00222         BCF                     GPIO,1
+                      00223         
+0036   09??           00224         call            DLY
+                      00225 
+                      00226         ; GP0=OFF, GP1=ON
+0037   0406           00227         BCF                     GPIO,0
+0038   0526           00228         BSF                     GPIO,1
                       00229         
-003A   0A??           00230         goto            main_loop
-                      00231 
-                      00232 ;}
-                      00233 ;
-                      00234 
-                      00235 ;LED_ON_BOTH
-                      00236 ;{
-003B                  00237 LED_ON_BOTH
-                      00238 
-                      00239         ; GP0=ON, GP1=ON
-003B   0506           00240         BSF                     GPIO,0
-003C   0526           00241         BSF                     GPIO,1
-                      00242         
-003D   0A??           00243         goto            main_loop
-                      00244 
-                      00245 ;}
-                      00246 ;
-                      00247 
-                      00248 ;LED_ONOFF_BOTH
-                      00249 ;{
-003E                  00250 LED_ONOFF_BOTH
-                      00251 
-003E   0C0A           00252         movlw           d'10'
+0039   09??           00230         call            DLY
+                      00231         
+003A   0A??           00232         goto            main_loop
+                      00233 
+                      00234 ;}
+                      00235 ;
+                      00236 
+                      00237 ;LED_ON_BOTH
+                      00238 ;{
+003B                  00239 LED_ON_BOTH
+                      00240 
+                      00241         ; GP0=ON, GP1=ON
+003B   0506           00242         BSF                     GPIO,0
+003C   0526           00243         BSF                     GPIO,1
+                      00244         
+003D   0A??           00245         goto            main_loop
+                      00246 
+                      00247 ;}
+                      00248 ;
+                      00249 
+                      00250 ;LED_ONOFF_BOTH
+                      00251 ;{
+003E                  00252 LED_ONOFF_BOTH
                       00253 
-                      00254         ; GP0=ON, GP1=ON
-003F   0506           00255         BSF                     GPIO,0
-0040   0526           00256         BSF                     GPIO,1
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  6
+003E   0C0A           00254         movlw           d'10'
+                      00255 
+                      00256         ; GP0=ON, GP1=ON
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00257         
-0041   09??           00258         call            DLY
-                      00259 
-                      00260         ; GP0=OFF, GP1=OFF
-0042   0406           00261         BCF                     GPIO,0
-0043   0426           00262         BCF                     GPIO,1
-                      00263         
-0044   09??           00264         call            DLY
-                      00265                 
-0045   0A??           00266         goto            main_loop
-                      00267 
-                      00268 ;}
-                      00269 ;
-                      00270 
-                      00271 
-                      00272 ;DLY
-                      00273 ;{
-0046                  00274 DLY
-                      00275         ;movlw          d'10'
-0046   0032           00276         movwf           CNT3
-                      00277         
-0047                  00278 DLY_100
-0047   0C64           00279         movlw           d'100'
-0048   0030           00280         movwf           CNT1
-                      00281 
-0049                  00282 DLP1
-0049   0CC8           00283         movlw           d'200'
-004A   0031           00284         movwf           CNT2
-                      00285         
-004B                  00286 DLP2
-004B   0000           00287         nop
-004C   0000           00288         nop
-                      00289         
-004D   02F1           00290         decfsz          CNT2,f
-004E   0A??           00291         goto            DLP2
-                      00292         
-004F   02F0           00293         decfsz          CNT1,f
-0050   0A??           00294         goto            DLP1
-                      00295         
-0051   02F2           00296         decfsz          CNT3,f
-0052   0A??           00297         goto            DLY_100
-                      00298         
-0053   0800           00299         retlw           0
-                      00300         ;goto           main_loop
-                      00301 ;}
-                      00302 
-                      00303 ;
+003F   0506           00257         BSF                     GPIO,0
+0040   0526           00258         BSF                     GPIO,1
+                      00259         
+0041   09??           00260         call            DLY
+                      00261 
+                      00262         ; GP0=OFF, GP1=OFF
+0042   0406           00263         BCF                     GPIO,0
+0043   0426           00264         BCF                     GPIO,1
+                      00265         
+0044   09??           00266         call            DLY
+                      00267                 
+0045   0A??           00268         goto            main_loop
+                      00269 
+                      00270 ;}
+                      00271 ;
+                      00272 
+                      00273 
+                      00274 ;DLY
+                      00275 ;{
+0046                  00276 DLY
+                      00277         ;movlw          d'10'
+0046   0032           00278         movwf           CNT3
+                      00279         
+0047                  00280 DLY_100
+0047   0C64           00281         movlw           d'100'
+0048   0030           00282         movwf           CNT1
+                      00283 
+0049                  00284 DLP1
+0049   0CC8           00285         movlw           d'200'
+004A   0031           00286         movwf           CNT2
+                      00287         
+004B                  00288 DLP2
+004B   0000           00289         nop
+004C   0000           00290         nop
+                      00291         
+004D   02F1           00292         decfsz          CNT2,f
+004E   0A??           00293         goto            DLP2
+                      00294         
+004F   02F0           00295         decfsz          CNT1,f
+0050   0A??           00296         goto            DLP1
+                      00297         
+0051   02F2           00298         decfsz          CNT3,f
+0052   0A??           00299         goto            DLY_100
+                      00300         
+0053   0800           00301         retlw           0
+                      00302         ;goto           main_loop
+                      00303 ;}
                       00304 
-                      00305 ;******** END ******************
-0FEB                  00306         END
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  7
+                      00305 ;
+                      00306 
+                      00307 ;******** END ******************
+0FEB                  00308         END
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  7
 
 
 SYMBOL TABLE
@@ -408,7 +410,7 @@ Set_W                             0000001A
 T0CS                              00000005
 T0SE                              00000004
 TEMP                              00000014
-MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:46:09         PAGE  8
+MPASM  5.47    D-1_V-3.0_E-1_2LEDS-ON-OFF.ASM   8-12-2013  14:58:01         PAGE  8
 
 
 SYMBOL TABLE

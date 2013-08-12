@@ -32,14 +32,14 @@ Any
 ## ASYNCH
 Pin
 GPIO2
-Set High
+Set Low
 
 
 -1
 --
 Pin
 GPIO3
-Set Low
+Set High
 
 
 -1
