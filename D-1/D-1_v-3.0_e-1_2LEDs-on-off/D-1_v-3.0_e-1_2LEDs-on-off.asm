@@ -24,6 +24,7 @@ TWO		EQU		0x16
 THREE	EQU		0x17
 FOUR	EQU		0x18
 
+INPUT_RESULT	EQU		0x19
 ;}
 ;
 
@@ -62,6 +63,11 @@ main_loop
 	; Set: W register
 	;************************
 	call		Check_GP2_AND_GP3
+	
+	;************************
+	; Save the value in Wreg into a freg
+	;************************
+	movwf		INPUT_RESULT
 	
 	;************************
 	; Execute
@@ -112,6 +118,11 @@ Set_W
 	; GP2=ON, GP3=ON (W=1)
 	;-----------------------
 	
+	; Move the value in INPUT_RESULT
+	;	into Wreg
+	;	=> i.e. Reset Wreg
+	movf		INPUT_RESULT,W
+	
 	;SUBWF		ONE,TEMP
 	SUBWF		ONE,W
 	
@@ -122,18 +133,29 @@ Set_W
 	;-----------------------
 	; GP2=ON, GP3=OFF (W=2)
 	;-----------------------
-
+	; Move the value in INPUT_RESULT
+	;	into Wreg
+	;	=> i.e. Reset Wreg
+	;movwf		INPUT_RESULT,W	;=> Illegal character (,)
+	movf		INPUT_RESULT,W
+	
 	;SUBWF		TWO,TEMP
 	SUBWF		TWO,W
 	
 	BTFSC		STATUS,Z
 	
-	goto		LED_ALTER_FAST
+	;goto		LED_ALTER_FAST
+	goto		LED_ALTER_NORMAL
 
 	;-----------------------
 	; GP2=OFF, GP3=ON (W=3)
 	;-----------------------
 
+	; Move the value in INPUT_RESULT
+	;	into Wreg
+	;	=> i.e. Reset Wreg
+	movf		INPUT_RESULT,W
+	
 	;SUBWF		THREE,TEMP
 	SUBWF		THREE,W
 	
@@ -145,6 +167,11 @@ Set_W
 	; GP2=OFF, GP3=OFF (W=4)
 	;-----------------------
 
+	; Move the value in INPUT_RESULT
+	;	into Wreg
+	;	=> i.e. Reset Wreg
+	movf		INPUT_RESULT,W
+	
 	;SUBWF		FOUR,TEMP
 	SUBWF		FOUR,W
 	
