@@ -1,0 +1,310 @@
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         list            p=12f629
+                      00002         #include        <p12f629.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC12F629 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2012 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00338         LIST
+                      00003         
+2007   3F84           00004         __CONFIG        _CP_OFF & _CPD_OFF & _BODEN_OFF & _MCLRE_OFF & _WDT_OFF & _PWRTE_ON & _INTRC_OSC
+                            _NOCLKOUT
+                      00005         
+  00000020            00006 CNT1            EQU     0x20
+  00000021            00007 CNT2            EQU     0x21
+  00000022            00008 CNT3            EQU     0x22
+                      00009         
+                      00010                                 ORG             0x000
+0000   2???           00011                                 goto    main
+                      00012                                 
+                      00013                                 ORG             0x004
+0004   0009           00014                                 retfie
+                      00015                                 
+0005                  00016 main
+                      00017 
+0005   1683           00018                 bsf             STATUS,RP0
+0006   23FF           00019                 call    0x3ff
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0007   0090           00020                 movwf   OSCCAL
+0008   1283           00021                 bcf             STATUS,RP0
+                      00022                 
+0009   018B           00023                 clrf    INTCON
+                      00024                 
+000A   3007           00025                 movlw   0x07
+000B   0099           00026                 movwf   CMCON
+                      00027                 
+000C   1683           00028                 bsf             STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000D   1005           00029                 bcf             TRISIO,0
+000E   1283           00030                 bcf             STATUS,RP0
+                      00031 ;main_loop
+                      00032 ;{              
+000F                  00033 main_loop
+000F   1405           00034                 bsf             GPIO,0
+0010   2???           00035                 call    DLY_1S
+0011   1005           00036                 bcf             GPIO,0
+0012   2???           00037                 call    DLY_1S
+                      00038                 
+0013   2???           00039                 goto    main_loop
+                      00040 
+                      00041 ;}
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00042 ;
+                      00043 
+                      00044 ;DLY_1S
+                      00045 ;{              
+0014                  00046 DLY_1S
+0014   300A           00047         movlw           d'10'
+0015   00A2           00048         movwf           CNT3
+                      00049         
+0016                  00050 DLY_100
+0016   3064           00051         movlw           d'100'
+0017   00A0           00052         movwf           CNT1
+                      00053 
+0018                  00054 DLP1
+0018   30C8           00055         movlw           d'200'
+0019   00A1           00056         movwf           CNT2
+                      00057         
+001A                  00058 DLP2
+001A   0000           00059         nop
+001B   0000           00060         nop
+                      00061         
+001C   0BA1           00062         decfsz          CNT2,f
+001D   2???           00063         goto            DLP2
+                      00064         
+001E   0BA0           00065         decfsz          CNT1,f
+001F   2???           00066         goto            DLP1
+                      00067         
+0020   0BA2           00068         decfsz          CNT3,f
+0021   2???           00069         goto            DLY_100
+                      00070         
+0022   3400           00071         retlw           0
+                      00072 ;}
+                      00073 ;
+3F84                  00074         END
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADIE                              00000006
+ADIF                              00000006
+C                                 00000000
+CAL0                              00000002
+CAL1                              00000003
+CAL2                              00000004
+CAL3                              00000005
+CAL4                              00000006
+CAL5                              00000007
+CINV                              00000004
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000019
+CMIE                              00000003
+CMIF                              00000003
+CNT1                              00000020
+CNT2                              00000021
+CNT3                              00000022
+COUT                              00000006
+DC                                00000001
+DLP1                              00000018
+DLP2                              0000001A
+DLY_100                           00000016
+DLY_1S                            00000014
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDAT                             0000009A
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+GP0                               00000000
+GP1                               00000001
+GP2                               00000002
+GP3                               00000003
+GP4                               00000004
+GP5                               00000005
+GPIE                              00000003
+GPIF                              00000000
+GPIO                              00000005
+GPIO0                             00000000
+GPIO1                             00000001
+GPIO2                             00000002
+GPIO3                             00000003
+GPIO4                             00000004
+GPIO5                             00000005
+INDF                              00000000
+INTCON                            0000000B
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOC                               00000096
+IOC0                              00000000
+IOC1                              00000001
+IOC2                              00000002
+IOC3                              00000003
+IOC4                              00000004
+IOC5                              00000005
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IRP                               00000007
+NOT_BOD                           00000000
+NOT_BOR                           00000000
+NOT_GPPU                          00000007
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OPTION_REG                        00000081
+OSCCAL                            00000090
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1IE                              00000000
+T1IF                              00000000
+T1OSCEN                           00000003
+TMR0                              00000001
+TMR0IE                            00000005
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TRISIO                            00000085
+TRISIO0                           00000000
+TRISIO1                           00000001
+TRISIO2                           00000002
+TRISIO3                           00000003
+TRISIO4                           00000004
+TRISIO5                           00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000099
+VREN                              00000007
+VRR                               00000005
+W                                 00000000
+WPU                               00000095
+WPU0                              00000000
+WPU1                              00000001
+WPU2                              00000002
+WPU4                              00000004
+WPU5                              00000005
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00003F7F
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_FOSC_EC                          00003FFB
+_FOSC_EXTRCCLK                    00003FFF
+_FOSC_EXTRCIO                     00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRCCLK                    00003FFD
+_FOSC_INTRCIO                     00003FFC
+MPASM  5.47         D-6_PIC12_FIRST_V-1.0.ASM   8-29-2013  21:01:51         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FF9
+__12F629                          00000001
+__DEBUG                           1
+main                              00000005
+main_loop                         0000000F
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+

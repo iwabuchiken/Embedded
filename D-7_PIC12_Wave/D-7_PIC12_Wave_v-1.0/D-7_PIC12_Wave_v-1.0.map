@@ -1,0 +1,42 @@
+MPLINK 4.45, Linker
+Linker Map File - Created Sat Aug 31 18:26:49 2013
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x000044
+.config_2007_D-7_PIC12_WAVE_V-1.0.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000025      
+                            0x002007    0x002007      
+            38 out of 1158 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    DLY_1   0x000021    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                   DLY_1L   0x000023    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                     main   0x000005    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                main_loop   0x000011    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     main   0x000005    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                main_loop   0x000011    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                    DLY_1   0x000021    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+                   DLY_1L   0x000023    program     static C:\WORKS\WS\Electronics\Embedded\D-7_PIC12_Wave\D-7_PIC12_Wave_v-1.0\D-7_PIC12_Wave_v-1.0.asm
+
+
