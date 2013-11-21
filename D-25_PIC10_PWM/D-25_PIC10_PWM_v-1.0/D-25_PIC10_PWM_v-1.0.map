@@ -1,0 +1,38 @@
+MPLINK 4.42, Linker
+Linker Map File - Created Sat Sep 28 12:47:31 2013
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00003a
+                   .cinit    romdata   0x00001d    program   0x000004
+.config_0FFF_D-25_PIC10_PWM_V-1.0.O       code   0x000fff    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00001e      
+                            0x000fff    0x000fff      
+            32 out of 261 program addresses used, program memory utilization is 12%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                back_main   0x00001a    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+                     main   0x000000    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+                main_loop   0x00000a    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     main   0x000000    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+                main_loop   0x00000a    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+                back_main   0x00001a    program     static C:\WORKS\WS\Electronics\Embedded\D-25_PIC10_PWM\D-25_PIC10_PWM_v-1.0\D-25_PIC10_PWM_v-1.0.asm
+
+
