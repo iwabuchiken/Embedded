@@ -1,6 +1,7 @@
 ;*********************************
 ; File=D-40_v-1.2_thermo.asm
 ; Created at=20131120_150108
+; e=3
 ;*********************************
 		list		p=10f200
 		#include	<p10f200.inc>
@@ -39,46 +40,23 @@ main
 ;********* MAIN ******************
 main_loop
 	
+		
+	BTFSC	GPIO,3
+	
+	goto	LED_ON
+
+	goto	LED_OFF
+
+LED_ON
 	bsf		GPIO,0
 	
-	call	DLY_1S
+	goto	main_loop
+	
+LED_OFF
 
 	bcf		GPIO,0
 	
-	call	DLY_1S
-
 	goto	main_loop
-;DLY_1S
-;{		
-DLY_1S
-	movlw		d'10'
-	movwf		CNT3
-	
-DLY_100
-	movlw		d'100'
-	movwf		CNT1
 
-DLP1
-	movlw		d'200'
-	movwf		CNT2
-	
-DLP2
-	nop
-	nop
-	
-	decfsz		CNT2,f
-	goto		DLP2
-	
-	decfsz		CNT1,f
-	goto		DLP1
-	
-	decfsz		CNT3,f
-	goto		DLY_100
-	
-	retlw		0
-;}
-;
-
-	
 ;********* END ******************
 	END

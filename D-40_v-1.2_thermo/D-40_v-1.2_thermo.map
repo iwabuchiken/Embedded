@@ -1,11 +1,11 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Thu Nov 21 21:14:03 2013
+Linker Map File - Created Thu Nov 21 21:41:25 2013
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x000030
-                   .cinit    romdata   0x000018    program   0x000004
+                   .org_0       code   0x000000    program   0x000016
+                   .cinit    romdata   0x00000b    program   0x000004
 .config_0FFF_D-40_V-1.2_THERMO.O       code   0x000fff    program   0x000002
 
 
@@ -13,19 +13,17 @@ Linker Map File - Created Thu Nov 21 21:14:03 2013
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000019      
+                            0x000000    0x00000c      
                             0x000fff    0x000fff      
-            27 out of 261 program addresses used, program memory utilization is 10%
+            14 out of 261 program addresses used, program memory utilization is 5%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                     DLP1   0x00000d    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                     DLP2   0x00000f    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                  DLY_100   0x00000b    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                   DLY_1S   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
+                  LED_OFF   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
+                   LED_ON   0x000007    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
                      main   0x000000    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
                 main_loop   0x000004    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
 
@@ -36,9 +34,7 @@ Linker Map File - Created Thu Nov 21 21:14:03 2013
                 ---------  ---------  ---------  --------- ---------                
                      main   0x000000    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
                 main_loop   0x000004    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                   DLY_1S   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                  DLY_100   0x00000b    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                     DLP1   0x00000d    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
-                     DLP2   0x00000f    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
+                   LED_ON   0x000007    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
+                  LED_OFF   0x000009    program     static C:\WORKS\WS\Electronics\Embedded\D-40_v-1.2_thermo\D-40_v-1.2_thermo.asm
 
 
