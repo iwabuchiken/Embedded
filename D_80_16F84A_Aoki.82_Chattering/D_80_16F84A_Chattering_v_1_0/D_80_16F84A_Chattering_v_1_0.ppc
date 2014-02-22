@@ -1,0 +1,33 @@
+[DeviceName]
+Value=P16F84A
+[DeviceClock]
+Value=20
+[MainUnit]
+Value=
+[DeviceFlags]
+Count=4
+Value0=_CP_OFF = $3FFF
+Value1=_PWRTE_ON = $3FF7
+Value2=_WDT_OFF = $3FFB
+Value3=_HS_OSC = $3FFE
+[BuildType]
+bType=0
+[ProjectFiles]
+Count=1
+Value0=D_80_16F84A_Chattering_v_1_0.c
+[HeaderFiles]
+Count=0
+[ObjLibFiles]
+Count=0
+[PLDFiles]
+Count=0
+[EEPROMinfo]
+isused=0
+[SearchPath]
+Count=4
+Value0=C:\WORKS\WS\Electronics\Embedded\D_80_16F84A_Aoki.82_Chattering\D_80_16F84A_Chattering_v_1_0\
+Value1=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Defs\
+Value2=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Uses\p16\
+Value3=C:\WORKS\WS\Electronics\Embedded\D_80_16F84A_Aoki.82_Chattering\D_80_16F84A_Chattering_v_1_0\
+[IncludePath]
+Count=0

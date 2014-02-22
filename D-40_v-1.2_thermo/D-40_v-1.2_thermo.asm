@@ -43,9 +43,9 @@ main_loop
 		
 	BTFSC	GPIO,3
 	
-	goto	LED_ON
-
 	goto	LED_OFF
+
+	goto	LED_ON
 
 LED_ON
 	bsf		GPIO,0
