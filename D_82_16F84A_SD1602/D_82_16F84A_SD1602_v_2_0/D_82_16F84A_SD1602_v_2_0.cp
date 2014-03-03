@@ -50,7 +50,10 @@ void SD1602_init(void)
  Delay_ms(5);
  SD1602_control(0x38);
  SD1602_control(0x08);
- SD1602_control(0x0C);
+
+
+ SD1602_control(0x0D);
+
  SD1602_control(0x06);
 }
 

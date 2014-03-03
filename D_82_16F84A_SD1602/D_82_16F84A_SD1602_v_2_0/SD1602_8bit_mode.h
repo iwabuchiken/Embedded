@@ -48,8 +48,11 @@ void SD1602_init(void)
   Delay_ms(5); /* 5ms（4.1ms以上）の時間待ち */
   SD1602_control(0x38); /* 8bitモードで2行表示に設定する */
   SD1602_control(0x08); /* テキスト表示をオフにする */
-  SD1602_control(0x0C); /* テキスト表示をオンにする */
-  SD1602_control(0x06); /* カーソル移動を右方向に設定する */
+  
+  //SD1602_control(0x0C); /* テキスト表示をオンにする */
+	SD1602_control(0x0D);
+
+	SD1602_control(0x06); /* カーソル移動を右方向に設定する */
 }
 
 void SD1602_print(char *s)
