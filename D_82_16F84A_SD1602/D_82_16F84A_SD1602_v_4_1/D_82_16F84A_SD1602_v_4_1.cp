@@ -78,7 +78,8 @@ void strConstCpy
 }
 #line 5 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
 const char s1[] = "Psedoscience";
-const char s2[] = "ad nauseam";
+const char s2[] = "xylophone";
+
 
 
 char s[30];
@@ -119,7 +120,10 @@ void main(void)
 
  TRISA = 0x00;
  PORTA = 0x00;
- TRISB = 0x00;
+
+
+ TRISB = 0x01;
+
 
  PORTB = 0x80;
 
@@ -136,10 +140,12 @@ void main(void)
 
 
 
+ strConstCpy(s, s2);
+
  while(1)
  {
 
- strConstCpy(s, s2);
+
 
 
  SD1602_control(0x80);
@@ -150,7 +156,7 @@ void main(void)
  SD1602_clear();
 
  Delay_ms(500);
-#line 94 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
+#line 100 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
  }
 
 }

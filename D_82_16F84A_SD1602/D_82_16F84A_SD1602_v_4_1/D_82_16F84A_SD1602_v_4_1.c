@@ -3,7 +3,8 @@
 #include "utils.h"
 
 const char s1[]  = "Psedoscience";
-const char s2[]  = "ad nauseam";
+const char s2[]  = "xylophone";
+//const char s2[]  = "ad nauseam";
 
 //char s[]  = "Psedoscience";
 char s[30];
@@ -44,7 +45,10 @@ void main(void)
 
      TRISA     = 0x00;
      PORTA     = 0x00;
-     TRISB     = 0x00;
+//     TRISB     = 0x00;
+//     TRISB     = 0x80;
+     TRISB     = 0x01;
+     
      //PORTB     = 0x00;
      PORTB     = 0x80;  // 1000 0000
 
@@ -61,10 +65,12 @@ void main(void)
 		 
    //strConstCpy(s, s2);
 
+	   strConstCpy(s, s2);
+
 		 while(1)
 		 {
 		         // s2
-		         strConstCpy(s, s2);
+           //strConstCpy(s, s2);
 		         
            //SD1602_clear();
 		         SD1602_control(0x80);
