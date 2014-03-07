@@ -1,0 +1,5 @@
+interrupt
+main
+	GlobalIniD_82_16F84A_SD1602_v_4_0
+		?table__lstr_2_D_82_16F84A_SD1602_v_4_0
+		?table__lstr_1_D_82_16F84A_SD1602_v_4_0

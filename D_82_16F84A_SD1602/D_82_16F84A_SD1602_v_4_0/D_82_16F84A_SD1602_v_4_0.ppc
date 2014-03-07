@@ -14,10 +14,11 @@ Value3=_HS_OSC = $3FFE
 bType=0
 [ProjectFiles]
 Count=1
-Value0=D_82_16F84A_SD1602_v_3_0.c
+Value0=D_82_16F84A_SD1602_v_4_0.c
 [HeaderFiles]
-Count=1
-Value0=C:\WORKS\WS\Electronics\Embedded\D_82_16F84A_SD1602\D_82_16F84A_SD1602_v_3_0\SD1602_4bit_mode.h
+Count=2
+Value0=C:\WORKS\WS\Electronics\Embedded\D_82_16F84A_SD1602\D_82_16F84A_SD1602_v_4_0\SD1602_8bit_mode.h
+Value1=C:\WORKS\WS\Electronics\Embedded\D_82_16F84A_SD1602\D_82_16F84A_SD1602_v_4_0\SD1602_4bit_mode.h
 [ObjLibFiles]
 Count=0
 [PLDFiles]
@@ -28,6 +29,6 @@ isused=0
 Count=3
 Value0=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Defs\
 Value1=C:\WORKS\PROGRAMS\Mikroelektronika\mikroC\Uses\p16\
-Value2=C:\WORKS\WS\Electronics\Embedded\D_82_16F84A_SD1602\D_82_16F84A_SD1602_v_3_0\
+Value2=C:\WORKS\WS\Electronics\Embedded\D_82_16F84A_SD1602\D_82_16F84A_SD1602_v_4_0\
 [IncludePath]
 Count=0
