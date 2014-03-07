@@ -76,13 +76,35 @@ void strConstCpy
 
  *dest = 0 ;
 }
-#line 5 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
-const char s1[] = "Psedoscience";
-const char s2[] = "xylophone";
+
+void strConstCpy2
+(char *dest, const char *source)
+{
+ while(*source)
+ *dest++ = *source++ ;
+
+ *dest = 0 ;
+}
+#line 6 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
+const char s1[] = "Versionsgeschichte";
+
+
+const char s2[] = "Schmargendorf";
+
+
+char s[] = "Schmargendorf";
 
 
 
-char s[30];
+int flag = 1;
+
+
+
+
+
+
+
+
 
 
 void interrupt(void)
@@ -95,7 +117,25 @@ void interrupt(void)
 
  if((PORTB & 0x01) == 0)
  {
- Delay_ms(2000);
+ if (flag == 1)
+ {
+
+
+ strConstCpy2(s, s1);
+
+ flag *= -1;
+
+ } else {
+
+
+ strConstCpy2(s, s2);
+
+ flag *= -1;
+
+ }
+
+
+
 
 
 
@@ -109,7 +149,6 @@ void interrupt(void)
  INTCON |= 0x80;
 
 }
-
 
 void main(void)
 {
@@ -140,7 +179,7 @@ void main(void)
 
 
 
- strConstCpy(s, s2);
+
 
  while(1)
  {
@@ -156,7 +195,7 @@ void main(void)
  SD1602_clear();
 
  Delay_ms(500);
-#line 100 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
+#line 131 "C:/WORKS/WS/Electronics/Embedded/D_82_16F84A_SD1602/D_82_16F84A_SD1602_v_4_1/D_82_16F84A_SD1602_v_4_1.c"
  }
 
 }

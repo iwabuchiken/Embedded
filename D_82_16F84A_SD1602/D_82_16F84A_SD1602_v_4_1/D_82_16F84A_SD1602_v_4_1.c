@@ -2,13 +2,27 @@
 #include "SD1602_4bit_mode.h"
 #include "utils.h"
 
-const char s1[]  = "Psedoscience";
-const char s2[]  = "xylophone";
+//const char s1[]  = "Psedoscience";
+const char s1[]  = "Versionsgeschichte";
+
+//const char s2[]  = "xylophone";
+const char s2[]  = "Schmargendorf";
 //const char s2[]  = "ad nauseam";
 
-//char s[]  = "Psedoscience";
-char s[30];
+char s[]  = "Schmargendorf";
+//char s[30];
+//char s[] = s2;
 
+int flag = 1;
+
+//void strConstCpy2
+//(char *dest, const char *source)
+//{
+//	while(*source)
+//	*dest++ = *source++ ;
+//
+//	*dest = 0 ;
+//}
 
 void interrupt(void)
 {
@@ -20,7 +34,25 @@ void interrupt(void)
 
 		 if((PORTB & 0x01) == 0)
 		 {
-							 Delay_ms(2000);
+             if (flag == 1)
+		           {
+
+//		              strConstCpy(s, s1);
+		              strConstCpy2(s, s1);
+
+		              flag *= -1;
+
+		           } else {
+
+//		              strConstCpy(s, s2);
+		              strConstCpy2(s, s2);
+
+		              flag *= -1;
+
+		           }
+		           
+//							 Delay_ms(2000);
+//                 Delay_ms(3000);
 							 
 //		           PORTA   ^= 0x03;
 
@@ -34,7 +66,6 @@ void interrupt(void)
 		 INTCON         |= 0x80;
 
 }//void interrupt(void)
-
 
 void main(void)
 {
@@ -63,9 +94,9 @@ void main(void)
 
 		 SD1602_clear();
 		 
-   //strConstCpy(s, s2);
+//		 strConstCpy(s, s2);
 
-	   strConstCpy(s, s2);
+////	   strConstCpy(s, s2);
 
 		 while(1)
 		 {

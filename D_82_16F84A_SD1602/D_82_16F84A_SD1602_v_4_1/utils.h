@@ -7,3 +7,12 @@ void strConstCpy
 
 	*dest = 0 ;
 }
+
+void strConstCpy2
+(char *dest, const char *source)
+{
+	while(*source)
+	*dest++ = *source++ ;
+
+	*dest = 0 ;
+}
