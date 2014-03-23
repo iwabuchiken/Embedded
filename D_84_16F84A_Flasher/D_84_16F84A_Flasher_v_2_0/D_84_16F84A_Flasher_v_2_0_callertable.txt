@@ -1,0 +1,3 @@
+interrupt
+main
+	GlobalIniD_84_16F84A_Flasher_v_2_0
