@@ -12,7 +12,8 @@ void interrupt(void)
 		 if(count < duty)
 		 {
 //		          PORTA = 0x01;
-		          PORTA = led_pattern;
+//		          PORTA = led_pattern;
+		          PORTA = led_pattern & 0xFF;
 		 }
 		 else
 		 {
@@ -20,7 +21,7 @@ void interrupt(void)
 		 }
 
 		 count++;
-		 
+
 		 if(count == 100)
 		 {
 		          count = 0;
@@ -49,10 +50,11 @@ void main(void)
 		 duty   = 0;
 
      TMR0  = 0;
-     
+
      // LED pattern
-     led_pattern = 0x01;
-     
+//     led_pattern = 0x01;
+     led_pattern = 0x0001;
+
 
      INTCON         |= 0x20;
      INTCON         |= 0x80;
@@ -64,13 +66,35 @@ void main(void)
                    duty = i;
                    Delay_ms(10);
              }
-             
+
              for(i = 0; i < 100; i++)
              {
                    duty = 99 - i;
                    Delay_ms(10);
              }
 
+						 if(led_pattern == 0x08) // 0000 1000
+						 {
+						       led_pattern = 0x0001;
+						 }
+						 else
+						 {
+						       led_pattern <<= 1;
+						 }
+
+//						 if(led_pattern == 0x01)
+//						 {
+////						       led_pattern << 1;
+//                     led_pattern <<= 1;
+//
+////						       led_pattern = 0x10;
+//						 }
+//						 else
+//						 {
+////						       led_pattern >> 1;
+//                     led_pattern >>= 1;
+////						       led_pattern = 0x01;
+//						 }
      }//while(1)
 
 }//void main(void)
