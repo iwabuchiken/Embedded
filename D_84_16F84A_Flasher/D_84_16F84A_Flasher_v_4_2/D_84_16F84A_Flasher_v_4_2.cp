@@ -1,4 +1,4 @@
-#line 1 "C:/WORKS/WS/Electronics/Embedded/D_84_16F84A_Flasher/D_84_16F84A_Flasher_v_4_1/D_84_16F84A_Flasher_v_4_1.c"
+#line 1 "C:/WORKS/WS/Electronics/Embedded/D_84_16F84A_Flasher/D_84_16F84A_Flasher_v_4_2/D_84_16F84A_Flasher_v_4_2.c"
 unsigned short int count;
 unsigned short int duty;
 unsigned short int led_pattern;
@@ -73,12 +73,14 @@ void main(void)
  Delay_ms(10);
  }
 
+
+ led_pattern = 0x01;
+
  k = rand() % 4;
 
- led_pattern = 0x01 * 2^k;
 
- Message("hi");
 
+ led_pattern = 0x01 << k;
 
  }
 

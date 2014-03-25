@@ -48,7 +48,7 @@ void main(void)
 
 		 count	= 0;
 		 duty   = 0;
-		 
+
 		 led_pattern   = 0x0001;
 
      TMR0  = 0;
@@ -72,9 +72,14 @@ void main(void)
                    Delay_ms(10);
              }
 
+						 // Initialize: LED pattern
+             led_pattern = 0x01;
+             
 						 k = rand() % 4;
-						 
-						 led_pattern = 0x01 * 2^k;
+
+						 // Set: New LED pattern
+//						 led_pattern = 0x01 * 2^k;
+						 led_pattern = 0x01 << k;
 
      }//while(1)
 
