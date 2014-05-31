@@ -1,8 +1,1 @@
-interrupt
 main
-	Div_16x16_S
-		Div_16x16_S_L
-	rand
-		Mul_32x32_S
-			Mul_32x32_U
-		srand
