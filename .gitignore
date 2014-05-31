@@ -2,6 +2,10 @@
 *.cof
 *.hex
 *.lst
+*.dbg
+*.dlt
+*.mcl
+
 
 D-1_v-2.0_e-1_If-statement_20130811_185640/
 D-1_v-2.0_e-1_If-statement_20130811_185640/*
