@@ -1,0 +1,5 @@
+[search]
+mikroc interrupt tmr0 not working
+mikroc tmr0 in interrupt
+mikroc tmr0 interrupt problem
+mikroc tmr0 not working

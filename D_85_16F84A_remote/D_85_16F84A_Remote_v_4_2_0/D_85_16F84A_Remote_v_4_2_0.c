@@ -12,6 +12,8 @@ usi color;
 
 usi LED_FLAG = 1;
 
+void _pulse_2(void);
+
 void interrupt(void)
 {
 		 usi i;
@@ -22,57 +24,73 @@ void interrupt(void)
 		 INTCON &= 0xEF;  // INT interrupt => forbidden
 		 INTCON &= 0xFD;  // INT interrupt flag => cleared
 
-//     PORTA = 0x01;
-		 if(LED_FLAG == 1)
+ 		 /*********************
+		   Reader
+		 **********************/
+		 TMR0 = 0;
+
+		 // RB0 => off(i.e. 5V -> 0V)
+     // Notice: Pullup is on
+     // => hence, no signal means 5V
+     //    at the pin
+		 while((PORTB & 0x01) == 0) //---------------------
 		 {
-//		     LED_1_ON;
-         PORTA = 0x01;
+        // Check: Time out?
+				if(TMR0 = 255)
+				{
+           // Exit from the check process
+					 break;
+				}
 
-		     LED_FLAG *= -1;
+     }//while((PORTB & 0x01) == 0)
 
-		 } else {
+		 // 9.0ms => passed?
+		 // If less than 9.0 or more
+		 // => return: i.e. exit from interrupt process
 
-//		     LED_1_OFF;
-         PORTA = 0x00;
+		 if(TMR0 < 156) //---------------------
+		 {
 
-		     LED_FLAG *= -1;
+					 INTCON |= 0x10;        // INT interrupt => permitted
+					 INTCON |= 0x80;        // interrupt => permitted
 
-		 }//if(LED_FLAG == 1)
+					 //debug
+					 PORTA = 0x01;
+					 Delay_ms(1);
+					 PORTA = 0x00;
 
-// 		 /*********************
-//		   Reader
-//		 **********************/
-//		 TMR0 = 0;
-//
-//		 // RB0 => off(i.e. 5V -> 0V)
-//     // Notice: Pullup is on
-//     // => hence, no signal means 5V
-//     //    at the pin
-//		 while((PORTB & 0x01) == 0) //---------------------
-//		 {
-//        // Check: Time out?
-//				if(TMR0 = 255)
-//				{
-//           // Exit from the check process
-//					 break;
-//				}
-//
-//     }//while((PORTB & 0x01) == 0)
-//
-//		 // 9.0ms => passed?
-//		 // If less than 9.0 or more
-//		 // => return: i.e. exit from interrupt process
+					 return;                // return
+
+		 } else if (TMR0 > 196) {
+		 
+					 INTCON |= 0x10;        // INT interrupt => permitted
+					 INTCON |= 0x80;        // interrupt => permitted
+
+					 //debug
+					 _pulse_2();
+
+					 return;                // return
+					 
+		 }
+
+		 PORTA = 0x01;
+
+
 //		 if(TMR0 < 156 || TMR0 > 196) //---------------------
 //		 {
 //
 //					 INTCON |= 0x10;        // INT interrupt => permitted
 //					 INTCON |= 0x80;        // interrupt => permitted
 //
+//					 //debug
+//					 PORTA = 0x01;
+//					 Delay_ms(1);
+//					 PORTA = 0x00;
+//
 //					 return;                // return
 //		 }
-		 
+//
 //		 PORTA = 0x01;
-		 
 //		 // Timer => reset
 //		 TMR0 = 0;
 //
@@ -137,8 +155,8 @@ void main(void)
 
 		 OPTION_REG &= 0x7F;	// Pull-up => on
      OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+
 		 OPTION_REG &= 0xDF;	// Timer by clock
-		 
 		 OPTION_REG &= 0xF0;	// Prescaler => on
 		 OPTION_REG |= 0x07; // Prescaler => 1/256
 		 
@@ -160,5 +178,22 @@ void main(void)
 	   }//while(1)
 
 }//void main(void)
+
+void _pulse_2(void)
+{
+
+		 PORTA = 0x01;
+		 Delay_ms(1);
+		 
+		 PORTA = 0x00;
+		 Delay_ms(1);
+		 
+		 PORTA = 0x01;
+		 Delay_ms(1);
+
+		 PORTA = 0x00;
+		 Delay_ms(1);
+
+}
 
 //REF show value window http://www.mikroe.com/download/eng/documents/compilers/mikroc/pro/pic/help/debug_windows.htm#watch_window
