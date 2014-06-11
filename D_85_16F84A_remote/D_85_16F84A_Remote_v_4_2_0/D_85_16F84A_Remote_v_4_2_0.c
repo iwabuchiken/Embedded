@@ -12,8 +12,35 @@ usi color;
 
 usi LED_FLAG = 1;
 
-void _pulse_2(void);
+void _pulse_2(void)
+{
 
+		 PORTA = 0x01; Delay_ms(1);
+
+		 PORTA = 0x00; Delay_ms(1);
+
+		 PORTA = 0x01; Delay_ms(1);
+
+		 PORTA = 0x00; Delay_ms(1);
+
+}
+
+void _pulse_3(void)
+{
+
+		 PORTA = 0x01; Delay_ms(1);
+		 PORTA = 0x00; Delay_ms(1);
+
+		 PORTA = 0x01; Delay_ms(1);
+		 PORTA = 0x00; Delay_ms(1);
+
+		 PORTA = 0x01; Delay_ms(1);
+		 PORTA = 0x00; Delay_ms(1);
+
+}
+
+//void _pulse_2(void);
+//void _pulse_3(void);
 void interrupt(void)
 {
 		 usi i;
@@ -36,9 +63,13 @@ void interrupt(void)
 		 while((PORTB & 0x01) == 0) //---------------------
 		 {
         // Check: Time out?
-				if(TMR0 = 255)
+    //if(TMR0 = 255)
+        if(TMR0 == 255)
 				{
            // Exit from the check process
+           
+           _pulse_3();
+           
 					 break;
 				}
 
@@ -61,16 +92,24 @@ void interrupt(void)
 
 					 return;                // return
 
-		 } else if (TMR0 > 196) {
-		 
+//		 } else if (TMR0 > 196 || TMR0 < 200) {
+//
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
+//
+//					 //debug
+//					 _pulse_3();
+//
+//					 return;                // return
+     } else if (TMR0 > 196) {
+     
 					 INTCON |= 0x10;        // INT interrupt => permitted
 					 INTCON |= 0x80;        // interrupt => permitted
 
 					 //debug
 					 _pulse_2();
-
-					 return;                // return
 					 
+
 		 }
 
 		 PORTA = 0x01;
@@ -179,21 +218,30 @@ void main(void)
 
 }//void main(void)
 
-void _pulse_2(void)
-{
-
-		 PORTA = 0x01;
-		 Delay_ms(1);
-		 
-		 PORTA = 0x00;
-		 Delay_ms(1);
-		 
-		 PORTA = 0x01;
-		 Delay_ms(1);
-
-		 PORTA = 0x00;
-		 Delay_ms(1);
-
-}
-
+//void _pulse_2(void)
+//{
+//
+//		 PORTA = 0x01; Delay_ms(1);
+//
+//		 PORTA = 0x00; Delay_ms(1);
+//
+//		 PORTA = 0x01; Delay_ms(1);
+//
+//		 PORTA = 0x00; Delay_ms(1);
+//
+//}
+//
+//void _pulse_3(void)
+//{
+//
+//		 PORTA = 0x01; Delay_ms(1);
+//		 PORTA = 0x00; Delay_ms(1);
+//
+//		 PORTA = 0x01; Delay_ms(1);
+//		 PORTA = 0x00; Delay_ms(1);
+//
+//		 PORTA = 0x01; Delay_ms(1);
+//		 PORTA = 0x00; Delay_ms(1);
+//
+//}
 //REF show value window http://www.mikroe.com/download/eng/documents/compilers/mikroc/pro/pic/help/debug_windows.htm#watch_window

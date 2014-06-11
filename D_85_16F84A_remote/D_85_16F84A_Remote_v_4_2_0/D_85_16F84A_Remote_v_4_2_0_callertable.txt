@@ -1,4 +1,5 @@
 interrupt
 	_pulse_2
+	_pulse_3
 main
 	GlobalIniD_85_16F84A_Remote_v_4_2_0
