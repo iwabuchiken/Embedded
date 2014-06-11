@@ -112,7 +112,25 @@ void interrupt(void)
 
 		 }
 
-		 PORTA = 0x01;
+		 if(LED_FLAG == 1)
+		 {
+//		     LED_1_ON;
+         PORTA = 0x01;
+
+		     LED_FLAG *= -1;
+
+		 } else {
+
+//		     LED_1_OFF;
+         PORTA = 0x00;
+
+		     LED_FLAG *= -1;
+
+		 }//if(LED_FLAG == 1)
+
+
+
+//		 PORTA = 0x01;
 
 
 //		 if(TMR0 < 156 || TMR0 > 196) //---------------------

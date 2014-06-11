@@ -101,8 +101,22 @@ void interrupt(void)
 
  }
 
+ if(LED_FLAG == 1)
+ {
+
  PORTA = 0x01;
-#line 180 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
+
+ LED_FLAG *= -1;
+
+ } else {
+
+
+ PORTA = 0x00;
+
+ LED_FLAG *= -1;
+
+ }
+#line 198 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
