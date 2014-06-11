@@ -1,3 +1,4 @@
 interrupt
+	Mul_8x8_U
 main
 	GlobalIniD_85_16F84A_Remote_v_4_2_0

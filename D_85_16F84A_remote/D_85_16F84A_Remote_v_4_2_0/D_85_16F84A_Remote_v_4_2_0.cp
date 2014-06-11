@@ -13,66 +13,24 @@ void interrupt(void)
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-#line 28 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
- TMR0 = 0;
 
 
-
-
-
- while((PORTB & 0x01) == 0)
+ if(LED_FLAG == 1)
  {
-
- if(TMR0 = 255)
- {
-
- break;
- }
-
- }
-
-
-
-
- if(TMR0 < 156 || TMR0 > 196)
- {
-
- INTCON |= 0x10;
- INTCON |= 0x80;
-
- return;
- }
-
-
- TMR0 = 0;
-
-
- while((PORTB & 0x01) == 1)
- {
-
- if(TMR0 = 255)
- {
-
- break;
- }
-
- }
-
-
-
-
-
- if(TMR0 < 68 || TMR0 > 108)
- {
-
- INTCON |= 0x10;
- INTCON |= 0x80;
-
- return;
- }
 
  PORTA = 0x01;
-#line 105 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
+
+ LED_FLAG *= -1;
+
+ } else {
+
+
+ PORTA = 0x00;
+
+ LED_FLAG *= -1;
+
+ }
+#line 123 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
@@ -106,6 +64,9 @@ void main(void)
 
  while(1)
  {
+
+
+
 
  }
 

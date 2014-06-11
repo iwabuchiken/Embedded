@@ -22,85 +22,103 @@ void interrupt(void)
 		 INTCON &= 0xEF;  // INT interrupt => forbidden
 		 INTCON &= 0xFD;  // INT interrupt flag => cleared
 
- 		 /*********************
-		   Reader
-		 **********************/
-		 TMR0 = 0;
-		 
-		 // RB0 => off(i.e. 5V -> 0V)
-     // Notice: Pullup is on
-     // => hence, no signal means 5V
-     //    at the pin
-		 while((PORTB & 0x01) == 0) //---------------------
+//     PORTA = 0x01;
+		 if(LED_FLAG == 1)
 		 {
-        // Check: Time out?
-				if(TMR0 = 255)
-				{
-           // Exit from the check process
-					 break;
-				}
-				
-     }//while((PORTB & 0x01) == 0)
+//		     LED_1_ON;
+         PORTA = 0x01;
 
-		 // 9.0ms => passed?
-		 // If less than 9.0 or more
-		 // => return: i.e. exit from interrupt process
-		 if(TMR0 < 156 || TMR0 > 196) //---------------------
-		 {
-		 
-					 INTCON |= 0x10;        // INT interrupt => permitted
-					 INTCON |= 0x80;        // interrupt => permitted
+		     LED_FLAG *= -1;
 
-					 return;                // return
-		 }
-		 
-		 // Timer => reset
-		 TMR0 = 0;
-		 
-		 // Check: time out?
-		 while((PORTB & 0x01) == 1) //---------------------
-		 {
-        // Check: Time out?
-				if(TMR0 = 255)
-				{
-           // Exit from the check process
-					 break;
-				}
+		 } else {
 
-     }//while((PORTB & 0x01) == 0)
+//		     LED_1_OFF;
+         PORTA = 0x00;
 
-		 // 4.5ms => passed?
-		 // If less than 4.5 or more
-		 // => return: i.e. exit from interrupt process
-   //if(PASSED_4_5_ms) //---------------------
-     if(TMR0 < 68 || TMR0 > 108) //---------------------
-		 {
+		     LED_FLAG *= -1;
 
-					 INTCON |= 0x10;        // INT interrupt => permitted
-					 INTCON |= 0x80;        // interrupt => permitted
+		 }//if(LED_FLAG == 1)
 
-					 return;                // return
-		 }
-
-     PORTA = 0x01;
-
-//		 // LED on/off
-//		 if(LED_FLAG == 1)
+// 		 /*********************
+//		   Reader
+//		 **********************/
+//		 TMR0 = 0;
+//
+//		 // RB0 => off(i.e. 5V -> 0V)
+//     // Notice: Pullup is on
+//     // => hence, no signal means 5V
+//     //    at the pin
+//		 while((PORTB & 0x01) == 0) //---------------------
 //		 {
-////		     LED_1_ON;
-//         PORTA = 0x01;
+//        // Check: Time out?
+//				if(TMR0 = 255)
+//				{
+//           // Exit from the check process
+//					 break;
+//				}
 //
-//		     LED_FLAG *= -1;
+//     }//while((PORTB & 0x01) == 0)
 //
-//		 } else {
+//		 // 9.0ms => passed?
+//		 // If less than 9.0 or more
+//		 // => return: i.e. exit from interrupt process
+//		 if(TMR0 < 156 || TMR0 > 196) //---------------------
+//		 {
 //
-////		     LED_1_OFF;
-//         PORTA = 0x00;
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
 //
-//		     LED_FLAG *= -1;
+//					 return;                // return
+//		 }
+		 
+//		 PORTA = 0x01;
+		 
+//		 // Timer => reset
+//		 TMR0 = 0;
 //
-//		 }//if(LED_FLAG == 1)
-
+//		 // Check: time out?
+//		 while((PORTB & 0x01) == 1) //---------------------
+//		 {
+//        // Check: Time out?
+//				if(TMR0 = 255)
+//				{
+//           // Exit from the check process
+//					 break;
+//				}
+//
+//     }//while((PORTB & 0x01) == 0)
+//
+//		 // 4.5ms => passed?
+//		 // If less than 4.5 or more
+//		 // => return: i.e. exit from interrupt process
+//   //if(PASSED_4_5_ms) //---------------------
+//     if(TMR0 < 68 || TMR0 > 108) //---------------------
+//		 {
+//
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
+//
+//					 return;                // return
+//		 }
+//
+//     PORTA = 0x01;
+//
+////		 // LED on/off
+////		 if(LED_FLAG == 1)
+////		 {
+//////		     LED_1_ON;
+////         PORTA = 0x01;
+////
+////		     LED_FLAG *= -1;
+////
+////		 } else {
+////
+//////		     LED_1_OFF;
+////         PORTA = 0x00;
+////
+////		     LED_FLAG *= -1;
+////
+////		 }//if(LED_FLAG == 1)
 		 // INTCON => reset
 		 INTCON |= 0x10;        // INT interrupt => permitted
   	 INTCON |= 0x80;
@@ -135,6 +153,9 @@ void main(void)
 
      while(1)
      {
+     
+//        PORTA = 0x01;
+        
 
 	   }//while(1)
 
