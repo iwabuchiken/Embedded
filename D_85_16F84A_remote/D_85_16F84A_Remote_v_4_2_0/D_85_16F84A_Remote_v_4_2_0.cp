@@ -80,43 +80,54 @@ void interrupt(void)
  PORTA = 0x00;
 
  return;
+ }
+
+ if(TMR0 > 196)
+ {
+ INTCON |= 0x10;
+ INTCON |= 0x80;
+
+ PORTA = 0x01;
+ Delay_ms(2);
+ PORTA = 0x00;
+
+ return;
+
+ }
+
+
+
+ TMR0 = 0;
+
+
+ while((PORTB & 0x01) == 1)
+ {
+
+ if(TMR0 == 255)
+ {
+
+ _pulse_3();
+
+ break;
+ }
+
+ }
 
 
 
 
 
-
-
-
-
-
- } else if (TMR0 > 196) {
+ if(TMR0 < 68 || TMR0 > 108)
+ {
 
  INTCON |= 0x10;
  INTCON |= 0x80;
 
+ return;
+ }
 
  _pulse_2();
-
-
- }
-
- if(LED_FLAG == 1)
- {
-
- PORTA = 0x01;
-
- LED_FLAG *= -1;
-
- } else {
-
-
- PORTA = 0x00;
-
- LED_FLAG *= -1;
-
- }
-#line 198 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
+#line 162 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_4_2_0/D_85_16F84A_Remote_v_4_2_0.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 

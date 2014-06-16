@@ -78,7 +78,7 @@ void interrupt(void)
 		 // 9.0ms => passed?
 		 // If less than 9.0 or more
 		 // => return: i.e. exit from interrupt process
-//		 if(TMR0 < 156 || TMR0 > 196) //---------------------
+
 		 if(TMR0 < 156) //---------------------
 		 {
 
@@ -91,73 +91,109 @@ void interrupt(void)
 					 PORTA = 0x00;
 
 					 return;                // return
-		 }
-		 
-		 if(TMR0 > 196) //---------------------
-		 {
- 					 INTCON |= 0x10;        // INT interrupt => permitted
-					 INTCON |= 0x80;        // interrupt => permitted
 
-					 PORTA = 0x01;
-					 Delay_ms(2);
-					 PORTA = 0x00;
-
-					 return;                // return
-
-		 }
+//		 } else if (TMR0 > 196 || TMR0 < 200) {
 //
-//		 PORTA = 0x01;
-		 // Timer => reset
-		 TMR0 = 0;
-
-		 // Check: time out?
-		 while((PORTB & 0x01) == 1) //---------------------
-		 {
-        // Check: Time out?
-				if(TMR0 == 255)
-				{
-           // Exit from the check process
-           _pulse_3();
-           
-					 break;
-				}
-
-     }//while((PORTB & 0x01) == 0)
-
-		 // 4.5ms => passed?
-		 // If less than 4.5 or more
-		 // => return: i.e. exit from interrupt process
-   //if(PASSED_4_5_ms) //---------------------
-     if(TMR0 < 68 || TMR0 > 108) //---------------------
-		 {
-
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
+//
+//					 //debug
+//					 _pulse_3();
+//
+//					 return;                // return
+     } else if (TMR0 > 196) {
+     
 					 INTCON |= 0x10;        // INT interrupt => permitted
 					 INTCON |= 0x80;        // interrupt => permitted
 
-					 return;                // return
+					 //debug
+					 _pulse_2();
+					 
+
 		 }
-		 
-		 _pulse_2();
-		 
-		 
-//		 // LED on/off
-//		 if(LED_FLAG == 1)
+
+		 if(LED_FLAG == 1)
+		 {
+//		     LED_1_ON;
+         PORTA = 0x01;
+
+		     LED_FLAG *= -1;
+
+		 } else {
+
+//		     LED_1_OFF;
+         PORTA = 0x00;
+
+		     LED_FLAG *= -1;
+
+		 }//if(LED_FLAG == 1)
+
+
+
+//		 PORTA = 0x01;
+
+
+//		 if(TMR0 < 156 || TMR0 > 196) //---------------------
 //		 {
-////		     LED_1_ON;
+//
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
+//
+//					 //debug
+//					 PORTA = 0x01;
+//					 Delay_ms(1);
+//					 PORTA = 0x00;
+//
+//					 return;                // return
+//		 }
+//
+//		 PORTA = 0x01;
+//		 // Timer => reset
+//		 TMR0 = 0;
+//
+//		 // Check: time out?
+//		 while((PORTB & 0x01) == 1) //---------------------
+//		 {
+//        // Check: Time out?
+//				if(TMR0 = 255)
+//				{
+//           // Exit from the check process
+//					 break;
+//				}
+//
+//     }//while((PORTB & 0x01) == 0)
+//
+//		 // 4.5ms => passed?
+//		 // If less than 4.5 or more
+//		 // => return: i.e. exit from interrupt process
+//   //if(PASSED_4_5_ms) //---------------------
+//     if(TMR0 < 68 || TMR0 > 108) //---------------------
+//		 {
+//
+//					 INTCON |= 0x10;        // INT interrupt => permitted
+//					 INTCON |= 0x80;        // interrupt => permitted
+//
+//					 return;                // return
+//		 }
+//
+//     PORTA = 0x01;
+//
+////		 // LED on/off
+////		 if(LED_FLAG == 1)
+////		 {
+//////		     LED_1_ON;
 ////         PORTA = 0x01;
-//				 _pulse_2();
-//
-//		     LED_FLAG *= -1;
-//
-//		 } else {
-//
-////		     LED_1_OFF;
+////
+////		     LED_FLAG *= -1;
+////
+////		 } else {
+////
+//////		     LED_1_OFF;
 ////         PORTA = 0x00;
-//         _pulse_3();
-//
-//		     LED_FLAG *= -1;
-//
-//		 }//if(LEDLAG == 1)
+////
+////		     LED_FLAG *= -1;
+////
+////		 }//if(LED_FLAG == 1)
 		 // INTCON => reset
 		 INTCON |= 0x10;        // INT interrupt => permitted
   	 INTCON |= 0x80;
