@@ -8,6 +8,10 @@
 #define LED_1_ON PORTA = 0x01
 #define LED_1_OFF PORTA = 0x00
 
+#define true 1
+#define false 0
+
+
 usi color;
 
 usi LED_FLAG = 1;
@@ -24,6 +28,29 @@ void _pulse(int num)
 			PORTA = 0x00; Delay_ms(1);
 
 		}
+
+}
+
+void _while_PORTB_0x01(int num)
+{
+
+	while((PORTB & 0x01) == num) //---------------------
+	{
+		// Check: Time out?
+		if(TMR0 == 255)
+		{
+			// Exit from the check process
+
+			_pulse(3);
+
+//			break;
+			return;
+
+		}
+
+	}//while((PORTB & 0x01) == 0)
+
+	return;
 
 }
 
@@ -51,20 +78,30 @@ void interrupt(void)
 		// Notice: Pullup is on
 		// => hence, no signal means 5V
 		//    at the pin
-		while((PORTB & 0x01) == 0) //---------------------
-		{
-			// Check: Time out?
-			if(TMR0 == 255)
-			{
-				// Exit from the check process
 
-				_pulse(3);
+		_while_PORTB_0x01(0);
+//		result = _while_PORTB_0x01(0);
 
-				break;
+//		if (result == false) {
+//
+//			break;
+//
+//		}
 
-			}
-
-		}//while((PORTB & 0x01) == 0)
+//		while((PORTB & 0x01) == 0) //---------------------
+//		{
+//			// Check: Time out?
+//			if(TMR0 == 255)
+//			{
+//				// Exit from the check process
+//
+//				_pulse(3);
+//
+//				break;
+//
+//			}
+//
+//		}//while((PORTB & 0x01) == 0)
 
 		// 9.0ms => passed?
 		// If less than 9.0 or more
