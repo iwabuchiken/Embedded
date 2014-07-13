@@ -54,6 +54,52 @@ void _while_PORTB_0x01(int num)
 
 }
 
+/*********************************
+ * @return false => either lower than low, or
+ * 			higher than high
+**********************************/
+int _judge_TMR_(int low, int high) {
+
+	if(TMR0 < low) //---------------------
+	{
+
+		INTCON |= 0x10;        // INT interrupt => permitted
+		INTCON |= 0x80;        // interrupt => permitted
+
+		//debug
+//		PORTA = 0x01;
+//		Delay_ms(1);
+//		PORTA = 0x00;
+
+		_pulse(1);
+
+		return false;                // return
+
+//		} else if (TMR0 > 196 || TMR0 < 200) {
+//
+//					INTCON |= 0x10;        // INT interrupt => permitted
+//					INTCON |= 0x80;        // interrupt => permitted
+//
+//					//debug
+//					_pulse_3();
+//
+//					return;                // return
+	} else if (TMR0 > high) {
+
+		INTCON |= 0x10;        // INT interrupt => permitted
+		INTCON |= 0x80;        // interrupt => permitted
+
+		//debug
+		_pulse(2);
+
+		return false;
+
+	}
+
+	return true;
+
+}//int _judge_TMR_(int low, int high)
+
 void interrupt(void)
 {
 		/*********************************
@@ -80,78 +126,67 @@ void interrupt(void)
 		//    at the pin
 
 		_while_PORTB_0x01(0);
-//		result = _while_PORTB_0x01(0);
-
-//		if (result == false) {
-//
-//			break;
-//
-//		}
-
-//		while((PORTB & 0x01) == 0) //---------------------
-//		{
-//			// Check: Time out?
-//			if(TMR0 == 255)
-//			{
-//				// Exit from the check process
-//
-//				_pulse(3);
-//
-//				break;
-//
-//			}
-//
-//		}//while((PORTB & 0x01) == 0)
 
 		// 9.0ms => passed?
 		// If less than 9.0 or more
 		// => return: i.e. exit from interrupt process
 
-		if(TMR0 < 156) //---------------------
-		{
+		result = _judge_TMR_(156, 196);
 
-			INTCON |= 0x10;        // INT interrupt => permitted
-			INTCON |= 0x80;        // interrupt => permitted
+		if (result == false) {
 
-			//debug
-			PORTA = 0x01;
-			Delay_ms(1);
-			PORTA = 0x00;
-
-			return;                // return
-
-//		} else if (TMR0 > 196 || TMR0 < 200) {
-//
-//					INTCON |= 0x10;        // INT interrupt => permitted
-//					INTCON |= 0x80;        // interrupt => permitted
-//
-//					//debug
-//					_pulse_3();
-//
-//					return;                // return
-		} else if (TMR0 > 196) {
-
-			INTCON |= 0x10;        // INT interrupt => permitted
-			INTCON |= 0x80;        // interrupt => permitted
-
-			//debug
-			_pulse(2);
+			return;
 
 		}
+
+//		if(TMR0 < 156) //---------------------
+//		{
+//
+//			INTCON |= 0x10;        // INT interrupt => permitted
+//			INTCON |= 0x80;        // interrupt => permitted
+//
+//			//debug
+//			PORTA = 0x01;
+//			Delay_ms(1);
+//			PORTA = 0x00;
+//
+//			return;                // return
+//
+////		} else if (TMR0 > 196 || TMR0 < 200) {
+////
+////					INTCON |= 0x10;        // INT interrupt => permitted
+////					INTCON |= 0x80;        // interrupt => permitted
+////
+////					//debug
+////					_pulse_3();
+////
+////					return;                // return
+//		} else if (TMR0 > 196) {
+//
+//			INTCON |= 0x10;        // INT interrupt => permitted
+//			INTCON |= 0x80;        // interrupt => permitted
+//
+//			//debug
+//			_pulse(2);
+//
+//		}
 
 
 
 		if(LED_FLAG == 1)
 		{
 //		    LED_1_ON;
-			 PORTA = 0x01;
+			PORTA = 0x01;
 
 			LED_FLAG *= -1;
 
 		} else {
 
 //		    LED_1_OFF;
-			 PORTA = 0x00;
+
+			PORTA = 0x00;
+			Delay_ms(1);
+			_pulse(1);
 
 			LED_FLAG *= -1;
 
