@@ -100,6 +100,30 @@ int _judge_TMR_(int low, int high) {
 
 }//int _judge_TMR_(int low, int high)
 
+void _response(void)
+{
+
+	if(LED_FLAG == 1)
+	{
+//		    LED_1_ON;
+		PORTA = 0x01;
+
+		LED_FLAG *= -1;
+
+	} else {
+
+//		    LED_1_OFF;
+
+		PORTA = 0x00;
+		Delay_ms(1);
+		_pulse(2);
+
+		LED_FLAG *= -1;
+
+	}//if(LED_FLAG == 1)
+
+}
+
 void interrupt(void)
 {
 		/*********************************
@@ -131,6 +155,7 @@ void interrupt(void)
 		// If less than 9.0 or more
 		// => return: i.e. exit from interrupt process
 
+		// judge
 		result = _judge_TMR_(156, 196);
 
 		if (result == false) {
@@ -172,25 +197,30 @@ void interrupt(void)
 //		}
 
 
+		//////////////////////////////////
 
-		if(LED_FLAG == 1)
-		{
-//		    LED_1_ON;
-			PORTA = 0x01;
+		// Response
 
-			LED_FLAG *= -1;
-
-		} else {
-
-//		    LED_1_OFF;
-
-			PORTA = 0x00;
-			Delay_ms(1);
-			_pulse(1);
-
-			LED_FLAG *= -1;
-
-		}//if(LED_FLAG == 1)
+		//////////////////////////////////
+		_response();
+//		if(LED_FLAG == 1)
+//		{
+////		    LED_1_ON;
+//			PORTA = 0x01;
+//
+//			LED_FLAG *= -1;
+//
+//		} else {
+//
+////		    LED_1_OFF;
+//
+//			PORTA = 0x00;
+//			Delay_ms(1);
+//			_pulse(1);
+//
+//			LED_FLAG *= -1;
+//
+//		}//if(LED_FLAG == 1)
 
 
 
