@@ -103,26 +103,22 @@ int _judge_TMR_(int low, int high) {
 void _response(void)
 {
 
-	_pulse(4);
+//	_pulse(4);
 
-//	if(LED_FLAG == 1)
-//	{
-////		    LED_1_ON;
-//		PORTA = 0x01;
-//
-//		LED_FLAG *= -1;
-//
-//	} else {
-//
-////		    LED_1_OFF;
-//
-//		PORTA = 0x00;
-//		Delay_ms(1);
-//		_pulse(2);
-//
-//		LED_FLAG *= -1;
-//
-//	}//if(LED_FLAG == 1)
+	if(LED_FLAG == 1)
+	{
+
+		PORTA = 0x01;
+
+		LED_FLAG *= -1;
+
+	} else {
+
+		PORTA = 0x00;
+
+		LED_FLAG *= -1;
+
+	}//if(LED_FLAG == 1)
 
 }
 

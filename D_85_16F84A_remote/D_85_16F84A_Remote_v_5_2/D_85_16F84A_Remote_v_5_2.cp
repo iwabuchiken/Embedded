@@ -87,13 +87,28 @@ int _judge_TMR_(int low, int high) {
 void _response(void)
 {
 
- _pulse(4);
-#line 127 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
+
+
+ if(LED_FLAG == 1)
+ {
+
+ PORTA = 0x01;
+
+ LED_FLAG *= -1;
+
+ } else {
+
+ PORTA = 0x00;
+
+ LED_FLAG *= -1;
+
+ }
+
 }
 
 void interrupt(void)
 {
-#line 134 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
+#line 130 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
   unsigned short int  i;
   unsigned short int  custom_code_a, custom_code_b;
   unsigned short int  data_code_a, data_code_b;
@@ -103,9 +118,9 @@ void interrupt(void)
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-#line 155 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
+#line 151 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
  TMR0 = 0;
-#line 165 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
+#line 161 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
  _while_PORTB_0x01(0);
 
 
@@ -126,7 +141,7 @@ void interrupt(void)
  return;
 
  }
-#line 196 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
+#line 192 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_2/D_85_16F84A_Remote_v_5_2.c"
  TMR0 = 0;
 
 
