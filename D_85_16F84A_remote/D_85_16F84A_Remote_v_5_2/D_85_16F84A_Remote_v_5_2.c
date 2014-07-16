@@ -103,24 +103,26 @@ int _judge_TMR_(int low, int high) {
 void _response(void)
 {
 
-	if(LED_FLAG == 1)
-	{
-//		    LED_1_ON;
-		PORTA = 0x01;
+	_pulse(4);
 
-		LED_FLAG *= -1;
-
-	} else {
-
-//		    LED_1_OFF;
-
-		PORTA = 0x00;
-		Delay_ms(1);
-		_pulse(2);
-
-		LED_FLAG *= -1;
-
-	}//if(LED_FLAG == 1)
+//	if(LED_FLAG == 1)
+//	{
+////		    LED_1_ON;
+//		PORTA = 0x01;
+//
+//		LED_FLAG *= -1;
+//
+//	} else {
+//
+////		    LED_1_OFF;
+//
+//		PORTA = 0x00;
+//		Delay_ms(1);
+//		_pulse(2);
+//
+//		LED_FLAG *= -1;
+//
+//	}//if(LED_FLAG == 1)
 
 }
 
@@ -166,12 +168,16 @@ void interrupt(void)
 		// If less than 9.0 or more
 		// => return: i.e. exit from interrupt process
 
-		/*********************************
-		 * judge
-		**********************************/
+		//////////////////////////////////
+
+		// judge
+
+		//////////////////////////////////
 		result = _judge_TMR_(156, 196);
 
 		if (result == false) {
+
+//			_pulse(1);
 
 			return;
 
@@ -182,8 +188,34 @@ void interrupt(void)
 		// 4.5 ms
 
 		//////////////////////////////////
+		//////////////////////////////////
 
+		// Reset: TMR0
 
+		//////////////////////////////////
+		TMR0 = 0;
+
+		//////////////////////////////////
+
+		// Listen
+
+		//////////////////////////////////
+		_while_PORTB_0x01(1);
+
+		//////////////////////////////////
+
+		// judge
+
+		//////////////////////////////////
+		result = _judge_TMR_(68, 108);
+
+		if (result == false) {
+
+//			_pulse(1);
+
+			return;
+
+		}
 
 		//////////////////////////////////
 
@@ -238,31 +270,3 @@ void main(void)
 	   }//while(1)
 
 }//void main(void)
-
-//void _pulse_2(void)
-//{
-//
-//		PORTA = 0x01; Delay_ms(1);
-//
-//		PORTA = 0x00; Delay_ms(1);
-//
-//		PORTA = 0x01; Delay_ms(1);
-//
-//		PORTA = 0x00; Delay_ms(1);
-//
-//}
-//
-//void _pulse_3(void)
-//{
-//
-//		PORTA = 0x01; Delay_ms(1);
-//		PORTA = 0x00; Delay_ms(1);
-//
-//		PORTA = 0x01; Delay_ms(1);
-//		PORTA = 0x00; Delay_ms(1);
-//
-//		PORTA = 0x01; Delay_ms(1);
-//		PORTA = 0x00; Delay_ms(1);
-//
-//}
-//REF show value window http://www.mikroe.com/download/eng/documents/compilers/mikroc/pro/pic/help/debug_windows.htm#watch_window
