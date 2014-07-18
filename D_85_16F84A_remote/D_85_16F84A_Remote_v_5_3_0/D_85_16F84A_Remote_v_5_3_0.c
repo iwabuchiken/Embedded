@@ -3,6 +3,34 @@
 #define MS90 TMR0 < 176
 #define MS45 TMR0 < 88
 
+#define RESET_TMR TMR0 = 0
+
+//////////////////////////////////
+
+// vars
+
+//////////////////////////////////
+usi i;
+usi custom_code_a, custom_code_b;
+usi data_code_a, data_code_b;
+
+//////////////////////////////////
+
+// funcs
+
+//////////////////////////////////
+void _pulse(void)
+{
+
+	// Modulation
+	PORTA        = 0x01;   // RA0 => on
+	Delay_us(9);   // 8.8us
+
+	PORTA        = 0x00;   // RA0 => off
+	Delay_us(17);   // 26.3us - 8.8us =% 17us
+
+}
+
 void _reader(void)
 {
 
@@ -12,9 +40,9 @@ void _reader(void)
 //	while(TMR0 < 176)         // 9.0ms
 	while(MS90)         // 9.0ms
 	{
-	// Modulation
-	PORTA        = 0x01;   // RA0 => on
-	Delay_us(9);   // 8.8us
+		// Modulation
+		PORTA        = 0x01;   // RA0 => on
+		Delay_us(9);   // 8.8us
 
 		PORTA        = 0x00;   // RA0 => off
 		Delay_us(17);   // 26.3us - 8.8us =% 17us
@@ -32,11 +60,62 @@ void _reader(void)
 
 }//void _reader(void)
 
+void _custom_lower(void)
+{
+	usi bit_len = 4;
+
+	custom_code_a = 0x0A;
+
+	for(i = 0; i < bit_len; i++)
+	{
+
+		//////////////////////////////////
+
+		// high
+
+		//////////////////////////////////
+		RESET_TMR;
+
+		while(TMR0 < 11)	// 0.56ms
+		{
+			_pulse();
+
+		}
+
+		//////////////////////////////////
+
+		// low
+
+		//////////////////////////////////
+		PORTA = 0x00;
+
+		if (((custom_code_a >> i) & 0x01) == 0)
+		{
+
+			while(TMR0 < 22)	// 1.125ms
+			{
+
+			}
+
+		} else {
+
+			while(TMR0 < 44)	// 2.250ms
+			{
+
+			}
+
+		}//if (((custom_code_a >> i) & 0x01) == 0)
+
+	}//for(i = 0; i < bit_len)
+
+
+}//_custom_lower
+
 void main(void)
 {
-	usi i;
-	usi custom_code_a, custom_code_b;
-	usi data_code_a, data_code_b;
+//	usi i;
+//	usi custom_code_a, custom_code_b;
+//	usi data_code_a, data_code_b;
 
 	// Setup
 	TRISA     = 0x00;
@@ -61,30 +140,10 @@ void main(void)
 		**********************/
 		_reader();
 
-//		TMR0     = 0;
-//
-//		while(TMR0 < 176)         // 9.0ms
-//		{
-//		// Modulation
-//		PORTA        = 0x01;   // RA0 => on
-//		Delay_us(9);   // 8.8us
-//
-//			PORTA        = 0x00;   // RA0 => off
-//			Delay_us(17);   // 26.3us - 8.8us =% 17us
-//
-//		}
-//
-//		TMR0 = 0;
-//		PORTA = 0x00;
-//
-//		while(TMR0 < 88)       // 4.5ms
-//		{
-//
-//		}
-
 		/*********************
 		Custom code: lower 8 bits
 		**********************/
+		_custom_lower();
 
 		/*********************
 		Custom code: upper 8 bits
