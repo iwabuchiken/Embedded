@@ -1,5 +1,37 @@
 #define usi unsigned short int
 
+#define MS90 TMR0 < 176
+#define MS45 TMR0 < 88
+
+void _reader(void)
+{
+
+	TMR0     = 0;
+
+//	while(TMR0 < 50)         // 9.0ms
+//	while(TMR0 < 176)         // 9.0ms
+	while(MS90)         // 9.0ms
+	{
+	// Modulation
+	PORTA        = 0x01;   // RA0 => on
+	Delay_us(9);   // 8.8us
+
+		PORTA        = 0x00;   // RA0 => off
+		Delay_us(17);   // 26.3us - 8.8us =% 17us
+
+	}
+
+	TMR0 = 0;
+	PORTA = 0x00;
+
+	while(MS45)       // 4.5ms
+//	while(TMR0 < 88)       // 4.5ms
+	{
+
+	}
+
+}//void _reader(void)
+
 void main(void)
 {
 	usi i;
@@ -27,26 +59,28 @@ void main(void)
 		/*********************
 		  Reader
 		**********************/
-		TMR0     = 0;
+		_reader();
 
-		while(TMR0 < 176)         // 9.0ms
-		{
-		// Modulation
-		PORTA        = 0x01;   // RA0 => on
-		Delay_us(9);   // 8.8us
-
-			PORTA        = 0x00;   // RA0 => off
-			Delay_us(17);   // 26.3us - 8.8us =% 17us
-
-		}
-
-		TMR0 = 0;
-		PORTA = 0x00;
-
-		while(TMR0 < 88)       // 4.5ms
-		{
-
-		}
+//		TMR0     = 0;
+//
+//		while(TMR0 < 176)         // 9.0ms
+//		{
+//		// Modulation
+//		PORTA        = 0x01;   // RA0 => on
+//		Delay_us(9);   // 8.8us
+//
+//			PORTA        = 0x00;   // RA0 => off
+//			Delay_us(17);   // 26.3us - 8.8us =% 17us
+//
+//		}
+//
+//		TMR0 = 0;
+//		PORTA = 0x00;
+//
+//		while(TMR0 < 88)       // 4.5ms
+//		{
+//
+//		}
 
 		/*********************
 		Custom code: lower 8 bits
