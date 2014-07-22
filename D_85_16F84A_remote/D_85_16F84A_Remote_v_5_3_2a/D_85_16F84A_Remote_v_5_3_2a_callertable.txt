@@ -1,0 +1,5 @@
+main
+	GlobalIniD_85_16F84A_Remote_v_5_3_2a
+	_custom_lower
+		_pulse
+	_reader

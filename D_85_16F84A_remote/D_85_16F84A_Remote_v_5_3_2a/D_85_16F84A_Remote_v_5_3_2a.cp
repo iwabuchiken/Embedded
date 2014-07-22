@@ -1,8 +1,13 @@
-#line 1 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_0/D_85_16F84A_Remote_v_5_3_0.c"
-#line 16 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_0/D_85_16F84A_Remote_v_5_3_0.c"
+#line 1 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_2a/D_85_16F84A_Remote_v_5_3_2a.c"
+#line 16 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_2a/D_85_16F84A_Remote_v_5_3_2a.c"
  unsigned short int  i;
- unsigned short int  custom_code_a, custom_code_b;
+
+ unsigned short int  custom_code_b;
+ unsigned short int  custom_code_a = 0xFA;
+
  unsigned short int  data_code_a, data_code_b;
+
+ unsigned short int  bit_len = 8;
 
 
 
@@ -52,9 +57,9 @@ void _reader(void)
 
 void _custom_lower(void)
 {
-  unsigned short int  bit_len = 4;
 
- custom_code_a = 0x0A;
+
+
 
  for(i = 0; i < bit_len; i++)
  {
@@ -118,18 +123,18 @@ void main(void)
  OPTION_REG &= 0xF0;
  OPTION_REG |= 0x07;
 
- custom_code_a = 0xFF;
- custom_code_b = 0x00;
+
+
  data_code_a = 0x00;
  data_code_b = ~data_code_a;
 
  while(1)
  {
-#line 144 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_0/D_85_16F84A_Remote_v_5_3_0.c"
+#line 149 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_2a/D_85_16F84A_Remote_v_5_3_2a.c"
  _reader();
-#line 149 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_0/D_85_16F84A_Remote_v_5_3_0.c"
+#line 154 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_2a/D_85_16F84A_Remote_v_5_3_2a.c"
  _custom_lower();
-#line 155 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_0/D_85_16F84A_Remote_v_5_3_0.c"
+#line 160 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_16F84A_Remote_v_5_3_2a/D_85_16F84A_Remote_v_5_3_2a.c"
  }
 
 }
