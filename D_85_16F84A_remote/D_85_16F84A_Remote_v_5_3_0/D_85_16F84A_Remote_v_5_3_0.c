@@ -1,3 +1,6 @@
+/*
+ * Sender
+ */
 #define usi unsigned short int
 
 #define MS90 TMR0 < 176

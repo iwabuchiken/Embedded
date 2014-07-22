@@ -1,6 +1,6 @@
 /*
-
 	Receiver
+	File: D_85_16F84A_Remote_v_5_3_2.c
 
 */
 
@@ -9,13 +9,23 @@
 #define LED_1_ON PORTA = 0x01
 #define LED_1_OFF PORTA = 0x00
 
+#define RESET_TMR TMR0 = 0
+#define TIME_OUT if(TMR0 == 255) break
+
+
 #define true 1
 #define false 0
 
 
 usi color;
-
 usi LED_FLAG = 1;
+
+usi	i;
+usi	custom_code_a, custom_code_b;
+usi	data_code_a, data_code_b;
+
+usi	result;		// receive return value from functinos
+
 
 void _pulse(int num)
 {
@@ -27,6 +37,21 @@ void _pulse(int num)
 			PORTA = 0x01; Delay_ms(1);
 
 			PORTA = 0x00; Delay_ms(1);
+
+		}
+
+}
+
+void _pulse_u(int num)
+{
+		int	i;
+
+		for(i = 0; i < num; i++)
+		{
+
+			PORTA = 0x01; Delay_us(500);
+
+			PORTA = 0x00; Delay_us(500);
 
 		}
 
@@ -104,35 +129,101 @@ int _judge_TMR_(int low, int high) {
 void _response(void)
 {
 
-//	_pulse(4);
+	//////////////////////////////////
 
-	if(LED_FLAG == 1)
-	{
+	// response
 
-		PORTA = 0x01;
+	//////////////////////////////////
+	if (custom_code_a == 0x0A) {
 
-		LED_FLAG *= -1;
+		_pulse_u(1);
 
 	} else {
 
-		PORTA = 0x00;
+		_pulse_u(2);
 
-		LED_FLAG *= -1;
+	}
 
-	}//if(LED_FLAG == 1)
+////	_pulse(4);
+//
+//	if(LED_FLAG == 1)
+//	{
+//
+//		PORTA = 0x01;
+//
+//		LED_FLAG *= -1;
+//
+//	} else {
+//
+//		PORTA = 0x00;
+//
+//		LED_FLAG *= -1;
+//
+//	}//if(LED_FLAG == 1)
 
 }
+
+void _custom_lower(void)
+{
+
+	usi bit_len = 4;
+
+	custom_code_a = 0x00;
+
+//	usi bit_len = 4;
+
+	for(i = 0; i < bit_len; i++)
+	{
+		RESET_TMR;
+
+		while((PORTB & 0x01) == 0)
+		{
+
+			TIME_OUT;
+
+		}
+
+		while((PORTB & 0x01) == 1)
+		{
+
+			TIME_OUT;
+
+		}
+
+		if (TMR0 < 33)
+		{
+
+			custom_code_a &= ~(0x01 << i);
+
+		}
+		else
+		{
+
+			custom_code_a |= (0x01 << i);
+
+		}//if (TMR0 < 33)
+
+	}//for(i = 0; i < bit_len; i++)
+
+	//////////////////////////////////
+
+	// adjust: custom_code_a
+
+	//////////////////////////////////
+//	custom_code_a = (~custom_code_a) & 0x0F;
+
+}//_custom_lower
 
 void interrupt(void)
 {
 		/*********************************
 		 * vars
 		**********************************/
-		usi	i;
-		usi	custom_code_a, custom_code_b;
-		usi	data_code_a, data_code_b;
-
-		usi	result;		// receive return value from functinos
+//		usi	i;
+//		usi	custom_code_a, custom_code_b;
+//		usi	data_code_a, data_code_b;
+//
+//		usi	result;		// receive return value from functinos
 
 		INTCON &= 0x7F;  // interrupt => forbidden
 		INTCON &= 0xEF;  // INT interrupt => forbidden
@@ -180,11 +271,11 @@ void interrupt(void)
 
 		}
 
-		//////////////////////////////////
+		/////////////////////////////////////////////////
 
 		// 4.5 ms
 
-		//////////////////////////////////
+		/////////////////////////////////////////////////
 		//////////////////////////////////
 
 		// Reset: TMR0
@@ -213,6 +304,13 @@ void interrupt(void)
 			return;
 
 		}
+
+		/////////////////////////////////////////////////
+
+		// custom: lower
+
+		/////////////////////////////////////////////////
+		_custom_lower();
 
 		//////////////////////////////////
 
