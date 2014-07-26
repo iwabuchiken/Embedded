@@ -1,5 +1,5 @@
-#line 1 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
-#line 24 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 1 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 24 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
  unsigned short int  color;
  unsigned short int  LED_FLAG = 1;
 
@@ -99,7 +99,7 @@ void _while_PORTB_0x01(int num)
  return;
 
 }
-#line 128 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 128 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
 int _judge_TMR_(int low, int high) {
 
  if(TMR0 < low)
@@ -169,7 +169,7 @@ void _response(void)
 
 
  }
-#line 215 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 215 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
 }
 
 void _custom_lower(void)
@@ -225,13 +225,13 @@ void _custom_lower(void)
 
 void interrupt(void)
 {
-#line 279 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 279 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-#line 294 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 294 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
  TMR0 = 0;
-#line 304 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 304 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
  _while_PORTB_0x01(0);
 
 
@@ -252,7 +252,7 @@ void interrupt(void)
  return;
 
  }
-#line 335 "C:/WORKS/WS/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
+#line 335 "C:/WORKS/WS/Emb/Embedded/D_85_16F84A_remote/D_85_Remote_v_5_3_2b_Rcv/D_85_Remote_v_5_3_2b_Rcv.c"
  TMR0 = 0;
 
 
