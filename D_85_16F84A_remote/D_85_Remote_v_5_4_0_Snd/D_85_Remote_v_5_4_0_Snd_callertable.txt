@@ -1,0 +1,5 @@
+main
+	GlobalIniD_85_Remote_v_5_4_0_Snd
+	_pulsing_10ms
+	_pulsing_u_100
+	_pulsing
