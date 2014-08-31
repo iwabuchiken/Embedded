@@ -5,16 +5,23 @@
 */
 
 #define usi unsigned short int
-#define PASSED_4_5_ms TMR0 < 68 || TMR0 > 108
 #define LED_1_ON PORTA = 0x01
-#define LED_1_OFF PORTA = 0x00
 #define LED_2_ON PORTA = 0x02
+
+#define LEDs_OFF PORTA = 0x00
+
 //#define LED_2_ON PORTA = 0x10
-#define LED_2_OFF PORTA = 0x00
 
-#define RESET_TMR TMR0 = 0
-#define TIME_OUT if(TMR0 == 255) break
+#define LED_1_ON_2_ON PORTA = 0x03
 
+///////////////////////
+
+// Output
+
+///////////////////////
+#define PORTB_0_H	(PORTB & 0x01) == 0x01
+#define PORTB_1_H	(PORTB & 0x02) == 0x02
+#define PORTB_0_H_1_H	(PORTB & 0x03) == 0x03
 
 #define true 1
 #define false 0
@@ -24,36 +31,36 @@
 // vars
 
 //////////////////////////////////
-usi color;
-usi LED_FLAG = 1;
-
-usi	i;
-usi	custom_code_a, custom_code_b;
-usi	data_code_a, data_code_b;
-
-usi	result;		// receive return value from functinos
-
-usi bit_len = 8;
 
 void _Opearations(void) {
 
-	while(PORTB & 0x01 == 0x01) {
+	while(PORTB_0_H) {
+//	while(PORTB & 0x01 == 0x01) {
 
-		if (PORTB & 0x02 == 0x02) {
+		if (PORTB_0_H_1_H) {
 //		if (PORTB & 0x10 == 0x10) {
 
 //			LED_1_OFF;
-			LED_2_ON;
+//			LED_2_ON;
+			LED_1_ON_2_ON;
 
-		} else if (PORTB & 0x02 != 0x02) {
+		} else if (PORTB_0_H && !(PORTB_1_H)) {
+//		} else if (PORTB_0_H) {
 
 			LED_1_ON;
 //			LED_2_OFF;
 
+		} else if (!(PORTB_0_H) && (PORTB_1_H)) {
+//		} else if (PORTB_1_H) {
+
+//			LED_1_ON;
+			LED_2_ON;
+
 		} else {
 
-			LED_1_ON;
-			LED_2_ON;
+			LEDs_OFF;
+//			LED_1_ON;
+//			LED_2_ON;
 
 		}
 
@@ -103,9 +110,9 @@ void main(void)
 		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
 //		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
 
-		OPTION_REG &= 0xDF;	// Timer by clock
-		OPTION_REG &= 0xF0;	// Prescaler => on
-		OPTION_REG |= 0x07; // Prescaler => 1/256
+//		OPTION_REG &= 0xDF;	// Timer by clock
+//		OPTION_REG &= 0xF0;	// Prescaler => on
+//		OPTION_REG |= 0x07; // Prescaler => 1/256
 
 
 //     custom_code_a = 0xFF;
@@ -120,7 +127,7 @@ void main(void)
 		{
 
 //        PORTA = 0x01;
-			LED_1_OFF;
+			LEDs_OFF;
 
 		}//while(1)
 

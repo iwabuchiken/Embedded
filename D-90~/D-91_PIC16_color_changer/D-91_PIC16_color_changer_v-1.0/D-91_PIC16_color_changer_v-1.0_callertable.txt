@@ -1,4 +1,3 @@
 interrupt
 	_Opearations
 main
-	GlobalIniD-91_PIC16_color_changer_v-1
