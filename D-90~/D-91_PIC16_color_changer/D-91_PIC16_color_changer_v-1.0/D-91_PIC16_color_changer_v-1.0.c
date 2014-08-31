@@ -5,6 +5,12 @@
 */
 
 #define usi unsigned short int
+
+///////////////////////
+
+// Output
+
+///////////////////////
 #define LED_1_ON PORTA = 0x01
 #define LED_2_ON PORTA = 0x02
 
@@ -16,12 +22,14 @@
 
 ///////////////////////
 
-// Output
+// Input
 
 ///////////////////////
 #define PORTB_0_H	(PORTB & 0x01) == 0x01
 #define PORTB_1_H	(PORTB & 0x02) == 0x02
-#define PORTB_0_H_1_H	(PORTB & 0x03) == 0x03
+#define PORTB_2_H	(PORTB & 0x04) == 0x04
+
+//#define PORTB_0_H_1_H	(PORTB & 0x03) == 0x03
 
 #define true 1
 #define false 0
@@ -37,20 +45,20 @@ void _Opearations(void) {
 	while(PORTB_0_H) {
 //	while(PORTB & 0x01 == 0x01) {
 
-		if (PORTB_0_H_1_H) {
+		if ((PORTB_1_H) && (PORTB_2_H)) {
 //		if (PORTB & 0x10 == 0x10) {
 
 //			LED_1_OFF;
 //			LED_2_ON;
 			LED_1_ON_2_ON;
 
-		} else if (PORTB_0_H && !(PORTB_1_H)) {
+		} else if ((PORTB_1_H) && !(PORTB_2_H)) {
 //		} else if (PORTB_0_H) {
 
 			LED_1_ON;
 //			LED_2_OFF;
 
-		} else if (!(PORTB_0_H) && (PORTB_1_H)) {
+		} else if (!(PORTB_1_H) && (PORTB_2_H)) {
 //		} else if (PORTB_1_H) {
 
 //			LED_1_ON;

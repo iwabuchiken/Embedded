@@ -1,24 +1,24 @@
 #line 1 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
-#line 35 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 43 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
 void _Opearations(void) {
 
  while( (PORTB & 0x01) == 0x01 ) {
 
 
- if ( (PORTB & 0x03) == 0x03 ) {
+ if (( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 )) {
 
 
 
 
   PORTA = 0x03 ;
 
- } else if ( (PORTB & 0x01) == 0x01  && !( (PORTB & 0x02) == 0x02 )) {
+ } else if (( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 )) {
 
 
   PORTA = 0x01 ;
 
 
- } else if (!( (PORTB & 0x01) == 0x01 ) && ( (PORTB & 0x02) == 0x02 )) {
+ } else if (!( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 )) {
 
 
 
@@ -38,7 +38,7 @@ void _Opearations(void) {
 
 void interrupt(void)
 {
-#line 82 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 90 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -68,7 +68,7 @@ void main(void)
 
  OPTION_REG &= 0x7F;
  OPTION_REG &= 0xFF;
-#line 123 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 131 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
