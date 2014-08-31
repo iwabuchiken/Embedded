@@ -12,7 +12,13 @@
 //#define LED_2_ON PORTA = 0x10
 #define LED_2_OFF PORTA = 0x00
 
+#define LED_1_ON_2_ON PORTA = 0x03
+
+
+
 #define PORTB_0_H PORTB & 0x01 == 0x01
+#define PORTB_1_H PORTB & 0x02 == 0x02
+#define PORTB_1_H_2_H PORTB & 0x03 == 0x03
 
 #define true 1
 #define false 0
@@ -43,7 +49,7 @@ void main(void)
 
 			} else {
 
-				LED_1_OFF;
+				LED_2_ON;
 
 			}
 
