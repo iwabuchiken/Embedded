@@ -14,16 +14,16 @@ void main(void)
  while(1)
  {
 
- if (PORTB & 0x01 == 0x01) {
+ if (PORTB & 0x02 == 0x02) {
 
-
-  PORTA = 0x01 ;
-
-
- } else {
 
 
   PORTA = 0x02 ;
+
+ } else {
+
+  PORTA = 0x01 ;
+
 
  }
 

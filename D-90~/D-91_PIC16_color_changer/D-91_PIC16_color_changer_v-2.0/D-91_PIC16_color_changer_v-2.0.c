@@ -43,16 +43,16 @@ void main(void)
 		while(1)
 		{
 
-			if (PORTB & 0x01 == 0x01) {
+			if (PORTB & 0x02 == 0x02) {
 //			if (PORTB_1_H) {
-
-				LED_1_ON;
-//				LED_2_ON;
-
-			} else {
 
 //				LED_1_ON;
 				LED_2_ON;
+
+			} else {
+
+				LED_1_ON;
+//				LED_2_ON;
 
 			}
 
