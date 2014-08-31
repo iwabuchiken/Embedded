@@ -1,1 +1,1 @@
-C:\WORKS\shortcuts\emb\main.stop.bat
+C:\WORKS\Utils\shortcuts\emb\main.stop.bat
