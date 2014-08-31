@@ -42,13 +42,13 @@ void _Opearations(void) {
 		if (PORTB & 0x02 == 0x02) {
 //		if (PORTB & 0x10 == 0x10) {
 
-			LED_1_OFF;
+//			LED_1_OFF;
 			LED_2_ON;
 
 		} else if (PORTB & 0x02 != 0x02) {
 
 			LED_1_ON;
-			LED_2_OFF;
+//			LED_2_OFF;
 
 		} else {
 
@@ -121,7 +121,6 @@ void main(void)
 
 //        PORTA = 0x01;
 			LED_1_OFF;
-
 
 		}//while(1)
 

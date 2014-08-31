@@ -18,13 +18,13 @@ void _Opearations(void) {
  if (PORTB & 0x02 == 0x02) {
 
 
-  PORTA = 0x00 ;
+
   PORTA = 0x02 ;
 
  } else if (PORTB & 0x02 != 0x02) {
 
   PORTA = 0x01 ;
-  PORTA = 0x00 ;
+
 
  } else {
 
@@ -89,7 +89,6 @@ void main(void)
 
 
   PORTA = 0x00 ;
-
 
  }
 
