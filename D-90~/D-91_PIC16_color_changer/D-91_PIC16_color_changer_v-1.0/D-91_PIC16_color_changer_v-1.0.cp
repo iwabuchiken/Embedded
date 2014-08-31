@@ -13,13 +13,17 @@
 
 void _Opearations(void) {
 
+ while(PORTB & 0x01 == 0x01) {
+
   PORTA = 0x01 ;
+
+ }
 
 }
 
 void interrupt(void)
 {
-#line 52 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 56 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -48,7 +52,8 @@ void main(void)
  TRISB = 0xFF;
 
  OPTION_REG &= 0x7F;
- OPTION_REG &= 0xBF;
+ OPTION_REG &= 0xFF;
+
 
  OPTION_REG &= 0xDF;
  OPTION_REG &= 0xF0;
@@ -67,7 +72,7 @@ void main(void)
  {
 
 
-
+  PORTA = 0x00 ;
 
 
  }

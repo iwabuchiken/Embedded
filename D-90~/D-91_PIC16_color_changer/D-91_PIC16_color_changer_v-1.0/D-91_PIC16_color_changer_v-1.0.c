@@ -8,6 +8,8 @@
 #define PASSED_4_5_ms TMR0 < 68 || TMR0 > 108
 #define LED_1_ON PORTA = 0x01
 #define LED_1_OFF PORTA = 0x00
+#define LED_2_ON PORTA = 0x10
+#define LED_2_OFF PORTA = 0x00
 
 #define RESET_TMR TMR0 = 0
 #define TIME_OUT if(TMR0 == 255) break
@@ -34,8 +36,19 @@ usi bit_len = 8;
 
 void _Opearations(void) {
 
+	while(PORTB & 0x01 == 0x01) {
 
-	LED_1_ON;
+//		if (PORTB & 0x10 == 0x10) {
+//
+//			LED_2_ON;
+//
+//		} else {
+
+			LED_1_ON;
+
+//		}
+
+	}
 
 }
 
@@ -78,7 +91,8 @@ void main(void)
 		TRISB     = 0xFF;		// Input: RB0 ~ RB7
 
 		OPTION_REG &= 0x7F;	// Pull-up => on
-		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
+//		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
 
 		OPTION_REG &= 0xDF;	// Timer by clock
 		OPTION_REG &= 0xF0;	// Prescaler => on
@@ -97,7 +111,7 @@ void main(void)
 		{
 
 //        PORTA = 0x01;
-//			LED_1_OFF;
+			LED_1_OFF;
 
 
 		}//while(1)
