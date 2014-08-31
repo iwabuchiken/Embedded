@@ -1,5 +1,5 @@
 #line 1 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
-#line 24 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 27 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
  unsigned short int  color;
  unsigned short int  LED_FLAG = 1;
 
@@ -15,7 +15,23 @@ void _Opearations(void) {
 
  while(PORTB & 0x01 == 0x01) {
 
+ if (PORTB & 0x02 == 0x02) {
+
+
+  PORTA = 0x00 ;
+  PORTA = 0x02 ;
+
+ } else if (PORTB & 0x02 != 0x02) {
+
   PORTA = 0x01 ;
+  PORTA = 0x00 ;
+
+ } else {
+
+  PORTA = 0x01 ;
+  PORTA = 0x02 ;
+
+ }
 
  }
 
@@ -23,7 +39,7 @@ void _Opearations(void) {
 
 void interrupt(void)
 {
-#line 56 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
+#line 75 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-1.0/D-91_PIC16_color_changer_v-1.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;

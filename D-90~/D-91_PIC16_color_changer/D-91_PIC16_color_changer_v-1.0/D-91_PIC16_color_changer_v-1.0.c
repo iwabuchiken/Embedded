@@ -8,7 +8,8 @@
 #define PASSED_4_5_ms TMR0 < 68 || TMR0 > 108
 #define LED_1_ON PORTA = 0x01
 #define LED_1_OFF PORTA = 0x00
-#define LED_2_ON PORTA = 0x10
+#define LED_2_ON PORTA = 0x02
+//#define LED_2_ON PORTA = 0x10
 #define LED_2_OFF PORTA = 0x00
 
 #define RESET_TMR TMR0 = 0
@@ -38,15 +39,23 @@ void _Opearations(void) {
 
 	while(PORTB & 0x01 == 0x01) {
 
+		if (PORTB & 0x02 == 0x02) {
 //		if (PORTB & 0x10 == 0x10) {
-//
-//			LED_2_ON;
-//
-//		} else {
+
+			LED_1_OFF;
+			LED_2_ON;
+
+		} else if (PORTB & 0x02 != 0x02) {
 
 			LED_1_ON;
+			LED_2_OFF;
 
-//		}
+		} else {
+
+			LED_1_ON;
+			LED_2_ON;
+
+		}
 
 	}
 
