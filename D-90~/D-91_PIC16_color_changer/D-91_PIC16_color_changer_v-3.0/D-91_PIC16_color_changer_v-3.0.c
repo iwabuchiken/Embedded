@@ -112,7 +112,7 @@ _custom_lower(void)
 {
 //	usi bit_len = 4;
 
-	custom_code_a = 0x0A;
+	custom_code_a = 0x05;
 //	custom_code_a = 0x0A;
 
 	for(i = 0; i < bit_len; i++)
@@ -270,8 +270,8 @@ _pulsing_u_100()
 
 	PORTA = 0x00;
 
-	PORTA = 0x01; Delay_us(50);
+	PORTA = 0x01; Delay_us(100);
 
-	PORTA = 0x00; Delay_us(50);
+	PORTA = 0x00; Delay_us(100);
 
 }//_pulsing_u_100

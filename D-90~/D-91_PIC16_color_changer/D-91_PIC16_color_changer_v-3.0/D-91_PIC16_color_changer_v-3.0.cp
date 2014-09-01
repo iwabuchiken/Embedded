@@ -67,7 +67,8 @@ _custom_lower(void)
 {
 
 
- custom_code_a = 0x0A;
+ custom_code_a = 0x05;
+
 
  for(i = 0; i < bit_len; i++)
  {
@@ -156,7 +157,7 @@ _Opearations() {
 
 void interrupt(void)
 {
-#line 213 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.0/D-91_PIC16_color_changer_v-3.0.c"
+#line 214 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.0/D-91_PIC16_color_changer_v-3.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -216,8 +217,8 @@ _pulsing_u_100()
 
  PORTA = 0x00;
 
- PORTA = 0x01; Delay_us(50);
+ PORTA = 0x01; Delay_us(100);
 
- PORTA = 0x00; Delay_us(50);
+ PORTA = 0x00; Delay_us(100);
 
 }
