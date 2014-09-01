@@ -6,6 +6,7 @@
 
 #define usi unsigned short int
 
+
 ///////////////////////
 
 // Timer
@@ -44,13 +45,40 @@
 // vars
 
 //////////////////////////////////
+usi i;
+usi custom_code_a, custom_code_b;
+usi data_code_a, data_code_b;
+
+usi bit_len = 4;
+
+///////////////////////
+
+// protos
+
+///////////////////////
+void _pulsing_u_100(void);
 
 ///////////////////////
 
 // funcs
 
 ///////////////////////
-void _reader(void)
+
+void
+_pulse_Modulation(void)
+{
+
+	// Modulation
+	PORTA        = 0x01;   // RA0 => on
+	Delay_us(9);   // 8.8us
+
+	PORTA        = 0x00;   // RA0 => off
+	Delay_us(17);   // 26.3us - 8.8us =% 17us
+
+}
+
+void
+_reader(void)
 {
 
 	TMR0     = 0;
@@ -80,6 +108,65 @@ void _reader(void)
 }//void _reader(void)
 
 void
+_custom_lower(void)
+{
+//	usi bit_len = 4;
+
+	custom_code_a = 0x0A;
+//	custom_code_a = 0x0A;
+
+	for(i = 0; i < bit_len; i++)
+	{
+
+		//////////////////////////////////
+
+		// high
+
+		//////////////////////////////////
+		RESET_TMR;
+
+		while(TMR0 < 11)	// 0.56ms
+		{
+			_pulse_Modulation();
+
+		}
+
+		//////////////////////////////////
+
+		// low
+
+		//////////////////////////////////
+		PORTA = 0x00;
+
+		if (((custom_code_a >> i) & 0x01) == 0)
+		{
+
+			while(TMR0 < 22)	// 1.125ms
+			{
+
+			}
+
+		} else {
+
+			while(TMR0 < 44)	// 2.250ms
+			{
+
+			}
+
+		}//if (((custom_code_a >> i) & 0x01) == 0)
+
+	}//for(i = 0; i < bit_len)
+
+}//_custom_lower
+
+void
+_Delay_50ms(void) {
+
+	Delay_ms(50);
+
+}
+
+void
 _Opearations() {
 
 	while(PORTB_0_H) {
@@ -93,6 +180,15 @@ _Opearations() {
 		if ((PORTB_1_H) && !(PORTB_2_H) && !(PORTB_3_H)) {
 
 			_reader();
+
+			_custom_lower();
+
+			// signalling that the custom lower sent
+			_pulsing_u_100();
+//			_pulsing_u_100;
+
+			// Interval between interrupts
+			_Delay_50ms();
 
 		} else {
 
@@ -167,3 +263,15 @@ void main(void)
 		}//while(1)
 
 }//void main(void)
+
+void
+_pulsing_u_100()
+{
+
+	PORTA = 0x00;
+
+	PORTA = 0x01; Delay_us(50);
+
+	PORTA = 0x00; Delay_us(50);
+
+}//_pulsing_u_100

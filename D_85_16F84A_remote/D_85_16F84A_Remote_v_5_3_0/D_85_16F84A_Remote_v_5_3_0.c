@@ -22,7 +22,7 @@ usi data_code_a, data_code_b;
 // funcs
 
 //////////////////////////////////
-void _pulse(void)
+void _pulse_Modulation(void)
 {
 
 	// Modulation
@@ -81,7 +81,7 @@ void _custom_lower(void)
 
 		while(TMR0 < 11)	// 0.56ms
 		{
-			_pulse();
+			_pulse_Modulation();
 
 		}
 
