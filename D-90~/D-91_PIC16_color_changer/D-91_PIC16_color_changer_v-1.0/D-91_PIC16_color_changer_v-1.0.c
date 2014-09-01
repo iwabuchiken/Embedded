@@ -46,15 +46,26 @@
 
 //////////////////////////////////
 
-void _Opearations(void) {
+void
+_Opearations() {
 
 	while(PORTB_0_H) {
 //	while(PORTB & 0x01 == 0x01) {
 
+		///////////////////////
+
+		// All LEDs
+
+		///////////////////////
 		if ((PORTB_1_H) && (PORTB_2_H) && (PORTB_3_H)) {
 
 			LEDs_ON;
 
+		///////////////////////
+
+		// 1 LED
+
+		///////////////////////
 		} else if ((PORTB_1_H) && !(PORTB_2_H) && !(PORTB_3_H)) {
 
 			LED_1_ON;
@@ -67,6 +78,28 @@ void _Opearations(void) {
 
 			LED_3_ON;
 
+		///////////////////////
+
+		// 2 LEDs
+
+		///////////////////////
+		} else if ((PORTB_1_H) && (PORTB_2_H) && !(PORTB_3_H)) {
+
+			LED_1_ON_2_ON;
+
+		} else if ((PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {
+
+			LED_1_ON_3_ON;
+
+		} else if (!(PORTB_1_H) && (PORTB_2_H) && (PORTB_3_H)) {
+
+			LED_2_ON_3_ON;
+
+		///////////////////////
+
+		// All off
+
+		///////////////////////
 		} else {
 
 			LEDs_OFF;
@@ -75,9 +108,9 @@ void _Opearations(void) {
 
 		}
 
-	}
+	}//while(PORTB_0_H)
 
-}
+}//_Opearations
 
 void interrupt(void)
 {
