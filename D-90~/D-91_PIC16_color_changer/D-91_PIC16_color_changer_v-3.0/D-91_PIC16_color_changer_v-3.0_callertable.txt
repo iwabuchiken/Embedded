@@ -6,4 +6,3 @@ interrupt
 			_pulse_Modulation
 		_reader
 main
-	GlobalIniD-91_PIC16_color_changer_v-3

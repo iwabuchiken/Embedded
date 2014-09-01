@@ -4,7 +4,8 @@
  unsigned short int  custom_code_a, custom_code_b;
  unsigned short int  data_code_a, data_code_b;
 
- unsigned short int  bit_len = 4;
+ unsigned short int  bit_len;
+
 
 
 
@@ -66,6 +67,7 @@ void
 _custom_lower(void)
 {
 
+ bit_len = 4;
 
  custom_code_a = 0x05;
 
@@ -157,7 +159,7 @@ _Opearations() {
 
 void interrupt(void)
 {
-#line 214 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.0/D-91_PIC16_color_changer_v-3.0.c"
+#line 216 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.0/D-91_PIC16_color_changer_v-3.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;

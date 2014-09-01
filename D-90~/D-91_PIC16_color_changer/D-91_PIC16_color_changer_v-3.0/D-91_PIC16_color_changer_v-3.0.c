@@ -49,7 +49,8 @@ usi i;
 usi custom_code_a, custom_code_b;
 usi data_code_a, data_code_b;
 
-usi bit_len = 4;
+usi bit_len;
+//usi bit_len = 4;
 
 ///////////////////////
 
@@ -111,6 +112,7 @@ void
 _custom_lower(void)
 {
 //	usi bit_len = 4;
+	bit_len = 4;
 
 	custom_code_a = 0x05;
 //	custom_code_a = 0x0A;
