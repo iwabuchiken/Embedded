@@ -1,0 +1,30 @@
+[DeviceName]
+Value=P16F84A
+[DeviceClock]
+Value=20
+[MainUnit]
+Value=
+[DeviceFlags]
+Count=2
+Value0=_WDT_OFF = $3FFB
+Value1=_HS_OSC = $3FFE
+[BuildType]
+bType=0
+[ProjectFiles]
+Count=1
+Value0=D-91_PIC16_color_changer_v-3.0.c
+[HeaderFiles]
+Count=0
+[ObjLibFiles]
+Count=0
+[PLDFiles]
+Count=0
+[EEPROMinfo]
+isused=0
+[SearchPath]
+Count=3
+Value0=C:\WORKS\Programs\Mikroelektronika\mikroC\Defs\
+Value1=C:\WORKS\Programs\Mikroelektronika\mikroC\Uses\p16\
+Value2=C:\WORKS\WS\Embedded\D-90~\D-91_PIC16_color_changer\D-91_PIC16_color_changer_v-3.0\
+[IncludePath]
+Count=0
