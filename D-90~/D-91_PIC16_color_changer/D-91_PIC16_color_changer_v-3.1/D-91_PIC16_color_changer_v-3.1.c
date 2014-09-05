@@ -239,13 +239,38 @@ _Opearations() {
 
 			_reader();
 
-			_custom_lower_num(6);
+			//REF hex, integer http://stackoverflow.com/questions/2167235/passing-a-hex-number-to-a-function answered Jan 30 '10 at 8:00
+			_custom_lower_num(15);
 //			_custom_lower_num(5);
 //			_custom_lower();
 
 			// signalling that the custom lower sent
 			_pulsing_u_100();
 //			_pulsing_u_100;
+
+			// Interval between interrupts
+			_Delay_50ms();
+
+		} else if (!(PORTB_1_H) && (PORTB_2_H) && !(PORTB_3_H)) {
+
+			_reader();
+
+			_custom_lower_num(8);
+
+			// signalling that the custom lower sent
+			_pulsing_u_100();
+
+			// Interval between interrupts
+			_Delay_50ms();
+
+		} else if (!(PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {
+
+			_reader();
+
+			_custom_lower_num(10);
+
+			// signalling that the custom lower sent
+			_pulsing_u_100();
 
 			// Interval between interrupts
 			_Delay_50ms();

@@ -194,13 +194,37 @@ _Opearations() {
 
  _reader();
 
- _custom_lower_num(6);
+ _custom_lower_num(15);
 
 
 
 
  _pulsing_u_100();
 
+
+
+ _Delay_50ms();
+
+ } else if (!( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
+
+ _reader();
+
+ _custom_lower_num(8);
+
+
+ _pulsing_u_100();
+
+
+ _Delay_50ms();
+
+ } else if (!( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
+
+ _reader();
+
+ _custom_lower_num(10);
+
+
+ _pulsing_u_100();
 
 
  _Delay_50ms();
@@ -217,7 +241,7 @@ _Opearations() {
 
 void interrupt(void)
 {
-#line 274 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
+#line 298 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
