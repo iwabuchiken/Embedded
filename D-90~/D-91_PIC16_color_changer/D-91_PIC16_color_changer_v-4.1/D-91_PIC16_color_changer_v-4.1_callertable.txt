@@ -4,7 +4,7 @@ interrupt
 	_pulse_500u
 	_read_Reader
 		_judge_TMR_
-			_pulse
+			_pulse_u_100
 		_while_PORTB_0x01
 			_pulse
 main

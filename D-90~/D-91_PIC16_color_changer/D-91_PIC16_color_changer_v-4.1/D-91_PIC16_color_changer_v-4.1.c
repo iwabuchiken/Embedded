@@ -2,6 +2,13 @@
 	Receiver
 	File: D_85_16F84A_Remote_v_5_3_2.c
 
+	Pulses
+		1. PORTB	0x01	time out, 1ms x 3
+		3. Judge time	< low	=> 100u x 3
+		4. Judge time	> high	=> 100u x 2
+		5. _read_Reader()	false	_pulse_500u(3)
+		6. _response()	_pulse_u_100(5)
+
 */
 
 #define usi unsigned short int
@@ -150,7 +157,7 @@ int _judge_TMR_(int low, int high) {
 //		Delay_ms(1);
 //		PORTA = 0x00;
 
-		_pulse(1);
+		_pulse_u_100(3);
 
 		return false;                // return
 
@@ -169,7 +176,8 @@ int _judge_TMR_(int low, int high) {
 		INTCON |= 0x80;        // interrupt => permitted
 
 		//debug
-		_pulse(2);
+		_pulse_u_100(2);
+//		_pulse(2);
 
 		return false;
 
@@ -350,8 +358,8 @@ void main(void)
 		TRISB     = 0xFF;		// Input: RB0 ~ RB7
 
 		OPTION_REG &= 0x7F;	// Pull-up => on
-		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
-//		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+//		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
+		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
 
 		OPTION_REG &= 0xDF;	// Timer by clock
 		OPTION_REG &= 0xF0;	// Prescaler => on
