@@ -224,6 +224,13 @@ void interrupt(void)
 
 
 
+ PORTA = 0x00;
+
+
+
+
+
+
  result = _read_Reader();
 
 
@@ -302,7 +309,7 @@ _read_Reader() {
 
 
   TMR0 = 0 ;
-#line 389 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 396 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  _while_PORTB_0x01(0);
 
 
@@ -323,7 +330,7 @@ _read_Reader() {
  return  0 ;
 
  }
-#line 420 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 427 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
   TMR0 = 0 ;
 
 

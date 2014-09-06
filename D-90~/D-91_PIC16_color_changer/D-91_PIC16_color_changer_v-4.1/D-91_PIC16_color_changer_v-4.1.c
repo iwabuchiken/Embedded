@@ -294,6 +294,13 @@ void interrupt(void)
 		INTCON &= 0xEF;  // INT interrupt => forbidden
 		INTCON &= 0xFD;  // INT interrupt flag => cleared
 
+		///////////////////////
+
+		// reset: PORTA
+
+		///////////////////////
+		PORTA = 0x00;
+
 		/////////////////////////////////////////////////
 
 		// Reader
