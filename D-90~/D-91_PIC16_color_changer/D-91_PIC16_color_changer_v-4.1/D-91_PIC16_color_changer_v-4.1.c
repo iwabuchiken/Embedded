@@ -350,7 +350,8 @@ void main(void)
 		TRISB     = 0xFF;		// Input: RB0 ~ RB7
 
 		OPTION_REG &= 0x7F;	// Pull-up => on
-		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
+//		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
 
 		OPTION_REG &= 0xDF;	// Timer by clock
 		OPTION_REG &= 0xF0;	// Prescaler => on

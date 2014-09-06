@@ -275,7 +275,8 @@ void main(void)
  TRISB = 0xFF;
 
  OPTION_REG &= 0x7F;
- OPTION_REG &= 0xBF;
+ OPTION_REG &= 0xFF;
+
 
  OPTION_REG &= 0xDF;
  OPTION_REG &= 0xF0;
@@ -309,7 +310,7 @@ _read_Reader() {
 
 
   TMR0 = 0 ;
-#line 396 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 397 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  _while_PORTB_0x01(0);
 
 
@@ -330,7 +331,7 @@ _read_Reader() {
  return  0 ;
 
  }
-#line 427 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 428 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
   TMR0 = 0 ;
 
 
