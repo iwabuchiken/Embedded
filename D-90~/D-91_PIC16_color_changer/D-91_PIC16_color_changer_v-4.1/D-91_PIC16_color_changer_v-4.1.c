@@ -4,8 +4,8 @@
 
 	Pulses
 		1. PORTB	0x01	time out, 1ms x 3
-		3. Judge time	< low	=> 100u x 3
-		4. Judge time	> high	=> 100u x 2
+		3. Judge time	< low	=> 50u x 3
+		4. Judge time	> high	=> 50u x 2
 		5. _read_Reader()	false	_pulse_500u(3)
 		6. _response()	_pulse_u_100(5)
 
@@ -37,7 +37,8 @@ usi	data_code_a, data_code_b;
 
 usi	result;		// receive return value from functinos
 
-usi bit_len = 8;
+usi bit_len;
+//usi bit_len = 8;
 
 ///////////////////////
 
@@ -45,6 +46,9 @@ usi bit_len = 8;
 
 ///////////////////////
 int _read_Reader(void);
+int _read_Custom(void);
+
+void _main_Setup(void);
 
 ///////////////////////
 
@@ -117,6 +121,22 @@ void _pulse_u_100(int num)
 
 }
 
+void
+_pulse_u_50(int num)
+{
+		int	i;
+
+		for(i = 0; i < num; i++)
+		{
+
+			PORTA = 0x01; Delay_us(50);
+
+			PORTA = 0x00; Delay_us(50);
+
+		}
+
+}//_pulse_u_50
+
 void _while_PORTB_0x01(int num)
 {
 
@@ -157,7 +177,7 @@ int _judge_TMR_(int low, int high) {
 //		Delay_ms(1);
 //		PORTA = 0x00;
 
-		_pulse_u_100(3);
+		_pulse_u_50(3);
 
 		return false;                // return
 
@@ -176,7 +196,7 @@ int _judge_TMR_(int low, int high) {
 		INTCON |= 0x80;        // interrupt => permitted
 
 		//debug
-		_pulse_u_100(2);
+		_pulse_u_50(2);
 //		_pulse(2);
 
 		return false;
@@ -329,6 +349,13 @@ void interrupt(void)
 
 		}
 
+//		///////////////////////
+//
+//		// Custom code
+//
+//		///////////////////////
+//		result = _read_Custom();
+
 		//////////////////////////////////
 
 		// Response
@@ -351,19 +378,21 @@ void interrupt(void)
 void main(void)
 {
 
-		// Setup
-		TRISA     = 0x00;
-		PORTA     = 0x00;		//0000 0010
+	_main_Setup();
 
-		TRISB     = 0xFF;		// Input: RB0 ~ RB7
-
-		OPTION_REG &= 0x7F;	// Pull-up => on
-//		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
-		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
-
-		OPTION_REG &= 0xDF;	// Timer by clock
-		OPTION_REG &= 0xF0;	// Prescaler => on
-		OPTION_REG |= 0x07; // Prescaler => 1/256
+//		// Setup
+//		TRISA     = 0x00;
+//		PORTA     = 0x00;		//0000 0010
+//
+//		TRISB     = 0xFF;		// Input: RB0 ~ RB7
+//
+//		OPTION_REG &= 0x7F;	// Pull-up => on
+////		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
+//		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+//
+//		OPTION_REG &= 0xDF;	// Timer by clock
+//		OPTION_REG &= 0xF0;	// Prescaler => on
+//		OPTION_REG |= 0x07; // Prescaler => 1/256
 
 
 //     custom_code_a = 0xFF;
@@ -465,3 +494,111 @@ _read_Reader() {
 	return true;
 
 }//_read_Reader
+
+int
+_read_Custom() {
+
+	//////////////////////////////////
+
+	// 9.0 ms
+
+	//////////////////////////////////
+	RESET_TMR;
+
+	// RB0 => off(i.e. 5V -> 0V)
+	// Notice: Pullup is on
+	// => hence, no signal means 5V
+	//    at the pin
+
+	/*********************************
+	 * listen: PORTB
+	**********************************/
+	_while_PORTB_0x01(0);
+
+	// 9.0ms => passed?
+	// If less than 9.0 or more
+	// => return: i.e. exit from interrupt process
+
+	//////////////////////////////////
+
+	// judge
+
+	//////////////////////////////////
+	result = _judge_TMR_(156, 196);
+
+	if (result == false) {
+
+//			_pulse(1);
+
+		return false;
+
+	}
+
+	/////////////////////////////////////////////////
+
+	// 4.5 ms
+
+	/////////////////////////////////////////////////
+	//////////////////////////////////
+
+	// Reset: TMR0
+
+	//////////////////////////////////
+	RESET_TMR;
+
+	//////////////////////////////////
+
+	// Listen
+
+	//////////////////////////////////
+	_while_PORTB_0x01(1);
+
+	//////////////////////////////////
+
+	// judge
+
+	//////////////////////////////////
+	result = _judge_TMR_(68, 108);
+
+	if (result == false) {
+
+//			_pulse(1);
+
+		return false;
+
+	}
+
+	///////////////////////
+
+	// return
+
+	///////////////////////
+	return true;
+
+}//_read_Custom
+
+void
+_main_Setup() {
+
+	// Setup
+	TRISA     = 0x00;
+	PORTA     = 0x00;		//0000 0010
+
+	TRISB     = 0xFF;		// Input: RB0 ~ RB7
+
+	OPTION_REG &= 0x7F;	// Pull-up => on
+//		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
+	OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
+
+	OPTION_REG &= 0xDF;	// Timer by clock
+	OPTION_REG &= 0xF0;	// Prescaler => on
+	OPTION_REG |= 0x07; // Prescaler => 1/256
+
+	///////////////////////
+
+	// init vars
+
+	///////////////////////
+	bit_len = 4;
+
+}//_main_Setup

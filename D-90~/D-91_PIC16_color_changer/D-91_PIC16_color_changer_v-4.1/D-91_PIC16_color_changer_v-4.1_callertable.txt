@@ -4,8 +4,9 @@ interrupt
 	_pulse_500u
 	_read_Reader
 		_judge_TMR_
-			_pulse_u_100
+			_pulse_u_50
 		_while_PORTB_0x01
 			_pulse
 main
 	GlobalIniD-91_PIC16_color_changer_v-4
+	_main_Setup
