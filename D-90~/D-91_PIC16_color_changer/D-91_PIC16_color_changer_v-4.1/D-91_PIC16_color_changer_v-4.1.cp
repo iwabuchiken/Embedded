@@ -198,14 +198,14 @@ void _custom_lower(void)
  while((PORTB & 0x01) == 0)
  {
 
-  if(TMR0 == 255) break ;
+  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
 
  }
 
  while((PORTB & 0x01) == 1)
  {
 
-  if(TMR0 == 255) break ;
+  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
 
  }
 
@@ -389,14 +389,14 @@ _read_Custom() {
  while((PORTB & 0x01) == 0)
  {
 
-  if(TMR0 == 255) break ;
+  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
 
  }
 
  while((PORTB & 0x01) == 1)
  {
 
-  if(TMR0 == 255) break ;
+  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
 
  }
 
