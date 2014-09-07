@@ -376,10 +376,20 @@ void interrupt(void)
 
 		///////////////////////
 
-		// delay => avoid interruption
+		// clear interrupt
 
 		///////////////////////
-		Delay_ms(1);
+		INTCON &= 0x7F;  // interrupt => forbidden
+		INTCON &= 0xEF;  // INT interrupt => forbidden
+		INTCON &= 0xFD;  // INT interrupt flag => cleared
+
+
+//		///////////////////////
+//
+//		// delay => avoid interruption
+//
+//		///////////////////////
+//		Delay_ms(1);
 
 		//////////////////////////////////
 
