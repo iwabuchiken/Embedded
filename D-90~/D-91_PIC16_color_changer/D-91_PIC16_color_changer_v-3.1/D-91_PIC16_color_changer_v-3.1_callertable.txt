@@ -1,6 +1,9 @@
 interrupt
 	_Opearations
-		_pulsing_u_100
+		_Stop
+			_Delay_50ms
+			_send_StopBit
+				_pulse_Modulation
 		_Delay_50ms
 		_send_StopBit
 			_pulse_Modulation

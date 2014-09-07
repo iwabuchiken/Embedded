@@ -63,6 +63,8 @@ void _custom_lower_num(int);
 
 void _send_StopBit(void);
 
+void _Stop(void);
+
 ///////////////////////
 
 // funcs
@@ -274,11 +276,13 @@ _Opearations() {
 
 			_custom_lower_num(8);
 
-			// signalling that the custom lower sent
-			_pulsing_u_100();
+			_Stop();
 
+//			// signalling that the custom lower sent
+//			_pulsing_u_100();
+//
 			// Interval between interrupts
-			_Delay_50ms();
+//			_Delay_50ms();
 
 		} else if (!(PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {
 
@@ -286,11 +290,13 @@ _Opearations() {
 
 			_custom_lower_num(10);
 
-			// signalling that the custom lower sent
-			_pulsing_u_100();
+			_Stop();
 
-			// Interval between interrupts
-			_Delay_50ms();
+//			// signalling that the custom lower sent
+//			_pulsing_u_100();
+//
+//			// Interval between interrupts
+//			_Delay_50ms();
 
 		} else {
 
@@ -403,3 +409,30 @@ void _send_StopBit(void) {
 	}
 
 }
+
+void _Stop(void) {
+
+	///////////////////////
+
+	// stop bit
+
+	///////////////////////
+	_send_StopBit();
+
+	///////////////////////
+
+	// turn off LED
+
+	///////////////////////
+	PORTA = 0x00;
+
+
+//			// signalling that the custom lower sent
+//			_pulsing_u_100();
+//			_pulsing_u_100;
+
+	// Interval between interrupts
+	_Delay_50ms();
+
+
+}//_Stop

@@ -18,6 +18,8 @@ void _custom_lower_num(int);
 
 void _send_StopBit(void);
 
+void _Stop(void);
+
 
 
 
@@ -229,11 +231,13 @@ _Opearations() {
 
  _custom_lower_num(8);
 
+ _Stop();
 
- _pulsing_u_100();
 
 
- _Delay_50ms();
+
+
+
 
  } else if (!( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
 
@@ -241,11 +245,13 @@ _Opearations() {
 
  _custom_lower_num(10);
 
+ _Stop();
 
- _pulsing_u_100();
 
 
- _Delay_50ms();
+
+
+
 
  } else {
 
@@ -254,12 +260,12 @@ _Opearations() {
  }
 
  }
-#line 317 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
+#line 323 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
 }
 
 void interrupt(void)
 {
-#line 330 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
+#line 336 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -334,5 +340,32 @@ void _send_StopBit(void) {
  _pulse_Modulation();
 
  }
+
+}
+
+void _Stop(void) {
+
+
+
+
+
+
+ _send_StopBit();
+
+
+
+
+
+
+ PORTA = 0x00;
+
+
+
+
+
+
+
+ _Delay_50ms();
+
 
 }
