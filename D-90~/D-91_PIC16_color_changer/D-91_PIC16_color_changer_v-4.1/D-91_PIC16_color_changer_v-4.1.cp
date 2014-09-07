@@ -18,7 +18,7 @@
 
 
 int _read_Reader(void);
-int _read_Custom(void);
+void _read_Custom(void);
 
 void _main_Setup(void);
 
@@ -261,12 +261,24 @@ void interrupt(void)
 
  if (result ==  0 ) {
 
- _pulse_500u(3);
+
 
  return;
 
  }
-#line 364 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+
+
+
+
+
+
+ _read_Custom();
+
+
+
+
+
+
  _response();
 
 
@@ -363,67 +375,46 @@ _read_Reader() {
 
 }
 
-int
+void
 _read_Custom() {
 
+ custom_code_a = 0x00;
 
 
 
-
-
-  TMR0 = 0 ;
-#line 516 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
- _while_PORTB_0x01(0);
-
-
-
-
-
-
-
-
-
-
- result = _judge_TMR_(156, 196);
-
- if (result ==  0 ) {
-
-
-
- return  0 ;
-
- }
-#line 547 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+ for(i = 0; i < bit_len; i++)
+ {
   TMR0 = 0 ;
 
+ while((PORTB & 0x01) == 0)
+ {
 
-
-
-
-
- _while_PORTB_0x01(1);
-
-
-
-
-
-
- result = _judge_TMR_(68, 108);
-
- if (result ==  0 ) {
-
-
-
- return  0 ;
+  if(TMR0 == 255) break ;
 
  }
 
+ while((PORTB & 0x01) == 1)
+ {
 
+  if(TMR0 == 255) break ;
 
+ }
 
+ if (TMR0 < 33)
+ {
 
+ custom_code_a &= ~(0x01 << i);
 
- return  1 ;
+ }
+ else
+ {
+
+ custom_code_a |= (0x01 << i);
+
+ }
+
+ }
+
 
 }
 

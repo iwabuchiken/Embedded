@@ -1,7 +1,7 @@
 interrupt
 	_response
 		_pulse_u_100
-	_pulse_500u
+	_read_Custom
 	_read_Reader
 		_judge_TMR_
 			_pulse_u_50

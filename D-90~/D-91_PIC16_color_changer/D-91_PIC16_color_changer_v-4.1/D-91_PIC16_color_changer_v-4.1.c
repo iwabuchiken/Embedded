@@ -17,7 +17,7 @@
 #define LED_1_OFF PORTA = 0x00
 
 #define RESET_TMR TMR0 = 0
-#define TIME_OUT if(TMR0 == 255) break
+#define TIME_OUT if(TMR0 == 255) { _pulse_u_100(1); break; }
 
 
 #define true 1
@@ -46,7 +46,7 @@ usi bit_len;
 
 ///////////////////////
 int _read_Reader(void);
-int _read_Custom(void);
+void _read_Custom(void);
 
 void _main_Setup(void);
 
@@ -343,18 +343,18 @@ void interrupt(void)
 		///////////////////////
 		if (result == false) {
 
-			_pulse_500u(3);
+//			_pulse_500u(3);
 
 			return;
 
 		}
 
-//		///////////////////////
-//
-//		// Custom code
-//
-//		///////////////////////
-//		result = _read_Custom();
+		///////////////////////
+
+		// Custom code
+
+		///////////////////////
+		_read_Custom();
 
 		//////////////////////////////////
 
@@ -495,85 +495,46 @@ _read_Reader() {
 
 }//_read_Reader
 
-int
+void
 _read_Custom() {
 
-	//////////////////////////////////
+	custom_code_a = 0x00;
 
-	// 9.0 ms
+//	usi bit_len = 4;
 
-	//////////////////////////////////
-	RESET_TMR;
+	for(i = 0; i < bit_len; i++)
+	{
+		RESET_TMR;
 
-	// RB0 => off(i.e. 5V -> 0V)
-	// Notice: Pullup is on
-	// => hence, no signal means 5V
-	//    at the pin
+		while((PORTB & 0x01) == 0)
+		{
 
-	/*********************************
-	 * listen: PORTB
-	**********************************/
-	_while_PORTB_0x01(0);
+			TIME_OUT;
 
-	// 9.0ms => passed?
-	// If less than 9.0 or more
-	// => return: i.e. exit from interrupt process
+		}
 
-	//////////////////////////////////
+		while((PORTB & 0x01) == 1)
+		{
 
-	// judge
+			TIME_OUT;
 
-	//////////////////////////////////
-	result = _judge_TMR_(156, 196);
+		}
 
-	if (result == false) {
+		if (TMR0 < 33)
+		{
 
-//			_pulse(1);
+			custom_code_a &= ~(0x01 << i);
 
-		return false;
+		}
+		else
+		{
 
-	}
+			custom_code_a |= (0x01 << i);
 
-	/////////////////////////////////////////////////
+		}//if (TMR0 < 33)
 
-	// 4.5 ms
+	}//for(i = 0; i < bit_len; i++)
 
-	/////////////////////////////////////////////////
-	//////////////////////////////////
-
-	// Reset: TMR0
-
-	//////////////////////////////////
-	RESET_TMR;
-
-	//////////////////////////////////
-
-	// Listen
-
-	//////////////////////////////////
-	_while_PORTB_0x01(1);
-
-	//////////////////////////////////
-
-	// judge
-
-	//////////////////////////////////
-	result = _judge_TMR_(68, 108);
-
-	if (result == false) {
-
-//			_pulse(1);
-
-		return false;
-
-	}
-
-	///////////////////////
-
-	// return
-
-	///////////////////////
-	return true;
 
 }//_read_Custom
 
