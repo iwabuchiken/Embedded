@@ -17,7 +17,8 @@
 #define LED_1_OFF PORTA = 0x00
 
 #define RESET_TMR TMR0 = 0
-#define TIME_OUT if(TMR0 == 255) { _pulse_u_100(1); break; }
+#define TIME_OUT if(TMR0 == 255) break
+//#define TIME_OUT if(TMR0 == 255) { _pulse_u_100(1); break; }
 
 
 #define true 1
@@ -349,12 +350,12 @@ void interrupt(void)
 
 		}
 
-//		///////////////////////
-//
-//		// Custom code
-//
-//		///////////////////////
-//		_read_Custom();
+		///////////////////////
+
+		// Custom code
+
+		///////////////////////
+		_read_Custom();
 
 //		//debug
 //		_pulse_u_50(1);

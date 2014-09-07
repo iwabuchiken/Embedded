@@ -16,6 +16,8 @@ void _pulsing_u_100(void);
 
 void _custom_lower_num(int);
 
+void _send_StopBit(void);
+
 
 
 
@@ -194,12 +196,28 @@ _Opearations() {
 
  _reader();
 
+
  _custom_lower_num(15);
 
 
 
 
- _pulsing_u_100();
+
+
+
+
+ _send_StopBit();
+
+
+
+
+
+
+ PORTA = 0x00;
+
+
+
+
 
 
 
@@ -236,12 +254,12 @@ _Opearations() {
  }
 
  }
-
+#line 317 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
 }
 
 void interrupt(void)
 {
-#line 298 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
+#line 330 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -304,5 +322,17 @@ _pulsing_u_100()
  PORTA = 0x01; Delay_us(100);
 
  PORTA = 0x00; Delay_us(100);
+
+}
+
+void _send_StopBit(void) {
+
+  TMR0 = 0 ;
+
+ while(TMR0 < 11) {
+
+ _pulse_Modulation();
+
+ }
 
 }

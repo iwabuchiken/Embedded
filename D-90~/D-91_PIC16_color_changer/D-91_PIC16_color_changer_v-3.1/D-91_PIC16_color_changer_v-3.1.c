@@ -61,6 +61,8 @@ void _pulsing_u_100(void);
 
 void _custom_lower_num(int);
 
+void _send_StopBit(void);
+
 ///////////////////////
 
 // funcs
@@ -244,8 +246,23 @@ _Opearations() {
 //			_custom_lower_num(5);
 //			_custom_lower();
 
-			// signalling that the custom lower sent
-			_pulsing_u_100();
+			///////////////////////
+
+			// stop bit
+
+			///////////////////////
+			_send_StopBit();
+
+			///////////////////////
+
+			// turn off LED
+
+			///////////////////////
+			PORTA = 0x00;
+
+
+//			// signalling that the custom lower sent
+//			_pulsing_u_100();
 //			_pulsing_u_100;
 
 			// Interval between interrupts
@@ -282,6 +299,20 @@ _Opearations() {
 		}
 
 	}//while(PORTB_0_H)
+
+//	///////////////////////
+//
+//	// stop bit
+//
+//	///////////////////////
+//	_send_StopBit();
+//
+//	///////////////////////
+//
+//	// turn off LED
+//
+//	///////////////////////
+//	PORTA = 0x00;
 
 }//_Opearations
 
@@ -360,3 +391,15 @@ _pulsing_u_100()
 	PORTA = 0x00; Delay_us(100);
 
 }//_pulsing_u_100
+
+void _send_StopBit(void) {
+
+	RESET_TMR;
+
+	while(TMR0 < 11) {
+
+		_pulse_Modulation();
+
+	}
+
+}

@@ -1,5 +1,5 @@
 #line 1 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
-#line 31 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 32 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  unsigned short int  color;
  unsigned short int  LED_FLAG = 1;
 
@@ -131,7 +131,7 @@ void _while_PORTB_0x01(int num)
  return;
 
 }
-#line 167 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 168 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
 int _judge_TMR_(int low, int high) {
 
  if(TMR0 < low)
@@ -179,7 +179,7 @@ void _response(void)
 {
 
  _pulse_u_100(5);
-#line 257 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 258 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
 }
 
 void _custom_lower(void)
@@ -198,14 +198,14 @@ void _custom_lower(void)
  while((PORTB & 0x01) == 0)
  {
 
-  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
+  if(TMR0 == 255) break ;
 
  }
 
  while((PORTB & 0x01) == 1)
  {
 
-  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
+  if(TMR0 == 255) break ;
 
  }
 
@@ -235,7 +235,7 @@ void _custom_lower(void)
 
 void interrupt(void)
 {
-#line 321 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 322 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -266,7 +266,22 @@ void interrupt(void)
  return;
 
  }
-#line 367 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+
+
+
+
+
+
+ _read_Custom();
+
+
+
+
+
+
+
+
+
  _response();
 
 
@@ -285,7 +300,7 @@ void main(void)
 {
 
  _main_Setup();
-#line 406 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 407 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
@@ -308,7 +323,7 @@ _read_Reader() {
 
 
   TMR0 = 0 ;
-#line 437 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 438 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  _while_PORTB_0x01(0);
 
 
@@ -329,7 +344,7 @@ _read_Reader() {
  return  0 ;
 
  }
-#line 468 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 469 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
   TMR0 = 0 ;
 
 
@@ -377,14 +392,14 @@ _read_Custom() {
  while((PORTB & 0x01) == 0)
  {
 
-  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
+  if(TMR0 == 255) break ;
 
  }
 
  while((PORTB & 0x01) == 1)
  {
 
-  if(TMR0 == 255) { _pulse_u_100(1); break; } ;
+  if(TMR0 == 255) break ;
 
  }
 
