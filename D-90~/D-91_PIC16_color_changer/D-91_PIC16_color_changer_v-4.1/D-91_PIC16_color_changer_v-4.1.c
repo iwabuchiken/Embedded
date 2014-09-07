@@ -356,6 +356,9 @@ void interrupt(void)
 		///////////////////////
 		_read_Custom();
 
+		//debug
+		_pulse_u_50(1);
+
 		//////////////////////////////////
 
 		// Response

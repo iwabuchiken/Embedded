@@ -1,6 +1,7 @@
 interrupt
 	_response
 		_pulse_u_100
+	_pulse_u_50
 	_read_Custom
 		_pulse_u_100
 	_read_Reader
