@@ -266,22 +266,7 @@ void interrupt(void)
  return;
 
  }
-
-
-
-
-
-
- _read_Custom();
-
-
- _pulse_u_50(1);
-
-
-
-
-
-
+#line 367 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
  _response();
 
 
