@@ -211,32 +211,30 @@ int _judge_TMR_(int low, int high) {
 void _response(void)
 {
 
-	_pulse_u_100(5);
+//	_pulse_u_100(5);
 
-//	//////////////////////////////////
-//
-//	// response
-//
-//	//////////////////////////////////
-//	if (custom_code_a == 0x0A) {
-//
-//		_pulse_u_100(1);
-////		_pulse_u_len(1, 100);
-////		_pulse_u(1);
-////		0xFA
-//	} else if (custom_code_a == 0xFA) {
-//
-//		_pulse_u_100(2);
-////		_pulse_u_len(2, 100);
-////		_pulse_u(2);
-//
-//	} else {
-//
-//		_pulse_u_100(3);
-////		_pulse_u_len(3, 100);
-////		_pulse_u(3);
-//
-//	}
+	//////////////////////////////////
+
+	// response
+
+	//////////////////////////////////
+	if (custom_code_a == 15) {
+
+		_pulse_u_100(6);
+
+	} else if (custom_code_a == 8) {
+
+		_pulse_u_100(3);
+
+	} else if (custom_code_a == 10) {
+
+		_pulse(2);
+
+	} else {
+
+		_pulse_u_100(1);
+
+	}
 
 ////	_pulse(4);
 //
