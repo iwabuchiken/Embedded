@@ -312,19 +312,7 @@ void interrupt(void)
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-
-
-
-
-
-
- PORTA = 0x00;
-
-
-
-
-
-
+#line 386 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  result = _read_Reader();
 
 
