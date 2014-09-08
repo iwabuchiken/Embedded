@@ -231,13 +231,23 @@ _response_2(void) {
 
  switch(custom_code_a) {
 
- case 1: PORTA = 1; break;
- case 2: PORTA = 2; break;
- case 3: PORTA = 3; break;
- case 4: PORTA = 4; break;
- case 5: PORTA = 5; break;
- case 6: PORTA = 6; break;
- case 7: PORTA = 7; break;
+
+
+
+
+
+
+
+ case 1:
+ case 2:
+ case 3:
+ case 4:
+ case 5:
+ case 6:
+ case 7:
+ PORTA = custom_code_a;
+
+ break;
 
  default: _pulse(2); break;
 
@@ -298,7 +308,7 @@ void _custom_lower(void)
 
 void interrupt(void)
 {
-#line 360 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 370 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -336,7 +346,7 @@ void interrupt(void)
 
 
  _read_Custom();
-#line 413 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 423 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  _response_2();
 
 
@@ -348,14 +358,15 @@ void interrupt(void)
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-#line 439 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 449 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
 }
 
 
-void main(void)
+void
+main(void)
 {
 
  _main_Setup();
@@ -366,7 +377,7 @@ void main(void)
  while(1)
  {
 
- PORTA = 0x00;
+ PORTA = custom_code_a;
 
 
 
@@ -387,7 +398,7 @@ _read_Reader() {
 
 
   TMR0 = 0 ;
-#line 486 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 497 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  _while_PORTB_0x01(0);
 
 
@@ -408,7 +419,7 @@ _read_Reader() {
  return  0 ;
 
  }
-#line 517 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 528 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
   TMR0 = 0 ;
 
 
@@ -508,5 +519,7 @@ _main_Setup() {
 
 
  bit_len = 4;
+
+ custom_code_a = 0;
 
 }

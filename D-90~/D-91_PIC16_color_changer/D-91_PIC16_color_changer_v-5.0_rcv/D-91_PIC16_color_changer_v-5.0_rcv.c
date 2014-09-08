@@ -281,13 +281,23 @@ _response_2(void) {
 
 	switch(custom_code_a) {
 
-	case 1: PORTA = 1; break;
-	case 2: PORTA = 2; break;
-	case 3: PORTA = 3; break;
-	case 4: PORTA = 4; break;
-	case 5: PORTA = 5; break;
-	case 6: PORTA = 6; break;
-	case 7: PORTA = 7; break;
+//	case 1: PORTA = 1; break;
+//	case 2: PORTA = 2; break;
+//	case 3: PORTA = 3; break;
+//	case 4: PORTA = 4; break;
+//	case 5: PORTA = 5; break;
+//	case 6: PORTA = 6; break;
+//	case 7: PORTA = 7; break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+		PORTA = custom_code_a;
+
+		break;
 
 	default: _pulse(2); break;
 
@@ -442,7 +452,8 @@ void interrupt(void)
 }//void interrupt(void)
 
 
-void main(void)
+void
+main(void)
 {
 
 	_main_Setup();
@@ -453,7 +464,7 @@ void main(void)
 	while(1)
 	{
 
-		PORTA = 0x00;
+		PORTA = custom_code_a;
 
 //		_pulse_ms(1);
 //		Delay_ms(2);
@@ -613,5 +624,7 @@ _main_Setup() {
 
 	///////////////////////
 	bit_len = 4;
+
+	custom_code_a = 0;
 
 }//_main_Setup
