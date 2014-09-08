@@ -65,6 +65,8 @@ void _send_StopBit(void);
 
 void _Stop(void);
 
+void _output(int);
+
 ///////////////////////
 
 // funcs
@@ -241,62 +243,60 @@ _Opearations() {
 		///////////////////////
 		if ((PORTB_1_H) && !(PORTB_2_H) && !(PORTB_3_H)) {
 
-			_reader();
+			_output(4);
 
-			//REF hex, integer http://stackoverflow.com/questions/2167235/passing-a-hex-number-to-a-function answered Jan 30 '10 at 8:00
-			_custom_lower_num(15);
-//			_custom_lower_num(5);
-//			_custom_lower();
-
-			///////////////////////
-
-			// stop bit
-
-			///////////////////////
-			_send_StopBit();
-
-			///////////////////////
-
-			// turn off LED
-
-			///////////////////////
-			PORTA = 0x00;
-
-
-//			// signalling that the custom lower sent
-//			_pulsing_u_100();
-//			_pulsing_u_100;
-
-			// Interval between interrupts
-			_Delay_50ms();
-
-		} else if (!(PORTB_1_H) && (PORTB_2_H) && !(PORTB_3_H)) {
-
-			_reader();
-
-			_custom_lower_num(8);
-
-			_Stop();
-
-//			// signalling that the custom lower sent
-//			_pulsing_u_100();
+//			_reader();
 //
-			// Interval between interrupts
-//			_Delay_50ms();
-
-		} else if (!(PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {
-
-			_reader();
-
-			_custom_lower_num(10);
-
-			_Stop();
-
-//			// signalling that the custom lower sent
-//			_pulsing_u_100();
+//			//REF hex, integer http://stackoverflow.com/questions/2167235/passing-a-hex-number-to-a-function answered Jan 30 '10 at 8:00
+//			_custom_lower_num(15);
+////			_custom_lower_num(5);
+////			_custom_lower();
+//
+//			///////////////////////
+//
+//			// stop bit
+//
+//			///////////////////////
+//			_send_StopBit();
+//
+//			///////////////////////
+//
+//			// turn off LED
+//
+//			///////////////////////
+//			PORTA = 0x00;
+//
+//
+////			// signalling that the custom lower sent
+////			_pulsing_u_100();
+////			_pulsing_u_100;
 //
 //			// Interval between interrupts
 //			_Delay_50ms();
+
+		} else if (!(PORTB_1_H) && (PORTB_2_H) && !(PORTB_3_H)) {
+
+			_output(2);
+
+		} else if (!(PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {
+
+			_output(1);
+
+		} else if (!(PORTB_1_H) && (PORTB_2_H) && (PORTB_3_H)) {	// 011
+
+			_output(3);
+
+		} else if ((PORTB_1_H) && (PORTB_2_H) && !(PORTB_3_H)) {	// 110 : 4 + 2 = 6
+
+			_output(6);
+
+		} else if ((PORTB_1_H) && !(PORTB_2_H) && (PORTB_3_H)) {	// 101 => 4 + 1 = 5
+
+			_output(5);
+
+		} else if ((PORTB_1_H) && (PORTB_2_H) && (PORTB_3_H)) {	// 111 => 4 + 2 + 1 = 7
+
+			_output(7);
 
 		} else {
 
@@ -321,6 +321,7 @@ _Opearations() {
 //	PORTA = 0x00;
 
 }//_Opearations
+
 
 void interrupt(void)
 {
@@ -436,3 +437,36 @@ void _Stop(void) {
 
 
 }//_Stop
+
+void
+_output(int num) {
+
+	_reader();
+
+	//REF hex, integer http://stackoverflow.com/questions/2167235/passing-a-hex-number-to-a-function answered Jan 30 '10 at 8:00
+	_custom_lower_num(num);
+
+	///////////////////////
+
+	// stop bit
+
+	///////////////////////
+	_send_StopBit();
+
+	///////////////////////
+
+	// turn off LED
+
+	///////////////////////
+	PORTA = 0x00;
+
+
+//			// signalling that the custom lower sent
+//			_pulsing_u_100();
+//			_pulsing_u_100;
+
+	// Interval between interrupts
+	_Delay_50ms();
+
+}//_output
+

@@ -20,6 +20,8 @@ void _send_StopBit(void);
 
 void _Stop(void);
 
+void _output(int);
+
 
 
 
@@ -196,62 +198,31 @@ _Opearations() {
 
  if (( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
 
- _reader();
-
-
- _custom_lower_num(15);
-
-
-
-
-
-
-
-
- _send_StopBit();
-
-
-
-
-
-
- PORTA = 0x00;
-
-
-
-
-
-
-
- _Delay_50ms();
-
+ _output(4);
+#line 277 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
  } else if (!( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
 
- _reader();
-
- _custom_lower_num(8);
-
- _Stop();
-
-
-
-
-
-
+ _output(2);
 
  } else if (!( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
 
- _reader();
+ _output(1);
 
- _custom_lower_num(10);
+ } else if (!( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
 
- _Stop();
+ _output(3);
 
+ } else if (( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
 
+ _output(6);
 
+ } else if (( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
 
+ _output(5);
 
+ } else if (( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && ( (PORTB & 0x08) == 0x08 )) {
 
+ _output(7);
 
  } else {
 
@@ -263,9 +234,10 @@ _Opearations() {
 #line 323 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
 }
 
+
 void interrupt(void)
 {
-#line 336 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
+#line 337 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-3.1/D-91_PIC16_color_changer_v-3.1.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -367,5 +339,37 @@ void _Stop(void) {
 
  _Delay_50ms();
 
+
+}
+
+void
+_output(int num) {
+
+ _reader();
+
+
+ _custom_lower_num(num);
+
+
+
+
+
+
+ _send_StopBit();
+
+
+
+
+
+
+ PORTA = 0x00;
+
+
+
+
+
+
+
+ _Delay_50ms();
 
 }
