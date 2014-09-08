@@ -53,12 +53,30 @@ void _main_Setup(void);
 
 void _response_2(void);
 
+void _pulse(int);
+void _pulse_ms(int);
+
 ///////////////////////
 
 // Funcs
 
 ///////////////////////
 void _pulse(int num)
+{
+		int	i;
+
+		for(i = 0; i < num; i++)
+		{
+
+			PORTA = 0x01; Delay_ms(1);
+
+			PORTA = 0x00; Delay_ms(1);
+
+		}
+
+}
+
+void _pulse_ms(int num)
 {
 		int	i;
 
@@ -263,15 +281,15 @@ _response_2(void) {
 
 	switch(custom_code_a) {
 
-	case 1: _pulse_u_100(1); break;
-	case 2: _pulse_u_100(2); break;
-	case 3: _pulse_u_100(3); break;
-	case 4: _pulse_u_100(4); break;
-	case 5: _pulse_u_100(5); break;
-	case 6: _pulse_u_100(6); break;
-	case 7: _pulse_u_100(7); break;
+	case 1: PORTA = 1; break;
+	case 2: PORTA = 2; break;
+	case 3: PORTA = 3; break;
+	case 4: PORTA = 4; break;
+	case 5: PORTA = 5; break;
+	case 6: PORTA = 6; break;
+	case 7: PORTA = 7; break;
 
-	default: break;
+	default: _pulse(2); break;
 
 	}//switch(custom_code_a)
 
@@ -429,36 +447,19 @@ void main(void)
 
 	_main_Setup();
 
-//		// Setup
-//		TRISA     = 0x00;
-//		PORTA     = 0x00;		//0000 0010
-//
-//		TRISB     = 0xFF;		// Input: RB0 ~ RB7
-//
-//		OPTION_REG &= 0x7F;	// Pull-up => on
-////		OPTION_REG &= 0xFF;	// INT interrupt => by 0V ~> 5V
-//		OPTION_REG &= 0xBF;	// INT interrupt => by 5V ~> 0V
-//
-//		OPTION_REG &= 0xDF;	// Timer by clock
-//		OPTION_REG &= 0xF0;	// Prescaler => on
-//		OPTION_REG |= 0x07; // Prescaler => 1/256
+	INTCON |= 0x10;        // INT interrupt => permitted
+	INTCON |= 0x80;
 
+	while(1)
+	{
 
-//     custom_code_a = 0xFF;
-//     custom_code_b = 0x00;
-//     data_code_a   = 0x00;   // Button '+'
-//     data_code_b   = ~data_code_a;
-
-		INTCON |= 0x10;        // INT interrupt => permitted
-		INTCON |= 0x80;
-
-		while(1)
-		{
+		_pulse_ms(1);
+		Delay_ms(2);
 
 //        PORTA = 0x01;
 
 
-	   }//while(1)
+   }//while(1)
 
 }//void main(void)
 

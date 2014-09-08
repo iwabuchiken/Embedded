@@ -1,5 +1,5 @@
-#line 1 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
-#line 32 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 1 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
+#line 32 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  unsigned short int  color;
  unsigned short int  LED_FLAG = 1;
 
@@ -24,12 +24,30 @@ void _main_Setup(void);
 
 void _response_2(void);
 
+void _pulse(int);
+void _pulse_ms(int);
+
 
 
 
 
 
 void _pulse(int num)
+{
+ int i;
+
+ for(i = 0; i < num; i++)
+ {
+
+ PORTA = 0x01; Delay_ms(1);
+
+ PORTA = 0x00; Delay_ms(1);
+
+ }
+
+}
+
+void _pulse_ms(int num)
 {
  int i;
 
@@ -133,7 +151,7 @@ void _while_PORTB_0x01(int num)
  return;
 
 }
-#line 170 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 188 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
 int _judge_TMR_(int low, int high) {
 
  if(TMR0 < low)
@@ -205,7 +223,7 @@ void _response(void)
  _pulse_u_100(1);
 
  }
-#line 259 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 277 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
 }
 
 void
@@ -213,15 +231,15 @@ _response_2(void) {
 
  switch(custom_code_a) {
 
- case 1: _pulse_u_100(1); break;
- case 2: _pulse_u_100(2); break;
- case 3: _pulse_u_100(3); break;
- case 4: _pulse_u_100(4); break;
- case 5: _pulse_u_100(5); break;
- case 6: _pulse_u_100(6); break;
- case 7: _pulse_u_100(7); break;
+ case 1: PORTA = 1; break;
+ case 2: PORTA = 2; break;
+ case 3: PORTA = 3; break;
+ case 4: PORTA = 4; break;
+ case 5: PORTA = 5; break;
+ case 6: PORTA = 6; break;
+ case 7: PORTA = 7; break;
 
- default: break;
+ default: _pulse(2); break;
 
  }
 
@@ -280,7 +298,7 @@ void _custom_lower(void)
 
 void interrupt(void)
 {
-#line 342 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 360 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
@@ -318,7 +336,7 @@ void interrupt(void)
 
 
  _read_Custom();
-#line 395 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 413 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  _response_2();
 
 
@@ -330,7 +348,7 @@ void interrupt(void)
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
-#line 421 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 439 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  INTCON |= 0x10;
  INTCON |= 0x80;
 
@@ -341,12 +359,15 @@ void main(void)
 {
 
  _main_Setup();
-#line 452 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+
  INTCON |= 0x10;
  INTCON |= 0x80;
 
  while(1)
  {
+
+ _pulse_ms(1);
+ Delay_ms(2);
 
 
 
@@ -364,7 +385,7 @@ _read_Reader() {
 
 
   TMR0 = 0 ;
-#line 483 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 484 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
  _while_PORTB_0x01(0);
 
 
@@ -385,7 +406,7 @@ _read_Reader() {
  return  0 ;
 
  }
-#line 514 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-4.1/D-91_PIC16_color_changer_v-4.1.c"
+#line 515 "C:/WORKS/WS/Embedded/D-90~/D-91_PIC16_color_changer/D-91_PIC16_color_changer_v-5.0_rcv/D-91_PIC16_color_changer_v-5.0_rcv.c"
   TMR0 = 0 ;
 
 
