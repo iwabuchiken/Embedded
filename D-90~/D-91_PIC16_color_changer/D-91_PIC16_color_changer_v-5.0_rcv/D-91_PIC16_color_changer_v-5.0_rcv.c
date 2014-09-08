@@ -453,8 +453,10 @@ void main(void)
 	while(1)
 	{
 
-		_pulse_ms(1);
-		Delay_ms(2);
+		PORTA = 0x00;
+
+//		_pulse_ms(1);
+//		Delay_ms(2);
 
 //        PORTA = 0x01;
 
