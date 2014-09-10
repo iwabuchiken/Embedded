@@ -10,7 +10,6 @@ CNT2		EQU	0x22
 ;O_DATA		EQU	0x24
 ;TMP_DATA	EQU	0x25
 	
-
 				ORG		0x000
 				goto	main
 				
