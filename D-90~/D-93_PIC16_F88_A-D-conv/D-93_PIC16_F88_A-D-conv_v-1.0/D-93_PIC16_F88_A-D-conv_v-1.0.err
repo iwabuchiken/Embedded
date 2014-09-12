@@ -1,0 +1,7 @@
+Warning[203] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 62 : Found opcode in column 1. (BSF)
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 64 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_A-D-CONV_V-1.0\D-93_PIC16_F88_A-D-CONV_V-1.0.ASM 105 : Register in operand not in bank 0.  Ensure that bank bits are correct.
