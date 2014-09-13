@@ -130,7 +130,7 @@ void _main_Setup(void) {
 
 	// Setup
 	TRISA     = 0x00;	// output
-//	PORTA     = 0x00;		//0000 0010
+	PORTA     = 0x00;		//0000 0010
 
 	TRISB     = 0xFF;		// Input: RB0 ~ RB7
 
@@ -148,9 +148,12 @@ void _main_Setup(void) {
 //	//REF mikroC help "ADC Library"
 //	ADCON1 = 0x80;
 //	ADCON1 = 0x00;
-//	ADCON0 = 0x00;
+	ADCON0 = 0x00;
 
 	ANSEL = 0;
+//	ANSEL = 0x00;
+
+//	AN0 = 0;	//=> Undeclared
 
 	//ADCS1 q= 0;
 

@@ -61,11 +61,16 @@ void _main_Setup(void) {
 
 
  TRISA = 0x00;
-
+ PORTA = 0x00;
 
  TRISB = 0xFF;
-#line 153 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
+#line 151 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
+ ADCON0 = 0x00;
+
  ANSEL = 0;
+
+
+
 
 
 
@@ -242,7 +247,7 @@ _Opearations() {
  if (( (PORTB & 0x02) == 0x02 ) && !( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
 
  _output(4);
-#line 360 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
+#line 363 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
  } else if (!( (PORTB & 0x02) == 0x02 ) && ( (PORTB & 0x04) == 0x04 ) && !( (PORTB & 0x08) == 0x08 )) {
 
  _output(2);
@@ -274,13 +279,13 @@ _Opearations() {
  }
 
  }
-#line 406 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
+#line 409 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
 }
 
 
 void interrupt(void)
 {
-#line 420 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
+#line 423 "C:/WORKS/WS/Embedded/D-90~/D-93_PIC16_F88_A-D-conv/D-93_PIC16_F88_A-D-conv_v-3.0/D-93_PIC16_F88_A-D-conv_v-3.0.c"
  INTCON &= 0x7F;
  INTCON &= 0xEF;
  INTCON &= 0xFD;
