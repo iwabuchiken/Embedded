@@ -1,11 +1,11 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Tue Sep 23 12:58:20 2014
+Linker Map File - Created Tue Sep 23 13:12:03 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x00000e
-                   .cinit    romdata   0x000007    program   0x000004
+                   .org_0       code   0x000000    program   0x000034
+                   .cinit    romdata   0x00001a    program   0x000004
 .config_2007_D-93_PIC16_F88_A-D-CONV_V-4.1.O       code   0x002007    program   0x000002
 
 
@@ -13,15 +13,19 @@ Linker Map File - Created Tue Sep 23 12:58:20 2014
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000008      
+                            0x000000    0x00001b      
                             0x002007    0x002007      
-            10 out of 4359 program addresses used, program memory utilization is 0%
+            29 out of 4359 program addresses used, program memory utilization is 0%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
+                     DLP1   0x00000f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                     DLP2   0x000011    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                  DLY_100   0x00000d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                   DLY_1S   0x00000b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
                      LOOP   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
                      MAIN   0x000000    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
 
@@ -32,5 +36,9 @@ Linker Map File - Created Tue Sep 23 12:58:20 2014
                 ---------  ---------  ---------  --------- ---------                
                      MAIN   0x000000    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
                      LOOP   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                   DLY_1S   0x00000b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                  DLY_100   0x00000d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                     DLP1   0x00000f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
+                     DLP2   0x000011    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_A-D-conv_v-4.1\D-93_PIC16_F88_A-D-conv_v-4.1.asm
 
 
