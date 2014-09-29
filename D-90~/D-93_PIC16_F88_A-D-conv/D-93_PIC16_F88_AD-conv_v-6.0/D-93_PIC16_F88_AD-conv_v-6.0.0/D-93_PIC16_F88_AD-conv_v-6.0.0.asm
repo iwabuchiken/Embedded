@@ -93,7 +93,8 @@ Timer0_interrupt
 ;	
 	;----------------- COUNT UP
 	;MOVLW	B'11100000'
-	MOVLW	B'00000000'
+	;MOVLW	B'00000000'
+	MOVLW	B'00001111'
 	
 	MOVWF	TMR0			; set the initial val to TMR0
 	
