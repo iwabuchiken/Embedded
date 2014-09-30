@@ -67,8 +67,12 @@ Timer0_interrupt
 	MOVLW	B'00000001'
 	MOVWF	PORTB
 	
-	MOVLW	B'00000000'
-	MOVWF	PORTB
+	MOVLW	B'00000011'	; bitmask
+	
+	XORWF	PORTB,f
+	
+	;MOVLW	B'00000000'
+	;MOVWF	PORTB
 	
 	;------------------- TMR0
 ;	MOVLW	B'11100000'
