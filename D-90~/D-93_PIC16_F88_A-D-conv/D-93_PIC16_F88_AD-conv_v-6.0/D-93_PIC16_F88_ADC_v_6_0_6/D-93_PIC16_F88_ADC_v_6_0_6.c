@@ -109,16 +109,16 @@ _main_Setup(void) {
 	OPTION_REG	&= 0xDF;	// internal clock	1101 1111
 
 
-	TMR0	= 0;
-
-	///////////////////////
-
-	// interrupt
-
-	///////////////////////
-	INTCON &= 0xFB;		// clear timer interrupt flag
-
-	INTCON |= 0x20;
-	INTCON |= 0x80;
+//	TMR0	= 0;
+//
+//	///////////////////////
+//
+//	// interrupt
+//
+//	///////////////////////
+//	INTCON &= 0xFB;		// clear timer interrupt flag
+//
+//	INTCON |= 0x20;
+//	INTCON |= 0x80;
 
 }//_main_Setup
