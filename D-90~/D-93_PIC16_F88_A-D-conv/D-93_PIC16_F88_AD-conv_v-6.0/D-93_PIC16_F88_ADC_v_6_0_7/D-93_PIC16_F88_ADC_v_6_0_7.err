@@ -1,0 +1,4 @@
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_AD-CONV_V-6.0\D-93_PIC16_F88_ADC_V_6_0_7\D-93_PIC16_F88_ADC_V_6_0_7.ASM 23 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_AD-CONV_V-6.0\D-93_PIC16_F88_ADC_V_6_0_7\D-93_PIC16_F88_ADC_V_6_0_7.ASM 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_AD-CONV_V-6.0\D-93_PIC16_F88_ADC_V_6_0_7\D-93_PIC16_F88_ADC_V_6_0_7.ASM 27 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-93_PIC16_F88_A-D-CONV\D-93_PIC16_F88_AD-CONV_V-6.0\D-93_PIC16_F88_ADC_V_6_0_7\D-93_PIC16_F88_ADC_V_6_0_7.ASM 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
