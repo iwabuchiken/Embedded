@@ -36,13 +36,13 @@ void main(void)
 	while(1)
 	{
 
-		PORTA = 0x01;
-
-		Delay_us(10);
-
-		PORTA = 0x02;
-
-		Delay_us(10);
+//		PORTA = 0x01;
+//
+//		Delay_us(10);
+//
+//		PORTA = 0x02;
+//
+//		Delay_us(10);
 
 //		PORTA = 0x01;
 //
@@ -68,11 +68,11 @@ interrupt(void) {
 	// change LED
 
 	///////////////////////
-//	PORTA = 0x01;
-//
-//	PORTA = 0x02;
+	PORTA = 0x01;
 
-	PORTA ^= 0x03;
+	PORTA = 0x02;
+
+//	PORTA ^= 0x03;
 
 	///////////////////////
 
@@ -113,16 +113,16 @@ _main_Setup(void) {
 	OPTION_REG	&= 0xDF;	// internal clock	1101 1111
 
 
-//	TMR0	= 0;
-//
-//	///////////////////////
-//
-//	// interrupt
-//
-//	///////////////////////
+	TMR0	= 0;
+
+	///////////////////////
+
+	// interrupt
+
+	///////////////////////
 //	INTCON &= 0xFB;		// clear timer interrupt flag
-//
-//	INTCON |= 0x20;
-//	INTCON |= 0x80;
+
+	INTCON |= 0x20;
+	INTCON |= 0x80;
 
 }//_main_Setup
