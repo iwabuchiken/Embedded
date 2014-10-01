@@ -70,6 +70,13 @@ _main_Setup(void) {
 
 
 
+ ANSEL = 0;
+
+
+
+
+
+
  OPTION_REG &= 0x7F;
  OPTION_REG &= 0xDF;
 

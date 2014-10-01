@@ -87,11 +87,19 @@ _main_Setup(void) {
 
 	///////////////////////
 
+	// ANSEL
+
+	///////////////////////
+	ANSEL = 0;
+
+	///////////////////////
+
 	// timer
 
 	///////////////////////
 	OPTION_REG	&= 0x7F;	// enable pull-up	0111 1111
 	OPTION_REG	&= 0xDF;	// internal clock	1101 1111
+
 
 	TMR0	= 0;
 
@@ -100,6 +108,8 @@ _main_Setup(void) {
 	// interrupt
 
 	///////////////////////
+	INTCON &= 0xFB;		// clear timer interrupt flag
+
 	INTCON |= 0x20;
 	INTCON |= 0x80;
 
