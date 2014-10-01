@@ -1,0 +1,53 @@
+MPLINK 4.42, Linker
+Linker Map File - Created Wed Oct 01 20:35:11 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x0000a6
+                   .cinit    romdata   0x000053    program   0x000004
+.config_2007_D-93_PIC16_F88_AD-CONV_V-6.1.1.O       code   0x002007    program   0x000002
+.config_2008_D-93_PIC16_F88_AD-CONV_V-6.1.1.O       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000054      
+                            0x002007    0x002008      
+            87 out of 4359 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     INIT   0x000001    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    STEP1   0x00000c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                   T02mLP   0x00003d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T02mS   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                      T1S   0x00002f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T1SLP   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T5mLP   0x000037    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                     T5mS   0x000035    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+         Timer0_interrupt   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                  bin2hex   0x000041    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     INIT   0x000001    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    STEP1   0x00000c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+         Timer0_interrupt   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                      T1S   0x00002f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T1SLP   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                     T5mS   0x000035    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T5mLP   0x000037    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                    T02mS   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                   T02mLP   0x00003d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+                  bin2hex   0x000041    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.1\D-93_PIC16_F88_AD-conv_v-6.1.1.asm
+
+
