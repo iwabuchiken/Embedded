@@ -16,6 +16,14 @@ void main(void)
  while(1)
  {
 
+ PORTA = 0x01;
+
+ Delay_us(10);
+
+ PORTA = 0x02;
+
+ Delay_us(10);
+
 
 
 
