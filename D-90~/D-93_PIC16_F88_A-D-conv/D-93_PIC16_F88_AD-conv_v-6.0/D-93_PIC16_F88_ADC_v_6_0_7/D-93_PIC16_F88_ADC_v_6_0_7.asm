@@ -27,7 +27,8 @@ INIT
 	CLRF	TRISA		; output
 
 	;------------------ RB0 => ON, RA => OFF
-	MOVLW	01h
+	;MOVLW	01h
+	MOVLW	00h
 	MOVWF	PORTB
 
 	MOVLW	00h
@@ -77,11 +78,15 @@ Timer0_interrupt
 	
 	BCF		INTCON,TMR0IF	; clear flag
 
+	;------------------- change LED
+	
 	MOVLW	B'00000001'
 	MOVWF	PORTA
+	MOVWF	PORTB
 	
 	MOVLW	B'00000010'
 	MOVWF	PORTA
+	MOVWF	PORTB
 	
 	;------------------- reset
 	BSF		INTCON,TMR0IE	; permit timer interrupt
