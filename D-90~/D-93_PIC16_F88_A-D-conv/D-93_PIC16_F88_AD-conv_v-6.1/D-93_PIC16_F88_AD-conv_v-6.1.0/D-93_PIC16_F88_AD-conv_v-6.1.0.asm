@@ -6,7 +6,7 @@
 ;
 ;
 ;{CBLOCK
-	CBLOCK	0Ch
+	CBLOCK	020h
 	C02mS	; 0.2mSカウンタ
 	C5mS	; 5mSカウンタ
 	C1S	; 1Sカウンタ
@@ -70,27 +70,31 @@ INIT
 STEP1	
 	
 	;---------------- digit 1
-	MOVLW	D'1'
+	;MOVLW	D'1'
+	MOVLW	01h
 	MOVWF	PORTA
 	
+	MOVLW	00h
 	CALL	bin2hex
 	MOVWF	PORTB
 	
 	CALL	T5mS
 	
 	;---------------- digit 2
-	MOVLW	D'2'
+	MOVLW	02h
 	MOVWF	PORTA
 	
+	MOVLW	01h
 	CALL	bin2hex
 	MOVWF	PORTB
 	
 	CALL	T5mS
 	
 	;---------------- digit 4
-	MOVLW	D'4'
+	MOVLW	04h
 	MOVWF	PORTA
 	
+	MOVLW	02h
 	CALL	bin2hex
 	MOVWF	PORTB
 	
@@ -173,17 +177,20 @@ bin2hex
 	RETLW	0FCh	;0
 	RETLW	060h	;1
 	RETLW	0DAh	;2
-	RETLW	0F2h	;3
 	
+	RETLW	0F2h	;3
 	RETLW	066h	;4
 	RETLW	06Dh	;5
+	
 	RETLW	07Dh	;6
 	RETLW	007h	;7
 	RETLW	07Fh	;8
 	RETLW	06Fh	;9
+	
 	RETLW	077h	;A
 	RETLW	07Ch	;b
 	RETLW	039h	;C
+	
 	RETLW	05Eh	;d
 	RETLW	079h	;E
 	RETLW	071h	;F
