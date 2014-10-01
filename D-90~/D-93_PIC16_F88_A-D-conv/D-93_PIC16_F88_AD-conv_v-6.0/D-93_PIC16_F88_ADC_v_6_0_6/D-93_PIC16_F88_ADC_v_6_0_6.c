@@ -90,6 +90,8 @@ _main_Setup(void) {
 	TRISA	= 0x00;
 	TRISB	= 0x00;
 
+	PORTA	= 0x00;
+
 	PORTB	= 0x01;
 //	PORTB	= 0x00;
 
@@ -98,6 +100,8 @@ _main_Setup(void) {
 	// ANSEL
 
 	///////////////////////
+	ADCON0 = 0x00;
+
 	ANSEL = 0;
 
 	///////////////////////
