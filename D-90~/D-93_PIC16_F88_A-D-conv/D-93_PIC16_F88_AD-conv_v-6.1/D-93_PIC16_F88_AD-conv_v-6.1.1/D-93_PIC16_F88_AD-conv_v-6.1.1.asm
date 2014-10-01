@@ -78,13 +78,14 @@ INIT
 ;{
 STEP1	
 	
-	;---------------- digit 1
+	;---------------- digit 1: RB0 --> socket 9
 	;MOVLW	D'1'
 	MOVLW	01h
 	MOVWF	PORTA
 	
 	;MOVLW	00h
-	MOVF	ADsaveL,W
+	;MOVF	ADsaveL,W
+	SWAPF	ADsaveL,W
 	ANDLW	0Fh
 	
 	CALL	bin2hex
@@ -93,12 +94,13 @@ STEP1
 
 	CALL	T5mS
 	
-	;---------------- digit 2
+	;---------------- digit 2: RB1 ---> socket 10
 	MOVLW	02h
 	MOVWF	PORTA
 	
 	;MOVLW	01h
-	SWAPF	ADsaveL,W
+	;SWAPF	ADsaveL,W
+	MOVF	ADsaveL,W
 	ANDLW	0Fh
 
 	CALL	bin2hex
@@ -106,7 +108,7 @@ STEP1
 	
 	CALL	T5mS
 	
-	;---------------- digit 3
+	;---------------- digit 3: RB2 ---> socket 11
 	MOVLW	04h
 	MOVWF	PORTA
 	
