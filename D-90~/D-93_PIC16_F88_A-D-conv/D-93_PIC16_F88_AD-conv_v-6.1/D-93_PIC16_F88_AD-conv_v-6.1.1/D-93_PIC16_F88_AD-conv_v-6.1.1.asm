@@ -11,6 +11,8 @@
 	C5mS	; 5mSカウンタ
 	C1S	; 1Sカウンタ
 	
+	CNT			; counter
+	
 	ADsaveL
 	ADsaveH
 	
@@ -58,6 +60,8 @@ INIT
 	MOVLW	0ABh
 	MOVWF	ADsaveL
 	
+	MOVLW	0h
+	MOVWF	CNT
 	
 ;	;------------------ interrupt
 ;	CLRF	TMR0
@@ -85,28 +89,31 @@ STEP1
 	
 	;MOVLW	00h
 	;MOVF	ADsaveL,W
-	SWAPF	ADsaveL,W
+	;SWAPF	ADsaveL,W
+	SWAPF	CNT,W
 	ANDLW	0Fh
 	
 	CALL	bin2hex
 	
 	MOVWF	PORTB
 
-	CALL	T5mS
-	
+	;CALL	T5mS
+	CALL	T1S
 	;---------------- digit 2: RB1 ---> socket 10
 	MOVLW	02h
 	MOVWF	PORTA
 	
 	;MOVLW	01h
 	;SWAPF	ADsaveL,W
-	MOVF	ADsaveL,W
+	;MOVF	ADsaveL,W
+	MOVF	CNT,W
 	ANDLW	0Fh
 
 	CALL	bin2hex
 	MOVWF	PORTB
 	
-	CALL	T5mS
+	;CALL	T5mS
+	CALL	T1S
 	
 	;---------------- digit 3: RB2 ---> socket 11
 	MOVLW	04h
@@ -117,8 +124,11 @@ STEP1
 	CALL	bin2hex
 	MOVWF	PORTB
 	
-	CALL	T5mS
+	;CALL	T5mS
+	CALL	T1S
 
+	;---------------- increment
+	INCF	CNT,F
 	
 	GOTO	STEP1
 ;}
