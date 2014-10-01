@@ -5,48 +5,42 @@
 	__CONFIG _CONFIG2, _FCMEN_OFF & _IESO_OFF
 
 	ORG		0
-	GOTO	START
+	GOTO	INIT
 
 	ORG		4
 	CALL	Timer0_interrupt
 	RETFIE
 
-; ====================================== START
-;START
+; ====================================== INIT
+;INIT
 ;{
-START
+INIT
 	BSF		STATUS,RP0
-	BCF		STATUS,RP1
 	
-	CLRF	ANSEL
+	;CLRF	ANSEL
 
 	;------------------ TRISB
 	CLRF	TRISB		; output
 
 	;------------------ TMR0
-	BCF		OPTION_REG,T0CS		; FOSC, FOSC/4 = XMh/4
-	BCF		OPTION_REG,PSA		; pre-scaler to TMR0
-								; 	=> PSA = 1, then pre-scaler to WDT
-	BSF		OPTION_REG,PS2
-	BSF		OPTION_REG,PS1
-	BSF		OPTION_REG,PS0		; TMR0 clock => FOSC/4/256
+	MOVLW	88h
+	MOVWF	OPTION_REG
+	
+	BCF		STATUS,RP0
+	
+	CLRF	TMR0
 
-	;------------------ TMR0 => reset
-	MOVLW	B'00000000'
-	
-	MOVWF	TMR0			; set the initial val to TMR0
-	
+	;------------------ RB0 => ON
+	MOVLW	01h
+	MOVWF	PORTB
+
 	;------------------ interrupt
 	BSF		INTCON,GIE		; all interrupt => permitted
 							;	--> except masked ones
-	BSF		INTCON,PEIE		; all interrupt from peripheries => permitted
-							;	--> except masked ones
 	BSF		INTCON,TMR0IE	; permit TMR0 interrupt
-	BCF		INTCON,TMR0IF	; clear the interrupt flag of TMR0
+	;BCF		INTCON,TMR0IF	; clear the interrupt flag of TMR0
 	
-	BCF	STATUS,RP0	;Å°ÉyÅ[ÉWÇOÇ…êÿë÷Ç¶
-	BCF	STATUS,RP1	;
-	
+
 ;}
 ;
 ; ====================================== STEP1
@@ -64,22 +58,24 @@ STEP1
 ;{
 Timer0_interrupt
 
+	BCF		INTCON,TMR0IF	; permit re-interrupt by TMR0
+
 	MOVLW	B'00000001'
 	MOVWF	PORTB
 	
-	MOVLW	B'00000011'	; bitmask
+	;MOVLW	B'00000011'	; bitmask
 	
-	XORWF	PORTB,f
+	;XORWF	PORTB,f
 	
-	;MOVLW	B'00000000'
-	;MOVWF	PORTB
+	MOVLW	B'00000000'
+	MOVWF	PORTB
 	
 	;------------------- TMR0
 ;	MOVLW	B'11100000'
 ;	
 ;	MOVWF	TMR0			; set the initial val to TMR0
 ;	
-	BCF		INTCON,TMR0IF	; permit re-interrupt by TMR0
+	;BCF		INTCON,TMR0IF	; permit re-interrupt by TMR0
 	
 	RETURN
 
