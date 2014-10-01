@@ -80,12 +80,15 @@ _main_Setup(void) {
  OPTION_REG &= 0x7F;
  OPTION_REG &= 0xDF;
 
+
  TMR0 = 0;
 
 
 
 
 
+
+ INTCON &= 0xFB;
 
  INTCON |= 0x20;
  INTCON |= 0x80;
