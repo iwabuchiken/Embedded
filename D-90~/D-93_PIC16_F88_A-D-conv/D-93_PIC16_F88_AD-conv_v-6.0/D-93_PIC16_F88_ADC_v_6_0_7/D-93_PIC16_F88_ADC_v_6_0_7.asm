@@ -88,6 +88,10 @@ Timer0_interrupt
 	MOVWF	PORTA
 	MOVWF	PORTB
 	
+	;------------------- re-init TMR0
+	MOVLW	B'11110000'
+	MOVWF	TMR0
+	
 	;------------------- reset
 	BSF		INTCON,TMR0IE	; permit timer interrupt
 	BSF		INTCON,GIE		; permit global interrupt

@@ -1,12 +1,12 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Wed Oct 01 15:12:51 2014
+Linker Map File - Created Wed Oct 01 15:41:29 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                   .org_1       code   0x000004    program   0x00003a
+                   .org_1       code   0x000004    program   0x00003e
 .config_2007_D-93_PIC16_F88_ADC_V_6_0_7.O       code   0x002007    program   0x000002
 .config_2008_D-93_PIC16_F88_ADC_V_6_0_7.O       code   0x002008    program   0x000002
 
@@ -16,9 +16,9 @@ Linker Map File - Created Wed Oct 01 15:12:51 2014
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000020      
+                            0x000004    0x000022      
                             0x002007    0x002008      
-            34 out of 4359 program addresses used, program memory utilization is 0%
+            36 out of 4359 program addresses used, program memory utilization is 0%
 
 
 
