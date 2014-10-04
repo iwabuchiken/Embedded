@@ -20,43 +20,55 @@
 ;}
 ;
 	ORG		0
-	GOTO	INIT
+	GOTO	SETUP
 
 ;	ORG		4
 ;	CALL	Timer0_interrupt
 ;	RETFIE
 
-; ====================================== INIT
-;INIT
+; ====================================== SETUP
+;SETUP
 ;{
-INIT
+SETUP
 
 	;------------------ switch bank
 	BSF		STATUS,RP0
 	
 	;------------------ ANSEL
-	CLRF	ANSEL
+	;CLRF	ANSEL
 
 	;------------------ TRISB, TRISB
-	CLRF	TRISB		; output
+	MOVLW	0F8h		; 1111 1000
 	CLRF	TRISA		; output
 
-	;------------------ RB0 => ON, RA => OFF
-	;MOVLW	01h
-	MOVLW	00h
-	MOVWF	PORTB
+	CLRF	TRISB		; output
 
-	MOVLW	00h
-	MOVWF	PORTA
+	;------------------ OPTION_REG
+	MOVLW	88h
+	MOVWF	OPTION_REG
 	
-;	;------------------ OPTION_REG
-;	MOVLW	88h
-;	MOVWF	OPTION_REG
-;	
 	;------------------ switch bank
 	BCF		STATUS,RP0
 	
-	;------------------ vars
+
+	;------------------ RB0 => ON, RA => OFF
+	MOVLW	01h
+	MOVWF	PORTB
+
+	;------------------ A/D
+	MOVLW	099h	; 1001 1001
+	MOVWF	ADCON0
+	
+	BSF		STATUS,RP0	; BANK 1
+	
+	MOVLW	80h		; 1000 0000
+	MOVWF	ADCON1
+	
+	MOVLW	08h		; 0000 1000
+	MOVWF	ANSEL
+	
+	BCF		STATUS,RP0	; BANK 0
+	
 	MOVLW	0ABh
 	MOVWF	ADsaveL
 	
@@ -78,59 +90,50 @@ INIT
 
 ;}
 ;
-; ====================================== STEP1
+; ====================================== INIT
 ;{
-STEP1	
+INIT_1
+
+	MOVLW	03h
+	MOVWF	PORTB		; RA0,1 --> ON (while reading ANS3)
+
+	BSF		ADCON0,GO	; start ADC
 	
-	;---------------- digit 1: RB0 --> socket 9
-	;MOVLW	D'1'
+INIT_2
+	
+	BTFSC	ADCON0,GO	; ADC --> done?
+	GOTO	INIT_2		; NO
+
+INIT_3	; get values
+
+	MOVF	ADRESH,W
+	MOVWF	ADsaveH
+	
+	BSF		STATUS,RP0
+	
+	MOVF	ADRESL,W
+	
+	BCF		STATUS,RP0
+	
+	MOVWF	ADsaveL
+;}
+;
+
+; ====================================== LOOP
+;{
+LOOP	
+	
 	MOVLW	01h
-	MOVWF	PORTA
-	
-	;MOVLW	00h
-	;MOVF	ADsaveL,W
-	;SWAPF	ADsaveL,W
-	SWAPF	CNT,W
-	ANDLW	0Fh
-	
-	CALL	bin2hex
-	
 	MOVWF	PORTB
-
-	;CALL	T5mS
+	
 	CALL	T1S
-	;---------------- digit 2: RB1 ---> socket 10
+	
 	MOVLW	02h
-	MOVWF	PORTA
-	
-	;MOVLW	01h
-	;SWAPF	ADsaveL,W
-	;MOVF	ADsaveL,W
-	MOVF	CNT,W
-	ANDLW	0Fh
-
-	CALL	bin2hex
 	MOVWF	PORTB
 	
-	;CALL	T5mS
 	CALL	T1S
 	
-	;---------------- digit 3: RB2 ---> socket 11
-	MOVLW	04h
-	MOVWF	PORTA
-	
-	MOVLW	010h	; 0110 1110, 'H'
-	
-	CALL	bin2hex
-	MOVWF	PORTB
-	
-	;CALL	T5mS
-	CALL	T1S
-
-	;---------------- increment
-	INCF	CNT,F
-	
-	GOTO	STEP1
+	GOTO	LOOP
 ;}
 ;
 
