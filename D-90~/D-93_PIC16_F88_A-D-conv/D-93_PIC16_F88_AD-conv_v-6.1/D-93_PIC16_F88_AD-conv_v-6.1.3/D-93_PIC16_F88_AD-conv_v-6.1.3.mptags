@@ -6,3 +6,16 @@
 !_TAG_PROGRAM_VERSION	5.5.4	//
 !_TAG_REVISION_NAME	MCHPTags	//
 !_TAG_REVISION_VERSION	6.0.1	//
+INIT_1	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	95;"	l	line:95
+INIT_2	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	102;"	l	line:102
+INIT_3	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	107;"	l	line:107
+LOOP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	124;"	l	line:124
+SETUP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	32;"	l	line:32
+T02mLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	197;"	l	line:197
+T02mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	194;"	l	line:194
+T1S	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	174;"	l	line:174
+T1SLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	177;"	l	line:177
+T5mLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	187;"	l	line:187
+T5mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	184;"	l	line:184
+Timer0_interrupt	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	142;"	l	line:142
+bin2hex	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.1\D-93_PIC16_F88_AD-conv_v-6.1.3\D-93_PIC16_F88_AD-conv_v-6.1.3.asm	206;"	l	line:206
