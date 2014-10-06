@@ -153,8 +153,13 @@ GET_VALUES ;----------------------------
 	
 CHG ;----------------------------------	
 	CALL	chg7seg		; ADsaveL, upper 4 bits
+	CALL	T5mS
+	
 	CALL	chg7seg		; ADsaveL, lower 4 bits
+	CALL	T5mS
+	
 	CALL	chg7seg		; ADsaveH
+	CALL	T5mS
 
 WAIT ;----------------------------------	
 	CALL	T5mS
