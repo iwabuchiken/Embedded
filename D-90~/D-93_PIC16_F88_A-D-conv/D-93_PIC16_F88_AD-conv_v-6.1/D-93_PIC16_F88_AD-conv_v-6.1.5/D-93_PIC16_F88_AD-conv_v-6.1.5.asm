@@ -185,10 +185,12 @@ WAIT ;----------------------------------
 ;	
 ;	CALL	T5mS
 ;	
-ADC ;----------------------------------
+;ADC ;----------------------------------
+CONVERT ;----------------------------------
 	BSF		ADCON0,GO	; start ADC	
 	BTFSC	ADCON0,GO	; ADC --> done?
-	GOTO	ADC		; NO	
+	GOTO	CONVERT		; NO	
+	;GOTO	ADC		; NO	
 
 	;---------------------------------- PORTB
 	MOVLW	06h
