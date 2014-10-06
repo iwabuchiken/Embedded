@@ -153,7 +153,7 @@ LOOP
 	
 CHG ;----------------------------------	
 	CALL	chg7seg		; ADsaveL, upper 4 bits
-	
+
 ;CHG ;----------------------------------	
 ;	CALL	chg7seg		; ADsaveL, upper 4 bits
 ;	CALL	T5mS
@@ -167,7 +167,13 @@ CHG ;----------------------------------
 WAIT ;----------------------------------	
 	CALL	T5mS
 	;CALL	T1S
-	
+
+ADC ;----------------------------------
+	BSF		ADCON0,GO	; start ADC	
+	BTFSC	ADCON0,GO	; ADC --> done?
+	GOTO	ADC		; NO	
+
+BACK_TO_LOOP ;----------------------------------
 	GOTO	LOOP
 ;}
 ;
