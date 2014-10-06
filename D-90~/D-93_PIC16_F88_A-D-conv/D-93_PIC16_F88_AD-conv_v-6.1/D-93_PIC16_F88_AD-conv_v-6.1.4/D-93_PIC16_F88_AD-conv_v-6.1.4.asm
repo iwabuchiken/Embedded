@@ -185,7 +185,7 @@ chg7seg2
 chg7seg3
 	MOVF	ADsaveH,W	;ADRESHを
 	
-	;ANDLW	0Fh
+	ANDLW	0Fh
 	
 	CALL	bin2hex		;７セグ表示用１６進数に変換
 	MOVWF	PORTB
