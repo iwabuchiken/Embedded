@@ -182,6 +182,8 @@ WAIT ;----------------------------------
 	MOVLW	02h
 	MOVWF	PORTA
 	
+	CALL	T5mS
+	
 ;ADC ;----------------------------------
 ;	BSF		ADCON0,GO	; start ADC	
 ;	BTFSC	ADCON0,GO	; ADC --> done?
