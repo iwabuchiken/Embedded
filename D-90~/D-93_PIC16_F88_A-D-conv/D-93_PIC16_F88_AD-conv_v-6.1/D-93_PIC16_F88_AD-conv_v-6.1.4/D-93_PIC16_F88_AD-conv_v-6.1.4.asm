@@ -16,6 +16,8 @@
 	ADsaveL
 	ADsaveH
 	
+	sel7seg
+	
 	ENDC	
 ;}
 ;
@@ -116,6 +118,15 @@ INIT_3	; get values
 	BCF		STATUS,RP0
 	
 	MOVWF	ADsaveL
+	
+INIT_4	; digits
+	MOVLW	04h
+	MOVWF	sel7seg
+
+INIT_5	; counter
+	MOVLW	0h
+	MOVWF	CNT
+
 ;}
 ;
 
@@ -123,17 +134,68 @@ INIT_3	; get values
 ;{
 LOOP	
 	
-	MOVLW	01h
-	MOVWF	PORTB
+	MOVF	CNT,W
+	MOVWF	ADsaveL
+	MOVWF	ADsaveH
 	
+	CALL	chg7seg
+
 	CALL	T1S
 	
-	MOVLW	02h
-	MOVWF	PORTB
-	
-	CALL	T1S
+	INCF	CNT,F
 	
 	GOTO	LOOP
+;}
+;
+
+;====================================== chg7seg
+;{
+chg7seg
+	CLRF	PORTA		;全７セグ消灯
+
+	BCF	STATUS,C
+	RRF	sel7seg,F	;次の７セグへ
+
+	BTFSC	sel7seg,0	;７セグ＃１？
+	GOTO	chg7seg1	; Yes
+	BTFSC	sel7seg,1	;７セグ＃２？
+	GOTO	chg7seg2	; Yes
+
+	MOVLW	04h
+	MOVWF	sel7seg
+	GOTO	chg7seg3	;７セグ＃３
+	
+;}
+;
+
+;====================================== chg7seg1
+;{
+chg7seg1
+	MOVF	ADsaveL,W
+	ANDLW	0Fh		;ADRESLの下位４ビットの取り出し
+	CALL	bin2hex		;７セグ表示用１６進数に変換
+	MOVWF	PORTB
+	GOTO	chg7seg9
+chg7seg2
+	SWAPF	ADsaveL,W
+	ANDLW	0Fh		;ADRESLの上位４ビットの取り出し
+	CALL	bin2hex		;７セグ表示用１６進数に変換
+	MOVWF	PORTB
+	GOTO	chg7seg9
+chg7seg3
+	MOVF	ADsaveH,W	;ADRESHを
+	
+	;ANDLW	0Fh
+	
+	CALL	bin2hex		;７セグ表示用１６進数に変換
+	MOVWF	PORTB
+	GOTO	chg7seg9
+
+chg7seg9
+	MOVF	sel7seg,W
+	MOVWF	PORTA		;７セグ表示
+	RETURN
+
 ;}
 ;
 
@@ -201,7 +263,7 @@ T02mLP	NOP			; 何もせず１サイクル消費
 ;}
 ;
 
-; -----------------------------------------------------
+; ====================================== bin2hex
 ;{ バイナリ４ビットを７セグメントＬＥＤ表示用１６進数に変換
 bin2hex
 	ADDWF	PCL,f
