@@ -174,10 +174,10 @@ WAIT ;----------------------------------
 	CALL	T5mS
 	;CALL	T1S
 
-ADC ;----------------------------------
-	BSF		ADCON0,GO	; start ADC	
-	BTFSC	ADCON0,GO	; ADC --> done?
-	GOTO	ADC		; NO	
+;ADC ;----------------------------------
+;	BSF		ADCON0,GO	; start ADC	
+;	BTFSC	ADCON0,GO	; ADC --> done?
+;	GOTO	ADC		; NO	
 
 BACK_TO_LOOP ;----------------------------------
 	GOTO	LOOP
