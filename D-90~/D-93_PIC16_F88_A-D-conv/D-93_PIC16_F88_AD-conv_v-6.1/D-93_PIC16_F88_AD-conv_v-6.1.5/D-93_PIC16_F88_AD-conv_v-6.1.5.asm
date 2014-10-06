@@ -155,6 +155,7 @@ CHG ;----------------------------------
 	;CALL	chg7seg		; ADsaveL, upper 4 bits
 	
 	MOVLW	0Fh
+	CALL	bin2hex
 	MOVWF	PORTB
 	
 	MOVLW	01h
@@ -174,6 +175,13 @@ WAIT ;----------------------------------
 	CALL	T5mS
 	;CALL	T1S
 
+	MOVLW	06h
+	CALL	bin2hex
+	MOVWF	PORTB
+	
+	MOVLW	02h
+	MOVWF	PORTA
+	
 ;ADC ;----------------------------------
 ;	BSF		ADCON0,GO	; start ADC	
 ;	BTFSC	ADCON0,GO	; ADC --> done?
