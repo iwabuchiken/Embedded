@@ -186,14 +186,26 @@ WAIT ;----------------------------------
 ;	
 ;	CALL	T5mS
 ;	
-;;ADC ;----------------------------------
-;;CONVERT ;----------------------------------
-;	BSF		ADCON0,GO	; start ADC	
-;	
-;CONVERT ;----------------------------------	
-;	BTFSC	ADCON0,GO	; ADC --> done?
-;	GOTO	CONVERT		; NO	
-;	;GOTO	ADC		; NO	
+;ADC ;----------------------------------
+;CONVERT ;----------------------------------
+	BSF		ADCON0,GO	; start ADC	
+	
+CONVERT ;----------------------------------	
+	BTFSC	ADCON0,GO	; ADC --> done?
+	GOTO	CONVERT		; NO	
+	;GOTO	ADC		; NO	
+
+GET_VALUES ;----------------------------
+	MOVF	ADRESH,W
+	MOVWF	ADsaveH
+	
+	BSF		STATUS,RP0
+	
+	MOVF	ADRESL,W
+	
+	BCF		STATUS,RP0
+	
+	MOVWF	ADsaveL
 
 ;	;---------------------------------- PORTB
 ;	MOVLW	06h
