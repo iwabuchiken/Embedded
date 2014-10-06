@@ -152,15 +152,16 @@ LOOP
 ;	MOVWF	ADsaveL
 	
 CHG ;----------------------------------	
+	CALL	chg7seg		;
 	;CALL	chg7seg		; ADsaveL, upper 4 bits
 	
-	;---------------------------------- PORTB
-	MOVLW	0Fh
-	CALL	bin2hex
-	MOVWF	PORTB
-	
-	MOVLW	01h
-	MOVWF	PORTA
+;	;---------------------------------- PORTB
+;	MOVLW	0Fh
+;	CALL	bin2hex
+;	MOVWF	PORTB
+;	
+;	MOVLW	01h
+;	MOVWF	PORTA
 
 ;CHG ;----------------------------------	
 ;	CALL	chg7seg		; ADsaveL, upper 4 bits
@@ -185,24 +186,24 @@ WAIT ;----------------------------------
 ;	
 ;	CALL	T5mS
 ;	
-;ADC ;----------------------------------
-;CONVERT ;----------------------------------
-	BSF		ADCON0,GO	; start ADC	
-	
-CONVERT ;----------------------------------	
-	BTFSC	ADCON0,GO	; ADC --> done?
-	GOTO	CONVERT		; NO	
-	;GOTO	ADC		; NO	
+;;ADC ;----------------------------------
+;;CONVERT ;----------------------------------
+;	BSF		ADCON0,GO	; start ADC	
+;	
+;CONVERT ;----------------------------------	
+;	BTFSC	ADCON0,GO	; ADC --> done?
+;	GOTO	CONVERT		; NO	
+;	;GOTO	ADC		; NO	
 
-	;---------------------------------- PORTB
-	MOVLW	06h
-	CALL	bin2hex
-	MOVWF	PORTB
-	
-	MOVLW	02h
-	MOVWF	PORTA
-	
-	CALL	T5mS
+;	;---------------------------------- PORTB
+;	MOVLW	06h
+;	CALL	bin2hex
+;	MOVWF	PORTB
+;	
+;	MOVLW	02h
+;	MOVWF	PORTA
+;	
+;	CALL	T5mS
 
 BACK_TO_LOOP ;----------------------------------
 	GOTO	LOOP
