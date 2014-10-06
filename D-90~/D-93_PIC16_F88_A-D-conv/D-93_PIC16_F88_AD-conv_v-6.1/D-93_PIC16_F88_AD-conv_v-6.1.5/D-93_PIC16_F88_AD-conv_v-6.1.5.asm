@@ -186,8 +186,10 @@ WAIT ;----------------------------------
 ;	CALL	T5mS
 ;	
 ;ADC ;----------------------------------
-CONVERT ;----------------------------------
+;CONVERT ;----------------------------------
 	BSF		ADCON0,GO	; start ADC	
+	
+CONVERT ;----------------------------------	
 	BTFSC	ADCON0,GO	; ADC --> done?
 	GOTO	CONVERT		; NO	
 	;GOTO	ADC		; NO	
