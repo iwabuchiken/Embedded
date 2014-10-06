@@ -165,8 +165,8 @@ CHG ;----------------------------------
 ;	CALL	T5mS
 
 WAIT ;----------------------------------	
-	;CALL	T5mS
-	CALL	T1S
+	CALL	T5mS
+	;CALL	T1S
 	
 	GOTO	LOOP
 ;}
