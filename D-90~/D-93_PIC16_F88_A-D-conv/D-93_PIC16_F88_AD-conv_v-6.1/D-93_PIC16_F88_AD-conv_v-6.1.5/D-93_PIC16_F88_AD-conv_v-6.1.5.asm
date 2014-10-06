@@ -134,35 +134,39 @@ INIT_5	; counter
 ;{
 LOOP	
 	
-ADC ;----------------------------------
-	BSF		ADCON0,GO	; start ADC	
-	BTFSC	ADCON0,GO	; ADC --> done?
-	GOTO	ADC		; NO	
-
-GET_VALUES ;----------------------------
-	MOVF	ADRESH,W
-	MOVWF	ADsaveH
-	
-	BSF		STATUS,RP0
-	
-	MOVF	ADRESL,W
-	
-	BCF		STATUS,RP0
-	
-	MOVWF	ADsaveL
+;ADC ;----------------------------------
+;	BSF		ADCON0,GO	; start ADC	
+;	BTFSC	ADCON0,GO	; ADC --> done?
+;	GOTO	ADC		; NO	
+;
+;GET_VALUES ;----------------------------
+;	MOVF	ADRESH,W
+;	MOVWF	ADsaveH
+;	
+;	BSF		STATUS,RP0
+;	
+;	MOVF	ADRESL,W
+;	
+;	BCF		STATUS,RP0
+;	
+;	MOVWF	ADsaveL
 	
 CHG ;----------------------------------	
 	CALL	chg7seg		; ADsaveL, upper 4 bits
-	CALL	T5mS
 	
-	CALL	chg7seg		; ADsaveL, lower 4 bits
-	CALL	T5mS
-	
-	CALL	chg7seg		; ADsaveH
-	CALL	T5mS
+;CHG ;----------------------------------	
+;	CALL	chg7seg		; ADsaveL, upper 4 bits
+;	CALL	T5mS
+;	
+;	CALL	chg7seg		; ADsaveL, lower 4 bits
+;	CALL	T5mS
+;	
+;	CALL	chg7seg		; ADsaveH
+;	CALL	T5mS
 
 WAIT ;----------------------------------	
-	CALL	T5mS
+	;CALL	T5mS
+	CALL	T1S
 	
 	GOTO	LOOP
 ;}
@@ -196,12 +200,14 @@ chg7seg1
 	CALL	bin2hex		;７セグ表示用１６進数に変換
 	MOVWF	PORTB
 	GOTO	chg7seg9
+
 chg7seg2
 	SWAPF	ADsaveL,W
 	ANDLW	0Fh		;ADRESLの上位４ビットの取り出し
 	CALL	bin2hex		;７セグ表示用１６進数に変換
 	MOVWF	PORTB
 	GOTO	chg7seg9
+
 chg7seg3
 	MOVF	ADsaveH,W	;ADRESHを
 	
