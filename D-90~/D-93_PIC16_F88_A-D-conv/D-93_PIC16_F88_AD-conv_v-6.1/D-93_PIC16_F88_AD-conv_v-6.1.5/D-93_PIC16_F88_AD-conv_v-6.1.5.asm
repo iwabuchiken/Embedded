@@ -152,7 +152,13 @@ LOOP
 ;	MOVWF	ADsaveL
 	
 CHG ;----------------------------------	
-	CALL	chg7seg		; ADsaveL, upper 4 bits
+	;CALL	chg7seg		; ADsaveL, upper 4 bits
+	
+	MOVLW	0Fh
+	MOVWF	PORTB
+	
+	MOVLW	01h
+	MOVWF	PORTA
 
 ;CHG ;----------------------------------	
 ;	CALL	chg7seg		; ADsaveL, upper 4 bits
