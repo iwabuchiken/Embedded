@@ -98,6 +98,10 @@ main
 	
 main_1
 	
+	MOVLW	01h
+	
+	MOVWF	PORTB
+	
 	BTFSC	timer,f_t5mS
 	
 	CALL	LED_ON
@@ -110,9 +114,13 @@ main_1
 ;{
 LED_ON
 
-	MOVLW	PORTB
+	MOVLW	02h
 	
-	XORWF	MASK,PORTB
+	MOVWF	PORTB
+
+	;MOVLW	PORTB
+	
+	;XORWF	MASK,PORTB
 
 	BCF		timer,f_t5mS
 	
