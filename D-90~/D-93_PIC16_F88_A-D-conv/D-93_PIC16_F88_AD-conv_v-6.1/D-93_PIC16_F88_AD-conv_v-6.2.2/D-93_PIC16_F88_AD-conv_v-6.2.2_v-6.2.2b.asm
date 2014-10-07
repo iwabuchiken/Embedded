@@ -132,8 +132,8 @@ LED_ON
 ;{
 intr
 
-	;BCF		INTCON,GIE		; forbid global interrupt
-	;BCF		INTCON,TMR0IE	; forbid timer interrupt
+	BCF		INTCON,GIE		; forbid global interrupt
+	BCF		INTCON,TMR0IE	; forbid timer interrupt
 	
 	BCF		INTCON,TMR0IF	; clear flag
 
@@ -150,8 +150,8 @@ intr_1
 
 intr9
 	;------------------- reset
-	;BSF		INTCON,TMR0IE	; permit timer interrupt
-	;BSF		INTCON,GIE		; permit global interrupt
+	BSF		INTCON,TMR0IE	; permit timer interrupt
+	BSF		INTCON,GIE		; permit global interrupt
 	
 
 	RETURN
