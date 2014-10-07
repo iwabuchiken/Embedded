@@ -48,8 +48,8 @@ INIT
 	CLRF	TRISA		; output
 
 	;------------------ RB0 => ON, RA => OFF
-	MOVLW	01h
-	MOVWF	PORTB
+	;MOVLW	01h
+	;MOVWF	PORTB
 
 	;MOVLW	00h
 	;MOVWF	PORTA
