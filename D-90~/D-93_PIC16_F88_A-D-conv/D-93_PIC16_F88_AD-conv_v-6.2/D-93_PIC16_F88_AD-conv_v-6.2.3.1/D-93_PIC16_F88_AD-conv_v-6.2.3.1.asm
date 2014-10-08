@@ -68,8 +68,8 @@ INIT
 	;MOVLW	03h
 	;MOVWF	MASK
 	
-;	MOVLW	d'98'
-;	MOVWF	CNT5mS
+	MOVLW	d'98'
+	MOVWF	CNT5mS
 ;
 ;	BCF		timer,f_t5mS
 	
