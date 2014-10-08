@@ -87,20 +87,24 @@ INIT
 ;
 ; ====================================== LOOP
 ;{
+	MOVLW	00h
+	
+	MOVWF	PORTB
+
 LOOP	
 
 main
 	
 main_1
 	
-	MOVLW	02h
-	
-	MOVWF	PORTB
-	
-	;BTFSC	timer,f_t5mS
-	
-	CALL	LED_2_ON
-	
+;	MOVLW	02h
+;	
+;	MOVWF	PORTB
+;	
+;	;BTFSC	timer,f_t5mS
+;	
+;	CALL	LED_2_ON
+;	
 	GOTO	LOOP
 ;}
 ;
@@ -141,6 +145,15 @@ intr
 	
 	MOVLW	d'200'
 	CALL	TX5mS
+
+	MOVLW	02h
+	MOVWF	PORTB
+
+	MOVLW	d'100'
+	CALL	TX5mS
+
+	MOVLW	00h
+	MOVWF	PORTB
 
 	CLRF	TMR0
 
