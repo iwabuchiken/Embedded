@@ -97,9 +97,12 @@ main
 	
 main_1
 	
-;	MOVLW	02h
-;	
-;	MOVWF	PORTB
+	MOVLW	03h
+	
+	MOVWF	PORTB
+	
+	MOVLW	d'40'		; 40 x 5 ms = 200 ms
+	CALL	TX5mS
 ;	
 ;	;BTFSC	timer,f_t5mS
 ;	
