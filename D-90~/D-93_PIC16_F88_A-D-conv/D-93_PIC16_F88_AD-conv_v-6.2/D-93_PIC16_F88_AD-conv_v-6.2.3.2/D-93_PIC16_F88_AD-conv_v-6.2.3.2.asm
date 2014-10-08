@@ -62,7 +62,7 @@ INIT
 	BCF		STATUS,RP0
 	
 	;------------------ vars
-	MOVLW	01h
+	MOVLW	0h
 	MOVWF	PORTB
 	
 	;MOVLW	03h
