@@ -108,6 +108,9 @@ LED_ON
 	
 	MOVWF	PORTB
 
+	; reset TMR0
+	CLRF	TMR0
+
 	BCF		timer,f_t5mS
 	
 	RETURN
