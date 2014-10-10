@@ -61,6 +61,9 @@ INIT
 	MOVLW	d'98'
 	MOVWF	CNT5mS
 	
+	; timer
+	BCF		timer,f_t5mS
+	
 	;------------------ interrupt
 	CLRF	TMR0
 
@@ -109,7 +112,7 @@ LED_ON
 	MOVWF	PORTB
 
 	; reset TMR0
-	CLRF	TMR0
+	;CLRF	TMR0
 
 	BCF		timer,f_t5mS
 	
