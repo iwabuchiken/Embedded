@@ -89,7 +89,7 @@ LOOP
 ;}
 ;
 
-; ====================================== LED_2_ON
+; ====================================== LED_ON
 ;{
 LED_ON
 
@@ -97,15 +97,16 @@ LED_ON
 	
 	MOVWF	PORTB
 
+	; wait => 
+	MOVLW	d'5'	; 5 * 0.2ms = 1.0ms
+	
+	;CALL	TX5mS
+	CALL	TX02mS
+	;XORWF	MASK,PORTB
+
 	MOVLW	00h
 	
 	MOVWF	PORTB
-
-;	MOVLW	d'100'
-;	
-;	CALL	TX5mS
-	
-	;XORWF	MASK,PORTB
 
 	BCF		timer,f_t5mS
 	
@@ -211,5 +212,20 @@ T02mLP
 
 ;}
 ;
+
+;
+; ====================================== TX02mS
+;{TX02mS
+TX02mS
+
+	MOVWF	C5mS		; 
+
+	CALL	T5mLP
+
+	RETURN			; このサブルーチン呼出し元に戻る
+
+;}
+;
+
 
 	END
