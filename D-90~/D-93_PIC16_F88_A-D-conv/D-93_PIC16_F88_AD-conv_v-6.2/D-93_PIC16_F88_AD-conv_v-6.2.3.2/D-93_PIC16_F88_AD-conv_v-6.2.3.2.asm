@@ -45,33 +45,21 @@ INIT
 	CLRF	TRISB		; output
 	CLRF	TRISA		; output
 
-	;------------------ RB0 => ON, RA => OFF
-	;MOVLW	01h
-	;MOVWF	PORTB
-
-	;MOVLW	00h
-	;MOVWF	PORTA
-	
 	;------------------ OPTION_REG
 	MOVLW	88h
 	MOVWF	OPTION_REG
-	;MOVLW	88h
-	;MOVWF	OPTION_REG
 	
 	;------------------ switch bank
 	BCF		STATUS,RP0
 	
-	;------------------ vars
+	;------------------ PORTA,B
 	MOVLW	0h
 	MOVWF	PORTB
 	
-	;MOVLW	03h
-	;MOVWF	MASK
-	
+	;------------------ vars
+		
 	MOVLW	d'98'
 	MOVWF	CNT5mS
-;
-;	BCF		timer,f_t5mS
 	
 	;------------------ interrupt
 	CLRF	TMR0
@@ -82,12 +70,9 @@ INIT
 	BSF		INTCON,GIE		; all interrupt => permitted
 							;	--> except masked ones
 							; |= 0x80
-	
-	;BCF		INTCON,TMR0IF	; clear the interrupt flag of TMR0
-	
-
 ;}
 ;
+
 ; ====================================== LOOP
 ;{
 	MOVLW	00h
@@ -96,42 +81,33 @@ INIT
 
 LOOP	
 
-main
+	BTFSC	timer,f_t5mS
 	
-main_1
+	CALL	LED_ON
 	
-	;MOVLW	03h
-	MOVLW	00h
-	
-	MOVWF	PORTB
-	
-;	MOVLW	d'40'		; 40 x 5 ms = 200 ms
-;	CALL	TX5mS
-;	
-;	;BTFSC	timer,f_t5mS
-;	
-;	CALL	LED_2_ON
-;	
 	GOTO	LOOP
 ;}
 ;
 
 ; ====================================== LED_2_ON
 ;{
-LED_2_ON
+LED_ON
 
-	MOVLW	02h
+	MOVLW	01h
 	
 	MOVWF	PORTB
 
-	MOVLW	d'100'
-	;MOVLW	PORTB
+	MOVLW	00h
 	
-	CALL	TX5mS
+	MOVWF	PORTB
+
+;	MOVLW	d'100'
+;	
+;	CALL	TX5mS
 	
 	;XORWF	MASK,PORTB
 
-	;BCF		timer,f_t5mS
+	BCF		timer,f_t5mS
 	
 	RETURN
 ;}
@@ -152,21 +128,21 @@ intr
 	MOVLW	d'98'
 	MOVWF	CNT5mS
 	BSF	timer,f_t5mS	;5mS経過フラグセット
-	
-	MOVLW	01h
-	MOVWF	PORTB
-	
-	MOVLW	d'200'
-	CALL	TX5mS
-
-	MOVLW	02h
-	MOVWF	PORTB
-
-	MOVLW	d'100'
-	CALL	TX5mS
-
-	MOVLW	00h
-	MOVWF	PORTB
+;	
+;	MOVLW	01h
+;	MOVWF	PORTB
+;	
+;	MOVLW	d'200'
+;	CALL	TX5mS
+;
+;	MOVLW	02h
+;	MOVWF	PORTB
+;
+;	MOVLW	d'100'
+;	CALL	TX5mS
+;
+;	MOVLW	00h
+;	MOVWF	PORTB
 
 	CLRF	TMR0
 
