@@ -129,13 +129,16 @@ intr
 	
 	BCF		INTCON,TMR0IF	; clear flag
 
+	MOVLW	0h
+	MOVWF	PORTB	
+
 	DECFSZ	CNT5mS,F	;5mS経過？
 	GOTO	intr9		; No
 	
 	MOVLW	d'98'
 	MOVWF	CNT5mS
 	BSF	timer,f_t5mS	;5mS経過フラグセット
-;	
+
 ;	MOVLW	01h
 ;	MOVWF	PORTB
 ;	
