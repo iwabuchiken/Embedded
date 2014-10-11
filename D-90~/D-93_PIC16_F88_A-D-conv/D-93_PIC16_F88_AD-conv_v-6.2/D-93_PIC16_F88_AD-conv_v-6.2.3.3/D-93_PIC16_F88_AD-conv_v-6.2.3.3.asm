@@ -110,8 +110,8 @@ LED_ON
 	
 	MOVWF	PORTB
 
-	BCF		INTCON,TMR0IE	; permit timer interrupt
-	BCF		INTCON,GIE		; permit global interrupt
+	;BCF		INTCON,TMR0IE	; permit timer interrupt
+	;BCF		INTCON,GIE		; permit global interrupt
 
 	; wait => 
 	MOVLW	d'5'	; 5 * 0.2ms = 1.0ms
@@ -124,11 +124,11 @@ LED_ON
 	
 	MOVWF	PORTB
 
-	BSF		INTCON,TMR0IE	; permit timer interrupt
-	BSF		INTCON,GIE		; permit global interrupt
+	;BSF		INTCON,TMR0IE	; permit timer interrupt
+	;BSF		INTCON,GIE		; permit global interrupt
 
 	; reset TMR0
-	;CLRF	TMR0
+	CLRF	TMR0
 
 	BCF		timer,f_t5mS
 	
