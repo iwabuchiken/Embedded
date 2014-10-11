@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+INIT	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	43;"	l	line:43
+LED_ON	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	107;"	l	line:107
+LOOP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	95;"	l	line:95
+T02mLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	226;"	l	line:226
+T02mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	223;"	l	line:223
+T1SLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	204;"	l	line:204
+T5mLP	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	215;"	l	line:215
+T5mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	212;"	l	line:212
+TX02mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	238;"	l	line:238
+TX5mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	201;"	l	line:201
+bin2hex	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	284;"	l	line:284
+chg7seg1	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	251;"	l	line:251
+chg7seg2	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	258;"	l	line:258
+chg7seg3	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	265;"	l	line:265
+chg7seg9	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	274;"	l	line:274
+f_t50u	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	27;"	q	line:27
+f_t5mS	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	28;"	q	line:28
+intr	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	135;"	l	line:135
+intr9	C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm	169;"	l	line:169
