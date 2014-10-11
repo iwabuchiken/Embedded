@@ -74,6 +74,14 @@ INIT
 	; timer
 	BCF		timer,f_t5mS
 	
+	;ADsaveL
+	MOVLW	0FAh
+	MOVWF	ADsaveL
+	
+	;ADsaveH
+	MOVLW	0Ch
+	MOVWF	ADsaveH
+	
 	;------------------ interrupt
 	CLRF	TMR0
 
@@ -96,7 +104,8 @@ LOOP
 
 	BTFSC	timer,f_t5mS
 	
-	CALL	LED_ON
+	;CALL	LED_ON
+	CALL	chg7seg
 	
 	GOTO	LOOP
 ;}
@@ -249,6 +258,25 @@ TX02mS
 
 	RETURN			; このサブルーチン呼出し元に戻る
 
+;}
+;
+
+;====================================== chg7seg
+;{
+chg7seg
+	CLRF	PORTA		;全７セグ消灯
+
+	BCF		STATUS,C
+	RRF		sel7seg,F	;次の７セグへ
+
+	BTFSC	sel7seg,0	;７セグ＃１？
+	GOTO	chg7seg1	; Yes
+	BTFSC	sel7seg,1	;７セグ＃２？
+	GOTO	chg7seg2	; Yes
+
+	MOVLW	04h
+	MOVWF	sel7seg
+	GOTO	chg7seg3	;７セグ＃３
 ;}
 ;
 

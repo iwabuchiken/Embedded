@@ -1,12 +1,12 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Sat Oct 11 20:43:23 2014
+Linker Map File - Created Sat Oct 11 21:07:22 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                   .org_1       code   0x000004    program   0x0000d6
+                   .org_1       code   0x000004    program   0x0000f2
 .config_2007_D-93_PIC16_F88_AD-CONV_V-6.2.3.3       code   0x002007    program   0x000002
 .config_2008_D-93_PIC16_F88_AD-CONV_V-6.2.3.3       code   0x002008    program   0x000002
 
@@ -16,9 +16,9 @@ Linker Map File - Created Sat Oct 11 20:43:23 2014
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x00006e      
+                            0x000004    0x00007c      
                             0x002007    0x002008      
-            112 out of 4359 program addresses used, program memory utilization is 2%
+            126 out of 4359 program addresses used, program memory utilization is 2%
 
 
 
@@ -26,22 +26,23 @@ Linker Map File - Created Sat Oct 11 20:43:23 2014
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                      INIT   0x000006    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   LED_ON   0x00001c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     LOOP   0x000019    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   T02mLP   0x000044    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T02mS   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T1SLP   0x000038    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T5mLP   0x00003e    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     T5mS   0x00003c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   TX02mS   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    TX5mS   0x000037    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                  bin2hex   0x00005d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg1   0x00004b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg2   0x000050    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg3   0x000055    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg9   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     intr   0x000029    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    intr9   0x000034    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   LED_ON   0x000020    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     LOOP   0x00001d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   T02mLP   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T02mS   0x000046    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T1SLP   0x00003c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T5mLP   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     T5mS   0x000040    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   TX02mS   0x00004c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    TX5mS   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                  bin2hex   0x00006b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                  chg7seg   0x00004f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg1   0x000059    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg2   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg3   0x000063    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg9   0x000068    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     intr   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    intr9   0x000038    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
 
 
 
@@ -49,21 +50,22 @@ Linker Map File - Created Sat Oct 11 20:43:23 2014
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                      INIT   0x000006    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     LOOP   0x000019    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   LED_ON   0x00001c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     intr   0x000029    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    intr9   0x000034    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    TX5mS   0x000037    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T1SLP   0x000038    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                     T5mS   0x00003c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T5mLP   0x00003e    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                    T02mS   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   T02mLP   0x000044    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                   TX02mS   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg1   0x00004b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg2   0x000050    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg3   0x000055    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                 chg7seg9   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
-                  bin2hex   0x00005d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     LOOP   0x00001d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   LED_ON   0x000020    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     intr   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    intr9   0x000038    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    TX5mS   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T1SLP   0x00003c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                     T5mS   0x000040    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T5mLP   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                    T02mS   0x000046    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   T02mLP   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                   TX02mS   0x00004c    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                  chg7seg   0x00004f    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg1   0x000059    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg2   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg3   0x000063    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                 chg7seg9   0x000068    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
+                  bin2hex   0x00006b    program     static C:\WORKS\WS\Embedded\D-90~\D-93_PIC16_F88_A-D-conv\D-93_PIC16_F88_AD-conv_v-6.2\D-93_PIC16_F88_AD-conv_v-6.2.3.3\D-93_PIC16_F88_AD-conv_v-6.2.3.3.asm
 
 
