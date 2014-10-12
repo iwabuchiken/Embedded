@@ -37,6 +37,7 @@ f_t5mS	EQU	1	;timer bit1:5mSフラグ
 	
 	RETFIE
 
+
 ; ====================================== INIT
 ;INIT
 ;{
@@ -77,22 +78,22 @@ INIT
 	; start ADC
 	BSF		ADCON0,GO
 	
-ADC
-	
-	BTFSC	ADCON0,GO	; ADC --> done?
-	GOTO	ADC			; NO
-
-	; get values
-	MOVF	ADRESH,W
-	MOVWF	ADsaveH
-	
-	BSF		STATUS,RP0
-	
-	MOVF	ADRESL,W
-	
-	BCF		STATUS,RP0
-	
-	MOVWF	ADsaveL
+;ADC
+;	
+;	BTFSC	ADCON0,GO	; ADC --> done?
+;	GOTO	ADC			; NO
+;
+;	; get values
+;	MOVF	ADRESH,W
+;	MOVWF	ADsaveH
+;	
+;	BSF		STATUS,RP0
+;	
+;	MOVF	ADRESL,W
+;	
+;	BCF		STATUS,RP0
+;	
+;	MOVWF	ADsaveL
 	
 	;------------------ PORTA,B
 	MOVLW	0h
@@ -121,20 +122,59 @@ ADC
 ;}
 ;
 
+; ====================================== main
+;{
+main
+	
+	MOVLW	d'0'
+	MOVWF	TMR0
+	
+	BCF		timer,f_t50u
+;}
+;
+
 ; ====================================== LOOP
 ;{
-	MOVLW	00h
+	;MOVLW	00h
 	
-	MOVWF	PORTB
+	;MOVWF	PORTB
 
-LOOP	
+LOOP
+
+LOOP_1	
+
+	BTFSS	timer,f_t50u	; 51,2us => passed?
+	GOTO	LOOP_9			; no
+	
+	BCF		timer,f_t50u
+
+	BSF		ADCON0,GO
+	
+ADC
+	
+	BTFSC	ADCON0,GO	; ADC --> done?
+	GOTO	ADC			; NO
+
+	; get values
+	MOVF	ADRESH,W
+	MOVWF	ADsaveH
+	
+	BSF		STATUS,RP0
+	
+	MOVF	ADRESL,W
+	
+	BCF		STATUS,RP0
+	
+	MOVWF	ADsaveL
+
+LOOP_9
 
 	BTFSC	timer,f_t5mS
 	
 	;CALL	LED_ON
 	CALL	chg7seg
 	
-	GOTO	LOOP
+	GOTO	LOOP_1
 ;}
 ;
 
@@ -181,32 +221,20 @@ intr
 	
 	BCF		INTCON,TMR0IF	; clear flag
 
-	MOVLW	0h
-	MOVWF	PORTB	
+	;MOVLW	0h
+	;MOVWF	PORTB	
+
+	; 51,2us	=> set
+	BSF		timer,f_t50u
 
 	DECFSZ	CNT5mS,F	;5mS経過？
 	GOTO	intr9		; No
 	
 	MOVLW	d'98'
 	MOVWF	CNT5mS
-	BSF	timer,f_t5mS	;5mS経過フラグセット
+	BSF		timer,f_t5mS	;5mS経過フラグセット
 
-;	MOVLW	01h
-;	MOVWF	PORTB
-;	
-;	MOVLW	d'200'
-;	CALL	TX5mS
-;
-;	MOVLW	02h
-;	MOVWF	PORTB
-;
-;	MOVLW	d'100'
-;	CALL	TX5mS
-;
-;	MOVLW	00h
-;	MOVWF	PORTB
-
-	CLRF	TMR0
+	;CLRF	TMR0
 
 intr9
 	BSF		INTCON,TMR0IE	; permit timer interrupt
