@@ -1,7 +1,7 @@
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 111 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 113 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 114 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 116 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 132 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 134 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 157 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 133 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 135 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 136 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 138 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 154 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 156 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-94_ADC_TEMP\D-94_ADC_TEMP_1.X\D-94_ADC_TEMP_1.1\D-94_ADC_TEMP_1.1.ASM 181 : Register in operand not in bank 0.  Ensure that bank bits are correct.

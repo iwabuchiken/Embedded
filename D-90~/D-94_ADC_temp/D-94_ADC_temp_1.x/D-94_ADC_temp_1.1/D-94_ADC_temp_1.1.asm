@@ -1,3 +1,7 @@
+;REF http://homepage3.nifty.com/mitt/pic/pic88_4_1.html
+;======================= SETUP
+;
+;{
 ; ========================== ここから ==============================
 ;	PIC16F88
 ;	clock:INTRC 8MHz
@@ -20,8 +24,14 @@
 	#INCLUDE  P16F88.INC
 
 	__CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF & _MCLR_OFF & _BODEN_ON & _PWRTE_ON & _INTRC_IO & _LVP_OFF & _CPD_OFF & _DEBUG_OFF
+	__CONFIG _CONFIG2, _FCMEN_OFF & _IESO_OFF
 
+;}
+;
 
+;======================= CBLOCK
+;
+;{
 	CBLOCK	020h
 	timer		;bit0:50μS ,1:5mS ,2:1S
 	CNT5mS		;5mSカウンタ＝96（50uS×100＝5mS）
@@ -47,14 +57,23 @@
 	save_st		;STATUSのセーブ
 	save_w		;W-regのセーブ
 	ENDC
+;}
+;
 
+;======================= CONSTANTS
+;
+;{
 f_t50u	EQU	0	;timer bit0:50μSフラグ
 f_t5mS	EQU	1	;timer bit1:5mSフラグ
 f_t1S	EQU	2	;timer bit2:1Sフラグ
-
+;}
+;
 	ORG	0		;リセットの入口
 	GOTO	init
 ; -----------------------------------------------------
+;======================= INTERRUPTS
+;
+;{
 ; TMR0割り込み処理
 ;	clock	8MHz
 ;	TMR0	d'255'-d'100'+d'7'
@@ -93,10 +112,13 @@ intr9
 	SWAPF	save_w,F
 	SWAPF	save_w,W	;W-regロード
 	RETFIE			;割込み許可リターン
+;}
+;
 
 ; -----------------------------------------------------
+;======================= INIT
 ; 初期処理
-
+;{
 init
 	CLRF	timer
 	MOVLW	d'96'
@@ -133,11 +155,13 @@ init
 	MOVLW	10h
 	MOVWF	ANSEL		;AN4使用
 	BCF	STATUS,RP0	;■バンク０に切替え
-
+;}
+;
 
 ; -----------------------------------------------------
+;======================= MAIN
 ; メイン処理
-
+;{
 main
 	MOVLW	d'255'-d'100'+d'7'	;カウント値ロード
 	MOVWF	TMR0		;TMR0へ出力(0.5μS*1*100=50μS)
@@ -158,7 +182,8 @@ main2
 	BCF	STATUS,RP0	;■バンク０に切替え
 	MOVWF	ADsaveL1
 
-	CALL	ADave		;AD変換結果の平均化
+	;CALL	ADave		;AD変換結果の平均化
+	CALL	ADave_simple
 
 main5
 	BTFSS	timer,f_t5mS	;5mS経過？(7セグ切り替え）
@@ -166,9 +191,27 @@ main5
 	CALL	chg7seg		; Yes
 	BCF	timer,f_t5mS	;5mS経過フラグクリア(7セグ切り替え）
 	GOTO	main1
+;}
+;
+
+;======================= ADave_simple
+;
+;{
+ADave_simple
+
+	MOVF	ADsaveH1,W
+	MOVWF	ADsaveH
+	
+	MOVF	ADsaveL1,W
+	MOVWF	ADsaveL
+	
+;}
+;
 
 ; -----------------------------------------------------
+;======================= ADave
 ; ＡＤ変換結果の平均化
+;{
 ADave
 	MOVF	ADsaveH1,W
 	ADDWF	ADsaveH2,F
@@ -236,14 +279,18 @@ ADave
 
 ADave9
 	RETURN
+;}
+;
 
 ; -----------------------------------------------------
+;======================= chg7seg
 ; ７セグメントＬＥＤ表示切り替え
+;{
 chg7seg
 	CLRF	PORTA		;全７セグ消灯
 
-	BCF	STATUS,C
-	RRF	sel7seg,F	;次の７セグへ
+	BCF		STATUS,C
+	RRF		sel7seg,F	;次の７セグへ
 
 	BTFSC	sel7seg,0	;７セグ＃１？
 	GOTO	chg7seg1	; Yes
@@ -277,9 +324,13 @@ chg7seg9
 	MOVF	sel7seg,W
 	XORWF	PORTA,F		;７セグ表示
 	RETURN
+;}
+;
 
 ; -----------------------------------------------------
+;======================= bin2hex
 ; バイナリ４ビットを７セグメントＬＥＤ表示用１６進数に変換
+;{
 bin2hex
 	ADDWF	PCL,f
 
@@ -305,6 +356,9 @@ bin2hex
 	RETLW	08Eh	;F
 	
 	RETLW	06Eh	;10h
-	
+
+;}
+;
+
 	END
 ; =========================== ここまで ===============================
