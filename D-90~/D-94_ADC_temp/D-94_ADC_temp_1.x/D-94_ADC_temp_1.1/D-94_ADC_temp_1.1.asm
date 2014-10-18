@@ -283,22 +283,28 @@ chg7seg9
 bin2hex
 	ADDWF	PCL,f
 
-	RETLW	03Fh	;0
-	RETLW	006h	;1
-	RETLW	05Bh	;2
-	RETLW	04Fh	;3
+	RETLW	0FCh	;0
+	RETLW	060h	;1
+	RETLW	0DAh	;2
+	
+	RETLW	0F2h	;3
 	RETLW	066h	;4
-	RETLW	06Dh	;5
-	RETLW	07Dh	;6
-	RETLW	007h	;7
-	RETLW	07Fh	;8
-	RETLW	06Fh	;9
-	RETLW	077h	;A
-	RETLW	07Ch	;b
-	RETLW	039h	;C
-	RETLW	05Eh	;d
-	RETLW	079h	;E
-	RETLW	071h	;F
-
+	RETLW	0B6h	;5
+	
+	RETLW	0BEh	;6
+	RETLW	0E4h	;7
+	RETLW	0FEh	;8
+	RETLW	0F6h	;9
+	
+	RETLW	0EEh	;A
+	RETLW	03Eh	;b
+	RETLW	09Ch	;C
+	
+	RETLW	07Ah	;d
+	RETLW	09Eh	;E
+	RETLW	08Eh	;F
+	
+	RETLW	06Eh	;10h
+	
 	END
 ; =========================== ‚±‚±‚Ü‚Å ===============================
