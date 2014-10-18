@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+ADave	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	387;"	l	line:387
+RBint	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	131;"	l	line:131
+RBint9	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	136;"	l	line:136
+bcd2led	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	272;"	l	line:272
+bin2BCD	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	299;"	l	line:299
+bin2BCD2	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	338;"	l	line:338
+bin2BCD3	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	324;"	l	line:324
+chg7seg	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	226;"	l	line:226
+chg7seg1	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	242;"	l	line:242
+chg7seg2	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	248;"	l	line:248
+chg7seg3	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	252;"	l	line:252
+chg7seg9	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	257;"	l	line:257
+chg7segX	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	262;"	l	line:262
+f_t05mS	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	67;"	q	line:67
+f_t1S	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	70;"	q	line:70
+f_t3mS	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	68;"	q	line:68
+f_t50u	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	66;"	q	line:66
+f_t5S	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	71;"	q	line:71
+f_t5mS	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	69;"	q	line:69
+goto_bed	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	358;"	l	line:358
+init	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	149;"	l	line:149
+intr	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	83;"	l	line:83
+intr5	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	103;"	l	line:103
+intr6	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	109;"	l	line:109
+intr9	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	139;"	l	line:139
+main	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	200;"	l	line:200
+main1	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	208;"	l	line:208
+main7	C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.0\D-94_ADC_temp_2.0.asm	214;"	l	line:214
