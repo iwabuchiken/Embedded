@@ -293,9 +293,9 @@ chg7seg1
 	GOTO	chg7seg9
 
 chg7seg2
-	;BSF	PORTA,7		;小数点を表示
+	BSF	PORTA,7		;小数点を表示
 	;edit
-	BSF		PORTB,0		; period
+	;BSF		PORTB,0		; period
 	
 	MOVF	BCD2,W
 	GOTO	chg7seg9
@@ -322,26 +322,23 @@ chg7segX
 bcd2led
 	ADDWF	PCL,F
 
-	RETLW	0FCh	;0
-	RETLW	060h	;1
-	RETLW	0DAh	;2
-	
-	RETLW	0F2h	;3
+	RETLW	03Fh	;0
+	RETLW	006h	;1
+	RETLW	05Bh	;2
+	RETLW	04Fh	;3
 	RETLW	066h	;4
-	RETLW	0B6h	;5
+	RETLW	06Dh	;5
+	RETLW	07Dh	;6
+	RETLW	007h	;7
+	RETLW	07Fh	;8
+	RETLW	06Fh	;9
+	RETLW	040h	;a
+	RETLW	040h	;b
+	RETLW	040h	;c
+	RETLW	040h	;d
+	RETLW	040h	;e
+	RETLW	040h	;f
 	
-	RETLW	0BEh	;6
-	RETLW	0E4h	;7
-	RETLW	0FEh	;8
-	RETLW	0F6h	;9
-
-	RETLW	02h	;a	=> 7seg.G --> on
-	RETLW	02h	;b
-	RETLW	02h	;c
-	RETLW	02h	;d
-	RETLW	02h	;e
-	RETLW	02h	;f
-
 ;}
 ;
 
