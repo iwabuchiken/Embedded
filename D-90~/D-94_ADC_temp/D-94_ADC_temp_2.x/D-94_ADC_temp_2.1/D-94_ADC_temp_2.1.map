@@ -1,0 +1,88 @@
+MPLINK 4.42, Linker
+Linker Map File - Created Sun Oct 19 15:41:21 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x000210
+.config_2007_D-94_ADC_TEMP_2.1.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x00010b      
+                            0x002007    0x002007      
+            268 out of 4359 program addresses used, program memory utilization is 6%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    ADave   0x0000de    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    RBint   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                   RBint9   0x00002c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  bcd2led   0x000099    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  bin2BCD   0x0000aa    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 bin2BCD2   0x0000c7    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 bin2BCD3   0x0000bc    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  chg7seg   0x000081    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg1   0x00008c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg2   0x00008e    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg3   0x000091    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg9   0x000094    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7segX   0x000098    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 goto_bed   0x0000cf    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                     init   0x000032    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                     intr   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr5   0x000013    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr6   0x000018    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr9   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                     main   0x000059    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main1   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main2   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main4   0x00006a    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main5   0x00006c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                   main51   0x000070    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main6   0x000072    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main7   0x00007c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     intr   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr5   0x000013    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr6   0x000018    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    RBint   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                   RBint9   0x00002c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    intr9   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                     init   0x000032    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                     main   0x000059    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main1   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main2   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main4   0x00006a    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main5   0x00006c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                   main51   0x000070    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main6   0x000072    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    main7   0x00007c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  chg7seg   0x000081    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg1   0x00008c    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg2   0x00008e    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg3   0x000091    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7seg9   0x000094    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 chg7segX   0x000098    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  bcd2led   0x000099    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                  bin2BCD   0x0000aa    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 bin2BCD3   0x0000bc    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 bin2BCD2   0x0000c7    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                 goto_bed   0x0000cf    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+                    ADave   0x0000de    program     static C:\WORKS\WS\Embedded\D-90~\D-94_ADC_temp\D-94_ADC_temp_2.x\D-94_ADC_temp_2.1\D-94_ADC_temp_2.1.asm
+
+
