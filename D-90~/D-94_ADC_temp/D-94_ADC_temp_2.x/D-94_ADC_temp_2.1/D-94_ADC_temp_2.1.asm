@@ -472,6 +472,14 @@ ADave
 	BCF	STATUS,C
 	RRF	ADsaveH5,F
 	RRF	ADsaveL5,F
+	
+	;---------- edit: add 1 sec dispatch
+	BTFSS	timer,f_t1S
+	GOTO	ADave9
+	BCF	timer,f_t1S
+	;----------
+
+ADave8	; Put the average into ADsaveH,L
 
 	MOVF	ADsaveH5,W
 	ADDWF	ADsaveH,F
@@ -482,6 +490,8 @@ ADave
 	BCF	STATUS,C
 	RRF	ADsaveH,F
 	RRF	ADsaveL,F
+
+ADave9
 
 	RETURN
 
