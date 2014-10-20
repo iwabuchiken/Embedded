@@ -12,6 +12,19 @@
 	
 	ENDC
 
+;=========================== memory
+;{
+;memory
+
+	; EEPROM Data
+	org		0x2100
+	de		"Timer Program"
+	de		0x00, D'34', 'Z'
+;
+;}
+;
+
+
 	ORG	0		;ƒŠƒZƒbƒg‚Ì“üŒû
 	GOTO	init
 
@@ -51,13 +64,13 @@ init
 
 ;=========================== memory
 ;{
-memory
-
-	; EEPROM Data
-	org	0x2100
-	de	"Timer Program"
-	de	0x00, D'34', 'Z'
-
+;memory
+;
+;	; EEPROM Data
+;	org	0x2100
+;	de	"Timer Program"
+;	de	0x00, D'34', 'Z'
+;
 ;}
 ;
 
