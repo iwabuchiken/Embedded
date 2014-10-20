@@ -137,13 +137,20 @@ DISPLAY
 GET_MEMORY
 
 	MOVLW	0h
+	
+	;BANKSEL	PORTA
+	
+	BANKSEL	EEADR
+	;BANKSEL	PO
+	
 	MOVWF	EEADR
 	
 	bsf		STATUS,RP0	; レジスタバンク１を選択
 	bsf		EECON1, RD	; EEPROM データを読みとる
 	bcf		STATUS, RP0	; レジスタバンク０を選択
 	
-	movf	EEDATA, 0	; EEPROM データ → W レジスタ
+	;movf	EEDATA, 0	; EEPROM データ → W レジスタ
+	movf	EEDATA,W
 	
 	MOVWF	char		; W -> char
 
