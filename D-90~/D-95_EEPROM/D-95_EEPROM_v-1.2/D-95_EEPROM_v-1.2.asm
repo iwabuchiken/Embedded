@@ -34,9 +34,9 @@ init
 						
 	movwf	TRISA
 	
-;	; ADC
-;	MOVLW	0h
-;	MOVWF	ANSEL
+	; ADC
+	MOVLW	0h
+	MOVWF	ANSEL
 	
 	bcf	STATUS,RP0	; bank 0
 ;}
