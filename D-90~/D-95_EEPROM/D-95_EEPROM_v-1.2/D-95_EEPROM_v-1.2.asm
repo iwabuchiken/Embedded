@@ -34,6 +34,10 @@ init
 						
 	movwf	TRISA
 	
+;	; ADC
+;	MOVLW	0h
+;	MOVWF	ANSEL
+	
 	bcf	STATUS,RP0	; bank 0
 ;}
 ;
@@ -143,8 +147,8 @@ chg7seg9
 	CALL	bcd2led		;７セグ表示用１０進数に変換
 	MOVWF	PORTB
 	MOVF	sel7seg,W
-	;IORWF	PORTA,F		;７セグ表示
-	MOVWF	PORTA
+	IORWF	PORTA,F		;７セグ表示
+	;MOVWF	PORTA
 	
 chg7segX
 	RETURN
