@@ -44,7 +44,8 @@ main
 	MOVWF	sel7seg
 	
 	; char
-	MOVLW	0Ah
+	;MOVLW	05h
+	MOVLW	07h
 	MOVWF	char
 	
 
@@ -76,20 +77,17 @@ chg7seg
 
 chg7seg1
 
-	BSF		PORTB,1
-	BCF		PORTB,1
 
 ;	BTFSC	PORTB,7
 ;	BSF	PORTA,7		;NaPiOnの状態を小数点で表示
 	;MOVF	BCD1,W
+	
+	MOVF	char,W
+	
 	GOTO	chg7seg9
 
 chg7seg2
 	
-	BSF		PORTB,1
-	BCF		PORTB,1
-	BSF		PORTB,1
-	BCF		PORTB,1
 
 	;BSF	PORTA,7		;小数点を表示
 	;edit
@@ -99,22 +97,19 @@ chg7seg2
 	GOTO	chg7seg9
 chg7seg3
 	
-	BSF		PORTB,1
-	BCF		PORTB,1
-	BSF		PORTB,1
-	BCF		PORTB,1
-	BSF		PORTB,1
-	BCF		PORTB,1
-
 	;MOVF	BCD3,W
 	;BTFSC	STATUS,Z	;0?
 	;GOTO	chg7segX	; Yes
+	
+	MOVF	char,W
 
 chg7seg9
 	CALL	bcd2led		;７セグ表示用１０進数に変換
 	MOVWF	PORTB
 	MOVF	sel7seg,W
-	IORWF	PORTA,F		;７セグ表示
+	;IORWF	PORTA,F		;７セグ表示
+	MOVWF	PORTA
+	
 chg7segX
 	RETURN
 
