@@ -18,8 +18,11 @@
 
 	; EEPROM Data
 	org		0x2100
-	de		"Timer Program"
-	de		0x00, D'34', 'Z'
+	
+	de		0Ah, 0Bh
+	
+	;de		"Timer Program"
+	;de		0x00, D'34', 'Z'
 ;
 ;}
 ;
@@ -113,8 +116,9 @@ DIGIT_1
 
 DIGIT_2
 
-	MOVLW	02H
-	MOVWF	char
+	;MOVLW	02H
+	;MOVWF	char
+	CALL	GET_MEMORY
 	
 	GOTO	DISPLAY
 
@@ -128,6 +132,25 @@ DISPLAY
 ;
 
 ; -----------------------------------------------------
+;====================== GET_MEMORY
+;{
+GET_MEMORY
+
+	MOVLW	0h
+	MOVWF	EEADR
+	
+	bsf		STATUS,RP0	; レジスタバンク１を選択
+	bsf		EECON1, RD	; EEPROM データを読みとる
+	bcf		STATUS, RP0	; レジスタバンク０を選択
+	
+	movf	EEDATA, 0	; EEPROM データ → W レジスタ
+	
+	MOVWF	char		; W -> char
+
+	RETURN
+;}
+;
+
 ;====================== chg7seg
 ;{
 ; ７セグメントＬＥＤ表示切り替え
@@ -205,13 +228,20 @@ bcd2led
 	RETLW	007h	;7
 	RETLW	07Fh	;8
 	RETLW	06Fh	;9
-	RETLW	040h	;a
-	RETLW	040h	;b
-	RETLW	040h	;c
-	RETLW	040h	;d
-	RETLW	040h	;e
-	RETLW	040h	;f
 	
+	RETLW	077h	;A
+	RETLW	07Ch	;b
+	RETLW	039h	;C
+	RETLW	05Eh	;d
+	RETLW	079h	;E
+	RETLW	071h	;F
+
+;	RETLW	040h	;a
+;	RETLW	040h	;b
+;	RETLW	040h	;c
+;	RETLW	040h	;d
+;	RETLW	040h	;e
+;	RETLW	040h	;f	
 ;}
 ;
 
