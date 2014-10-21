@@ -137,6 +137,10 @@ DISPLAY
 ;{
 WRITE_MEMORY
 
+	;debug
+	BANKSEL PORTA
+	BSF		PORTA,7
+
 	;REF http://cai.cs.shinshu-u.ac.jp/susi/Lecture/microcomp/d_07-08.html "ÉfÅ[É^ÇèëÇ´çûÇﬁÇΩÇﬂÇ…"
 	BANKSEL	INTCON
 	BCF		INTCON,GIE	;Disable INTs.
@@ -173,8 +177,15 @@ WRITE_MEMORY
 	MOVLW	0AAh
 	MOVWF	EECON2		;Write AAh
 	
+	;debug
+	;BSF		PORTA,7
+	
 	; write: begin
 	BSF	EECON1,WR	;Set WR bit to begin write
+	
+	;debug
+	;BCF		PORTA,7
+	
 	BSF	INTCON,GIE	;Enable INTs.
 	BCF	EECON1,WREN	;Disable writes
 
@@ -182,7 +193,7 @@ WRITE_MEMORY
 	BANKSEL	PORTA
 
 	; report
-	BSF		PORTA,7
+	;BSF		PORTA,7
 	BCF		PORTA,7
 
 	RETURN
