@@ -140,19 +140,38 @@ GET_MEMORY
 	
 	;BANKSEL	PORTA
 	
-	BANKSEL	EEADR
+	
 	;BANKSEL	PO
 	
+	BANKSEL	EEADR
 	MOVWF	EEADR
 	
-	bsf		STATUS,RP0	; レジスタバンク１を選択
-	bsf		EECON1, RD	; EEPROM データを読みとる
-	bcf		STATUS, RP0	; レジスタバンク０を選択
+	; read
+	BANKSEL	EECON1		;Select Bank of EECON1
+	BCF		EECON1,EEPGD	;Point to Data memory
+	BSF		EECON1,RD	;読み出し開始
 	
-	;movf	EEDATA, 0	; EEPROM データ → W レジスタ
-	movf	EEDATA,W
+	; move data
+	BANKSEL	EEDATA		;Select Bank of EEDATA
+	MOVF	EEDATA,W		;Wreg = EEDAT
 	
+	; back to BANK0
+	BANKSEL	PORTB
+	
+	; data to char
 	MOVWF	char		; W -> char
+	
+;	bsf		STATUS,RP0	; レジスタバンク１を選択
+;	
+;	BCF		EECON1,EEPGD
+;	bsf		EECON1, RD	; EEPROM データを読みとる
+;	
+;	bcf		STATUS, RP0	; レジスタバンク０を選択
+;	
+;	;movf	EEDATA, 0	; EEPROM データ → W レジスタ
+;	movf	EEDATA,W
+;	
+;	MOVWF	char		; W -> char
 
 	RETURN
 ;}

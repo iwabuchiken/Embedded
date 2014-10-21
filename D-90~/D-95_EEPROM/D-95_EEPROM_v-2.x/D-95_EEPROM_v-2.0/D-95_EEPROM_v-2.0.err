@@ -1,6 +1,7 @@
 Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 146 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 149 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 153 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 147 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 151 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 152 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-95_EEPROM\D-95_EEPROM_V-2.X\D-95_EEPROM_V-2.0\D-95_EEPROM_V-2.0.ASM 156 : Register in operand not in bank 0.  Ensure that bank bits are correct.

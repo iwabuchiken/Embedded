@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+DIGIT_1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	110;"	l	line:110
+DIGIT_2	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	117;"	l	line:117
+DISPLAY	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	125;"	l	line:125
+GET_MEMORY	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	137;"	l	line:137
+bcd2led	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	225;"	l	line:225
+chg7seg	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	164;"	l	line:164
+chg7seg1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	180;"	l	line:180
+chg7seg2	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	191;"	l	line:191
+chg7seg3	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	200;"	l	line:200
+chg7seg9	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	208;"	l	line:208
+chg7segX	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	215;"	l	line:215
+init	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	43;"	l	line:43
+main	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	84;"	l	line:84
+main1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-2.x\D-95_EEPROM_v-2.0\D-95_EEPROM_v-2.0.asm	95;"	l	line:95
