@@ -15,7 +15,7 @@
 	ENDC
 
 ;=========================== CONSTANTS
-MEMORY_START_ADDR	EQU	00h
+MEMORY_START_ADDR	EQU	03h
 
 ;=========================== memory
 ;{
@@ -198,8 +198,8 @@ WRITE
 ;	
 	;MOVF	MEMORY_START_ADDR,W
 	
-	MOVLW	0h
-	
+	;MOVLW	0h
+	MOVLW	MEMORY_START_ADDR
 	;MOVF	addr,W		;データアドレス指定
 	MOVWF	EEADR		;Data Memory Address to write
 	
