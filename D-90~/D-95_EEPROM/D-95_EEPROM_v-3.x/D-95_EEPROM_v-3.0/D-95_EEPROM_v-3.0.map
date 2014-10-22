@@ -1,12 +1,12 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Wed Oct 22 14:17:35 2014
+Linker Map File - Created Wed Oct 22 15:22:42 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                   .org_1       code   0x000004    program   0x0000e4
+                   .org_1       code   0x000004    program   0x0000e0
 .config_2007_D-95_EEPROM_V-3.0.O       code   0x002007    program   0x000002
 
 
@@ -15,9 +15,9 @@ Linker Map File - Created Wed Oct 22 14:17:35 2014
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000075      
+                            0x000004    0x000073      
                             0x002007    0x002007      
-            118 out of 4359 program addresses used, program memory utilization is 2%
+            116 out of 4359 program addresses used, program memory utilization is 2%
 
 
 
@@ -27,18 +27,17 @@ Linker Map File - Created Wed Oct 22 14:17:35 2014
                   DIGIT_1   0x00001c    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                   DIGIT_2   0x00001f    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                   DISPLAY   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-              READ_MEMORY   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                RESET_CNT   0x000026    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                    WRITE   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+              READ_MEMORY   0x000046    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                    WRITE   0x000024    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
              WRITE_MEMORY   0x000023    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-             _.org_1_0031   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                  bcd2led   0x000065    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                  chg7seg   0x000057    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg1   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg2   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg3   0x00005f    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg9   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7segX   0x000064    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+             _.org_1_002D   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                  bcd2led   0x000063    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                  chg7seg   0x000055    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg1   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg2   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg3   0x00005d    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg9   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7segX   0x000062    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                      init   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                      main   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                     main1   0x000014    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
@@ -55,16 +54,15 @@ Linker Map File - Created Wed Oct 22 14:17:35 2014
                   DIGIT_2   0x00001f    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
                   DISPLAY   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
              WRITE_MEMORY   0x000023    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                RESET_CNT   0x000026    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                    WRITE   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-             _.org_1_0031   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-              READ_MEMORY   0x000048    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                  chg7seg   0x000057    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg1   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg2   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg3   0x00005f    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7seg9   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                 chg7segX   0x000064    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
-                  bcd2led   0x000065    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                    WRITE   0x000024    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+             _.org_1_002D   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+              READ_MEMORY   0x000046    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                  chg7seg   0x000055    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg1   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg2   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg3   0x00005d    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7seg9   0x00005e    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                 chg7segX   0x000062    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
+                  bcd2led   0x000063    program     static C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm
 
 

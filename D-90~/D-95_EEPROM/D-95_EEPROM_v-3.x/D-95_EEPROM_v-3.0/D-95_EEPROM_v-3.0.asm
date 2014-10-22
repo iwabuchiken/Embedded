@@ -152,14 +152,22 @@ DISPLAY
 WRITE_MEMORY
 
 	;increment cnt
-	INCFSZ	cnt,F
-	GOTO	RESET_CNT
+	;INCFSZ	cnt,F
+	;INCF	cnt,F
+	
+	;MOVLW	0Ah
+	;MOVWF	cnt
+	
+	;GOTO	RESET_CNT
 	GOTO	WRITE
-
-RESET_CNT
-
-	MOVLW	0FFh
-	MOVWF	cnt
+	
+;	GOTO	RESET_CNT
+;
+;RESET_CNT	; over 0FF --> keep at 0FF
+;
+;	;MOVLW	0FFh
+;	MOVLW	0AAh
+;	MOVWF	cnt
 
 WRITE
 	;debug
@@ -178,12 +186,20 @@ WRITE
 	
 	; addressing
 	BANKSEL	EEADR		;Select Bank of EEADR
-	MOVLW	08h
+	;MOVLW	08h
+	
+	MOVLW	0Ah
+	MOVWF	cnt
+	
+	MOVF	cnt,W
+	
+	
 	;MOVF	addr,W		;データアドレス指定
 	MOVWF	EEADR		;Data Memory Address to write
 	
 	; prep: data
-	MOVLW	0Eh
+	;MOVLW	0AAh
+	MOVF	cnt,W
 	;MOVF	value,W		;書き込むデータ
 	MOVWF	EEDATA		;Data Memory Value to write
 	
