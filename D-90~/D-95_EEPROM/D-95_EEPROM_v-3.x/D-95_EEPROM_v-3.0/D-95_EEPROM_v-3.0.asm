@@ -10,6 +10,8 @@
 	sel7seg
 	char
 	
+	cnt
+	
 	ENDC
 
 ;=========================== memory
@@ -61,6 +63,10 @@ init
 	;------------ PORTA
 	MOVLW	0h
 	MOVWF	PORTA
+
+	;------------ vars
+	MOVLW	0h
+	MOVWF	cnt
 	
 ;}
 ;
@@ -93,6 +99,14 @@ main
 	MOVWF	char
 	
 main1
+	
+	;debug
+	BANKSEL PORTA
+	
+	BCF		PORTA,7
+	BSF		PORTA,7
+	BCF		PORTA,7
+	
 
 ;	MOVF	PORTB,W
 ;	ANDLW	07H		; 0000 0111
@@ -137,6 +151,17 @@ DISPLAY
 ;{
 WRITE_MEMORY
 
+	;increment cnt
+	INCFSZ	cnt,F
+	GOTO	RESET_CNT
+	GOTO	WRITE
+
+RESET_CNT
+
+	MOVLW	0FFh
+	MOVWF	cnt
+
+WRITE
 	;debug
 	BANKSEL PORTA
 	BSF		PORTA,7

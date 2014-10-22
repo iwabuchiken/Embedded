@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+DIGIT_1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	111;"	l	line:111
+DIGIT_2	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	118;"	l	line:118
+DISPLAY	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	126;"	l	line:126
+READ_MEMORY	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	206;"	l	line:206
+WRITE_MEMORY	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	138;"	l	line:138
+bcd2led	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	298;"	l	line:298
+chg7seg	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	237;"	l	line:237
+chg7seg1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	253;"	l	line:253
+chg7seg2	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	264;"	l	line:264
+chg7seg3	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	273;"	l	line:273
+chg7seg9	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	281;"	l	line:281
+chg7segX	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	288;"	l	line:288
+init	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	43;"	l	line:43
+main	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	84;"	l	line:84
+main1	C:\WORKS\WS\Embedded\D-90~\D-95_EEPROM\D-95_EEPROM_v-3.x\D-95_EEPROM_v-3.0\D-95_EEPROM_v-3.0.asm	95;"	l	line:95
