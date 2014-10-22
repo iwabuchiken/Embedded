@@ -14,6 +14,9 @@
 	
 	ENDC
 
+;=========================== CONSTANTS
+MEMORY_START_ADDR	EQU	00h
+
 ;=========================== memory
 ;{
 ;memory
@@ -188,17 +191,21 @@ WRITE
 	BANKSEL	EEADR		;Select Bank of EEADR
 	;MOVLW	08h
 	
-	MOVLW	0Ah
-	MOVWF	cnt
+;	MOVLW	0Ah
+;	MOVWF	cnt
+;	
+;	MOVF	cnt,W
+;	
+	;MOVF	MEMORY_START_ADDR,W
 	
-	MOVF	cnt,W
-	
+	MOVLW	0h
 	
 	;MOVF	addr,W		;データアドレス指定
 	MOVWF	EEADR		;Data Memory Address to write
 	
 	; prep: data
 	;MOVLW	0AAh
+	INCF	cnt,F
 	MOVF	cnt,W
 	;MOVF	value,W		;書き込むデータ
 	MOVWF	EEDATA		;Data Memory Value to write
