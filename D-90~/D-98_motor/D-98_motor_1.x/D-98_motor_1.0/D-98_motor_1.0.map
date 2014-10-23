@@ -1,0 +1,52 @@
+MPLINK 4.42, Linker
+Linker Map File - Created Wed Oct 22 21:20:37 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x00006a
+.config_2007_D-98_MOTOR_1.0.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000038      
+                            0x002007    0x002007      
+            57 out of 4359 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   COUNT1   0x00001d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                  RotateR   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                    STEPM   0x00001f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                   STEPM1   0x000020    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                   STEPM2   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                  bcd2led   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                     init   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                     main   0x00000e    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                    main1   0x00000e    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     init   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                     main   0x00000e    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                    main1   0x00000e    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                  RotateR   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                   COUNT1   0x00001d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                    STEPM   0x00001f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                   STEPM1   0x000020    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                   STEPM2   0x000021    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+                  bcd2led   0x000028    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_1.x\D-98_motor_1.0\D-98_motor_1.0.asm
+
+
