@@ -75,7 +75,8 @@ main
 
 main1
 
-	CALL	RotateR
+	;CALL	RotateR
+	CALL	RotateR_2
 	
 ;	BSF		PORTB,1
 ;	CALL	COUNT1
@@ -85,6 +86,39 @@ main1
 	
 	GOTO	main1
 
+;}
+;
+
+;====================== RotateR_2
+;{
+RotateR_2
+
+	MOVLW	B'00000101'
+	MOVWF	PORTB
+	
+	MOVLW	D'5'
+	CALL	T02XmS
+	
+	MOVLW	B'00000110'
+	MOVWF	PORTB
+	
+	MOVLW	D'5'
+	CALL	T02XmS
+	
+	MOVLW	B'00001010'
+	MOVWF	PORTB
+	
+	MOVLW	D'5'
+	CALL	T02XmS
+	
+	MOVLW	B'00001001'
+	MOVWF	PORTB
+	
+	MOVLW	D'5'
+	CALL	T02XmS
+	
+	RETURN
+	
 ;}
 ;
 
