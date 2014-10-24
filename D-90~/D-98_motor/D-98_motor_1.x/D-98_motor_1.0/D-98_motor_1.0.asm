@@ -15,6 +15,10 @@
 	TIME2
 	TIME3
 
+	C02mS	; 0.2mSカウンタ
+	C5mS	; 5mSカウンタ
+	C1S	; 1Sカウンタ
+	
 	cnt
 	
 	ENDC
@@ -71,13 +75,13 @@ main
 
 main1
 
-	;CALL	RotateR
+	CALL	RotateR
 	
-	BSF		PORTA,0
-	CALL	COUNT1
-	
-	BCF		PORTA,0
-	CALL	COUNT1
+;	BSF		PORTB,1
+;	CALL	COUNT1
+;	
+;	BCF		PORTB,1
+;	CALL	COUNT1
 	
 	GOTO	main1
 
@@ -133,6 +137,55 @@ STEPM2
 	GOTO	STEPM
 	
 	RETURN
+;}
+;
+
+; ============================================================
+;{
+    ; ＜＜　1S待つサブルーチン　＞＞   
+T1S
+	MOVLW	d'200'
+	MOVWF	C1S		; ループ回数として200をセット）
+T1SLP	CALL	T5mS		; 5mS待つ
+	DECFSZ	C1S,F		; ループ回数－１して０になったら次の命令をスキップ
+	GOTO	T1SLP		;
+	RETURN			; このサブルーチン呼出し元に戻る
+
+
+    ; ＜＜　5mS待つサブルーチン　＞＞   
+T5mS
+	MOVLW	d'25'
+	MOVWF	C5mS		; ループ回数として25をセット）
+T5mLP	CALL	T02mS		; 0.2mS待つ
+	DECFSZ	C5mS,F		; ループ回数－１して０になったら次の命令をスキップ
+	GOTO	T5mLP
+	RETURN			; このサブルーチン呼出し元に戻る
+
+
+    ; ＜＜　0.2mS待つサブルーチン　＞＞   
+T02mS
+	MOVLW	d'249'
+	MOVWF	C02mS		; ループ回数として249をセット
+T02mLP	NOP			; 何もせず１サイクル消費
+	DECFSZ	C02mS,F		; ループ回数－１して０になったら次の命令をスキップ
+	GOTO	T02mLP
+	RETURN			; このサブルーチン呼出し元に戻る
+
+;}
+;
+
+;====================== T02XmS
+;{
+T02XmS
+	;MOVLW	d'25'
+	MOVWF	C5mS		; ループ回数として25をセット）
+	
+	CALL	T5mLP
+	
+	RETURN			; このサブルーチン呼出し元に戻る
+
+
+
 ;}
 ;
 
