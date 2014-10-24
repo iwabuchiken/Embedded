@@ -2,7 +2,9 @@
 	LIST      P=PIC16F88
 	#INCLUDE  P16F88.INC
 
-	__CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF & _MCLR_OFF & _BODEN_OFF & _PWRTE_ON & _INTRC_IO & _LVP_OFF & _CPD_OFF & _DEBUG_OFF
+	;__CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF & _MCLR_OFF & _BODEN_OFF & _PWRTE_ON & _INTRC_IO & _LVP_OFF & _CPD_OFF & _DEBUG_OFF
+	;__CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF & _MCLR_OFF & _BODEN_OFF & _PWRTE_ON & _LVP_OFF & _CPD_OFF & _DEBUG_OFF
+	__CONFIG  _CONFIG1, _HS_OSC & _CP_OFF & _WDT_OFF & _PWRTE_ON
 	;__CONFIG _CONFIG2, _FCMEN_OFF & _IESO_OFF
 
 	CBLOCK	020h
@@ -41,11 +43,9 @@ init
 						; RB6,7		=> inputs
 	movwf	TRISB
 	
-;	movlw	B'01110000'	; RA0~3 -> outputs
-;						; RA4~6	-> inputs
-;						; RA7	-> output					
-;	movwf	TRISA
-;	
+	movlw	B'00000000'	; RA0~7 -> outputs
+	movwf	TRISA
+	
 	; ADC
 	MOVLW	0h
 	MOVWF	ANSEL
@@ -71,7 +71,13 @@ main
 
 main1
 
-	CALL	RotateR
+	;CALL	RotateR
+	
+	BSF		PORTA,0
+	CALL	COUNT1
+	
+	BCF		PORTA,0
+	CALL	COUNT1
 	
 	GOTO	main1
 
