@@ -29,6 +29,14 @@
 ;=========================== CONSTANTS
 MEMORY_START_ADDR	EQU	03h
 
+;WAIT_LENGTH			EQU D'15'	; Pulse will be
+; Pulse will be
+								; 	=> LENGTH x 0.2 x 2 (ms)
+;WAIT_LENGTH			EQU D'30'	; 30 x 0.2 x 2 = 12 ms
+;WAIT_LENGTH			EQU D'60'	; 60 x 0.2 x 2 = 24 ms	=> working
+;WAIT_LENGTH			EQU D'30'	; 30 x 0.2 x 2 = 12 ms		=> working
+WAIT_LENGTH			EQU D'15'		; 15 x 0.2 x 2 = 6 ms		=> 
+
 ;=========================== ORG
 	ORG	0		;ƒŠƒZƒbƒg‚Ì“üŒû
 	GOTO	init
@@ -99,25 +107,25 @@ RotateR_2
 	MOVLW	B'00000101'
 	MOVWF	PORTB
 	
-	MOVLW	D'5'
+	MOVLW	WAIT_LENGTH
 	CALL	T02XmS
 	
 	MOVLW	B'00000110'
 	MOVWF	PORTB
 	
-	MOVLW	D'5'
+	MOVLW	WAIT_LENGTH
 	CALL	T02XmS
 	
 	MOVLW	B'00001010'
 	MOVWF	PORTB
 	
-	MOVLW	D'5'
+	MOVLW	WAIT_LENGTH
 	CALL	T02XmS
 	
 	MOVLW	B'00001001'
 	MOVWF	PORTB
 	
-	MOVLW	D'5'
+	MOVLW	WAIT_LENGTH
 	CALL	T02XmS
 	
 	RETURN
