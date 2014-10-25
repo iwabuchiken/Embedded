@@ -38,6 +38,8 @@ MEMORY_START_ADDR	EQU	03h
 
 WAIT_LENGTH			EQU D'15'		; 15 x 0.2 x 2 = 6 ms		=> w, 1 s/rotate (average)
 
+DEGREE				EQU D'9'
+
 ;=========================== ORG
 	ORG	0		;ƒŠƒZƒbƒg‚Ì“üŒû
 	GOTO	init
@@ -48,13 +50,24 @@ WAIT_LENGTH			EQU D'15'		; 15 x 0.2 x 2 = 6 ms		=> w, 1 s/rotate (average)
 ;{
 INTR
 
-	BTFSC	INTCON,INTF
-	
+	; steps
+	BCF		INTCON,GIE		; global intr => disabled
+
+	; dispatch
+	BTFSC	INTCON,INTF		; if RB0-intr flag set
+							; => goto INT_RB0
 	GOTO	INT_RB0
 	GOTO	INT_EXIT
 	
 INT_RB0
 
+	; disable intr
+	BCF		INTCON,INT0IE	; disable => RB0 intr
+
+	; flag => clear
+	BCF		INTCON,INT0IF	; disable => RB0 intr
+
+	; process
 	BCF		PORTA,0
 	BSF		PORTA,0
 
@@ -62,6 +75,14 @@ INT_RB0
 	CALL	T02XmS	
 
 	BCF		PORTA,0
+
+	; wait
+	;MOVLW	D'5'	; 5 x 0.2 = 1.0 ms
+	MOVLW	05h
+	CALL	T02XmS
+		
+	; enable intr
+	BSF		INTCON,INT0IE	; eable => RB0 intr
 
 INT_EXIT
 	
@@ -75,29 +96,49 @@ INT_EXIT
 ;=========================== init
 ;{
 init
+	; change bank
 	bsf		STATUS, RP0	; bank 1
 	
-	;bcf		OPTION_REG, NOT_RBPU
-	movlw	B'11000000'	; RB0~RB5	-> outputs
-						; RB6,7		=> inputs
+	; TRISA, TRISB
+	movlw	B'00000001'	; RB1~RB7	=> outputs
+						; RB0		=> inputs
 	movwf	TRISB
 	
-	movlw	B'00000000'	; RA0~7 -> outputs
+	movlw	B'00000000'	; RA0~7		=> outputs
 	movwf	TRISA
 	
-	; ADC
+	; ANSEL
 	MOVLW	0h
 	MOVWF	ANSEL
-	
+
+	; change bank	
 	bcf	STATUS,RP0	; bank 0
 	
-	;------------ PORTB
-	MOVLW	B'00000101'
+	;------------ OPTION_REG
+	BSF		OPTION_REG,7	; RBPU		=> 1 (pull-up disabled)
+	BSF		OPTION_REG,6	; INTEDG	=> 1 (rising edge)
+	BCF		OPTION_REG,5	; T0CS		=> 0 (internal)
+	
+	BCF		OPTION_REG,4	; T0SE		=> 0 (low-to-high)
+	BCF		OPTION_REG,3	; PSA		=> 0 (assigned to Timer0)
+	
+	BCF		OPTION_REG,2	; PS2		=> 0 (000)
+	BCF		OPTION_REG,1	; PS1		=> 0
+	BCF		OPTION_REG,0	; PS0		=> 0
+	
+	;------------ INTCON
+	BSF		INTCON,GIE		; global intr	=> allow
+	BSF		INTCON,INT0IE	; rb0 intr 		=> allow
+	
+	;------------ PORTA, PORTB
+	MOVLW	B'00000000'		; initial => all off
 	MOVWF	PORTB
+	MOVWF	PORTA
 
 	;------------ vars
 	MOVLW	0h
 	MOVWF	cnt
+	
 	
 ;}
 ;
@@ -111,7 +152,7 @@ main
 main1
 
 	;CALL	RotateR
-	CALL	RotateR_2
+	;CALL	RotateR_2
 	
 ;	BSF		PORTB,1
 ;	CALL	COUNT1
@@ -121,6 +162,28 @@ main1
 	
 	GOTO	main1
 
+;}
+;
+
+;====================== RotateR_90
+;{
+RotateR_90
+
+	MOVLW	DEGREE		; D'9'
+	MOVWF	cnt
+
+Rotate
+
+	CALL	RotateR_2
+	
+	DECFSZ	cnt,F
+
+	GOTO	Rotate
+
+END_RotateR_90
+
+	RETURN
+	
 ;}
 ;
 

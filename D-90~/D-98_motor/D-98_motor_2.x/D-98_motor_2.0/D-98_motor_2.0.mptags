@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+COUNT1	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	187;"	l	line:187
+INTR	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	49;"	l	line:49
+INT_EXIT	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	66;"	l	line:66
+INT_RB0	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	56;"	l	line:56
+MEMORY_START_ADDR	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	30;"	q	line:30
+RotateR	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	162;"	l	line:162
+RotateR_2	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	129;"	l	line:129
+STEPM	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	192;"	l	line:192
+STEPM1	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	195;"	l	line:195
+STEPM2	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	198;"	l	line:198
+T02XmS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	248;"	l	line:248
+T02mLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	238;"	l	line:238
+T02mS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	235;"	l	line:235
+T1S	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	215;"	l	line:215
+T1SLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	218;"	l	line:218
+T5mLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	228;"	l	line:228
+T5mS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	225;"	l	line:225
+WAIT_LENGTH	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	39;"	q	line:39
+bcd2led	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	266;"	l	line:266
+init	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	77;"	l	line:77
+main	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	109;"	l	line:109
+main1	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm	111;"	l	line:111

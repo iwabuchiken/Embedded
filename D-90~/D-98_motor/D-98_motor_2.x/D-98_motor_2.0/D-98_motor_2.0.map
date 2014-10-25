@@ -1,12 +1,12 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Sat Oct 25 12:05:38 2014
+Linker Map File - Created Sat Oct 25 16:14:39 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                   .org_1       code   0x000004    program   0x0000ba
+                   .org_1       code   0x000004    program   0x0000f8
 .config_2007_D-98_MOTOR_2.0.O       code   0x002007    program   0x000002
 
 
@@ -15,54 +15,66 @@ Linker Map File - Created Sat Oct 25 12:05:38 2014
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000060      
+                            0x000004    0x00007f      
                             0x002007    0x002007      
-            97 out of 4359 program addresses used, program memory utilization is 2%
+            128 out of 4359 program addresses used, program memory utilization is 2%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   COUNT1   0x000030    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                  RotateR   0x000023    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                RotateR_2   0x000012    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    STEPM   0x000032    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   STEPM1   0x000033    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   STEPM2   0x000034    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   T02XmS   0x00004d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   T02mLP   0x000049    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T02mS   0x000047    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                      T1S   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T1SLP   0x00003d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T5mLP   0x000043    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                     T5mS   0x000041    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                  bcd2led   0x000050    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                     init   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                     main   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    main1   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   COUNT1   0x00004f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+           END_RotateR_90   0x000030    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     INTR   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                 INT_EXIT   0x000012    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  INT_RB0   0x000008    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   Rotate   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  RotateR   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                RotateR_2   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+               RotateR_90   0x00002b    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    STEPM   0x000051    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   STEPM1   0x000052    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   STEPM2   0x000053    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   T02XmS   0x00006c    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   T02mLP   0x000068    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T02mS   0x000066    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                      T1S   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T1SLP   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T5mLP   0x000062    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     T5mS   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  bcd2led   0x00006f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     init   0x000013    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     main   0x00002a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    main1   0x00002a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                     init   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    main1   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                     main   0x000010    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                RotateR_2   0x000012    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                  RotateR   0x000023    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   COUNT1   0x000030    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    STEPM   0x000032    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   STEPM1   0x000033    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   STEPM2   0x000034    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                      T1S   0x00003b    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T1SLP   0x00003d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                     T5mS   0x000041    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T5mLP   0x000043    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                    T02mS   0x000047    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   T02mLP   0x000049    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                   T02XmS   0x00004d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
-                  bcd2led   0x000050    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     INTR   0x000004    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  INT_RB0   0x000008    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                 INT_EXIT   0x000012    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     init   0x000013    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    main1   0x00002a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     main   0x00002a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+               RotateR_90   0x00002b    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   Rotate   0x00002d    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+           END_RotateR_90   0x000030    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                RotateR_2   0x000031    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  RotateR   0x000042    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   COUNT1   0x00004f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    STEPM   0x000051    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   STEPM1   0x000052    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   STEPM2   0x000053    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                      T1S   0x00005a    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T1SLP   0x00005c    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                     T5mS   0x000060    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T5mLP   0x000062    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                    T02mS   0x000066    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   T02mLP   0x000068    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                   T02XmS   0x00006c    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
+                  bcd2led   0x00006f    program     static C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.0\D-98_motor_2.0.asm
 
 
