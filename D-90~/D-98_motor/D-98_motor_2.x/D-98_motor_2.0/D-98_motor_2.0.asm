@@ -24,6 +24,8 @@
 	
 	cnt
 	
+	flag_Rotate
+	
 	ENDC
 
 ;=========================== CONSTANTS
@@ -39,6 +41,8 @@ MEMORY_START_ADDR	EQU	03h
 WAIT_LENGTH			EQU D'15'		; 15 x 0.2 x 2 = 6 ms		=> w, 1 s/rotate (average)
 
 DEGREE				EQU D'9'
+
+BIT_1				EQU 0
 
 ;=========================== ORG
 	ORG	0		;ƒŠƒZƒbƒg‚Ì“üŒû
@@ -67,12 +71,24 @@ INT_RB0
 	; flag => clear
 	BCF		INTCON,INT0IF	; disable => RB0 intr
 
+	; test => flag set?
+	BTFSC	flag_Rotate,BIT_1
+
 	; process
 	;CALL	RotateR_2_PORTA
-	;CALL	RotateR_90
+	CALL	RotateR_90	; flag => set; rotate
+
+	BCF		flag_Rotate,BIT_1	; clear flag
+								; => when already cleared
+								; => still, execute clearing the flag
+								; => b/c --> can't figure out a better
+								; => way of coding it
 	
-	MOVLW	D'
-	CALL	RotateR_X
+	GOTO	intr_1
+	;MOVLW	D'
+	;CALL	RotateR_X
+
+intr_1
 
 	; reset PORTA
 	MOVLW	0h
@@ -123,7 +139,9 @@ init
 						; RB0		=> inputs
 	movwf	TRISB
 	
-	movlw	B'00000000'	; RA0~7		=> outputs
+	;movlw	B'00000000'	; RA0~7		=> outputs
+	movlw	B'00010000'	; RA0~3, 5~7	=> outputs
+						; RA4		=> input
 	movwf	TRISA
 	
 	; ANSEL
@@ -159,7 +177,9 @@ init
 	;------------ vars
 	MOVLW	0h
 	MOVWF	cnt
-	
+
+	;CLRF	flag_Rotate
+	BSF		flag_Rotate,BIT_1	; set flag => interrupt, then rotate
 	
 ;}
 ;
@@ -181,9 +201,40 @@ main1
 ;	BCF		PORTB,1
 ;	CALL	COUNT1
 	
+	; test => RB4 --> pushed?
+	BTFSC	PORTA,4
+	
+	GOTO	RESET_ROTATE	; RB4 is HIGH --> reset flag
+	
+	GOTO	main1			; RB4 is LOW --> go back to main1
+
+;}main
+;
+
+;=========================== RESET_ROTATE
+;{
+RESET_ROTATE
+	
+	; test => flag set?
+	BTFSC	flag_Rotate,BIT_1
+	
+	GOTO	main1	; flag => set; go back to main1
+	
+	; flag => not set; now, set the flag
+	BSF		flag_Rotate,BIT_1
+	
+	; report
+	BCF		PORTA,0
+	BSF		PORTA,0
+	
+	MOVLW	D'5'
+	CALL	T02XmS
+
+	BCF		PORTA,0
+	
 	GOTO	main1
 
-;}
+;}RESET_ROTATE
 ;
 
 ;====================== RotateR_X
@@ -193,15 +244,15 @@ RotateR_X
 	;MOVLW	DEGREE		; D'9'
 	MOVWF	cnt
 
-Rotate
+Rotate_X
 
 	CALL	RotateR_2_PORTA
 	
 	DECFSZ	cnt,F
 
-	GOTO	Rotate
+	GOTO	Rotate_X
 
-END_RotateR_90
+END_RotateR_90_X
 
 	RETURN
 	
