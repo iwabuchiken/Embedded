@@ -68,19 +68,38 @@ INT_RB0
 	BCF		INTCON,INT0IF	; disable => RB0 intr
 
 	; process
-	BCF		PORTA,0
-	BSF		PORTA,0
+	;CALL	RotateR_2_PORTA
+	;CALL	RotateR_90
+	
+	MOVLW	D'
+	CALL	RotateR_X
 
-	MOVLW	05h
-	CALL	T02XmS	
+	; reset PORTA
+	MOVLW	0h
+	MOVWF	PORTA
 
-	BCF		PORTA,0
-
-	; wait
+	;-------------------
+	; anti-chattering
+	;-------------------	
 	;MOVLW	D'5'	; 5 x 0.2 = 1.0 ms
-	MOVLW	05h
+	MOVLW	D'50'	; 50 x 0.2 = 10.0 ms
 	CALL	T02XmS
-		
+	
+;
+;	; process
+;	BCF		PORTA,0
+;	BSF		PORTA,0
+;
+;	MOVLW	05h
+;	CALL	T02XmS	
+;
+;	BCF		PORTA,0
+;
+;	; wait
+;	;MOVLW	D'5'	; 5 x 0.2 = 1.0 ms
+;	MOVLW	05h
+;	CALL	T02XmS
+;		
 	; enable intr
 	BSF		INTCON,INT0IE	; eable => RB0 intr
 
@@ -133,6 +152,8 @@ init
 	;------------ PORTA, PORTB
 	MOVLW	B'00000000'		; initial => all off
 	MOVWF	PORTB
+	
+	
 	MOVWF	PORTA
 
 	;------------ vars
@@ -165,6 +186,28 @@ main1
 ;}
 ;
 
+;====================== RotateR_X
+;{
+RotateR_X
+
+	;MOVLW	DEGREE		; D'9'
+	MOVWF	cnt
+
+Rotate
+
+	CALL	RotateR_2_PORTA
+	
+	DECFSZ	cnt,F
+
+	GOTO	Rotate
+
+END_RotateR_90
+
+	RETURN
+	
+;}RotateR_X
+;
+
 ;====================== RotateR_90
 ;{
 RotateR_90
@@ -174,7 +217,7 @@ RotateR_90
 
 Rotate
 
-	CALL	RotateR_2
+	CALL	RotateR_2_PORTA
 	
 	DECFSZ	cnt,F
 
@@ -185,6 +228,39 @@ END_RotateR_90
 	RETURN
 	
 ;}
+;
+
+;====================== RotateR_2_PORTA
+;{
+RotateR_2_PORTA
+
+	MOVLW	B'00000101'
+	MOVWF	PORTA
+	
+	MOVLW	WAIT_LENGTH
+	CALL	T02XmS
+	
+	MOVLW	B'00000110'
+	MOVWF	PORTA
+	
+	MOVLW	WAIT_LENGTH
+	CALL	T02XmS
+	
+	MOVLW	B'00001010'
+	MOVWF	PORTA
+	
+	MOVLW	WAIT_LENGTH
+	CALL	T02XmS
+	
+	MOVLW	B'00001001'
+	MOVWF	PORTA
+	
+	MOVLW	WAIT_LENGTH
+	CALL	T02XmS
+	
+	RETURN
+	
+;}RotateR_2_PORTA
 ;
 
 ;====================== RotateR_2
