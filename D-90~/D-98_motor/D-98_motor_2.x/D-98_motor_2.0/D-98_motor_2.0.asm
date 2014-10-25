@@ -43,11 +43,34 @@ WAIT_LENGTH			EQU D'15'		; 15 x 0.2 x 2 = 6 ms		=> w, 1 s/rotate (average)
 	GOTO	init
 
 	ORG	4		;Š„ž‚Ý‚Ì“üŒû
+	
+;=========================== INTR
+;{
+INTR
+
+	BTFSC	INTCON,INTF
+	
+	GOTO	INT_RB0
+	GOTO	INT_EXIT
+	
+INT_RB0
+
+	BCF		PORTA,0
+	BSF		PORTA,0
+
+	MOVLW	05h
+	CALL	T02XmS	
+
+	BCF		PORTA,0
+
+INT_EXIT
+	
+	RETFIE
+	
+;}
 ;
 
 
-
-; -----------------------------------------------------
 ; ‰Šúˆ—
 ;=========================== init
 ;{
