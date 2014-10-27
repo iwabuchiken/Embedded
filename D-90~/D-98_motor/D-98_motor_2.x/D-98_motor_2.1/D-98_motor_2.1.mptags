@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+COUNT1	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	194;"	l	line:194
+MEMORY_START_ADDR	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	28;"	q	line:28
+Rotate_L	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	153;"	l	line:153
+Rotate_R	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	112;"	l	line:112
+STEPM	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	199;"	l	line:199
+STEPM1	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	202;"	l	line:202
+STEPM2	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	205;"	l	line:205
+T02XmS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	255;"	l	line:255
+T02mLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	245;"	l	line:245
+T02mS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	242;"	l	line:242
+T1S	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	222;"	l	line:222
+T1SLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	225;"	l	line:225
+T5mLP	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	235;"	l	line:235
+T5mS	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	232;"	l	line:232
+WAIT_LENGTH	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	30;"	q	line:30
+bcd2led	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	273;"	l	line:273
+init	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	41;"	l	line:41
+main	C:\WORKS\WS\Embedded\D-90~\D-98_motor\D-98_motor_2.x\D-98_motor_2.1\D-98_motor_2.1.asm	84;"	l	line:84
