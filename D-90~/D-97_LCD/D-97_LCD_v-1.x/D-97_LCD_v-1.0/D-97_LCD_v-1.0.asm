@@ -68,14 +68,23 @@ init
 ; ==================== メイン処理 =====================
 main
 	CALL	LCD_home	;カーソルを１行目の先頭に
+	
 	MOVLW	'H'
+	;MOVLW	0Ah		;=> display --> no char in the whole display
 	CALL	LCD_write
-	MOVLW	'e'
+	
+	;MOVLW	'e'
+	MOVLW	'a'
 	CALL	LCD_write
-	MOVLW	'l'
+	
+	;MOVLW	'l'
+	MOVLW	039h	; '9'
 	CALL	LCD_write
-	MOVLW	'l'
+	
+	;MOVLW	'l'
+	MOVLW	H'39' - H'1'
 	CALL	LCD_write
+	
 	MOVLW	'o'
 	CALL	LCD_write
 	MOVLW	','
