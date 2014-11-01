@@ -38,7 +38,9 @@
 	CNT50uS			;50μＳカウンタ
 	char			;LCD表示データ
 	
-	CHR
+	CHR				; LCS char data
+	
+	VAL				; hex value
 	
 	ENDC
 
@@ -49,6 +51,7 @@ BUSY	EQU	03h		;BUSY FLAG (PORTB,3)
 
 
 ; ==================== 初期処理 =====================
+;{
 	org	0
 init
 	BSF	STATUS,RP0	;■バンク１に切替え
@@ -71,6 +74,12 @@ init
 	;----------------- vars
 	MOVLW	30h		; '0'
 	MOVWF	CHR
+
+	MOVLW	0EAh		;
+	MOVWF	VAL
+
+;}
+;
 	
 ; ==================== メイン処理 =====================
 main
@@ -93,16 +102,28 @@ main
 	;---------------- line: 2	
 	CALL	LCD_2line	;カーソルを２行目の先頭に
 
-	INCF	CHR,F
+	;------------ char: 1
+	;INCF	CHR,F
 	;MOVLW	'e'
 	;MOVLW	'a'
-	MOVF	CHR,W
+	;MOVF	CHR,W
+	
+	MOVF	VAL,W
+	ANDLW	0Fh
+	ADDLW	037h
+	
+	MOVWF	VAL
+	
 	CALL	LCD_write
 
-	INCF	CHR,F
+	;------------ char: 2
+	;INCF	CHR,F
+	INCF	VAL,F
 	;MOVLW	'e'
 	;MOVLW	'a'
-	MOVF	CHR,W
+	;MOVF	CHR,W
+	MOVF	VAL,W
+	
 	CALL	LCD_write
 
 ;	MOVLW	'w'
@@ -124,7 +145,8 @@ main
 
 	GOTO	main
 
-
+;
+;{
 ;================= ＬＣＤ表示をクリアする ===================
 LCD_clear
 	MOVLW	01h
@@ -343,6 +365,9 @@ wait50us_loop
 	DECFSZ	CNT50uS,F	;1
 	GOTO	wait50us_loop	;2
 	RETURN			;2+1
+;}
+;
+
 
 	END
 ; ========================== ここまで ==============================

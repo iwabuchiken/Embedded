@@ -1,5 +1,5 @@
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 56 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 228 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 247 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 65 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 250 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\WORKS\WS\EMBEDDED\D-90~\D-97_LCD\D-97_LCD_V-1.X\D-97_LCD_V-1.3.X\D-97_LCD_V-1.3.0\D-97_LCD_V-1.3.0.ASM 269 : Register in operand not in bank 0.  Ensure that bank bits are correct.
