@@ -1,0 +1,33 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+BUSY	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	50;"	q	line:50
+E	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	48;"	q	line:48
+LCD_2line	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	163;"	l	line:163
+LCD_BF_wait	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	243;"	l	line:243
+LCD_BF_wait1	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	263;"	l	line:263
+LCD_clear	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	151;"	l	line:151
+LCD_command	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	215;"	l	line:215
+LCD_home	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	157;"	l	line:157
+LCD_init	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	275;"	l	line:275
+LCD_off	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	181;"	l	line:181
+LCD_on	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	169;"	l	line:169
+LCD_on_cur	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	175;"	l	line:175
+LCD_write	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	187;"	l	line:187
+RS	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	49;"	q	line:49
+RW	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	47;"	q	line:47
+init	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	56;"	l	line:56
+main	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	85;"	l	line:85
+wait15ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	328;"	l	line:328
+wait15ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	331;"	l	line:331
+wait1ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	348;"	l	line:348
+wait1ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	351;"	l	line:351
+wait50us	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	358;"	l	line:358
+wait50us_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	364;"	l	line:364
+wait5ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	338;"	l	line:338
+wait5ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.0\D-97_LCD_v-1.3.0.asm	341;"	l	line:341
