@@ -53,6 +53,7 @@ E	EQU	01h		;LCD Enable
 RS	EQU	02h		;LCD Register Select
 BUSY	EQU	03h		;BUSY FLAG (PORTB,3)
 
+MSG	EQU	0AFh
 
 ; ==================== ‰Šúˆ— =====================
 ;{
@@ -95,7 +96,8 @@ main
 	;MOVLW	'H'
 	;MOVLW	0Ah		;=> display --> no char in the whole display
 	
-	MOVLW	0BCh
+	;MOVLW	0BCh
+	MOVLW	MSG
 	MOVWF	HEX_ORIG
 	
 	CALL	hex2HexChars
