@@ -93,16 +93,14 @@ main
 	;------------------- line: 1
 	CALL	LCD_home	;カーソルを１行目の先頭に
 	
-	;MOVLW	'H'
-	;MOVLW	0Ah		;=> display --> no char in the whole display
+	;---------- label
+	CALL	SHOW_LABEL
 	
-	;MOVLW	0BCh
+	;---------- set message
 	MOVLW	MSG
 	MOVWF	HEX_ORIG
 	
 	CALL	hex2HexChars
-	
-	;MOVF	CHR,W
 	
 	;---------- digit: 1
 	MOVF	HEX_CHRS_1,W
@@ -114,52 +112,7 @@ main
 	
 	CALL	LCD_write
 	
-	;	INCF	CHR,F
-;	;MOVLW	'e'
-;	;MOVLW	'a'
-;	MOVF	CHR,W
-;	CALL	LCD_write
-
-;	;---------------- line: 2	
-;	CALL	LCD_2line	;カーソルを２行目の先頭に
-;
-;	;------------ char: 1
-;	;INCF	CHR,F
-;	;MOVLW	'e'
-;	;MOVLW	'a'
-;	;MOVF	CHR,W
-;	
-;	MOVF	VAL,W
-;	ANDLW	0Fh
-;	ADDLW	037h
-;	
-;	MOVWF	VAL
-;	
-;	CALL	LCD_write
-;
-;	;------------ char: 2
-;	;INCF	CHR,F
-;	INCF	VAL,F
-;	;MOVLW	'e'
-;	;MOVLW	'a'
-;	;MOVF	CHR,W
-;	MOVF	VAL,W
-;	
-;	CALL	LCD_write
-
-;	MOVLW	'w'
-;	CALL	LCD_write
-;	MOVLW	'o'
-;	CALL	LCD_write
-;	MOVLW	'r'
-;	CALL	LCD_write
-;	MOVLW	'l'
-;	CALL	LCD_write
-;	MOVLW	'd'
-;	CALL	LCD_write
-;	MOVLW	'!'
-;	CALL	LCD_write
-;
+	;-------------------- ending
 	CLRF	PORTA
 	CLRF	PORTB
 	SLEEP
@@ -168,6 +121,36 @@ main
 
 ;}
 ;main
+
+;================= SHOW_LABEL
+;{
+SHOW_LABEL
+
+	MOVLW	'D'	
+	CALL	LCD_write
+
+	MOVLW	'e'	
+	CALL	LCD_write
+
+	MOVLW	'g'	
+	CALL	LCD_write
+
+	MOVLW	'r'	
+	CALL	LCD_write
+
+	MOVLW	'e'	
+	CALL	LCD_write
+
+	MOVLW	'e'	
+	CALL	LCD_write
+
+	MOVLW	'='	
+	CALL	LCD_write
+
+	RETURN
+
+;}
+;
 
 ;
 ;================= hex2HexChars
