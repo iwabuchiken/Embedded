@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+BUSY	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	54;"	q	line:54
+E	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	52;"	q	line:52
+LCD_2line	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	210;"	l	line:210
+LCD_BF_wait	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	325;"	l	line:325
+LCD_BF_wait1	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	345;"	l	line:345
+LCD_clear	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	198;"	l	line:198
+LCD_command	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	294;"	l	line:294
+LCD_home	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	204;"	l	line:204
+LCD_init	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	361;"	l	line:361
+LCD_off	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	228;"	l	line:228
+LCD_on	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	216;"	l	line:216
+LCD_on_cur	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	222;"	l	line:222
+LCD_write	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	237;"	l	line:237
+MSG	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	57;"	q	line:57
+RS	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	53;"	q	line:53
+RW	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	51;"	q	line:51
+SHOW_LABEL	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	129;"	l	line:129
+hex2HexChars	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	162;"	l	line:162
+init	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	62;"	l	line:62
+main	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	93;"	l	line:93
+wait15ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	414;"	l	line:414
+wait15ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	417;"	l	line:417
+wait1ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	434;"	l	line:434
+wait1ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	437;"	l	line:437
+wait50us	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	444;"	l	line:444
+wait50us_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	450;"	l	line:450
+wait5ms	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	424;"	l	line:424
+wait5ms_loop	C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm	427;"	l	line:427

@@ -45,7 +45,9 @@
 	HEX_ORIG		; original hex value
 	HEX_CHRS_1		; hex value converted to chars
 	HEX_CHRS_2		; hex value converted to chars
-	
+
+	TMP				; used in swapping the W register value
+		
 	ENDC
 
 RW	EQU	00h		;LCD R/W
@@ -76,6 +78,21 @@ init
 	CLRF	PORTA
 	CLRF	PORTB
 
+	;----------------- debug
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+
 	CALL	LCD_init	;LCD 初期化
 
 	;----------------- vars
@@ -84,6 +101,26 @@ init
 
 	MOVLW	0EAh		;
 	MOVWF	VAL
+
+	;----------------- debug
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
 
 ;}
 ;
@@ -94,6 +131,18 @@ main
 
 	;------------------- line: 1
 	CALL	LCD_home	;カーソルを１行目の先頭に
+	
+	;----------------- debug
+	BCF		PORTB,0
+
+	BSF		PORTB,0
+	CALL	wait5ms
+	BCF		PORTB,0
+	CALL	wait1ms
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
 	
 	;---------- label
 	CALL	SHOW_LABEL
@@ -243,6 +292,7 @@ LCD_write
 
 	;------------- Upper 4 bits
 	MOVLW	0Fh			; clear PORTB,4-7
+	
 	ANDWF	PORTB,F
 						; e.g. char = 042h
 	MOVF	char,W		; W = 0100 0010 (42)
@@ -299,19 +349,44 @@ LCD_command
 	BCF	PORTA,RS	;RS=0(Command)
 
 	MOVLW	0F0h		;PORTBの下位４ビットを
-	ANDWF	PORTB,F		;　クリア
+	
+	; swap
+	MOVWF	TMP
+	SWAPF	TMP,W
+	
+	
+	ANDWF	PORTB,F		;　クリア		==> i.e. AND with '0000'
+	
 	SWAPF	char,W		;上位
 	ANDLW	0Fh		;４ビットを
+	
+	; swap
+	MOVWF	TMP
+	SWAPF	TMP,W
+	
+	
 	IORWF	PORTB,F		;PORTB(3-0)にセット（PORTB(7-4)はそのまま）
 	BSF	PORTA,E		;ＬＣＤにデータ書き込み
 	NOP
 	BCF	PORTA,E
 
 	MOVLW	0F0h		;PORTBの下位４ビットを
+	
+	; swap
+	MOVWF	TMP
+	SWAPF	TMP,W
+	
+	
 	ANDWF	PORTB,F		;　クリア
 	MOVF	char,W		;下位
 	ANDLW	0Fh		;４ビットを
+
+	; swap
+	MOVWF	TMP
+	SWAPF	TMP,W
+
 	IORWF	PORTB,F		;PORTB(3-0)にセット（PORTB(7-4)はそのまま）
+
 	BSF	PORTA,E		;ＬＣＤにデータ書き込み
 	NOP
 	BCF	PORTA,E
@@ -353,7 +428,7 @@ LCD_BF_wait1
 
 	RETURN
 ;}
-;LCD_write
+;LCD_BF_wait
 
 
 ;================= LCD初期化 ================================
@@ -364,37 +439,79 @@ LCD_init
 	BCF	PORTA,RS	;RS=0
 	BCF	PORTA,E		;E=0
 
-	MOVLW	0F0h		;PORTBの上位４ビットを
-	ANDWF	PORTB,W		;取り出す（変更しないように）
-	IORLW	03h		;下位４ビットに'３'をセット
-	MOVWF	PORTB
+;	MOVLW	0F0h		;PORTBの上位４ビットを
+;	ANDWF	PORTB,W		;取り出す（変更しないように）
+
+
+
+;	IORLW	03h		;下位４ビットに'３'をセット
+;	MOVWF	PORTB
+
+	;************************
+	MOVLW	0Fh
+	ANDWF	PORTB,W		; extract the lower 4 bits
+	
+	IORLW	030h
+	MOVWF	PORTB		; to the upper 4 bits => set '3'
+	;************************
+
 	BSF	PORTA,E		;ファンクションセット（１回目）
 	NOP
 	BCF	PORTA,E
 	CALL	wait5ms		;5mS待つ
 
-	MOVLW	0F0h		;PORTBの上位４ビットを
-	ANDWF	PORTB,W		;取り出す（変更しないように）
-	IORLW	03h		;下位４ビットに'３'をセット
-	MOVWF	PORTB
+	;------------------------------------
+;	MOVLW	0F0h		;PORTBの上位４ビットを
+;	ANDWF	PORTB,W		;取り出す（変更しないように）
+;	IORLW	03h		;下位４ビットに'３'をセット
+;	MOVWF	PORTB
+
+	;************************
+	MOVLW	0Fh
+	ANDWF	PORTB,W		; extract the lower 4 bits
+	
+	IORLW	030h
+	MOVWF	PORTB		; to the upper 4 bits => set '3'
+	;************************
+
 	BSF	PORTA,E		;ファンクションセット（２回目）
 	NOP
 	BCF	PORTA,E
 	CALL	wait5ms		;5mS待つ
 
-	MOVLW	0F0h		;PORTBの上位４ビットを
-	ANDWF	PORTB,W		;取り出す（変更しないように）
-	IORLW	03h		;下位４ビットに'３'をセット
-	MOVWF	PORTB
+	;------------------------------------
+;	MOVLW	0F0h		;PORTBの上位４ビットを
+;	ANDWF	PORTB,W		;取り出す（変更しないように）
+;	IORLW	03h		;下位４ビットに'３'をセット
+;	MOVWF	PORTB
+	
+	;************************
+	MOVLW	0Fh
+	ANDWF	PORTB,W		; extract the lower 4 bits
+	
+	IORLW	030h
+	MOVWF	PORTB		; to the upper 4 bits => set '3'
+	;************************
+	
 	BSF	PORTA,E		;ファンクションセット（３回目）
 	NOP
 	BCF	PORTA,E
 	CALL	wait5ms		;5mS待つ
 
-	MOVLW	0F0h		;PORTBの上位４ビットを
-	ANDWF	PORTB,W		;取り出す（変更しないように）
-	IORLW	02h		;４ビットモード
-	MOVWF	PORTB		;に
+	;------------------------------------
+;	MOVLW	0F0h		;PORTBの上位４ビットを
+;	ANDWF	PORTB,W		;取り出す（変更しないように）
+;	IORLW	02h		;４ビットモード
+;	MOVWF	PORTB		;に
+
+	;************************
+	MOVLW	0Fh
+	ANDWF	PORTB,W		; extract the lower 4 bits
+	
+	IORLW	020h		; 4-bit mode
+	MOVWF	PORTB		;
+	;************************
+
 	BSF	PORTA,E		;設定
 	NOP
 	BCF	PORTA,E
