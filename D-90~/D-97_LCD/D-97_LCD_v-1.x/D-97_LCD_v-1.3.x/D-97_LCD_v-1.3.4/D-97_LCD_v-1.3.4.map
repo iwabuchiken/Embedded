@@ -1,11 +1,11 @@
 MPLINK 4.42, Linker
-Linker Map File - Created Wed Nov 05 10:17:44 2014
+Linker Map File - Created Wed Nov 05 10:32:42 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x000208
-                   .cinit    romdata   0x000104    program   0x000004
+                   .org_0       code   0x000000    program   0x00021a
+                   .cinit    romdata   0x00010d    program   0x000004
 .config_2007_D-97_LCD_V-1.3.4.O       code   0x002007    program   0x000002
 
 
@@ -13,9 +13,9 @@ Linker Map File - Created Wed Nov 05 10:17:44 2014
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000105      
+                            0x000000    0x00010e      
                             0x002007    0x002007      
-            263 out of 4359 program addresses used, program memory utilization is 6%
+            272 out of 4359 program addresses used, program memory utilization is 6%
 
 
 
@@ -37,14 +37,14 @@ Linker Map File - Created Wed Nov 05 10:17:44 2014
              hex2HexChars   0x00005b    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
                      init   0x000000    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
                      main   0x000029    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                 wait15ms   0x0000ed    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-            wait15ms_loop   0x0000ef    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                  wait1ms   0x0000f9    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-             wait1ms_loop   0x0000fb    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                 wait50us   0x0000ff    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-            wait50us_loop   0x000101    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                  wait5ms   0x0000f3    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-             wait5ms_loop   0x0000f5    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                 wait15ms   0x0000f6    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+            wait15ms_loop   0x0000f8    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                  wait1ms   0x000102    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+             wait1ms_loop   0x000104    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                 wait50us   0x000108    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+            wait50us_loop   0x00010a    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                  wait5ms   0x0000fc    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+             wait5ms_loop   0x0000fe    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
 
 
 
@@ -66,13 +66,13 @@ Linker Map File - Created Wed Nov 05 10:17:44 2014
               LCD_BF_wait   0x0000a8    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
              LCD_BF_wait1   0x0000b9    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
                  LCD_init   0x0000c1    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                 wait15ms   0x0000ed    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-            wait15ms_loop   0x0000ef    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                  wait5ms   0x0000f3    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-             wait5ms_loop   0x0000f5    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                  wait1ms   0x0000f9    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-             wait1ms_loop   0x0000fb    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-                 wait50us   0x0000ff    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
-            wait50us_loop   0x000101    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                 wait15ms   0x0000f6    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+            wait15ms_loop   0x0000f8    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                  wait5ms   0x0000fc    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+             wait5ms_loop   0x0000fe    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                  wait1ms   0x000102    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+             wait1ms_loop   0x000104    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+                 wait50us   0x000108    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
+            wait50us_loop   0x00010a    program     static C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-1.x\D-97_LCD_v-1.3.x\D-97_LCD_v-1.3.4\D-97_LCD_v-1.3.4.asm
 
 

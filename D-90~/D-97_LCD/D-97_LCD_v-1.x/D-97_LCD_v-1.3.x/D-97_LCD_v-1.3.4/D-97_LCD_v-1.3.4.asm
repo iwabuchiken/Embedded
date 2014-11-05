@@ -82,7 +82,7 @@ init
 	CLRF	PORTA
 	CLRF	PORTB
 
-	;----------------- debug
+	;----------------- debug: 1-1
 	BCF		PORTB,0
 	CALL	wait1ms
 
@@ -485,6 +485,20 @@ LCD_init
 	IORLW	030h
 	MOVWF	PORTB		; to the upper 4 bits => set '3'
 	;************************
+
+	;----------------- debug: 1-1
+	BCF		PORTB,0
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
 
 	BSF	PORTA,E		;ファンクションセット（１回目）
 	NOP
