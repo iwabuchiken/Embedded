@@ -53,7 +53,11 @@
 RW	EQU	00h		;LCD R/W
 E	EQU	01h		;LCD Enable
 RS	EQU	02h		;LCD Register Select
-BUSY	EQU	03h		;BUSY FLAG (PORTB,3)
+
+;*********************
+BUSY	EQU	07h
+;*********************
+;BUSY	EQU	03h		;BUSY FLAG (PORTB,3)
 
 ;MSG	EQU	0AFh
 MSG	EQU	0CEh
@@ -102,7 +106,7 @@ init
 	MOVLW	0EAh		;
 	MOVWF	VAL
 
-	;----------------- debug
+	;----------------- debug: 1-1-1-1
 	BSF		PORTB,0
 	CALL	wait1ms
 	BCF		PORTB,0
@@ -132,7 +136,7 @@ main
 	;------------------- line: 1
 	CALL	LCD_home	;カーソルを１行目の先頭に
 	
-	;----------------- debug
+	;----------------- debug: 5-1
 	BCF		PORTB,0
 
 	BSF		PORTB,0
@@ -166,6 +170,26 @@ main
 	;-------------------- ending
 	CLRF	PORTA
 	CLRF	PORTB
+
+	;----------------- debug: 5-1-1
+	BCF		PORTB,0
+
+	BSF		PORTB,0
+	CALL	wait5ms
+	BCF		PORTB,0
+	CALL	wait1ms
+	
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+	BSF		PORTB,0
+	CALL	wait1ms
+	BCF		PORTB,0
+	CALL	wait1ms
+
+
 	SLEEP
 
 	GOTO	main
@@ -422,7 +446,14 @@ LCD_BF_wait1
 	NOP
 	BCF	PORTA,E
 	BSF	STATUS,RP0	;■バンク１に切替え
-	MOVLW	0F0h		;RB0-3は出力
+	
+	;******************
+	MOVLW	0h
+	
+	;******************
+	;MOVLW	0F0h		;RB0-3は出力
+	
+	
 	MOVWF	TRISB
 	BCF	STATUS,RP0	;■バンク０に切替え
 
