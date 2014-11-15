@@ -35,6 +35,19 @@ void main(void) {
      ****************/
      _Loop();
 
+//    while(1) {
+//
+//        //REF binary http://www.microchip.com/forums/m504764.aspx
+//        PORTB = 0x01;
+//
+//        __delay_ms(500);
+//
+//        PORTB = 0x02;
+//
+//        __delay_ms(500);
+//
+//    }
+
     return;
 }
 
