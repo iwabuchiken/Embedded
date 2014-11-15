@@ -3,6 +3,9 @@
  * Author: iwabuchik
  *
  * Created on 2014/11/07, 16:23
+ *
+ * Aoki.184
+ *
  */
 
 
@@ -33,7 +36,8 @@ void main(void) {
      /****************
      * loop
      ****************/
-     _Loop();
+//     _Loop();
+     _Loop_LCD();
 
 //    while(1) {
 //
@@ -53,13 +57,51 @@ void main(void) {
 
 void _Setup(void) {
 
+    /****************
+     * TRISB
+     ****************/
     TRISB = 0x00;
+    TRISA = 0x00;
+
+    /****************
+     * PORT
+     ****************/
+    PORTA = 0x00;
     PORTB = 0x00;
 
-    TRISA = 0x00;
-    PORTA = 0x00;
+    /****************
+     * ANSEL
+     ****************/
+    ANSEL = 0x00;
 
-}
+//     /****************
+//     * report
+//     ****************/
+//     PORTA = 0x00;
+//     PORTA = 0x01;
+//
+//     __delay_ms(100);
+//
+//     PORTA = 0x00;
+
+    /****************
+     * LCD
+     ****************/
+     SD1602_init();
+
+//     /****************
+//     * report
+//     ****************/
+//     PORTB = 0x00;
+//     PORTB = 0x01;
+//
+//     __delay_ms(100);
+//
+//     PORTB = 0x00;
+//
+//     __delay_ms(500);
+
+}//_Setup
 
 void _Loop(void){
 

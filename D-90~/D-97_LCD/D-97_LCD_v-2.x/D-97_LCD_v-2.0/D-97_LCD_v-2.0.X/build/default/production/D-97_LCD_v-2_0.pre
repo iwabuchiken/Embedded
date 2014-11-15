@@ -1310,20 +1310,20 @@ void SD1602_clear(void)
 {
 SD1602_write(0x01, 0);
 SD1602_write(0x01 << 4, 0);
-_delay((unsigned long)((2)*(20000000/4000.0)));
+_delay((unsigned long)((2)*(20000000/4000000.0)));
 }
 
 void SD1602_init(void)
 {
-_delay((unsigned long)((20)*(20000000/4000.0)));
+_delay((unsigned long)((20)*(20000000/4000000.0)));
 SD1602_write(0x30, 0);
-_delay((unsigned long)((5)*(20000000/4000.0)));
+_delay((unsigned long)((5)*(20000000/4000000.0)));
 SD1602_write(0x30, 0);
-_delay((unsigned long)((5)*(20000000/4000.0)));
+_delay((unsigned long)((5)*(20000000/4000000.0)));
 SD1602_write(0x30, 0);
-_delay((unsigned long)((5)*(20000000/4000.0)));
+_delay((unsigned long)((5)*(20000000/4000000.0)));
 SD1602_write(0x20, 0);
-_delay((unsigned long)((5)*(20000000/4000.0)));
+_delay((unsigned long)((5)*(20000000/4000000.0)));
 SD1602_control(0x28);
 SD1602_control(0x08);
 SD1602_control(0x0C);
@@ -1357,21 +1357,30 @@ void main(void) {
 # 31
 _Setup();
 
-# 36
-_Loop();
+# 37
+_Loop_LCD();
 
-# 51
+# 52
 return;
 }
 
 void _Setup(void) {
 
+# 60
 TRISB = 0x00;
+TRISA = 0x00;
+
+# 66
+PORTA = 0x00;
 PORTB = 0x00;
 
-TRISA = 0x00;
-PORTA = 0x00;
+# 72
+ANSEL = 0x00;
 
+# 87
+SD1602_init();
+
+# 101
 }
 
 void _Loop(void){
