@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+$C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 end_init CODE 0 11 11 2 2
 reset_vec CODE 0 0 0 2 2
 config CONFIG 0 2007 2007 1 2
@@ -71,12 +71,12 @@ STRING 005A-0FFF 2
 %LINETAB
 $dist/default/production\Test_MPLAB_X.X.production.obj
 "C:\WORKS\WS\Embedded\D-100~\D-101\Test_MPLAB_X.X\test_1.c":52 4 intentry CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":179 13 cinit CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":182 13 cinit CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":192 13 cinit CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":198 14 cinit CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":199 14 cinit CODE
-"C:\Users\IWABUC~1\AppData\Local\Temp\s634.":200 15 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":179 13 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":182 13 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":192 13 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":198 14 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":199 14 cinit CODE
+"C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.":200 15 cinit CODE
 "C:\WORKS\WS\Embedded\D-100~\D-101\Test_MPLAB_X.X\test_1.c":64 17 maintext CODE
 "C:\WORKS\WS\Embedded\D-100~\D-101\Test_MPLAB_X.X\test_1.c":65 17 maintext CODE
 "C:\WORKS\WS\Embedded\D-100~\D-101\Test_MPLAB_X.X\test_1.c":75 1A maintext CODE
@@ -115,15 +115,15 @@ __Lintentry 8 0 CODE 0 intentry -
 __pintentry 8 0 CODE 0 intentry dist/default/production\Test_MPLAB_X.X.production.obj
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 _main 2E 0 CODE 0 maintext dist/default/production\Test_MPLAB_X.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+___sp 0 0 STACK 2 stack C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 btemp 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 ttemp 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 _intr 88 0 CODE 0 text1 dist/default/production\Test_MPLAB_X.X.production.obj
-start 22 0 CODE 0 init C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+start 22 0 CODE 0 init C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 _TRISB 86 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 _PORTB 6 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 ltemp0 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 ttemp0 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
@@ -153,7 +153,7 @@ __Lcommon 0 0 ABS 0 common -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 _TMR0IF 5A 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+___int_sp 0 0 STACK 2 stack C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Labs1 0 0 ABS 0 abs1 -
 __Hsfr0 0 0 ABS 0 sfr0 -
@@ -167,8 +167,8 @@ __Lsfr3 0 0 ABS 0 sfr3 -
 _T500mS 3C8 -34F COMMON 1 bitbssCOMMON dist/default/production\Test_MPLAB_X.X.production.obj
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
-stackhi 0 0 ABS 0 - C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
-stacklo 0 0 ABS 0 - C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+stackhi 0 0 ABS 0 - C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
+stacklo 0 0 ABS 0 - C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 saved_w 7E 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
 __Hinit 22 0 CODE 0 init -
 __Linit 22 0 CODE 0 init -
@@ -218,13 +218,13 @@ __Hend_init 26 0 CODE 0 end_init -
 __Lend_init 22 0 CODE 0 end_init -
 __Hreset_vec 4 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-intlevel0 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+intlevel0 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Test_MPLAB_X.X.production.obj
-intlevel1 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
-intlevel2 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
-intlevel3 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
-intlevel4 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
-intlevel5 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s634.obj
+intlevel1 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
+intlevel2 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
+intlevel3 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
+intlevel4 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
+intlevel5 0 0 CODE 0 functab C:\Users\IWABUC~1\AppData\Local\Temp\s6kk.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _cnt500mS 78 0 COMMON 1 nvCOMMON dist/default/production\Test_MPLAB_X.X.production.obj
