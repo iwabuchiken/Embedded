@@ -1,0 +1,36 @@
+[DeviceName]
+Value=P16F88
+[DeviceClock]
+Value=20
+[MainUnit]
+Value=
+[DeviceFlags]
+Count=8
+Value0=_CP_OFF = $3FFF
+Value1=_DEBUG_OFF = $3FFF
+Value2=_CPD_OFF = $3FFF
+Value3=_LVP_OFF = $3F7F
+Value4=_BODEN_OFF = $3FBF
+Value5=_PWRTE_ON = $3FF7
+Value6=_WDT_OFF = $3FFB
+Value7=_HS_OSC = $3FEE
+[BuildType]
+bType=0
+[ProjectFiles]
+Count=1
+Value0=D-97_LCD_v_2_1.c
+[HeaderFiles]
+Count=0
+[ObjLibFiles]
+Count=0
+[PLDFiles]
+Count=0
+[EEPROMinfo]
+isused=0
+[SearchPath]
+Count=3
+Value0=C:\WORKS\Programs\Mikroelektronika\mikroC\Defs\
+Value1=C:\WORKS\Programs\Mikroelektronika\mikroC\Uses\p16\
+Value2=C:\WORKS\WS\Embedded\D-90~\D-97_LCD\D-97_LCD_v-2.x\D-97_LCD_v-2.1\
+[IncludePath]
+Count=0
