@@ -56,7 +56,7 @@ void interrupt intr(void) {
         PORTA    ^= 0x03;
 
 //        __delay_ms(1);
-        
+
         count    = 0;
 
     }

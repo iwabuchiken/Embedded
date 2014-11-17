@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/D-108_Aoki_TMR0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=D-108_Aoki_TMR0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=d-108aokitmr0.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/D-108_TMR_v_1_0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=D-108_TMR_v_1_0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=d-108tmrv10.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/d-108aokitmr0.x/bin
+makeDirectory ${TMPDIR}/d-108tmrv10.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/d-108aokitmr0.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/d-108tmrv10.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/d-108aokitmr0.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/d-108tmrv10.x.tar *
 checkReturnCode
 
 # Cleanup
