@@ -47,8 +47,7 @@ void main(void) {
 
 	while(1) {
 	  //sd1602_clear();
-//			sd1602_control(0x80);
-//			sd1602_print(s);
+//			sd160b2_print(s);
 
 			__delay_ms(1000);
 
