@@ -1,18 +1,19 @@
 /*
- * File:   D-108_v_2_3.c
+ * File:   D-108_v_2_4.c
  * Author: iwabuchik
  *
- * Created on 2014/11/19, 14:43
+ * Created on 2014/11/19, 20:30
  */
 
 
 #include <xc.h>
 
-#include "SD1602_4bit_mode.h"
-
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 20000000
 #endif
+
+#include "SD1602_4bit_mode.h"
+
 
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
@@ -31,13 +32,12 @@ void main(void) {
 
 	SD1602_clear();
 
-
 	while(1) {
 
 		SD1602_control(0x80);
 
 		SD1602_print(s);
-                
+
 
 //		PORTA = 0x01;
 //
@@ -50,7 +50,6 @@ void main(void) {
 	}
 
     return;
-
 }
 
 void _Setup(void) {

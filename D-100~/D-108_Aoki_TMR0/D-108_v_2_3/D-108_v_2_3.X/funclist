@@ -1,8 +1,10 @@
-_SD1602_init: CODE, 1989 0 56
-_SD1602_write: CODE, 1910 0 36
-_SD1602_clear: CODE, 1870 0 15
-_SD1602_control: CODE, 1885 0 25
-_main: CODE, 1946 0 43
-__initialization: CODE, 2045 0 0
-__Setup: CODE, 1858 0 12
-Total: 187
+_SD1602_init: CODE, 1962 0 56
+_SD1602_write: CODE, 1887 0 36
+_SD1602_clear: CODE, 1801 0 15
+_SD1602_print: CODE, 1816 0 19
+_SD1602_control: CODE, 1835 0 25
+_SD1602_display: CODE, 1860 0 27
+_main: CODE, 1923 0 39
+__initialization: CODE, 2018 0 27
+__Setup: CODE, 1789 0 12
+Total: 256
