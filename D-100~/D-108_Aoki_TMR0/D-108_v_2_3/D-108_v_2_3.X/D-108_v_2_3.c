@@ -25,11 +25,16 @@ void main(void) {
 
 	_Setup();
 
+	SD1602_init();
+
+	SD1602_clear();
+
+
 	while(1) {
 
 		PORTA = 0x01;
 
-		__delay_ms(500);
+		__delay_ms(250);
 
 		PORTA = 0x00;
 
