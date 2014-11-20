@@ -189,6 +189,6 @@ SD1602_init_2(void) {
 	// function setting
 
 	///////////////////////
-
+	SD1602_control(0x28);
 
 }//SD1602_init_2
