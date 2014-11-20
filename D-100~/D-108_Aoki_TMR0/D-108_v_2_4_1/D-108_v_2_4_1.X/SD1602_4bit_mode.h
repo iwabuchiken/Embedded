@@ -96,6 +96,7 @@ void SD1602_print(char *s) {
   }
 }
 
+//REF http://homepage3.nifty.com/mitt/pic/pic5_17_1.html
 void
 SD1602_init_2(void) {
 
@@ -191,8 +192,33 @@ SD1602_init_2(void) {
 	///////////////////////
 	SD1602_control(0x28);
 
+	///////////////////////
+
+	// display => off
+
+	///////////////////////
 	SD1602_control(0x08);	// display => off
 
+	///////////////////////
+
+	// LCD => clear
+
+	///////////////////////
 	SD1602_control(0x01);	// LCD => clear
+
+	///////////////////////
+
+	// entry mode (cursor mode)
+
+	///////////////////////
+	SD1602_control(0x06);
+
+	///////////////////////
+
+	// display => on; cursor => off
+	// (LCD_on)
+
+	///////////////////////
+	SD1602_control(0x0C);
 
 }//SD1602_init_2
