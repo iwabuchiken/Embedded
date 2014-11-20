@@ -5,5 +5,5 @@ _SD1602_control: CODE, 1804 0 25
 _SD1602_display: CODE, 1829 0 27
 _main: CODE, 1892 0 45
 __initialization: CODE, 2034 0 11
-__Setup: CODE, 1744 0 12
+__Setup: CODE, 1740 0 12
 Total: 272
