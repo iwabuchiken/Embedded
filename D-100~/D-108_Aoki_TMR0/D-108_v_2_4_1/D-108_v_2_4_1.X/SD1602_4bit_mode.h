@@ -191,4 +191,8 @@ SD1602_init_2(void) {
 	///////////////////////
 	SD1602_control(0x28);
 
+	SD1602_control(0x08);	// display => off
+
+	SD1602_control(0x01);	// LCD => clear
+
 }//SD1602_init_2
