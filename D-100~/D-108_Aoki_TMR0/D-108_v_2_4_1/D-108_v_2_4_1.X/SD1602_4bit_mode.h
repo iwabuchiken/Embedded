@@ -110,115 +110,69 @@ SD1602_init_2(void) {
 	// 8-bit: 1
 
 	///////////////////////
-	PORTB = PORTB & 0x0F;	// get upper 4 bits
-	PORTB = PORTB | 0x30;	// set 03h to the upper
-							//	=> lower 4 bits unchanged
+//	PORTB = PORTB & 0x0F;	// get upper 4 bits
+//	PORTB = PORTB | 0x30;	// set 03h to the upper
+//							//	=> lower 4 bits unchanged
+//
+//	PORTAbits.ENABLE	= 0;
+//	__delay_us(1);
+//
+//	PORTAbits.ENABLE	= 1;
+//	__delay_us(1);
+//
+//	PORTAbits.ENABLE	= 0;
 
-	PORTAbits.ENABLE	= 0;
-	__delay_us(1);
+	SD1602_write(0x30, 0); /* 8bitモード設定 */
 
-	PORTAbits.ENABLE	= 1;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 0;
-
-	// wait: 5 ms
-	__delay_ms(5);
+	__delay_ms(5);			// wait: 5 ms
 
 	///////////////////////
 
 	// 8-bit: 2
 
 	///////////////////////
-	PORTB = PORTB & 0x0F;	// get upper 4 bits
-	PORTB = PORTB | 0x30;	// set 03h to the upper
-							//	=> lower 4 bits unchanged
+	SD1602_write(0x30, 0); /* 8bitモード設定 */
 
-	PORTAbits.ENABLE	= 0;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 1;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 0;
-
-	// wait: 5 ms
-	__delay_ms(5);
+	__delay_ms(5);			// wait: 5 ms
 
 	///////////////////////
 
 	// 8-bit: 3
 
 	///////////////////////
-	PORTB = PORTB & 0x0F;	// get upper 4 bits
-	PORTB = PORTB | 0x30;	// set 03h to the upper
-							//	=> lower 4 bits unchanged
+	SD1602_write(0x30, 0); /* 8bitモード設定 */
 
-	PORTAbits.ENABLE	= 0;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 1;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 0;
-
-	// wait: 5 ms
-	__delay_ms(5);
+	__delay_ms(5);			// wait: 5 ms
 
 	///////////////////////
 
 	// 4-bit
 
 	///////////////////////
-	PORTB = PORTB & 0x0F;	// get upper 4 bits
-	PORTB = PORTB | 0x20;	// set 02h to the upper
-							//	=> lower 4 bits unchanged
+	SD1602_write(0x20, 0); /* 4bitモード設定 */
 
-	PORTAbits.ENABLE	= 0;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 1;
-	__delay_us(1);
-
-	PORTAbits.ENABLE	= 0;
-
-	// wait: 5 ms
-	__delay_ms(1);
+	__delay_ms(1);			// wait: 1 ms
 
 	///////////////////////
 
-	// function setting
+	// settings
 
 	///////////////////////
-	SD1602_control(0x28);
+	SD1602_control(0x28);	// function setting
+							// 0010 1000
 
-	///////////////////////
-
-	// display => off
-
-	///////////////////////
 	SD1602_control(0x08);	// display => off
+							// 0000 1000
 
-	///////////////////////
-
-	// LCD => clear
-
-	///////////////////////
 	SD1602_control(0x01);	// LCD => clear
 
-	///////////////////////
+	__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
 
-	// entry mode (cursor mode)
+	SD1602_control(0x06);	// entry mode (cursor mode)
+							// 0000 0110
 
-	///////////////////////
-	SD1602_control(0x06);
-
-	///////////////////////
-
-	// display => on; cursor => off
-	// (LCD_on)
-
-	///////////////////////
-	SD1602_control(0x0C);
+	SD1602_control(0x0C);	// display => on; cursor => off
+							// 0000 1100
+							// (LCD_on)
 
 }//SD1602_init_2

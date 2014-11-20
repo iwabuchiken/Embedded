@@ -24,7 +24,8 @@ void _Setup(void);
 
 void main(void) {
 
-	char s[]  = "Hello!";
+	char s[]  = "How are you?";
+//	char s[]  = "Hello!";
 
 	_Setup();
 
@@ -40,7 +41,12 @@ void main(void) {
 
 //		SD1602_init_2();
 
-		SD1602_control(0x02);
+		SD1602_control(0x02);	// Cursor => at home
+								// Exec time => 1.64 ms
+
+//		__delay_ms(2);
+                __delay_ms(2);
+
 //		SD1602_control(0x80);
 
 		SD1602_print(s);
