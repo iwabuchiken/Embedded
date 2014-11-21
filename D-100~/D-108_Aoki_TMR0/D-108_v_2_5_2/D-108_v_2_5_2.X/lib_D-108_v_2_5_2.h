@@ -15,7 +15,8 @@ extern "C" {
 //REF char comparison QA http://forum.htsoft.com/all/showflat.php/Cat/0/Number/171462/Main/171272/
 char
 //conv_Hex_to_Dec(unsigned char c) {  // lib_D-108_v_2_5_2.h:21: warning: (765) degenerate unsigned comparison
-conv_Hex_to_CharCode(signed char c) {
+conv_Hex_to_CharCode
+(signed char c) {
 //conv_Hex_to_Dec(char c) {             // warning: (765) degenerate unsigned comparison
 
 	if (c >= 0x00 && c <= 0x09) {
@@ -37,8 +38,44 @@ conv_Hex_to_CharCode(signed char c) {
 
 	}
 
-}//conv_Hex_to_Dec
+}//conv_Hex_to_CharCode
 
+///////////////////////
+
+// conv_Hex_to_CharCode_2Digits
+/*	@param
+ * 		converted[]: size => 2
+ */
+///////////////////////
+
+void
+conv_Hex_to_CharCode_2Digits
+(signed char c, char converted[]) {
+//(signed char c, char[2] converted) {
+
+	char tmp_Chr;
+
+	///////////////////////
+
+	// digit: 1
+
+	///////////////////////
+	tmp_Chr = 0x0F & c;
+
+	converted[1] = conv_Hex_to_CharCode(tmp_Chr);
+
+	///////////////////////
+
+	// digit: 2
+
+	///////////////////////
+	tmp_Chr = 0xF0 & c;
+
+	tmp_Chr = tmp_Chr >> 4;
+
+	converted[0] = conv_Hex_to_CharCode(tmp_Chr);
+
+}//conv_Hex_to_CharCode_2Digits
 
 #ifdef	__cplusplus
 }

@@ -8,7 +8,7 @@
 
 #include <xc.h>
 
-#include <string.h>
+//#include <string.h>
 
 #include "SD1602_4bit_mode.h"
 
@@ -42,12 +42,14 @@ unsigned int i;			// index for iterator
 
 char s[20];
 
-char msg_1[]  = "D-108 v-2.5.2a";
+char msg_1[]  = "D-108 v-2.5.2b";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex[] = "2CF";
 //char msg_Hex[] = "0CF";
 //const char msg_Hex[] = "0CF";
+char msg_Hex_2Digit[3];	// 2-digit hex
+						// length is 3 => 2 digits and '0' char
 
 void main(void) {
 
@@ -146,18 +148,19 @@ _Display(void) {
 //
 //	}
 
-	msg_Hex[0] = conv_Hex_to_CharCode(0x0A);
-	msg_Hex[1] = conv_Hex_to_CharCode(0x01);
-	msg_Hex[2] = conv_Hex_to_CharCode(0x0F);
+//	msg_Hex[0] = conv_Hex_to_CharCode(0x0A);
+//	msg_Hex[1] = conv_Hex_to_CharCode(0x01);
+//	msg_Hex[2] = conv_Hex_to_CharCode(0x0F);
+
+	conv_Hex_to_CharCode_2Digits(0xAF, msg_Hex_2Digit);
+
+	msg_Hex_2Digit[2] = 0x00;
 
 	SD1602_control(0xC0);	// Cursor => second line
 							// Exec time => 40 us
 
-//	SD1602_display(0x30 + 1);	// '1'
-//	SD1602_display(0x30);	// '0'
-//	SD1602_display(msg_Hex[0]);
-//	SD1602_print(msg_1);
-	SD1602_print(msg_Hex);
+	SD1602_print(msg_Hex_2Digit);
+//	SD1602_print(msg_Hex);
 
 
 }//_Display
@@ -178,7 +181,8 @@ _While(void) {
 
 			__delay_ms(2);
 
-			strcpy(s, msg_2);
+//
+//                        strcpy(s, msg_2);
 
 			SD1602_print(s);
 
@@ -202,7 +206,7 @@ _While(void) {
 
 			__delay_ms(2);
 
-			strcpy(s, msg_1);
+//			strcpy(s, msg_1);
 
 			SD1602_print(s);
 
