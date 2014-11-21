@@ -71,6 +71,9 @@ void main(void) {
 	///////////////////////
 	_Display();
 
+        //REF STATUS bits http://www.picfun.com/pic18/mcc10.html "IPR1bits.TMR1IP=0;"
+//        STATUSbits.C;
+
 	while(1) {
 
 //		_While();
