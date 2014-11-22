@@ -5,36 +5,42 @@
 void conv_Dex_to_Binary(int, char[9]);
 //void conv_Dex_to_Binary(int, char*);
 
+void shift_Right_Left(int);
+
 void main(void) {
 
-	int c1 = 0x0C;
-//	int c1 = 0xFC;
+	int num = 0xEA;
 
-	char binary[9];
+	shift_Right_Left(num);
 
-
-	printf("c1 => %d\n", c1);
-
-	///////////////////////
-
-	// shift
-
-	///////////////////////
-	c1 = c1 >> 1;
-
-	printf("c1 >> 1 ------------------\n");
-	printf("c1 => %d\n", c1);
-
-	///////////////////////
-
-	// conversion
-
-	///////////////////////
-	conv_Dex_to_Binary(0xCE, binary);
-//	conv_Dex_to_Binary(0x0C, binary);
-
-	printf("conversion ------------------\n");
-	printf("binary => %s\n", binary);
+//	int c1 = 0x0C;
+////	int c1 = 0xFC;
+//
+//	char binary[9];
+//
+//
+//	printf("c1 => %d\n", c1);
+//
+//	///////////////////////
+//
+//	// shift
+//
+//	///////////////////////
+//	c1 = c1 >> 1;
+//
+//	printf("c1 >> 1 ------------------\n");
+//	printf("c1 => %d\n", c1);
+//
+//	///////////////////////
+//
+//	// conversion
+//
+//	///////////////////////
+//	conv_Dex_to_Binary(0xCE, binary);
+////	conv_Dex_to_Binary(0x0C, binary);
+//
+//	printf("conversion ------------------\n");
+//	printf("binary => %s\n", binary);
 
     return;
 
@@ -89,5 +95,42 @@ void conv_Dex_to_Binary
 	printf("\n");
 	printf("result => %s\n", result);
 //	printf("result => %s (%x)\n", result, num);
+
+}
+
+void shift_Right_Left(int num) {
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- shift_Right_Left -----------\n", __LINE__);
+
+	printf("[%d] num => %d (%02x)\n", __LINE__, num, num);
+
+	///////////////////////
+
+	// shift: right
+
+	///////////////////////
+	num = num >> 3;
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num >> 3 -----------\n", __LINE__);
+
+	printf("[%d] num => %d (%02x)\n", __LINE__, num, num);
+
+	///////////////////////
+
+	// shift: left
+
+	///////////////////////
+	num = num << 3;
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num << 3 -----------\n", __LINE__);
+
+	printf("[%d] num => %d (%02x)\n", __LINE__, num, num);
+
 
 }
