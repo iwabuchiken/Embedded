@@ -6,12 +6,18 @@ void conv_Dex_to_Binary(int, char[9]);
 //void conv_Dex_to_Binary(int, char*);
 
 void shift_Right_Left(int);
+void RRF(int);
+void RRF_2(int);
 
 void main(void) {
 
-	int num = 0xEA;
+	int num = 0x6c;
+//	int num = 0xEB;
+//	int num = 0xEA;
 
-	shift_Right_Left(num);
+	RRF_2(num);
+//	RRF(num);
+//	shift_Right_Left(num);
 
 //	int c1 = 0x0C;
 ////	int c1 = 0xFC;
@@ -54,9 +60,9 @@ void conv_Dex_to_Binary
 
 	int tmp;
 
-	//debug
-	printf("\n");
-	printf("[%d] start conversion...\n", __LINE__);
+//	//debug
+//	printf("\n");
+//	printf("[%d] start conversion...\n", __LINE__);
 
 	printf("\n");
 	printf("hex => %02x, dex => %d\n", num, num);
@@ -92,9 +98,9 @@ void conv_Dex_to_Binary
 	// report
 
 	///////////////////////
-	printf("\n");
-	printf("result => %s\n", result);
-//	printf("result => %s (%x)\n", result, num);
+//	printf("\n");
+//	printf("result => %s\n", result);
+////	printf("result => %s (%x)\n", result, num);
 
 }
 
@@ -131,6 +137,181 @@ void shift_Right_Left(int num) {
 	printf("[%d] ----------- num << 3 -----------\n", __LINE__);
 
 	printf("[%d] num => %d (%02x)\n", __LINE__, num, num);
+
+
+}
+
+void RRF(int num) {
+
+	int tmp1 = num & 0x01;
+	int tmp2;
+//	int tmp1 = 0x01;
+
+	char tmp1_bin[9];
+	char tmp2_bin[9];
+
+	char num_bin[9];
+
+	conv_Dex_to_Binary(tmp1, tmp1_bin);
+	conv_Dex_to_Binary(num, num_bin);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- shift_Right_Left -----------\n", __LINE__);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
+
+	///////////////////////
+
+	// shift 7
+
+	///////////////////////
+	printf("\n");
+	printf("[%d] ----------- tmp1 << 7 -----------\n", __LINE__);
+
+	tmp1 = tmp1 << 7;
+
+	conv_Dex_to_Binary(tmp1, tmp1_bin);
+
+	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
+
+	///////////////////////
+
+	// modify
+
+	///////////////////////
+	printf("\n");
+	printf("[%d] ----------- tmp1 | 0x7F -----------\n", __LINE__);
+//	printf("[%d] ----------- tmp1 | 0xFF -----------\n", __LINE__);
+
+	tmp1 = tmp1 | 0x7F;
+//	tmp1 = tmp1 | 0xFF;
+
+	conv_Dex_to_Binary(tmp1, tmp1_bin);
+
+	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
+
+	///////////////////////
+
+	// shift: >> 1
+
+	///////////////////////
+	num = num >> 1;
+
+	conv_Dex_to_Binary(num, num_bin);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- shift 1: num >> 1 -----------\n", __LINE__);
+
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	///////////////////////
+
+	// shift 2: >> 1
+
+	///////////////////////
+	num = num >> 1;
+
+	conv_Dex_to_Binary(num, num_bin);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- shift 2: num >> 1 -----------\n", __LINE__);
+
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	///////////////////////
+
+	// rotate
+
+	///////////////////////
+	printf("\n");
+	printf("[%d] ----------- tmp1 & num -----------\n", __LINE__);
+//	printf("[%d] ----------- tmp1 | 0xFF -----------\n", __LINE__);
+
+	tmp2 = tmp1 & num;
+//	tmp1 = tmp1 | 0xFF;
+
+	conv_Dex_to_Binary(tmp2, tmp2_bin);
+
+	printf("[%d] tmp2 => %s (d=%d) (0x%02x)\n", __LINE__, tmp2_bin, tmp2, tmp2);
+
+}
+
+void RRF_2(int num) {
+
+	int tmp1;
+	int tmp2;
+	int tmp3;
+
+	char tmp_bin[9];
+
+	char num_bin[9];
+
+//	conv_Dex_to_Binary(tmp1, tmp1_bin);
+	conv_Dex_to_Binary(num, num_bin);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num -----------\n", __LINE__);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp1 = num & 0x01 -----------\n", __LINE__);
+
+	tmp1 = num & 0x01;
+	conv_Dex_to_Binary(tmp1, tmp_bin);
+
+	printf("[%d] tmp1 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp1, tmp1);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp1 = tmp1 << 7 -----------\n", __LINE__);
+
+	tmp1 = tmp1 << 7;
+	conv_Dex_to_Binary(tmp1, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp1 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp1, tmp1);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num = num >> 1 -----------\n", __LINE__);
+
+	num = num >> 1;
+	conv_Dex_to_Binary(num, num_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp2 = num & 0x7F -----------\n", __LINE__);
+
+	tmp2 = num & 0x7F;
+	conv_Dex_to_Binary(tmp2, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp2 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp2, tmp2);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp3 = tmp1 | tmp2 -----------\n", __LINE__);
+
+	tmp3 = tmp1 | tmp2;
+	conv_Dex_to_Binary(tmp3, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp3 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp3, tmp3);
+
+//	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
 
 
 }
