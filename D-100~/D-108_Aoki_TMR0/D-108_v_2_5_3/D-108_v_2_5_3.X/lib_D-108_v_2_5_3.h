@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+void conv_Dex_to_Binary(int, char[9]);
+
 //REF char comparison QA http://forum.htsoft.com/all/showflat.php/Cat/0/Number/171462/Main/171272/
 char
 //conv_Hex_to_Dec(unsigned char c) {  // lib_D-108_v_2_5_2.h:21: warning: (765) degenerate unsigned comparison
@@ -76,6 +78,60 @@ conv_Hex_to_CharCode_2Digits
 	converted[0] = conv_Hex_to_CharCode(tmp_Chr);
 
 }//conv_Hex_to_CharCode_2Digits
+
+void
+conv_Dex_to_Binary
+(int num, char result[9]) {
+
+	int i;
+	int len = 8;
+
+	int tmp;
+
+//	//debug
+//	printf("\n");
+//	printf("[%d] start conversion...\n", __LINE__);
+
+//	printf("\n");
+//	printf("[%d] hex => %02x, dex => %d\n", __LINE__, num, num);
+
+	for (i = len - 1; i >= 0; i --) {
+
+		tmp = num & 0x01;
+
+		if (tmp == 1) {
+
+			result[i] = '1';
+
+		} else {
+
+			result[i] = '0';
+
+		}
+
+		// shift
+		num = num >> 1;
+
+	}
+
+	///////////////////////
+
+	// null char
+
+	///////////////////////
+	result[8] = '\0';
+
+	///////////////////////
+
+	// report
+
+	///////////////////////
+//	printf("\n");
+//	printf("result => %s\n", result);
+////	printf("result => %s (%x)\n", result, num);
+
+}
+
 
 #ifdef	__cplusplus
 }
