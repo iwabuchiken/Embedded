@@ -9,11 +9,16 @@ int conv_Binary_to_Hex(char[9]);
 
 void shift_Right_Left(int);
 void RRF(int);
-void RRF_2(int);
+int RRF_2(int);
+int RLF(int);
 
 void main(void) {
 
-	int num = 0x6d;
+	int num = 0xFA;
+
+	int tmp;
+
+//	int num = 0x6d;
 //	int num = 0x6c;
 //	int num = 0xEB;
 //	int num = 0xEA;
@@ -30,7 +35,12 @@ void main(void) {
 
 //	conv_Binary_to_Hex(binary, sizeof(binary));
 
-	RRF_2(num);
+//	tmp = RRF_2(num);
+//	tmp = RLF(num);
+
+	printf("[%d] tmp => 0x%02x, d = %d\n", __LINE__, tmp, tmp);
+
+//	RRF_2(num);
 //	RRF(num);
 //	shift_Right_Left(num);
 
@@ -79,8 +89,8 @@ void conv_Dex_to_Binary
 //	printf("\n");
 //	printf("[%d] start conversion...\n", __LINE__);
 
-	printf("\n");
-	printf("[%d] hex => %02x, dex => %d\n", __LINE__, num, num);
+//	printf("\n");
+//	printf("[%d] hex => %02x, dex => %d\n", __LINE__, num, num);
 
 	for (i = len - 1; i >= 0; i --) {
 
@@ -132,14 +142,14 @@ int conv_Binary_to_Hex
 
 	num = 0x00;
 
-//	//debug
-	printf("\n");
-	printf("[%d] binary => %s\n", __LINE__, result);
+////	//debug
+//	printf("\n");
+//	printf("[%d] binary => %s\n", __LINE__, result);
 
 	for (i = 0; i < len; i++) {
 //	for (i = len - 1; i >= 0; i --) {
 
-		printf("[%d] result[%d] => %c\n", __LINE__, i, result[i]);
+//		printf("[%d] result[%d] => %c\n", __LINE__, i, result[i]);
 
 		num = num << 1;
 
@@ -162,11 +172,11 @@ int conv_Binary_to_Hex
 	///////////////////////
 	conv_Dex_to_Binary(num, binary);
 
-	printf("[%d] num => %d (%s) (hex=%02x)\n", __LINE__, num, binary, num);
+//	printf("[%d] num => %d (%s) (hex=%02x)\n", __LINE__, num, binary, num);
 
 	return num;
 
-}
+}//conv_Binary_to_Hex
 
 void shift_Right_Left(int num) {
 
@@ -306,7 +316,7 @@ void RRF(int num) {
 
 }
 
-void RRF_2(int num) {
+int RRF_2(int num) {
 
 	int tmp1;
 	int tmp2;
@@ -382,5 +392,86 @@ void RRF_2(int num) {
 
 //	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
 
+	return tmp;
+
+}
+
+int RLF(int num) {
+
+	int tmp1;
+	int tmp2;
+	int tmp3;
+	int tmp;
+
+	char tmp_bin[9];
+
+	char num_bin[9];
+
+//	conv_Dex_to_Binary(tmp1, tmp1_bin);
+	conv_Dex_to_Binary(num, num_bin);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num -----------\n", __LINE__);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp1 = num & 0x80 -----------\n", __LINE__);
+
+	tmp1 = num & 0x80;
+	conv_Dex_to_Binary(tmp1, tmp_bin);
+
+	printf("[%d] tmp1 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp1, tmp1);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp1 = tmp1 >> 7 -----------\n", __LINE__);
+
+	tmp1 = tmp1 >> 7;
+	conv_Dex_to_Binary(tmp1, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp1 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp1, tmp1);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- num = num << 1 -----------\n", __LINE__);
+
+	num = num << 1;
+	conv_Dex_to_Binary(num, num_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] num => %s (d=%d) (0x%02x)\n", __LINE__, num_bin, num, num);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp2 = num & 0xFE -----------\n", __LINE__);
+
+	tmp2 = num & 0xFE;
+	conv_Dex_to_Binary(tmp2, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp2 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp2, tmp2);
+
+	//debug
+	printf("\n");
+	printf("[%d] ----------- tmp3 = tmp1 | tmp2 -----------\n", __LINE__);
+
+	tmp3 = tmp1 | tmp2;
+	conv_Dex_to_Binary(tmp3, tmp_bin);
+
+	//REF printf + hex value http://stackoverflow.com/questions/3649026/how-to-display-hexadecimal-numbers-in-c answered Sep 6 '10 at 4:40
+	printf("[%d] tmp3 => %s (d=%d) (0x%02x)\n", __LINE__, tmp_bin, tmp3, tmp3);
+
+	tmp = conv_Binary_to_Hex(tmp_bin);
+//
+//	printf("[%d] tmp_bin => %s (d=%d, 0x%02x)\n", __LINE__, tmp_bin, tmp, tmp);
+
+//	printf("[%d] tmp1 => %s (0x%02x)\n", __LINE__, tmp1_bin, tmp1);
+
+	return tmp;
 
 }
