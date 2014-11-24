@@ -92,6 +92,11 @@ void main(void) {
 void _Setup(void) {
 
     /****************
+     * OPTION_REG
+     ****************/
+     OPTION_REGbits.nRBPU = 0;
+
+    /****************
      * TRISB
      ****************/
     TRISB = 0b00000010;		// RB1 => input
