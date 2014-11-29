@@ -29,9 +29,12 @@
 #pragma config CP = OFF
 
 void _Setup(void);
+void _Setup_Interrupt(void);
+
 void _Display(void);
 void _While(void);
 void _Init_Vars(void);
+static void interrupt intr(void);
 
 unsigned int msg_num = 0;	// message number
 						// 0 => version; 1 => greeting
@@ -66,6 +69,8 @@ void main(void) {
 	///////////////////////
 	_Setup();			// init MCU
 
+	_Setup_Interrupt;
+
 	_Init_Vars();		// init variables
 
 	SD1602_init_2();	// init LCD
@@ -99,7 +104,7 @@ void _Setup(void) {
     /****************
      * TRISB
      ****************/
-    TRISB = 0b00000010;		// RB1 => input
+    TRISB = 0b00000001;		// RB0 => input
 //    TRISB = 0x00;
     TRISA = 0x00;
 
@@ -122,6 +127,16 @@ void _Setup(void) {
 //    msg_num = 0;
 
 }//_Setup
+
+void _Setup_Interrupt(void) {
+
+	OPTION_REG &= 0X7F;		// pull-up --> ON
+	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
+
+	INTCON |= 0x10;		// permit: INT intr
+	INTCON |= 0x80;		// permit: intr
+
+}
 
 void
 _Display(void) {
@@ -263,3 +278,33 @@ _Init_Vars(void) {
     msg_num = 0;
 
 }
+
+static void
+interrupt intr() {
+
+	///////////////////////
+
+	// prohibit: further interruption
+
+	///////////////////////
+	INTCON &= 0X7F;		// prohibit: intr
+	INTCON &= 0XEF;		// prohibit: INT intr
+	INTCON &= 0XFD;		// clear: INT intr flag
+
+	///////////////////////
+
+	// delay: against chattering
+
+	///////////////////////
+	__delay_ms(20);
+
+
+	///////////////////////
+
+	// resume: interrupt
+
+	///////////////////////
+	INTCON |= 0x10;		// allow: INT intr
+	INTCON |= 0x80;		// allow: intr
+
+}//interrupt intr()
