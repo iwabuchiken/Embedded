@@ -26,6 +26,11 @@
 #pragma config PWRTE = ON
 #pragma config CP = OFF
 
+///////////////////////
+
+// protos
+
+///////////////////////
 void _Setup(void);
 void _Setup_Interrupt(void);
 
@@ -36,6 +41,13 @@ void _While(void);
 void _Init_Vars(void);
 static void interrupt intr(void);
 
+void pulse_250ms(unsigned int);
+
+///////////////////////
+
+// vars
+
+///////////////////////
 unsigned int msg_num = 0;	// message number
 						// 0 => version; 1 => greeting
 
@@ -50,12 +62,19 @@ char s[20];
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3c-3";
+char msg_1[]  = "D-108 v-2.5.3c-4";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
 						// length is 3 => 2 digits and '0' char
 
+unsigned int flag_Intr = false;
+
+///////////////////////
+
+// funcs
+
+///////////////////////
 void main(void) {
 
 	///////////////////////
@@ -83,6 +102,19 @@ void main(void) {
 //        STATUSbits.C;
 
 	while(1) {
+
+		if (flag_Intr == true) {
+
+//			pulse_250ms(2);
+
+			///////////////////////
+
+			// flag => resetb
+
+			///////////////////////
+			flag_Intr = false;
+
+		}
 
 //		_While();
 
@@ -297,7 +329,7 @@ _Init_Vars(void) {
 static void
 interrupt intr() {
 
-	hex = 0xBF;
+//	hex = 0xBF;
 
 	///////////////////////
 
@@ -320,12 +352,16 @@ interrupt intr() {
 	// ops
 
 	///////////////////////
-	PORTBbits.RB1 = 0;
-	PORTBbits.RB1 = 1;
+	flag_Intr = true;
 
-	__delay_ms(500);
+	pulse_250ms(3);
 
-	PORTBbits.RB1 = 0;
+//	PORTBbits.RB1 = 0;
+//	PORTBbits.RB1 = 1;
+//
+//	__delay_ms(500);
+//
+//	PORTBbits.RB1 = 0;
 
 	///////////////////////
 
@@ -335,29 +371,29 @@ interrupt intr() {
 	INTCON &= 0XFD;		// clear: INT intr flag
 
         
-	///////////////////////
-
-	// display
-
-	///////////////////////
-	///////////////////////
-
-	// clear: display
-
-	///////////////////////
-	SD1602_clear();
-
-	///////////////////////
-
-	// line: 1
-
-	///////////////////////
-	SD1602_control(0x02);	// Cursor => at home
-							// Exec time => 1.64 ms
-
-	__delay_ms(2);
-
-	SD1602_print(msg_2);
+//	///////////////////////
+//
+//	// display
+//
+//	///////////////////////
+//	///////////////////////
+//
+//	// clear: display
+//
+//	///////////////////////
+//	SD1602_clear();
+//
+//	///////////////////////
+//
+//	// line: 1
+//
+//	///////////////////////
+//	SD1602_control(0x02);	// Cursor => at home
+//							// Exec time => 1.64 ms
+//
+//	__delay_ms(2);
+//
+//	SD1602_print(msg_2);
 
 
 //	_Display__Hex(hex);		// D-108_v_2_5_3.c:66: warning: (1393) possible hardware stack overflow detected, estimated stack depth: 9
@@ -372,3 +408,21 @@ interrupt intr() {
 	INTCON |= 0x80;		// allow: intr
 
 }//interrupt intr()
+
+void pulse_250ms(unsigned int num) {
+
+	int i;
+
+	for (i = 0; i < num; i ++) {
+
+		PORTBbits.RB1 = 1;
+
+		__delay_ms(250);
+
+		PORTBbits.RB1 = 0;
+
+		__delay_ms(250);
+
+	}
+
+}
