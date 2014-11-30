@@ -50,7 +50,7 @@ char s[20];
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3c-1";
+char msg_1[]  = "D-108 v-2.5.3c-2";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
