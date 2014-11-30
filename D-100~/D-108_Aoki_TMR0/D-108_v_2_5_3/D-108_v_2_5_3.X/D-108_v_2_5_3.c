@@ -8,8 +8,6 @@
 
 #include <xc.h>
 
-//#include <string.h>
-
 #include "SD1602_4bit_mode.h"
 
 #ifndef _XTAL_FREQ
@@ -32,6 +30,8 @@ void _Setup(void);
 void _Setup_Interrupt(void);
 
 void _Display(void);
+void _Display__Hex(int);
+
 void _While(void);
 void _Init_Vars(void);
 static void interrupt intr(void);
@@ -43,20 +43,16 @@ unsigned int msg_Len;
 
 unsigned int i;			// index for iterator
 
-int hex = 0x3E;
-//int hex = 0xC6;
+int hex = 0xDA;
 
 char s[20];
 
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3b-1";
+char msg_1[]  = "D-108 v-2.5.3c-1";
 char msg_2[]  = "You clicked it!";
 
-char msg_Hex[] = "2CF";
-//char msg_Hex[] = "0CF";
-//const char msg_Hex[] = "0CF";
 char msg_Hex_2Digit[3];	// 2-digit hex
 						// length is 3 => 2 digits and '0' char
 
@@ -102,10 +98,9 @@ void _Setup(void) {
      OPTION_REGbits.nRBPU = 0;
 
     /****************
-     * TRISB
+     * TRIS
      ****************/
     TRISB = 0b00000001;		// RB0 => input
-//    TRISB = 0x00;
     TRISA = 0x00;
 
     /****************
@@ -142,12 +137,6 @@ void
 _Display(void) {
 
 //	strcpy(s, msg_1);
-//	strcpy(s, "D-108 v-2.5.1a");
-//	char s[]  = "D-108 v-2.5.0a";
-
-//	_Setup();
-
-//	SD1602_init_2();
 
 	///////////////////////
 
@@ -159,8 +148,6 @@ _Display(void) {
 
 	__delay_ms(2);
 
-//	SD1602_print(&msg_Hex);
-//	SD1602_print(msg_Hex);
 	SD1602_print(msg_1);
 
 	///////////////////////
@@ -168,24 +155,6 @@ _Display(void) {
 	// line: 2
 
 	///////////////////////
-//	msg_Len = sizeof(msg_Hex) / sizeof(msg_Hex[0]);
-
-//	// conversion
-//	for(i = 0; i < msg_Len - 1; i++) {
-////	for(i = 0; i < msg_Len; i++) {
-//
-//		msg_Hex[i] = conv_Hex_to_CharCode(msg_Hex[i]);
-//
-//	}
-
-//	msg_Hex[0] = conv_Hex_to_CharCode(0x0A);
-//	msg_Hex[1] = conv_Hex_to_CharCode(0x01);
-//	msg_Hex[2] = conv_Hex_to_CharCode(0x0F);
-
-//	conv_Hex_to_CharCode_2Digits(0xAF, msg_Hex_2Digit);
-
-//	msg_Hex_2Digit[2] = 0x00;
-
 	SD1602_control(0xC0);	// Cursor => second line
 							// Exec time => 40 us
 
@@ -204,10 +173,55 @@ _Display(void) {
 	binary_display[2] = ' ';
 
 	SD1602_print(binary_display);
-//	SD1602_print(binary);
-//	SD1602_print(msg_Hex_2Digit);
-//	SD1602_print(msg_Hex);
 
+}//_Display
+
+void _Display__Hex(int num) {
+
+//	strcpy(s, msg_1);
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+	conv_Dex_to_Binary(num, binary);
+
+	for (i = 0; i < 12; i ++) {
+
+		binary_display[3 + i] = binary[i];
+
+	}
+
+	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+
+	binary_display[0] = msg_Hex_2Digit[0];
+	binary_display[1] = msg_Hex_2Digit[1];
+	binary_display[2] = ' ';
+
+	SD1602_print(binary_display);
 
 }//_Display
 
@@ -282,6 +296,8 @@ _Init_Vars(void) {
 static void
 interrupt intr() {
 
+	hex = 0xBF;
+
 	///////////////////////
 
 	// prohibit: further interruption
@@ -298,6 +314,21 @@ interrupt intr() {
 	///////////////////////
 	__delay_ms(20);
 
+	///////////////////////
+
+	// ops
+
+	///////////////////////
+        PORTBbits.RB1 = 0;
+        PORTBbits.RB1 = 1;
+        
+        __delay_ms(500);
+        
+        PORTBbits.RB1 = 0;
+
+        
+//	_Display__Hex(hex);		// D-108_v_2_5_3.c:66: warning: (1393) possible hardware stack overflow detected, estimated stack depth: 9
+//	_Display__Hex(0xBF);	// D-108_v_2_5_3.c:180: error: (269) inconsistent type
 
 	///////////////////////
 
