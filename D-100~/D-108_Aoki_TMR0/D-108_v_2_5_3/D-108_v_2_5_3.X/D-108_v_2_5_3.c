@@ -55,14 +55,14 @@ unsigned int msg_Len;
 
 unsigned int i;			// index for iterator
 
-int hex = 0xEE;
+int hex = 0xCC;
 
 char s[20];
 
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3c-4";
+char msg_1[]  = "D-108 v-2.5.3c-7";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
@@ -107,8 +107,11 @@ void main(void) {
 
 			pulse_250ms(2);
 
-			_Display__Hex(0xDD);
+			hex ++;
 
+			_Display__Hex(hex);
+//			_Display__Hex(0xDD);
+                        
 			///////////////////////
 
 			// flag => resetb
