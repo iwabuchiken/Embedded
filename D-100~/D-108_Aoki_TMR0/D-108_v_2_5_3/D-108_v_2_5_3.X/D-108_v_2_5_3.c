@@ -105,7 +105,7 @@ void main(void) {
 
 		if (flag_Intr == true) {
 
-//			pulse_250ms(2);
+			pulse_250ms(2);
 
 			///////////////////////
 
@@ -354,7 +354,7 @@ interrupt intr() {
 	///////////////////////
 	flag_Intr = true;
 
-	pulse_250ms(3);
+//	pulse_250ms(3);
 
 //	PORTBbits.RB1 = 0;
 //	PORTBbits.RB1 = 1;
