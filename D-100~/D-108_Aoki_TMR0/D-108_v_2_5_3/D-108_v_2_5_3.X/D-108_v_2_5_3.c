@@ -107,6 +107,8 @@ void main(void) {
 
 			pulse_250ms(2);
 
+			_Display__Hex(0xDD);
+
 			///////////////////////
 
 			// flag => resetb
