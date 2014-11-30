@@ -43,14 +43,14 @@ unsigned int msg_Len;
 
 unsigned int i;			// index for iterator
 
-int hex = 0xDA;
+int hex = 0xEE;
 
 char s[20];
 
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3c-2";
+char msg_1[]  = "D-108 v-2.5.3c-3";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
@@ -65,7 +65,8 @@ void main(void) {
 	///////////////////////
 	_Setup();			// init MCU
 
-	_Setup_Interrupt;
+	_Setup_Interrupt();
+//	_Setup_Interrupt;
 
 	_Init_Vars();		// init variables
 
@@ -319,14 +320,46 @@ interrupt intr() {
 	// ops
 
 	///////////////////////
-        PORTBbits.RB1 = 0;
-        PORTBbits.RB1 = 1;
-        
-        __delay_ms(500);
-        
-        PORTBbits.RB1 = 0;
+	PORTBbits.RB1 = 0;
+	PORTBbits.RB1 = 1;
+
+	__delay_ms(500);
+
+	PORTBbits.RB1 = 0;
+
+	///////////////////////
+
+	// anti-chattering
+
+	///////////////////////
+	INTCON &= 0XFD;		// clear: INT intr flag
 
         
+	///////////////////////
+
+	// display
+
+	///////////////////////
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+
 //	_Display__Hex(hex);		// D-108_v_2_5_3.c:66: warning: (1393) possible hardware stack overflow detected, estimated stack depth: 9
 //	_Display__Hex(0xBF);	// D-108_v_2_5_3.c:180: error: (269) inconsistent type
 
