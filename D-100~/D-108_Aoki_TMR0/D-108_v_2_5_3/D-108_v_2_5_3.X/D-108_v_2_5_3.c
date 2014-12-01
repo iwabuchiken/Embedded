@@ -33,6 +33,7 @@
 ///////////////////////
 void _Setup(void);
 void _Setup_Interrupt(void);
+void _Setup_Timer(void);
 
 void _Display(void);
 void _Display__Hex(int);
@@ -62,7 +63,7 @@ char s[20];
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.5.3c-7";
+char msg_1[]  = "D-108 v-2.6.0";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
@@ -87,9 +88,15 @@ void main(void) {
 	_Setup_Interrupt();
 //	_Setup_Interrupt;
 
+	pulse_250ms(3);
+
+	_Setup_Timer();
+
 	_Init_Vars();		// init variables
 
 	SD1602_init_2();	// init LCD
+
+//	pulse_250ms(3);
 
 	///////////////////////
 
@@ -109,6 +116,7 @@ void main(void) {
 
 			hex ++;
 
+//			_Display__Hex(TMR0);
 			_Display__Hex(hex);
 //			_Display__Hex(0xDD);
                         
@@ -168,6 +176,17 @@ void _Setup_Interrupt(void) {
 
 	INTCON |= 0x10;		// permit: INT intr
 	INTCON |= 0x80;		// permit: intr
+
+}
+
+void _Setup_Timer(void) {
+
+	OPTION_REG &= 0xDF;	// timer by clock
+
+	INTCON |= 0x20;		// permit: timer intr
+//	INTCON |= 0x80;		// permit: intr
+
+	TMR0 = 0;
 
 }
 
@@ -345,6 +364,10 @@ interrupt intr() {
 	INTCON &= 0XEF;		// prohibit: INT intr
 	INTCON &= 0XFD;		// clear: INT intr flag
 
+	INTCON &= 0xDF;		// prohibit: timer intr
+	INTCON &= 0xFB;		// clear: timer intr flag
+
+
 	///////////////////////
 
 	// delay: against chattering
@@ -411,6 +434,8 @@ interrupt intr() {
 	///////////////////////
 	INTCON |= 0x10;		// allow: INT intr
 	INTCON |= 0x80;		// allow: intr
+
+	INTCON |= 0x20;		// allow: timer intr
 
 }//interrupt intr()
 
