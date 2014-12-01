@@ -44,6 +44,7 @@ static void interrupt intr(void);
 
 void pulse_250ms(unsigned int);
 void pulse_250ms_RB2(unsigned int);
+void pulse_100ms_RB2(unsigned int);
 
 ///////////////////////
 
@@ -175,7 +176,8 @@ void _Setup(void) {
 
 void _Setup_Interrupt(void) {
 
-	OPTION_REG &= 0X7F;		// pull-up --> ON
+	OPTION_REG &= 0x7F;		// pull-up --> ON
+//	OPTION_REG &= 0X7F;		// pull-up --> ON
 	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
 
 	INTCON |= 0x10;		// permit: INT intr
@@ -190,8 +192,8 @@ void _Setup_Timer(void) {
 
 	OPTION_REG &= 0xDF;	// timer by clock
 
-//	//debug
-//	pulse_250ms_RB2(2);
+	//debug
+	pulse_100ms_RB2(3);
 
 	INTCON |= 0x20;		// permit: timer intr
 //	INTCON |= 0x80;		// permit: intr
