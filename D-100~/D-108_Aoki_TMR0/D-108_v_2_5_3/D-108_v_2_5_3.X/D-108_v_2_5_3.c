@@ -44,6 +44,8 @@ static void interrupt intr(void);
 
 void pulse_250ms(unsigned int);
 void pulse_250ms_RB2(unsigned int);
+
+void pulse_100ms(unsigned int);
 void pulse_100ms_RB2(unsigned int);
 
 ///////////////////////
@@ -87,13 +89,15 @@ void main(void) {
 	///////////////////////
 	_Setup();			// init MCU
 
+	pulse_250ms(3);
+
 	_Setup_Interrupt();
 //	_Setup_Interrupt;
 
 	pulse_250ms_RB2(3);
 //	pulse_250ms(3);
 
-	_Setup_Timer();
+//	_Setup_Timer();
 
 //	pulse_250ms_RB2(2);
 
@@ -176,12 +180,53 @@ void _Setup(void) {
 
 void _Setup_Interrupt(void) {
 
+	///////////////////////
+
+	// OPTION: : INT
+
+	///////////////////////
 	OPTION_REG &= 0x7F;		// pull-up --> ON
 //	OPTION_REG &= 0X7F;		// pull-up --> ON
 	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
 
+	///////////////////////
+
+	// OPTION: TMR
+
+	///////////////////////
+	OPTION_REG &= 0xDF;	// timer by clock
+
+
+	//debug
+	pulse_100ms_RB2(3);
+
+//	INTCON |= 0x80;		// permit: intr
+
+	TMR0 = 0;
+
+//	//debug
+//	pulse_100ms(2);
+
+	///////////////////////
+
+
+	// INTCON
+
+	///////////////////////
+	INTCON |= 0x20;		// permit: timer intr
+
+	//debug
+	pulse_100ms(2);         // working
+
 	INTCON |= 0x10;		// permit: INT intr
+
+	//debug
+	pulse_100ms_RB2(1);
+
 	INTCON |= 0x80;		// permit: intr
+
+	//debug
+	pulse_100ms(1);         // n/w
 
 }
 
@@ -482,6 +527,24 @@ void pulse_250ms_RB2(unsigned int num) {
 		PORTBbits.RB2 = 0;
 
 		__delay_ms(250);
+
+	}
+
+}
+
+void pulse_100ms(unsigned int num) {
+
+	int i;
+
+	for (i = 0; i < num; i ++) {
+
+		PORTBbits.RB1 = 1;
+
+		__delay_ms(100);
+
+		PORTBbits.RB1 = 0;
+
+		__delay_ms(100);
 
 	}
 
