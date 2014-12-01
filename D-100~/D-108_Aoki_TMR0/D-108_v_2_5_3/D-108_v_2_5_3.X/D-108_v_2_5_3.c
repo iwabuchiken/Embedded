@@ -43,6 +43,7 @@ void _Init_Vars(void);
 static void interrupt intr(void);
 
 void pulse_250ms(unsigned int);
+void pulse_250ms_RB2(unsigned int);
 
 ///////////////////////
 
@@ -88,9 +89,12 @@ void main(void) {
 	_Setup_Interrupt();
 //	_Setup_Interrupt;
 
-	pulse_250ms(3);
+	pulse_250ms_RB2(3);
+//	pulse_250ms(3);
 
 	_Setup_Timer();
+
+//	pulse_250ms_RB2(2);
 
 	_Init_Vars();		// init variables
 
@@ -181,7 +185,13 @@ void _Setup_Interrupt(void) {
 
 void _Setup_Timer(void) {
 
+	//debug
+	pulse_250ms(2);
+
 	OPTION_REG &= 0xDF;	// timer by clock
+
+//	//debug
+//	pulse_250ms_RB2(2);
 
 	INTCON |= 0x20;		// permit: timer intr
 //	INTCON |= 0x80;		// permit: intr
@@ -452,6 +462,42 @@ void pulse_250ms(unsigned int num) {
 		PORTBbits.RB1 = 0;
 
 		__delay_ms(250);
+
+	}
+
+}
+
+void pulse_250ms_RB2(unsigned int num) {
+
+	int i;
+
+	for (i = 0; i < num; i ++) {
+
+		PORTBbits.RB2 = 1;
+
+		__delay_ms(250);
+
+		PORTBbits.RB2 = 0;
+
+		__delay_ms(250);
+
+	}
+
+}
+
+void pulse_100ms_RB2(unsigned int num) {
+
+	int i;
+
+	for (i = 0; i < num; i ++) {
+
+		PORTBbits.RB2 = 1;
+
+		__delay_ms(100);
+
+		PORTBbits.RB2 = 0;
+
+		__delay_ms(100);
 
 	}
 
