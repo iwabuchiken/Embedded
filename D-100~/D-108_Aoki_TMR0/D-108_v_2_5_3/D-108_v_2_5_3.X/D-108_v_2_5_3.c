@@ -22,7 +22,8 @@
 #define true	1
 #define false	0
 
-#define EQ_500MS	9765
+#define EQ_500MS	4500
+//#define EQ_500MS	9765
 
 
 // PIC16F88 Configuration Bit Settings
@@ -74,6 +75,7 @@ void _Setup_Timer(void);
 //void _While(void);
 //void _Init_Vars(void);
 static void interrupt intr(void);
+void intr__TMR(void);
 
 //debug
 void pulse_250ms(unsigned int);
@@ -431,23 +433,25 @@ interrupt intr() {
 
 	if (INTCONbits.TMR0IF == 1) {
 
-		INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
-		INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+		intr__TMR();
 
-		///////////////////////
-
-		// ops
-
-		///////////////////////
-		count ++;
-
-		if (count == EQ_500MS) {
-
-			PORTBbits.RB3 ^= 1;
-
-			count = 0;
-
-		}
+//		INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+//		INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+//
+//		///////////////////////
+//
+//		// ops
+//
+//		///////////////////////
+//		count ++;
+//
+//		if (count == EQ_500MS) {
+//
+//			PORTBbits.RB3 ^= 1;
+//
+//			count = 0;
+//
+//		}
 
 	} else {
 
@@ -501,6 +505,29 @@ interrupt intr() {
 	INTCON |= 0x80;		// allow: intr
 
 }//interrupt intr()
+
+void
+intr__TMR(void) {
+
+	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+
+	///////////////////////
+
+	// ops
+
+	///////////////////////
+	count ++;
+
+	if (count == EQ_500MS) {
+
+		PORTBbits.RB3 ^= 1;
+
+		count = 0;
+
+	}
+
+}//intr__TMR
 
 void pulse_250ms(unsigned int num) {
 
