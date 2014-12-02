@@ -540,6 +540,10 @@ intr__INT(void) {
 	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
 	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
 
+        PORTBbits.RB3 = 0;
+
+        __delay_ms(500);
+
 }
 
 void pulse_250ms(unsigned int num) {
