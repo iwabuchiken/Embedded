@@ -22,7 +22,7 @@
 #define true	1
 #define false	0
 
-#define EQ_500MS	4500
+#define EQ_500MS	2000
 //#define EQ_500MS	9765
 
 
@@ -76,6 +76,7 @@ void _Setup_Timer(void);
 //void _Init_Vars(void);
 static void interrupt intr(void);
 void intr__TMR(void);
+void intr__INT(void);
 
 //debug
 void pulse_250ms(unsigned int);
@@ -453,6 +454,10 @@ interrupt intr() {
 //
 //		}
 
+	} else if (INTCONbits.INT0IF == 1) {
+
+		intr__INT();
+
 	} else {
 
 	}
@@ -460,8 +465,8 @@ interrupt intr() {
 //	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
 //	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
 
-	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
-	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
+//	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
+//	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
 
         
 
@@ -528,6 +533,14 @@ intr__TMR(void) {
 	}
 
 }//intr__TMR
+
+void
+intr__INT(void) {
+
+	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
+	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
+
+}
 
 void pulse_250ms(unsigned int num) {
 
