@@ -427,28 +427,54 @@ interrupt intr() {
 	// prohibit: further interruption
 
 	///////////////////////
-	INTCON &= 0x7F;		// prohibit: intr
+	INTCON &= 0x7F;		// prohibit: intr			// 0111 1111
 
-	INTCON &= 0xDF;		// prohibit: timer intr
-	INTCON &= 0xFB;		// clear: timer intr flag
+	if (INTCONbits.TMR0IF == 1) {
 
-	INTCON &= 0xEF;		// prohibit: INT intr
-	INTCON &= 0xFD;		// clear: INT intr flag
+		INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+		INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
 
-	///////////////////////
+		///////////////////////
 
-	// ops
+		// ops
 
-	///////////////////////
-	count ++;
+		///////////////////////
+		count ++;
 
-	if (count == EQ_500MS) {
+		if (count == EQ_500MS) {
 
-		PORTBbits.RB3 ^= 1;
+			PORTBbits.RB3 ^= 1;
 
-		count = 0;
+			count = 0;
+
+		}
+
+	} else {
 
 	}
+
+//	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+//	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+
+	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
+	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
+
+        
+
+//	///////////////////////
+//
+//	// ops
+//
+//	///////////////////////
+//	count ++;
+//
+//	if (count == EQ_500MS) {
+//
+//		PORTBbits.RB3 ^= 1;
+//
+//		count = 0;
+//
+//	}
 
 //	if (TMR0 == 255) {
 
