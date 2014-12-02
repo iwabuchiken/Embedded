@@ -9,6 +9,7 @@
 #include <xc.h>
 
 #include "SD1602_4bit_mode.h"
+//#include "debug.h"
 
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 20000000
@@ -21,10 +22,42 @@
 #define true	1
 #define false	0
 
-#pragma config FOSC = HS
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config CP = OFF
+#define EQ_500MS	9765
+
+
+// PIC16F88 Configuration Bit Settings
+
+// 'C' source line config statements
+
+#include <xc.h>
+
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
+
+// CONFIG1
+#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
+#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
+#pragma config MCLRE = ON       // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is MCLR)
+#pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
+//#pragma config BODEN = ON       // Brown-out Reset Enable bit (BOR enabled)
+#pragma config LVP = OFF         // Low-Voltage Programming Enable bit (RB3/PGM pin has PGM function, Low-Voltage Programming enabled)
+#pragma config CPD = OFF        // Data EE Memory Code Protection bit (Code protection off)
+#pragma config WRT = OFF        // Flash Program Memory Write Enable bits (Write protection off)
+//#pragma config CCPMX = RB0      // CCP1 Pin Selection bit (CCP1 function on RB0)
+#pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
+#pragma config DEBUG = OFF         // Flash Program Memory Code Protection bit (Code protection off)
+
+//// CONFIG2
+//#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
+//#pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
+
+//#pragma config FOSC = HS
+//#pragma config WDTE = OFF
+//#pragma config PWRTE = ON
+//#pragma config CP = OFF
+
+
 
 ///////////////////////
 
@@ -32,20 +65,21 @@
 
 ///////////////////////
 void _Setup(void);
-void _Setup_Interrupt(void);
+//void _Setup_Interrupt(void);
 void _Setup_Timer(void);
 
-void _Display(void);
-void _Display__Hex(int);
+//void _Display(void);
+//void _Display__Hex(int);
 
-void _While(void);
-void _Init_Vars(void);
+//void _While(void);
+//void _Init_Vars(void);
 static void interrupt intr(void);
 
+//debug
 void pulse_250ms(unsigned int);
-void pulse_250ms_RB2(unsigned int);
-
 void pulse_100ms(unsigned int);
+
+void pulse_250ms_RB2(unsigned int);
 void pulse_100ms_RB2(unsigned int);
 
 ///////////////////////
@@ -67,13 +101,15 @@ char s[20];
 char binary[9];
 char binary_display[12];
 
-char msg_1[]  = "D-108 v-2.6.0";
+char msg_1[]  = "D-108 v-2.6.1";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
 						// length is 3 => 2 digits and '0' char
 
 unsigned int flag_Intr = false;
+
+unsigned int count;
 
 ///////////////////////
 
@@ -89,56 +125,31 @@ void main(void) {
 	///////////////////////
 	_Setup();			// init MCU
 
+	count = 0;
+
 	pulse_250ms(3);
 
-	_Setup_Interrupt();
-//	_Setup_Interrupt;
+//        PORTBbits.RB1 = 1;
+//
+//        __delay_ms(200);
+//
+//        PORTBbits.RB1 = 0;
+//
+//        __delay_ms(200);
+//
+//        PORTBbits.RB1 = 1;
+//
+//        __delay_ms(200);
+//
+//        PORTBbits.RB1 = 0;
+//
+//        __delay_ms(200);
 
-	pulse_250ms_RB2(3);
-//	pulse_250ms(3);
+	_Setup_Timer();
 
-//	_Setup_Timer();
-
-//	pulse_250ms_RB2(2);
-
-	_Init_Vars();		// init variables
-
-	SD1602_init_2();	// init LCD
-
-//	pulse_250ms(3);
-
-	///////////////////////
-
-	// display string
-
-	///////////////////////
-	_Display();
-
-        //REF STATUS bits http://www.picfun.com/pic18/mcc10.html "IPR1bits.TMR1IP=0;"
-//        STATUSbits.C;
+        pulse_250ms_RB2(3);
 
 	while(1) {
-
-		if (flag_Intr == true) {
-
-			pulse_250ms(2);
-
-			hex ++;
-
-//			_Display__Hex(TMR0);
-			_Display__Hex(hex);
-//			_Display__Hex(0xDD);
-                        
-			///////////////////////
-
-			// flag => resetb
-
-			///////////////////////
-			flag_Intr = false;
-
-		}
-
-//		_While();
 
 	}
 
@@ -178,289 +189,117 @@ void _Setup(void) {
 
 }//_Setup
 
-void _Setup_Interrupt(void) {
-
-	///////////////////////
-
-	// OPTION: : INT
-
-	///////////////////////
-	OPTION_REG &= 0x7F;		// pull-up --> ON
-//	OPTION_REG &= 0X7F;		// pull-up --> ON
-	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
-
-	///////////////////////
-
-	// OPTION: TMR
-
-	///////////////////////
-	OPTION_REG &= 0xDF;	// timer by clock
-
-
-	//debug
-	pulse_100ms_RB2(3);
-
-//	INTCON |= 0x80;		// permit: intr
-
-	TMR0 = 0;
-
+//void _Setup_Interrupt(void) {
+//
+//	///////////////////////
+//
+//	// OPTION: : INT
+//
+//	///////////////////////
+//	OPTION_REG &= 0x7F;		// pull-up --> ON
+////	OPTION_REG &= 0X7F;		// pull-up --> ON
+//	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
+//
+//	///////////////////////
+//
+//	// OPTION: TMR
+//
+//	///////////////////////
+//	OPTION_REG &= 0xDF;	// timer by clock
+//
+//
 //	//debug
-//	pulse_100ms(2);
-
-	///////////////////////
-
-
-	// INTCON
-
-	///////////////////////
-	INTCON |= 0x20;		// permit: timer intr
-
-	//debug
-	pulse_100ms(2);         // working
-
-	INTCON |= 0x10;		// permit: INT intr
-
-	//debug
-	pulse_100ms_RB2(1);
-
-	INTCON |= 0x80;		// permit: intr
-
-	//debug
-	pulse_100ms(1);         // n/w
-
-}
+//	pulse_100ms_RB2(3);
+//
+////	INTCON |= 0x80;		// permit: intr
+//
+//	TMR0 = 0;
+//
+////	//debug
+////	pulse_100ms(2);
+//
+//	///////////////////////
+//
+//
+//	// INTCON
+//
+//	///////////////////////
+//	INTCON |= 0x20;		// permit: timer intr
+//
+//	//debug
+//	pulse_100ms(2);         // working
+//
+//	INTCON |= 0x10;		// permit: INT intr
+//
+//	//debug
+//	pulse_100ms_RB2(1);
+//
+//	INTCON |= 0x80;		// permit: intr
+//
+//	//debug
+//	pulse_100ms(1);         // n/w
+//
+//}
 
 void _Setup_Timer(void) {
 
-	//debug
-	pulse_250ms(2);
-
+	OPTION_REG &= 0x7F;	// pull-up --> ON
 	OPTION_REG &= 0xDF;	// timer by clock
-
-	//debug
-	pulse_100ms_RB2(3);
-
-	INTCON |= 0x20;		// permit: timer intr
-//	INTCON |= 0x80;		// permit: intr
 
 	TMR0 = 0;
 
-}
-
-void
-_Display(void) {
-
-//	strcpy(s, msg_1);
-
-	///////////////////////
-
-	// line: 1
-
-	///////////////////////
-	SD1602_control(0x02);	// Cursor => at home
-							// Exec time => 1.64 ms
-
-	__delay_ms(2);
-
-	SD1602_print(msg_1);
-
-	///////////////////////
-
-	// line: 2
-
-	///////////////////////
-	SD1602_control(0xC0);	// Cursor => second line
-							// Exec time => 40 us
-
-	conv_Dex_to_Binary(hex, binary);
-
-	for (i = 0; i < 12; i ++) {
-
-		binary_display[3 + i] = binary[i];
-
-	}
-
-	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
-
-	binary_display[0] = msg_Hex_2Digit[0];
-	binary_display[1] = msg_Hex_2Digit[1];
-	binary_display[2] = ' ';
-
-	SD1602_print(binary_display);
-
-}//_Display
-
-void _Display__Hex(int num) {
-
-//	strcpy(s, msg_1);
-
-	///////////////////////
-
-	// clear: display
-
-	///////////////////////
-	SD1602_clear();
-
-	///////////////////////
-
-	// line: 1
-
-	///////////////////////
-	SD1602_control(0x02);	// Cursor => at home
-							// Exec time => 1.64 ms
-
-	__delay_ms(2);
-
-	SD1602_print(msg_2);
-
-	///////////////////////
-
-	// line: 2
-
-	///////////////////////
-	SD1602_control(0xC0);	// Cursor => second line
-							// Exec time => 40 us
-
-	conv_Dex_to_Binary(num, binary);
-
-	for (i = 0; i < 12; i ++) {
-
-		binary_display[3 + i] = binary[i];
-
-	}
-
-	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
-
-	binary_display[0] = msg_Hex_2Digit[0];
-	binary_display[1] = msg_Hex_2Digit[1];
-	binary_display[2] = ' ';
-
-	SD1602_print(binary_display);
-
-}//_Display
-
-void
-_While(void) {
-
-	if (PORTBbits.RB1 == 1) {
-
-		if(msg_num != 1) {
-
-			SD1602_control(0x01);	// LCD => clear
-
-			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
-
-			SD1602_control(0x02);	// Cursor => at home
-									// Exec time => 1.64 ms
-
-			__delay_ms(2);
-
-//
-//                        strcpy(s, msg_2);
-
-			SD1602_print(s);
-
-			// set message number
-			msg_num = 1;
-
-		}
-
-		PORTBbits.RB0 = 1;
-
-	} else {
-
-		if(msg_num != 0) {
-
-			SD1602_control(0x01);	// LCD => clear
-
-			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
-
-			SD1602_control(0x02);	// Cursor => at home
-									// Exec time => 1.64 ms
-
-			__delay_ms(2);
-
-//			strcpy(s, msg_1);
-
-			SD1602_print(s);
-
-			// set message number
-			msg_num = 0;
-
-		}
-
-		PORTBbits.RB0 = 0;
-
-	}//if (PORTBbits.RB1 == 1)
-
-}//_While
-
-void
-_Init_Vars(void) {
-
-    ///////////////////////
-
-	// vars
-
-	///////////////////////
-    msg_num = 0;
+	INTCON |= 0x20;		// permit: timer intr
+	INTCON |= 0x80;		// permit: intr
 
 }
-
-static void
-interrupt intr() {
-
-//	hex = 0xBF;
-
-	///////////////////////
-
-	// prohibit: further interruption
-
-	///////////////////////
-	INTCON &= 0X7F;		// prohibit: intr
-	INTCON &= 0XEF;		// prohibit: INT intr
-	INTCON &= 0XFD;		// clear: INT intr flag
-
-	INTCON &= 0xDF;		// prohibit: timer intr
-	INTCON &= 0xFB;		// clear: timer intr flag
-
-
-	///////////////////////
-
-	// delay: against chattering
-
-	///////////////////////
-	__delay_ms(20);
-
-	///////////////////////
-
-	// ops
-
-	///////////////////////
-	flag_Intr = true;
-
-//	pulse_250ms(3);
-
-//	PORTBbits.RB1 = 0;
-//	PORTBbits.RB1 = 1;
 //
-//	__delay_ms(500);
+//void
+//_Display(void) {
 //
-//	PORTBbits.RB1 = 0;
-
-	///////////////////////
-
-	// anti-chattering
-
-	///////////////////////
-	INTCON &= 0XFD;		// clear: INT intr flag
-
-        
-//	///////////////////////
-//
-//	// display
+////	strcpy(s, msg_1);
 //
 //	///////////////////////
+//
+//	// line: 1
+//
+//	///////////////////////
+//	SD1602_control(0x02);	// Cursor => at home
+//							// Exec time => 1.64 ms
+//
+//	__delay_ms(2);
+//
+//	SD1602_print(msg_1);
+//
+//	///////////////////////
+//
+//	// line: 2
+//
+//	///////////////////////
+//	SD1602_control(0xC0);	// Cursor => second line
+//							// Exec time => 40 us
+//
+//	conv_Dex_to_Binary(hex, binary);
+//
+//	for (i = 0; i < 12; i ++) {
+//
+//		binary_display[3 + i] = binary[i];
+//
+//	}
+//
+//	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
+//
+//	binary_display[0] = msg_Hex_2Digit[0];
+//	binary_display[1] = msg_Hex_2Digit[1];
+//	binary_display[2] = ' ';
+//
+//	SD1602_print(binary_display);
+//
+//}//_Display
+//
+//void _Display__Hex(int num) {
+//
+////	strcpy(s, msg_1);
+//
 //	///////////////////////
 //
 //	// clear: display
@@ -479,20 +318,140 @@ interrupt intr() {
 //	__delay_ms(2);
 //
 //	SD1602_print(msg_2);
+//
+//	///////////////////////
+//
+//	// line: 2
+//
+//	///////////////////////
+//	SD1602_control(0xC0);	// Cursor => second line
+//							// Exec time => 40 us
+//
+//	conv_Dex_to_Binary(num, binary);
+//
+//	for (i = 0; i < 12; i ++) {
+//
+//		binary_display[3 + i] = binary[i];
+//
+//	}
+//
+//	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+//
+//	binary_display[0] = msg_Hex_2Digit[0];
+//	binary_display[1] = msg_Hex_2Digit[1];
+//	binary_display[2] = ' ';
+//
+//	SD1602_print(binary_display);
+//
+//}//_Display
+//
+//void
+//_While(void) {
+//
+//	if (PORTBbits.RB1 == 1) {
+//
+//		if(msg_num != 1) {
+//
+//			SD1602_control(0x01);	// LCD => clear
+//
+//			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+//
+//			SD1602_control(0x02);	// Cursor => at home
+//									// Exec time => 1.64 ms
+//
+//			__delay_ms(2);
+//
+////
+////                        strcpy(s, msg_2);
+//
+//			SD1602_print(s);
+//
+//			// set message number
+//			msg_num = 1;
+//
+//		}
+//
+//		PORTBbits.RB0 = 1;
+//
+//	} else {
+//
+//		if(msg_num != 0) {
+//
+//			SD1602_control(0x01);	// LCD => clear
+//
+//			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+//
+//			SD1602_control(0x02);	// Cursor => at home
+//									// Exec time => 1.64 ms
+//
+//			__delay_ms(2);
+//
+////			strcpy(s, msg_1);
+//
+//			SD1602_print(s);
+//
+//			// set message number
+//			msg_num = 0;
+//
+//		}
+//
+//		PORTBbits.RB0 = 0;
+//
+//	}//if (PORTBbits.RB1 == 1)
+//
+//}//_While
+//
+//void
+//_Init_Vars(void) {
+//
+//    ///////////////////////
+//
+//	// vars
+//
+//	///////////////////////
+//    msg_num = 0;
+//
+//}
+//
+static void
+interrupt intr() {
 
+	///////////////////////
 
-//	_Display__Hex(hex);		// D-108_v_2_5_3.c:66: warning: (1393) possible hardware stack overflow detected, estimated stack depth: 9
-//	_Display__Hex(0xBF);	// D-108_v_2_5_3.c:180: error: (269) inconsistent type
+	// prohibit: further interruption
+
+	///////////////////////
+	INTCON &= 0X7F;		// prohibit: intr
+
+	INTCON &= 0xDF;		// prohibit: timer intr
+	INTCON &= 0xFB;		// clear: timer intr flag
+
+	///////////////////////
+
+	// ops
+
+	///////////////////////
+//	if (TMR0 == 255) {
+
+		PORTBbits.RB3 ^= 1;
+
+//	PORTBbits.RB3 = 1;
+
+	__delay_us(200);
+
+	PORTBbits.RB3 ^= 1;
+
+//	PORTBbits.RB3 = 0;
+
+//	}
 
 	///////////////////////
 
 	// resume: interrupt
 
 	///////////////////////
-	INTCON |= 0x10;		// allow: INT intr
-	INTCON |= 0x80;		// allow: intr
-
 	INTCON |= 0x20;		// allow: timer intr
+	INTCON |= 0x80;		// allow: intr
 
 }//interrupt intr()
 
@@ -567,3 +526,4 @@ void pulse_100ms_RB2(unsigned int num) {
 	}
 
 }
+
