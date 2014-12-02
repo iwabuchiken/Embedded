@@ -145,7 +145,9 @@ void main(void) {
 
 	pulse_250ms(2);
 
-//	_Display();
+	_Display();
+
+	pulse_250ms_RB2(2);
 
 	///////////////////////
 
@@ -278,6 +280,8 @@ _Display(void) {
 	__delay_ms(2);
 
 	SD1602_print(msg_1);
+
+	pulse_100ms(3);
 
 	///////////////////////
 
