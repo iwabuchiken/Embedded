@@ -9,7 +9,7 @@
 #include <xc.h>
 
 #include "SD1602_4bit_mode.h"
-//#include "debug.h"
+#include "debug.h"
 
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 20000000
@@ -22,7 +22,7 @@
 #define true	1
 #define false	0
 
-#define EQ_500MS	2000
+#define EQ_500MS	4500
 //#define EQ_500MS	9765
 
 
@@ -78,12 +78,12 @@ static void interrupt intr(void);
 void intr__TMR(void);
 void intr__INT(void);
 
-//debug
-void pulse_250ms(unsigned int);
-void pulse_100ms(unsigned int);
-
-void pulse_250ms_RB2(unsigned int);
-void pulse_100ms_RB2(unsigned int);
+////debug
+//void pulse_250ms(unsigned int);
+//void pulse_100ms(unsigned int);
+//
+//void pulse_250ms_RB2(unsigned int);
+//void pulse_100ms_RB2(unsigned int);
 
 ///////////////////////
 
@@ -132,26 +132,24 @@ void main(void) {
 
 	pulse_250ms(3);
 
-//        PORTBbits.RB1 = 1;
-//
-//        __delay_ms(200);
-//
-//        PORTBbits.RB1 = 0;
-//
-//        __delay_ms(200);
-//
-//        PORTBbits.RB1 = 1;
-//
-//        __delay_ms(200);
-//
-//        PORTBbits.RB1 = 0;
-//
-//        __delay_ms(200);
-
 	_Setup_Timer();
 
-        pulse_250ms_RB2(3);
+	pulse_250ms_RB2(3);
 
+	///////////////////////
+
+	// LCD-related
+
+	///////////////////////
+//	SD1602_init_2();	// init LCD
+//
+//	pulse_250ms(2);
+
+	///////////////////////
+
+	// while
+
+	///////////////////////
 	while(1) {
 
 	}
@@ -545,76 +543,76 @@ intr__INT(void) {
         __delay_ms(500);
 
 }
-
-void pulse_250ms(unsigned int num) {
-
-	int i;
-
-	for (i = 0; i < num; i ++) {
-
-		PORTBbits.RB1 = 1;
-
-		__delay_ms(250);
-
-		PORTBbits.RB1 = 0;
-
-		__delay_ms(250);
-
-	}
-
-}
-
-void pulse_250ms_RB2(unsigned int num) {
-
-	int i;
-
-	for (i = 0; i < num; i ++) {
-
-		PORTBbits.RB2 = 1;
-
-		__delay_ms(250);
-
-		PORTBbits.RB2 = 0;
-
-		__delay_ms(250);
-
-	}
-
-}
-
-void pulse_100ms(unsigned int num) {
-
-	int i;
-
-	for (i = 0; i < num; i ++) {
-
-		PORTBbits.RB1 = 1;
-
-		__delay_ms(100);
-
-		PORTBbits.RB1 = 0;
-
-		__delay_ms(100);
-
-	}
-
-}
-
-void pulse_100ms_RB2(unsigned int num) {
-
-	int i;
-
-	for (i = 0; i < num; i ++) {
-
-		PORTBbits.RB2 = 1;
-
-		__delay_ms(100);
-
-		PORTBbits.RB2 = 0;
-
-		__delay_ms(100);
-
-	}
-
-}
-
+//
+//void pulse_250ms(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB1 = 1;
+//
+//		__delay_ms(250);
+//
+//		PORTBbits.RB1 = 0;
+//
+//		__delay_ms(250);
+//
+//	}
+//
+//}
+//
+//void pulse_250ms_RB2(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB2 = 1;
+//
+//		__delay_ms(250);
+//
+//		PORTBbits.RB2 = 0;
+//
+//		__delay_ms(250);
+//
+//	}
+//
+//}
+//
+//void pulse_100ms(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB1 = 1;
+//
+//		__delay_ms(100);
+//
+//		PORTBbits.RB1 = 0;
+//
+//		__delay_ms(100);
+//
+//	}
+//
+//}
+//
+//void pulse_100ms_RB2(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB2 = 1;
+//
+//		__delay_ms(100);
+//
+//		PORTBbits.RB2 = 0;
+//
+//		__delay_ms(100);
+//
+//	}
+//
+//}
+//
