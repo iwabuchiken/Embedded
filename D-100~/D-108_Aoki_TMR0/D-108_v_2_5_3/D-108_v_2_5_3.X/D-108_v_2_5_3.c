@@ -421,7 +421,7 @@ interrupt intr() {
 	// prohibit: further interruption
 
 	///////////////////////
-	INTCON &= 0X7F;		// prohibit: intr
+	INTCON &= 0x7F;		// prohibit: intr
 
 	INTCON &= 0xDF;		// prohibit: timer intr
 	INTCON &= 0xFB;		// clear: timer intr flag
@@ -431,15 +431,25 @@ interrupt intr() {
 	// ops
 
 	///////////////////////
-//	if (TMR0 == 255) {
+	count ++;
+
+	if (count == EQ_500MS) {
 
 		PORTBbits.RB3 ^= 1;
 
-//	PORTBbits.RB3 = 1;
+		count = 0;
 
-	__delay_us(200);
+	}
 
-	PORTBbits.RB3 ^= 1;
+//	if (TMR0 == 255) {
+
+//		PORTBbits.RB3 ^= 1;
+//
+////	PORTBbits.RB3 = 1;
+//
+//	__delay_us(200);
+//
+//	PORTBbits.RB3 ^= 1;
 
 //	PORTBbits.RB3 = 0;
 
