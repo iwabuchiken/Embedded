@@ -1,10 +1,13 @@
-_pulse_250ms_RB2: CODE, 51 0 51
-_intr__TMR: CODE, 153 0 43
-__Setup_Timer: CODE, 228 0 31
-_main: CODE, 290 0 27
-_intr: CODE, 259 0 31
+_SD1602_write: CODE, 350 0 36
+_SD1602_init_2: CODE, 51 0 115
+_pulse_250ms_RB2: CODE, 166 0 51
+_intr__TMR: CODE, 268 0 43
+__Setup_Timer: CODE, 418 0 31
+_SD1602_control: CODE, 449 0 31
+_main: CODE, 311 0 39
+_intr: CODE, 480 0 31
 __initialization: CODE, 19 0 29
-_intr__INT: CODE, 317 0 25
-_pulse_250ms: CODE, 102 0 51
-__Setup: CODE, 358 0 14
-Total: 302
+_intr__INT: CODE, 511 0 25
+_pulse_250ms: CODE, 217 0 51
+__Setup: CODE, 552 0 14
+Total: 496

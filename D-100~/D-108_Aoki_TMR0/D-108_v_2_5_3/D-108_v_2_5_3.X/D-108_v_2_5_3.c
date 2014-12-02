@@ -69,7 +69,7 @@ void _Setup(void);
 //void _Setup_Interrupt(void);
 void _Setup_Timer(void);
 
-//void _Display(void);
+void _Display(void);
 //void _Display__Hex(int);
 
 //void _While(void);
@@ -141,9 +141,11 @@ void main(void) {
 	// LCD-related
 
 	///////////////////////
-//	SD1602_init_2();	// init LCD
-//
-//	pulse_250ms(2);
+	SD1602_init_2();	// init LCD
+
+	pulse_250ms(2);
+
+//	_Display();
 
 	///////////////////////
 
@@ -259,50 +261,50 @@ _Setup_Timer(void) {
 
 }//_Setup_Timer
 
-//
-//void
-//_Display(void) {
-//
-////	strcpy(s, msg_1);
-//
-//	///////////////////////
-//
-//	// line: 1
-//
-//	///////////////////////
-//	SD1602_control(0x02);	// Cursor => at home
-//							// Exec time => 1.64 ms
-//
-//	__delay_ms(2);
-//
-//	SD1602_print(msg_1);
-//
-//	///////////////////////
-//
-//	// line: 2
-//
-//	///////////////////////
-//	SD1602_control(0xC0);	// Cursor => second line
-//							// Exec time => 40 us
-//
-//	conv_Dex_to_Binary(hex, binary);
-//
-//	for (i = 0; i < 12; i ++) {
-//
-//		binary_display[3 + i] = binary[i];
-//
-//	}
-//
-//	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
-//
-//	binary_display[0] = msg_Hex_2Digit[0];
-//	binary_display[1] = msg_Hex_2Digit[1];
-//	binary_display[2] = ' ';
-//
-//	SD1602_print(binary_display);
-//
-//}//_Display
-//
+
+void
+_Display(void) {
+
+//	strcpy(s, msg_1);
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_1);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+	conv_Dex_to_Binary(hex, binary);
+
+	for (i = 0; i < 12; i ++) {
+
+		binary_display[3 + i] = binary[i];
+
+	}
+
+	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
+
+	binary_display[0] = msg_Hex_2Digit[0];
+	binary_display[1] = msg_Hex_2Digit[1];
+	binary_display[2] = ' ';
+
+	SD1602_print(binary_display);
+
+}//_Display
+
 //void _Display__Hex(int num) {
 //
 ////	strcpy(s, msg_1);
