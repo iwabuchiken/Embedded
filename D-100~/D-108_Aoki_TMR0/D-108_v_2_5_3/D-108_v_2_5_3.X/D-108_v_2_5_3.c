@@ -241,17 +241,23 @@ void _Setup(void) {
 //
 //}
 
-void _Setup_Timer(void) {
+void
+_Setup_Timer(void) {
 
 	OPTION_REG &= 0x7F;	// pull-up --> ON
+
 	OPTION_REG &= 0xDF;	// timer by clock
+	OPTION_REG &= 0xBF;		// INT intr --> 5V ~> 0V
 
 	TMR0 = 0;
 
+	INTCON |= 0x10;		// permit: INT intr
 	INTCON |= 0x20;		// permit: timer intr
+
 	INTCON |= 0x80;		// permit: intr
 
-}
+}//_Setup_Timer
+
 //
 //void
 //_Display(void) {
@@ -426,6 +432,9 @@ interrupt intr() {
 	INTCON &= 0xDF;		// prohibit: timer intr
 	INTCON &= 0xFB;		// clear: timer intr flag
 
+	INTCON &= 0xEF;		// prohibit: INT intr
+	INTCON &= 0xFD;		// clear: INT intr flag
+
 	///////////////////////
 
 	// ops
@@ -460,7 +469,9 @@ interrupt intr() {
 	// resume: interrupt
 
 	///////////////////////
+	INTCON |= 0x10;		// allow: INT intr
 	INTCON |= 0x20;		// allow: timer intr
+
 	INTCON |= 0x80;		// allow: intr
 
 }//interrupt intr()
