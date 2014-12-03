@@ -12,6 +12,11 @@ void RRF(int);
 int RRF_2(int);
 int RLF(int);
 
+///////////////////////
+
+// funcs
+
+///////////////////////
 void main(void) {
 
 	int num = 0xFA;
