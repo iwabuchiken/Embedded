@@ -158,7 +158,9 @@ void main(void) {
 
 		if (flag_Intr == true) {
 
-			hex ++;
+//			hex ++;
+
+			hex = TMR0;
 
 			_Display__Hex(hex);
 
