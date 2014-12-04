@@ -94,6 +94,8 @@ void intr__INT(void);
 
 void conv_1Hex_to_String(int, char[4]);
 
+void get_ADC_Values(void);
+
 ////debug
 //void pulse_250ms(unsigned int);
 //void pulse_100ms(unsigned int);
@@ -594,17 +596,36 @@ _While(void) {
 
 //			hex = TMR0;
 
-		adcL ++;
+//		adcL ++;
 
-		hex = adcL;
+		hex ++;
 
+//		hex = adcL;
+
+		///////////////////////
+
+		// ADC
+
+		///////////////////////
+		get_ADC_Values();
+
+		///////////////////////
+
+		// display
+
+		///////////////////////
 //			_Display__Hex(hex);
 //			_Display__Hex_3Items(hex);
 		_Display__Hex_2Items(hex);
 
+		///////////////////////
+
+		// reset: flag
+
+		///////////////////////
 		flag_Intr = false;
 
-	}
+	}//if (flag_Intr == true)
 
 }//_While
 
@@ -862,3 +883,18 @@ void conv_1Hex_to_String
 //
 //}
 //
+
+void
+get_ADC_Values(void) {
+
+	ADCON0bits.GO = 1;
+
+    while(ADCON0bits.GO == 1) {
+
+    }
+
+    adcH = ADRESH;
+
+    adcL = ADRESL;
+
+}//get_ADC_Values
