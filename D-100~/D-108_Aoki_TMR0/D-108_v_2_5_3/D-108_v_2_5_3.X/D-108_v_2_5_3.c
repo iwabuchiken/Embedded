@@ -678,10 +678,14 @@ void conv_1Hex_to_String
 
 //	sprintf(cont, "%d%d%d", hunds, tens, residue);
 
-	cont[0] = hunds + 0x30;
-	cont[1] = tens + 0x30;
-	cont[2] = residue + 0x30;
+	cont[0] = 'x';
+	cont[1] = 'y';
+	cont[2] = 'z';
 
+//	cont[0] = hunds + 0x30;
+//	cont[1] = tens + 0x30;
+//	cont[2] = residue + 0x30;
+//
 	cont[3] = '\0';
 
 
