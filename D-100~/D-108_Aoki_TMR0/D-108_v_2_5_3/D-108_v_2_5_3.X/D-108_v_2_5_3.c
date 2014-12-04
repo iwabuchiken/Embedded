@@ -115,6 +115,7 @@ char s[20];
 char binary[9];
 char binary_display[12];
 char binary_display_16[17];	// 16 chars + 1 null char = 17
+char temp_4[4];				// 3-bit decimal number
 
 char msg_1[]  = "D-108 v-2.6.1";
 char msg_2[]  = "You clicked it!";
@@ -125,6 +126,8 @@ char msg_Hex_2Digit[3];	// 2-digit hex
 unsigned int flag_Intr = false;
 
 unsigned int count;
+
+int hunds, tens, residue;
 
 ///////////////////////
 
@@ -388,7 +391,7 @@ void _Display__Hex(int num) {
  */
 void _Display__Hex_3Items(int num) {
 
-	char temp_4[4];
+//	char temp_4[4];
 
 //	strcpy(s, msg_1);
 
@@ -660,12 +663,12 @@ void conv_1Hex_to_String
 (int num, char cont[4]) {
 
 	// 100s
-	int hunds = num / 100;
+	hunds = num / 100;
 
-	int residue = num - hunds * 100;
+	residue = num - hunds * 100;
 
 	// 10s
-	int tens = residue / 10;
+	tens = residue / 10;
 
 	residue = residue - tens * 10;
 
