@@ -70,6 +70,9 @@ void main(int argc, char** args) {
 
 	conv_Hex_to_Decimal_String(num, cont);
 
+	// report
+	printf("converted => %s\n", cont);
+
     return;
 
 }
@@ -96,6 +99,12 @@ void conv_Hex_to_Decimal_String
 	printf("num = %d\n", num);
 	printf("%d %d %d %d\n", thou, hunds, tens, residue);
 
+	sprintf(cont, "%d%d%d%d", thou, hunds, tens, residue);
+
+	printf("cont => %s\n", cont);
+
+	// convert
+
 
 }//conv_Hex_to_Decimal_String
 
@@ -116,3 +125,8 @@ int is_Numeric(char* value) {
 	return 1;
 
 }
+
+//void conv_Dex_to_CharCodes(int num, char container[5]) {
+//
+//
+//}
