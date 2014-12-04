@@ -424,11 +424,12 @@ void _Display__Hex_3Items(int num) {
 
 	conv_Dex_to_Binary(num, binary);
 
-	for (i = 3; i < 12; i ++) {
+	for (i = 0; i < 9; i ++) {
+//	for (i = 3; i < 12; i ++) {
 //	for (i = 0; i < 12; i ++) {
 
-		binary_display_16[i] = binary[i];
-//		binary_display_16[3 + i] = binary[i];
+//		binary_display_16[i] = binary[i];
+		binary_display_16[3 + i] = binary[i];
 
 	}
 
