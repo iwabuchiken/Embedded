@@ -13,6 +13,8 @@ void conv_Hex_to_Decimal_String(int, char[5]);
 
 int is_Numeric(char*);
 
+void conv_2Hex_to_String(int, int, char[5]);
+
 //char[5] container;
 
 ///////////////////////
@@ -29,6 +31,8 @@ void main(int argc, char** args) {
 	char cont[5];
 
 	int num = 1023;
+
+	int v1, v2;
 
 	int res_i;
 
@@ -72,6 +76,43 @@ void main(int argc, char** args) {
 
 	// report
 	printf("converted => %s\n", cont);
+
+	///////////////////////
+
+	// 2 hexes
+
+	///////////////////////
+	if (argc >= 4) {
+
+		if (is_Numeric(args[2]) && is_Numeric(args[3])) {
+
+			v1 = atoi(args[2]);
+			v2 = atoi(args[3]);
+
+		} else {
+
+			printf("not a digit => %s\n", args[1]);
+
+			v1 = 0x03;
+			v2 = 0xFF;
+
+		}
+
+	} else {//if (argc >= 4)
+
+		v1 = 0x03;
+		v2 = 0xFF;
+
+	}//if (argc >= 4)
+
+	// 2 hexes
+//	v1 = 0x07;
+//	v1 = 0x03;
+//	v2 = 0xFF;
+
+	conv_2Hex_to_String(v1, v2, cont);
+
+	printf("2 hexes converted: %02x, %02x => %s\n", v1, v2, cont);
 
     return;
 
@@ -125,6 +166,36 @@ int is_Numeric(char* value) {
 	return 1;
 
 }
+
+/*
+ * @param
+ * 		v1	=> ADRESH
+ * 		v2	=> ADRESL
+ *
+ * @dependencies
+ * 		conv_Hex_to_Decimal_String
+ *
+ */
+void
+conv_2Hex_to_String
+(int v1, int v2, char container[5]) {
+
+	printf("v1 = %d\n", v1);
+
+	v1 = v1 & 0x03;
+//	v1 = v1 && 0x03;
+
+	printf("v1(& 0x03) = %d\n", v1);
+
+	int adh = v1 * 256;
+
+	int sum = adh + v2;
+
+	conv_Hex_to_Decimal_String(sum, container);
+
+	printf("conv_2Hex_to_String => done\n");
+
+}//conv_2Hex_to_String
 
 //void conv_Dex_to_CharCodes(int num, char container[5]) {
 //
