@@ -78,13 +78,15 @@
 void _Setup(void);
 //void _Setup_Interrupt(void);
 void _Setup_Timer(void);
+void _Setup_ANSEL(void);
 
 void _Display(void);
 void _Display__Hex(int);
 void _Display__Hex_3Items(int);
 void _Display__Hex_2Items(int);
 
-//void _While(void);
+void _While(void);
+
 //void _Init_Vars(void);
 static void interrupt intr(void);
 void intr__TMR(void);
@@ -121,7 +123,7 @@ char binary_display_8[9];	// "3FF 1023" (8 chars + null char)
 char temp_4[4];				// 3-bit decimal number
 char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
 
-char msg_1[]  = "D-110 v-1.0";
+char msg_1[]  = "D-110 v-2.0";
 char msg_2[]  = "You clicked it!";
 
 char msg_Hex_2Digit[3];	// 2-digit hex
@@ -156,6 +158,8 @@ void main(void) {
 	///////////////////////
 	_Setup();			// init MCU
 
+	_Setup_ANSEL();
+
 	count = 0;
 
 	pulse_250ms(3);
@@ -184,27 +188,49 @@ void main(void) {
 	///////////////////////
 	while(1) {
 
-		if (flag_Intr == true) {
+		_While();
 
-//			hex ++;
-
-//			hex = TMR0;
-
-			adcL ++;
-
-			hex = adcL;
-
-//			_Display__Hex(hex);
-//			_Display__Hex_3Items(hex);
-			_Display__Hex_2Items(hex);
-
-			flag_Intr = false;
-
-		}
-	}
+//		if (flag_Intr == true) {
+//
+////			hex ++;
+//
+////			hex = TMR0;
+//
+//			adcL ++;
+//
+//			hex = adcL;
+//
+////			_Display__Hex(hex);
+////			_Display__Hex_3Items(hex);
+//			_Display__Hex_2Items(hex);
+//
+//			flag_Intr = false;
+//
+//		}
+	}//while(1)
 
     return;
 }
+
+void
+_Setup_ANSEL(void) {
+
+	//REF http://homepage3.nifty.com/mitt/pic/pic88_3.html
+	/****************
+	 * ANSEL
+	 ****************/
+	ADCON0 = 0x99;	// 1001 1001
+					// Bit 5-3: CHS2-0
+					// Bit 2: GO/^DONE
+
+	ADCON1 = 0x80;	// 1000 0000
+					// Bit 8: ADFM => 1: right-aligned
+					// Bits 5-4: VCFG => 00: Vref+ = Vdd, Vref- = Vss
+
+	ANSEL = 0x08;	// 0000 1000
+					// AN3 => ADC
+
+}//_Setup_ANSEL
 
 void _Setup(void) {
 
@@ -225,10 +251,10 @@ void _Setup(void) {
     PORTA = 0x00;
     PORTB = 0x00;
 
-    /****************
-     * ANSEL
-     ****************/
-    ANSEL = 0x00;
+//    /****************
+//     * ANSEL
+//     ****************/
+//    ANSEL = 0x00;
 
 //    ///////////////////////
 //
@@ -562,56 +588,23 @@ _Display__Hex_2Items
 void
 _While(void) {
 
-	if (PORTBbits.RB1 == 1) {
+	if (flag_Intr == true) {
 
-		if(msg_num != 1) {
+//			hex ++;
 
-			SD1602_control(0x01);	// LCD => clear
+//			hex = TMR0;
 
-			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+		adcL ++;
 
-			SD1602_control(0x02);	// Cursor => at home
-									// Exec time => 1.64 ms
+		hex = adcL;
 
-			__delay_ms(2);
+//			_Display__Hex(hex);
+//			_Display__Hex_3Items(hex);
+		_Display__Hex_2Items(hex);
 
-//
-//                        strcpy(s, msg_2);
+		flag_Intr = false;
 
-			SD1602_print(s);
-
-			// set message number
-			msg_num = 1;
-
-		}
-
-		PORTBbits.RB0 = 1;
-
-	} else {
-
-		if(msg_num != 0) {
-
-			SD1602_control(0x01);	// LCD => clear
-
-			__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
-
-			SD1602_control(0x02);	// Cursor => at home
-									// Exec time => 1.64 ms
-
-			__delay_ms(2);
-
-//			strcpy(s, msg_1);
-
-			SD1602_print(s);
-
-			// set message number
-			msg_num = 0;
-
-		}
-
-		PORTBbits.RB0 = 0;
-
-	}//if (PORTBbits.RB1 == 1)
+	}
 
 }//_While
 
