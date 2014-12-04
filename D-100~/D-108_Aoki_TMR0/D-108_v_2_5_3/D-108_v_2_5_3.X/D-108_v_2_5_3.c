@@ -78,6 +78,8 @@ static void interrupt intr(void);
 void intr__TMR(void);
 void intr__INT(void);
 
+void conv_1Hex_to_String(int, char[4]);
+
 ////debug
 //void pulse_250ms(unsigned int);
 //void pulse_100ms(unsigned int);
@@ -567,6 +569,34 @@ intr__INT(void) {
 //	_Display__Hex(hex);
 
 }
+
+/*
+ * @param
+ * 		num => < 256, >= 0
+ */
+void conv_1Hex_to_String
+(int num, char cont[4]) {
+
+	// 100s
+	int hunds = num / 100;
+
+	int residue = num - hunds * 100;
+
+	// 10s
+	int tens = residue / 10;
+
+	residue = residue - tens * 10;
+
+//	// display
+//	printf("[%d] num = %d\n", __LINE__, num);
+
+	sprintf(cont, "%d%d%d", hunds, tens, residue);
+
+//	printf("[%d] cont => %s\n", __LINE__, cont);
+
+}//conv_Hex_to_Decimal_String
+
+
 //
 //void pulse_250ms(unsigned int num) {
 //
