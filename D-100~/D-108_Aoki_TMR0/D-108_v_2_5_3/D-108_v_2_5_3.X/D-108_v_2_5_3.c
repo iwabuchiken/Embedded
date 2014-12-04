@@ -389,7 +389,9 @@ void _Display__Hex(int num) {
  * 3 items
  * 		=> hex, binary, decimal
  */
-void _Display__Hex_3Items(int num) {
+void
+_Display__Hex_3Items
+(int num) {
 
 //	char temp_4[4];
 
@@ -437,7 +439,8 @@ void _Display__Hex_3Items(int num) {
 
 	binary_display_16[0] = msg_Hex_2Digit[0];
 	binary_display_16[1] = msg_Hex_2Digit[1];
-	binary_display_16[2] = ' ';
+	binary_display_16[2] = '-';
+//	binary_display_16[2] = ' ';
 
 	///////////////////////
 
@@ -446,16 +449,20 @@ void _Display__Hex_3Items(int num) {
 	///////////////////////
 	conv_1Hex_to_String(num, temp_4);
 
-	binary_display_16[12] = temp_4[0];
-	binary_display_16[13] = temp_4[1];
-	binary_display_16[14] = temp_4[2];
-	binary_display_16[15] = temp_4[3];
+	binary_display_16[12] = 'a';
+	binary_display_16[13] = 'b';
+	binary_display_16[14] = 'c';
+	binary_display_16[15] = '\0';
+//	binary_display_16[12] = temp_4[0];
+//	binary_display_16[13] = temp_4[1];
+//	binary_display_16[14] = temp_4[2];
+//	binary_display_16[15] = temp_4[3];
 
 
 	SD1602_print(binary_display_16);
 //	SD1602_print(binary_display);
 
-}//_Display
+}//_Display__Hex_3Items
 
 void
 _While(void) {
