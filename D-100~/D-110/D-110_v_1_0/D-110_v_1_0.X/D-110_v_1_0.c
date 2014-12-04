@@ -558,7 +558,8 @@ _Display__Hex_2Items
 //
 //	}
 
-	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+	conv_Hex_to_CharCode_2Digits(adcL, msg_Hex_2Digit);
+//	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
 
 	binary_display_8[0] = adcH + 0x30;
 	binary_display_8[1] = msg_Hex_2Digit[0];
@@ -570,8 +571,8 @@ _Display__Hex_2Items
 
 	///////////////////////
 //	conv_1Hex_to_String(num, temp_4);
-//	conv_2Hex_to_String(adcH, adcL, temp_5);
-	conv_2Hex_to_String(adcH, num, temp_5);
+	conv_2Hex_to_String(adcH, adcL, temp_5);
+//	conv_2Hex_to_String(adcH, num, temp_5);
 
 	binary_display_8[3] = ' ';
 
