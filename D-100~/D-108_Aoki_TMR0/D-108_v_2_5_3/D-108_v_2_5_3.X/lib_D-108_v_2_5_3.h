@@ -79,6 +79,9 @@ conv_Hex_to_CharCode_2Digits
 
 }//conv_Hex_to_CharCode_2Digits
 
+/*
+ * binary 8 bits + null char = 9 chars
+ */
 void
 conv_Dex_to_Binary
 (int num, char result[9]) {

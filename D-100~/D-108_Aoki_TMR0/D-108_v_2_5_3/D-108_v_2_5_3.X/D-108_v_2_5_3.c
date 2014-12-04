@@ -7,6 +7,8 @@
 
 
 #include <xc.h>
+#include <stdio.h>
+//#include <string.h>
 
 #include "SD1602_4bit_mode.h"
 #include "debug.h"
@@ -18,6 +20,12 @@
 #ifndef LIB_D_108_V_2_5_3_H
 #include "lib_D-108_V_2_5_3.h"
 #endif
+
+/*
+ * lib_D-108_V_2_5_3.h
+ *
+ * 		conv_Dex_to_Binary
+ */
 
 #define true	1
 #define false	0
@@ -71,6 +79,7 @@ void _Setup_Timer(void);
 
 void _Display(void);
 void _Display__Hex(int);
+void _Display__Hex_3Items(int);
 
 //void _While(void);
 //void _Init_Vars(void);
@@ -105,6 +114,7 @@ char s[20];
 
 char binary[9];
 char binary_display[12];
+char binary_display_16[17];	// 16 chars + 1 null char = 17
 
 char msg_1[]  = "D-108 v-2.6.1";
 char msg_2[]  = "You clicked it!";
@@ -164,7 +174,8 @@ void main(void) {
 
 			hex = TMR0;
 
-			_Display__Hex(hex);
+//			_Display__Hex(hex);
+			_Display__Hex_3Items(hex);
 
 			flag_Intr = false;
 
@@ -368,6 +379,77 @@ void _Display__Hex(int num) {
 	binary_display[2] = ' ';
 
 	SD1602_print(binary_display);
+
+}//_Display
+
+/*
+ * 3 items
+ * 		=> hex, binary, decimal
+ */
+void _Display__Hex_3Items(int num) {
+
+	char temp_4[4];
+
+//	strcpy(s, msg_1);
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+	conv_Dex_to_Binary(num, binary);
+
+	for (i = 3; i < 12; i ++) {
+//	for (i = 0; i < 12; i ++) {
+
+		binary_display_16[i] = binary[i];
+//		binary_display_16[3 + i] = binary[i];
+
+	}
+
+	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+
+	binary_display_16[0] = msg_Hex_2Digit[0];
+	binary_display_16[1] = msg_Hex_2Digit[1];
+	binary_display_16[2] = ' ';
+
+	///////////////////////
+
+	// decimal chars
+
+	///////////////////////
+	conv_1Hex_to_String(num, temp_4);
+
+	binary_display_16[12] = temp_4[0];
+	binary_display_16[13] = temp_4[1];
+	binary_display_16[14] = temp_4[2];
+	binary_display_16[15] = temp_4[3];
+
+
+	SD1602_print(binary_display_16);
+//	SD1602_print(binary_display);
 
 }//_Display
 
