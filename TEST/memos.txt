@@ -7,6 +7,11 @@ pushd C:\WORKS\WS\Embedded\TEST\D-108\v_2-5-3
 gcc -o D-108_v-2-5-3.exe C:\WORKS\WS\Embedded\TEST\D-108\v_2-5-3\D-108_v-2-5-3.c
 C:\WORKS\Programs\MinGW\bin\gcc -o D-108_v-2-5-3.exe C:\WORKS\WS\Embedded\TEST\D-108\v_2-5-3\D-108_v-2-5-3.c
 
+#D-110 v-3.0
+pushd C:\WORKS\WS\Embedded\TEST\D-110\v_3-0
+gcc -o D-110_v-3-0.exe C:\WORKS\WS\Embedded\TEST\D-110\v_3-0\D-110_v-3-0.c
+C:\WORKS\WS\Embedded\TEST\D-110\v_3-0\D-110_v-3-0.exe
+
 #2-7-0
 pushd C:\WORKS\WS\Embedded\TEST\D-108\v_2-7-0
 gcc -o D-108_v-2-7-0.exe C:\WORKS\WS\Embedded\TEST\D-108\v_2-7-0\D-108_v-2-7-0.c
