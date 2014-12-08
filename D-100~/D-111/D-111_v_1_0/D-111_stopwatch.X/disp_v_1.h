@@ -5,7 +5,7 @@
 
 // includes
 
-///////////////////////
+/////////////////////
 //#ifndef MAIN_H
 //#include "main.h"
 //#endif
