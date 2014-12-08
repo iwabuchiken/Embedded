@@ -18,8 +18,13 @@
 #endif
 
 #ifndef LIB_D_108_V_2_5_3_H
-#include "lib_D-111_v_1_0.h"
+#include "lib_v_1.h"
 #endif
+
+#ifndef DISP_V_1_H
+#include "disp_v_1.h"
+#endif
+
 
 /*
  * lib_D-108_V_2_5_3.h
@@ -82,7 +87,7 @@ void _Setup(void);
 void _Setup_Timer(void);
 void _Setup_ANSEL(void);
 
-void _Display(void);
+//void _Display(void);
 void _Display__Hex(int);
 void _Display__Hex_3Items(int);
 void _Display__Hex_2Items(int);
@@ -102,8 +107,8 @@ void _Display__ADC_Fractional(void);
 
 //void conv_Float_to_String(float, char[6]);
 
-void conv_ADC_to_FloatString
-(int, int, double, char[6]);
+//void conv_ADC_to_FloatString
+//(int, int, double, char[6]);
 
 //void conv_Hex_to_3Digit_String(int, char[4]);	// 3 digits + null char = 4
 
@@ -119,19 +124,19 @@ void conv_ADC_to_FloatString
 // vars
 
 ///////////////////////
-unsigned int msg_num = 0;	// message number
-						// 0 => version; 1 => greeting
+//unsigned int msg_num = 0;	// message number
+//						// 0 => version; 1 => greeting
+//
+//unsigned int msg_Len;
+//unsigned int i;			// index for iterator
+//unsigned int flag_Intr = false;
+//unsigned int count;
 
-unsigned int msg_Len;
-unsigned int i;			// index for iterator
-unsigned int flag_Intr = false;
-unsigned int count;
-
-int adcH = ADCH, adcL = ADCL, hex = ADCL;
-
-char s[20];
-
-double ref = 5.0;
+//int adcH = ADCH, adcL = ADCL, hex = ADCL;
+//
+//char s[20];
+//
+//double ref = 5.0;
 
 //char binary[9];
 //char binary_display[12];
@@ -356,50 +361,50 @@ _Setup_Timer(void) {
 }//_Setup_Timer
 
 
-void
-_Display(void) {
-
-//	strcpy(s, msg_1);
-
-	///////////////////////
-
-	// line: 1
-
-	///////////////////////
-	SD1602_control(0x02);	// Cursor => at home
-							// Exec time => 1.64 ms
-
-	__delay_ms(2);
-
-	SD1602_print(msg_Project_Name);
-
-	pulse_100ms(3);
-
-	///////////////////////
-
-	// line: 2
-
-	///////////////////////
-	SD1602_control(0xC0);	// Cursor => second line
-							// Exec time => 40 us
-
-	conv_Dex_to_Binary(hex, binary);
-
-	for (i = 0; i < 12; i ++) {
-
-		binary_display[3 + i] = binary[i];
-
-	}
-
-	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
-
-	binary_display[0] = msg_Hex_2Digit[0];
-	binary_display[1] = msg_Hex_2Digit[1];
-	binary_display[2] = ' ';
-
-	SD1602_print(binary_display);
-
-}//_Display
+//void
+//_Display(void) {
+//
+////	strcpy(s, msg_1);
+//
+//	///////////////////////
+//
+//	// line: 1
+//
+//	///////////////////////
+//	SD1602_control(0x02);	// Cursor => at home
+//							// Exec time => 1.64 ms
+//
+//	__delay_ms(2);
+//
+//	SD1602_print(msg_Project_Name);
+//
+//	pulse_100ms(3);
+//
+//	///////////////////////
+//
+//	// line: 2
+//
+//	///////////////////////
+//	SD1602_control(0xC0);	// Cursor => second line
+//							// Exec time => 40 us
+//
+//	conv_Dex_to_Binary(hex, binary);
+//
+//	for (i = 0; i < 12; i ++) {
+//
+//		binary_display[3 + i] = binary[i];
+//
+//	}
+//
+//	conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
+//
+//	binary_display[0] = msg_Hex_2Digit[0];
+//	binary_display[1] = msg_Hex_2Digit[1];
+//	binary_display[2] = ' ';
+//
+//	SD1602_print(binary_display);
+//
+//}//_Display
 
 void _Display__Hex(int num) {
 
@@ -725,6 +730,13 @@ _While(void) {
 
 	}//if (flag_Intr == true)
 
+	///////////////////////
+
+	// flag: clicked
+
+	///////////////////////
+//	_While__Clicked();
+
 }//_While
 
 void
@@ -863,6 +875,21 @@ intr__INT(void) {
 	__delay_ms(500);
 
 	flag_Intr = true;
+
+	///////////////////////
+
+	// flag: f_Clicked
+
+	///////////////////////
+	if (f_Clicked == true) {
+
+		f_Clicked = false;
+
+	} else {
+
+		f_Clicked = true;
+
+	}
 
 //	hex ++;
 //
@@ -1075,60 +1102,60 @@ get_ADC_Values(void) {
 //
 //}//conv_Float_to_String
 
-void
-conv_ADC_to_FloatString
-(int adcH, int adcL, double ref, char cont[6]) {
-
-	char temp[4];
-
-	int sum;
-
-	double scaled;
-
-	///////////////////////
-
-	// prep: adcH
-
-	///////////////////////
-	adcH &= 0x03;
-
-	///////////////////////
-
-	// sum
-
-	///////////////////////
-	sum = adcH * 256 + adcL;
-
-	///////////////////////
-
-	// decimal part => to string
-
-	///////////////////////
-	conv_Hex_to_3Digit_String(adcL, temp);
-
-//	printf("[%d] adcL = %d(%%x = %x) (str = %s) \n"
-//			"adcH = %d(%%x = %x)\n"
-//			"(sum = %d)\n",
-//				__LINE__, adcL, adcL, temp, adcH, adcH, sum);
-
-	///////////////////////
-
-	// convert
-
-	///////////////////////
-	scaled = (sum / (double)MAX_NUM) * ref;
-
-//	printf("[%d] ref = %f, scaled = %f\n",
-//				__LINE__, ref, scaled);
-
-	///////////////////////
-
-	// string
-
-	///////////////////////
-	conv_Float_to_String(scaled, cont);
-
-}//conv_Float_to_String
+//void
+//conv_ADC_to_FloatString
+//(int adcH, int adcL, double ref, char cont[6]) {
+//
+//	char temp[4];
+//
+//	int sum;
+//
+//	double scaled;
+//
+//	///////////////////////
+//
+//	// prep: adcH
+//
+//	///////////////////////
+//	adcH &= 0x03;
+//
+//	///////////////////////
+//
+//	// sum
+//
+//	///////////////////////
+//	sum = adcH * 256 + adcL;
+//
+//	///////////////////////
+//
+//	// decimal part => to string
+//
+//	///////////////////////
+//	conv_Hex_to_3Digit_String(adcL, temp);
+//
+////	printf("[%d] adcL = %d(%%x = %x) (str = %s) \n"
+////			"adcH = %d(%%x = %x)\n"
+////			"(sum = %d)\n",
+////				__LINE__, adcL, adcL, temp, adcH, adcH, sum);
+//
+//	///////////////////////
+//
+//	// convert
+//
+//	///////////////////////
+//	scaled = (sum / (double)MAX_NUM) * ref;
+//
+////	printf("[%d] ref = %f, scaled = %f\n",
+////				__LINE__, ref, scaled);
+//
+//	///////////////////////
+//
+//	// string
+//
+//	///////////////////////
+//	conv_Float_to_String(scaled, cont);
+//
+//}//conv_Float_to_String
 
 //void
 //conv_Hex_to_3Digit_String
