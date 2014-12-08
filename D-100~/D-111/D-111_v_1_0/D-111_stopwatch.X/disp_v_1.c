@@ -10,12 +10,12 @@
 //#include "main.h"
 //#endif
 
-//#ifndef LIB_D_108_V_2_5_3_H
-//#include "lib_v_1.h"
-//#endif
-
 #ifndef LIB_D_108_V_2_5_3_H
 #include "lib_v_1.h"
+#endif
+
+#ifndef DISP_V_1_H
+#include "disp_v_1.h"
 #endif
 
 ///////////////////////
@@ -36,8 +36,6 @@ extern "C" {
 
 	void _Display2(void);
 
-	void test_Disp(void);
-
 //	void _Display(void);
 //	void _Display__SW_Start(void);
 //	void _Display__SW_Stop(void);
@@ -47,6 +45,16 @@ extern "C" {
 	// funcs
 
 	///////////////////////
+	void _Display2(void) {
+
+		test();
+
+	}
+
+	void test_Disp(void) {
+
+	}
+
 //	void
 //	_Display(void) {
 //

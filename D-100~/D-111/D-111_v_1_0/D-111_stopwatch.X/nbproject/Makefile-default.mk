@@ -108,6 +108,10 @@ endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
+
+#debug
+#echo ${IMAGE_TYPE}
+
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/D-111_stopwatch.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
