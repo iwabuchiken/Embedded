@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <math.h>
 
+#define MAX_NUM 1023
+
 /*
  * printf\("(.+\\n)", (.+)\);	=> printf("[%d] $1", __LINE__, $2);
  */
@@ -13,6 +15,9 @@
 
 ///////////////////////
 void conv_Float_to_String(float, char[6]);
+
+void conv_ADC_to_FloatString
+(int, int, double, char[6]);
 
 void conv_Hex_to_3Digit_String(int, char[4]);	// 3 digits + null char = 4
 
@@ -29,7 +34,31 @@ void main(int argc, char** args) {
 
 //	printf("num = %1.3f\n", num);
 
-	conv_Float_to_String(num, cont);
+//	conv_Float_to_String(num, cont);
+
+	///////////////////////
+
+	// D-110/v-3.1
+
+	///////////////////////
+	int adcH, adcL;
+
+	if (argc == 3) {
+
+		adcH = atoi(args[1]);
+		adcL = atoi(args[2]);
+
+	} else {
+
+		adcH = 0x02;
+		adcL = 0xC6;
+
+	}
+
+	double ref = 4.5;
+
+	conv_ADC_to_FloatString(adcH, adcL, ref, cont);
+
 
     return;
 
@@ -115,6 +144,64 @@ conv_Float_to_String
 
 
 }//conv_Float_to_String
+
+void
+conv_ADC_to_FloatString
+(int adcH, int adcL, double ref, char cont[6]) {
+
+	char temp[4];
+
+	int sum;
+
+	double scaled;
+
+	///////////////////////
+
+	// prep: adcH
+
+	///////////////////////
+	adcH &= 0x03;
+
+	///////////////////////
+
+	// sum
+
+	///////////////////////
+	sum = adcH * 256 + adcL;
+
+	///////////////////////
+
+	// decimal part => to string
+
+	///////////////////////
+	conv_Hex_to_3Digit_String(adcL, temp);
+
+	printf("[%d] adcL = %d(%%x = %x) (str = %s) \n"
+			"adcH = %d(%%x = %x)\n"
+			"(sum = %d)\n",
+				__LINE__, adcL, adcL, temp, adcH, adcH, sum);
+
+	///////////////////////
+
+	// convert
+
+	///////////////////////
+	scaled = (sum / (double)MAX_NUM) * ref;
+
+	printf("[%d] ref = %f, scaled = %f\n",
+				__LINE__, ref, scaled);
+
+	///////////////////////
+
+	// string
+
+	///////////////////////
+	conv_Float_to_String(scaled, cont);
+
+
+}//conv_Float_to_String
+
+
 
 void
 conv_Hex_to_3Digit_String
