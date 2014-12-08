@@ -123,42 +123,47 @@ unsigned int msg_num = 0;	// message number
 						// 0 => version; 1 => greeting
 
 unsigned int msg_Len;
-
 unsigned int i;			// index for iterator
+unsigned int flag_Intr = false;
+unsigned int count;
+
+int adcH = ADCH, adcL = ADCL, hex = ADCL;
 
 char s[20];
 
-char binary[9];
-char binary_display[12];
-char binary_display_16[17];	// 16 chars + 1 null char = 17
-char binary_display_8[9];	// "3FF 1023" (8 chars + null char)
-char binary_display_9[10];	// "1DC 1.245\0" (9 chars + null char)
+double ref = 5.0;
 
-char temp_4[4];				// 3-bit decimal number
-char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
+//char binary[9];
+//char binary_display[12];
+//char binary_display_16[17];	// 16 chars + 1 null char = 17
+//char binary_display_8[9];	// "3FF 1023" (8 chars + null char)
+//char binary_display_9[10];	// "1DC 1.245\0" (9 chars + null char)
+//
+//char temp_4[4];				// 3-bit decimal number
+//char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
+//
+//char msg_Project_Name[]  = "D-111 v-1.0";
+//char msg_2[]  = "INT!";
+//
+//char msg_Hex_2Digit[3];	// 2-digit hex
+//						// length is 3 => 2 digits and '0' char
 
-char msg_Project_Name[]  = "D-111 v-1.0";
-char msg_2[]  = "You clicked it!";
-
-char msg_Hex_2Digit[3];	// 2-digit hex
-						// length is 3 => 2 digits and '0' char
-
-unsigned int flag_Intr = false;
-
-unsigned int count;
+//unsigned int flag_Intr = false;
+//
+//unsigned int count;
 
 //int hunds, tens, residue;
 
-int adcH = ADCH;
-int adcL = ADCL;
+//int adcH = ADCH, adcL = ADCL, hex = ADCL;
+//int adcL = ADCL;
 
-int hex = ADCL;
+//int hex = ADCL;
 //int adcH = 1;
 //int adcL = 0xCD;
 //
 //int hex = adcL;
 
-double ref = 5.0;
+//double ref = 5.0;
 
 ///////////////////////
 

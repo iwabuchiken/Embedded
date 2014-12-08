@@ -26,6 +26,27 @@ extern "C" {
 
 ///////////////////////
 
+// vars
+
+///////////////////////
+char binary[9];
+char binary_display[12];
+char binary_display_16[17];	// 16 chars + 1 null char = 17
+char binary_display_8[9];	// "3FF 1023" (8 chars + null char)
+char binary_display_9[10];	// "1DC 1.245\0" (9 chars + null char)
+
+char temp_4[4];				// 3-bit decimal number
+char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
+
+char msg_Project_Name[]  = "D-111 v-1.0-1";
+char msg_2[]  = "INT!";
+
+char msg_Hex_2Digit[3];	// 2-digit hex
+						// length is 3 => 2 digits and '0' char
+
+
+///////////////////////
+
 // protos
 
 ///////////////////////
