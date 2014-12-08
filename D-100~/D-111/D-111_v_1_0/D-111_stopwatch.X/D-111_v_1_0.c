@@ -17,13 +17,21 @@
 #define _XTAL_FREQ 20000000
 #endif
 
-#ifndef LIB_D_108_V_2_5_3_H
-#include "lib_v_1.h"
+#ifndef MAIN_H
+#include "main.h"
 #endif
 
-#ifndef DISP_V_1_H
-#include "disp_v_1.h"
-#endif
+//#ifndef DISP_V_1_H
+//#include "disp_v_1.h"
+//#endif
+//
+//#ifndef LIB_D_108_V_2_5_3_H
+//#include "lib_v_1.h"
+//#endif
+
+//#ifndef DISP_V_1_H
+//#include "disp_v_1.h"
+//#endif
 
 
 /*
@@ -692,49 +700,66 @@ _Display__ADC_Fractional() {
 void
 _While(void) {
 
-	if (flag_Intr == true) {
-
-//			hex ++;
-
-//			hex = TMR0;
-
-//		adcL ++;
-
-		hex ++;
-
-//		hex = adcL;
-
-		///////////////////////
-
-		// ADC
-
-		///////////////////////
-		get_ADC_Values();
-
-		///////////////////////
-
-		// display
-
-		///////////////////////
-//			_Display__Hex(hex);
-//			_Display__Hex_3Items(hex);
-//		_Display__Hex_2Items(hex);
-		_Display__ADC_Fractional();
-
-		///////////////////////
-
-		// reset: flag
-
-		///////////////////////
-		flag_Intr = false;
-
-	}//if (flag_Intr == true)
+//	if (flag_Intr == true) {
+//
+////			hex ++;
+//
+////			hex = TMR0;
+//
+////		adcL ++;
+//
+//		hex ++;
+//
+////		hex = adcL;
+//
+//		///////////////////////
+//
+//		// ADC
+//
+//		///////////////////////
+//		get_ADC_Values();
+//
+//		///////////////////////
+//
+//		// display
+//
+//		///////////////////////
+////			_Display__Hex(hex);
+////			_Display__Hex_3Items(hex);
+////		_Display__Hex_2Items(hex);
+//		_Display__ADC_Fractional();
+//
+//		///////////////////////
+//
+//		// reset: flag
+//
+//		///////////////////////
+//		flag_Intr = false;
+//
+//	}//if (flag_Intr == true)
 
 	///////////////////////
 
 	// flag: clicked
 
 	///////////////////////
+	if (f_Clicked == true) {
+
+		if (st_Stopwatch == 1) {
+
+			_While__Clicked(1);		// lib_v_1.h
+
+		} else if (st_Stopwatch == -1) {
+
+			_While__Clicked(-1);		// lib_v_1.h
+
+		} else {
+
+		}
+
+		f_Clicked = false;
+
+	}
 //	_While__Clicked();
 
 }//_While
@@ -881,15 +906,15 @@ intr__INT(void) {
 	// flag: f_Clicked
 
 	///////////////////////
-	if (f_Clicked == true) {
-
-		f_Clicked = false;
-
-	} else {
+//	if (f_Clicked == true) {
+//
+//		f_Clicked = false;
+//
+//	} else {
 
 		f_Clicked = true;
 
-	}
+//	}
 
 //	hex ++;
 //
