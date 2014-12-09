@@ -98,6 +98,8 @@ void _Setup(void);
 void _Setup_Timer(void);
 void _Setup_ANSEL(void);
 
+void _Setup_Init_Vars(void);
+
 //void _Display(void);
 void _Display__Hex(int);
 void _Display__Hex_3Items(int);
@@ -748,18 +750,38 @@ _While(void) {
 	///////////////////////
 	if (f_Clicked == true) {
 
+		///////////////////////
+
+		// clear
+
+		///////////////////////
+		SD1602_control(0x01);	// LCD => clear
+
+		__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+
+		///////////////////////
+
+		// switch
+
+		///////////////////////
 		if (st_Stopwatch == 1) {
 
+			// Start
 			_While__Clicked(1);		// lib_v_1.h
 
 		} else if (st_Stopwatch == -1) {
 
+			// stop
 			_While__Clicked(-1);		// lib_v_1.h
 
 		} else {
 
+			// Unknown
+			_While__Clicked(-2);		// lib_v_1.h
+
 		}
 
+		// reset flag
 		f_Clicked = false;
 
 	}
@@ -768,7 +790,8 @@ _While(void) {
 }//_While
 
 void
-_Init_Vars(void) {
+_Setup_Init_Vars(void) {
+//_Init_Vars(void) {
 
     ///////////////////////
 
@@ -776,6 +799,8 @@ _Init_Vars(void) {
 
 	///////////////////////
     msg_num = 0;
+
+    st_Stopwatch = -1;	// inital => "Stop"
 
 }
 
@@ -898,10 +923,34 @@ intr__INT(void) {
 	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
 	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
 
+	///////////////////////
+
+	// validate: chattering
+
+	///////////////////////
+	__delay_ms(20);
+
+	if (PORTBbits.RB0 != 0) {
+
+		return;
+
+	}
+
+
+	///////////////////////
+
+	// report: INT starting
+
+	///////////////////////
 	PORTBbits.RB3 = 0;
 
 	__delay_ms(500);
 
+	///////////////////////
+
+	// set: flag
+
+	///////////////////////
 	flag_Intr = true;
 
 	///////////////////////
@@ -923,7 +972,25 @@ intr__INT(void) {
 //
 //	_Display__Hex(hex);
 
-}
+	///////////////////////
+
+	// invert: st_Stopwatch
+
+	///////////////////////
+	if (st_Stopwatch == 1) {
+
+		st_Stopwatch = -1;
+
+	} else {
+
+		st_Stopwatch = 1;
+
+	}
+
+//	st_Stopwatch ^= 0x01;
+//	st_Stopwatch ^= st_Stopwatch;
+
+}//intr__INT
 
 ///*
 // * @param

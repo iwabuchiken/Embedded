@@ -53,11 +53,12 @@ extern "C" {
 	char temp_4[4];				// 3-bit decimal number
 	char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
 
-	char msg_Project_Name[]  = "D-111 v-1.0-2";
+	char msg_Project_Name[]  = "D-111 v-1.0-6";
 	char msg_2[]  = "INT!";
 
 	char msg_SW_Start[]  = "SW starts";
 	char msg_SW_Stop[]  = "SW stops";
+	char msg_SW_Unknown[]  = "SW unknown";
 
 	char msg_Hex_2Digit[3];	// 2-digit hex
 							// length is 3 => 2 digits and '0' char
@@ -77,7 +78,8 @@ extern "C" {
 	unsigned int count;
 
 	// stopwatch status
-	usi st_Stopwatch = -1;
+	usi st_Stopwatch;		// init => done in D-111_v_1_0.c
+//	usi st_Stopwatch = -1;
 
 	///////////////////////
 
@@ -118,6 +120,7 @@ extern "C" {
 	void _Display(void);
 	void _Display__SW_Start(void);
 	void _Display__SW_Stop(void);
+	void _Display__SW_Unknown(void);
 
 	///////////////////////
 
@@ -548,6 +551,12 @@ extern "C" {
 
 			break;
 
+		case -2:
+
+			_Display__SW_Unknown();
+
+			break;
+
 		}//switch(status)
 
 	}//_While__Clicked
@@ -668,6 +677,37 @@ extern "C" {
 		SD1602_print(msg_SW_Stop);
 
 	}//_Display
+
+	void
+	_Display__SW_Unknown(void) {
+
+	//	strcpy(s, msg_1);
+
+		///////////////////////
+
+		// line: 1
+
+		///////////////////////
+		SD1602_control(0x02);	// Cursor => at home
+								// Exec time => 1.64 ms
+
+		__delay_ms(2);
+
+		SD1602_print(msg_Project_Name);
+
+		pulse_100ms(3);
+
+		///////////////////////
+
+		// line: 2
+
+		///////////////////////
+		SD1602_control(0xC0);	// Cursor => second line
+								// Exec time => 40 us
+
+		SD1602_print(msg_SW_Unknown);
+
+	}//_Display__SW_Unknown
 
 
 #ifdef	__cplusplus
