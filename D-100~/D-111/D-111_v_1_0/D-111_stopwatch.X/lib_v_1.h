@@ -53,11 +53,11 @@ extern "C" {
 	char temp_4[4];				// 3-bit decimal number
 	char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
 
-	char msg_Project_Name[]  = "D-111 v-1.0-6";
+	char msg_Project_Name[]  = "D-111 v-1.0-7";
 	char msg_2[]  = "INT!";
 
-	char msg_SW_Start[]  = "SW starts";
-	char msg_SW_Stop[]  = "SW stops";
+	char msg_SW_Start[]  = "SW starts!";
+	char msg_SW_Stop[]  = "SW stops!";
 	char msg_SW_Unknown[]  = "SW unknown";
 
 	char msg_Hex_2Digit[3];	// 2-digit hex
