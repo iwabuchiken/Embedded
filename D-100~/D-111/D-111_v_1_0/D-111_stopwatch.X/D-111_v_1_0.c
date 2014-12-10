@@ -1,14 +1,13 @@
 /*
- * File:   D-108_v_2_5_3.c
+ * File:   D-111_v_1_0.c
  * Author: iwabuchik
  *
- * Created on 2014/11/21, 16:02
+ * Created on 10/12/2014 20:36:38
  */
 
 
 #include <xc.h>
 #include <stdio.h>
-//#include <string.h>
 
 #include "SD1602_4bit_mode.h"
 #include "debug.h"
@@ -17,46 +16,19 @@
 #define _XTAL_FREQ 20000000
 #endif
 
-//#ifndef MAIN_H
-//#include "main.h"
-//#endif
-
 #ifndef DISP_V_1_H
 #include "disp_v_1.h"
 #endif
 
-
-//#include "lib_v_1.h"
-
 #ifndef LIB_D_108_V_2_5_3_H
 #include "lib_v_1.h"
 #endif
-
-//#ifndef DISP_V_1_H
-//#include "disp_v_1.h"
-//#endif
-
 
 /*
  * lib_D-108_V_2_5_3.h
  *
  * 		conv_Dex_to_Binary
  */
-
-//#define true	1
-//#define false	0
-//
-//#define EQ_500MS	4500
-////#define EQ_500MS	9765
-//
-//#define ADCH    1
-//#define ADCL    0xCD
-//
-//#define MAX_NUM 1023
-
-// PIC16F88 Configuration Bit Settings
-
-// 'C' source line config statements
 
 #include <xc.h>
 
@@ -86,8 +58,6 @@
 //#pragma config PWRTE = ON
 //#pragma config CP = OFF
 
-
-
 ///////////////////////
 
 // protos
@@ -112,76 +82,15 @@ static void interrupt intr(void);
 void intr__TMR(void);
 void intr__INT(void);
 
-//void conv_1Hex_to_String(int, char[4]);
-
 void get_ADC_Values(void);
 
 void _Display__ADC_Fractional(void);
-
-//void conv_Float_to_String(float, char[6]);
-
-//void conv_ADC_to_FloatString
-//(int, int, double, char[6]);
-
-//void conv_Hex_to_3Digit_String(int, char[4]);	// 3 digits + null char = 4
-
-////debug
-//void pulse_250ms(unsigned int);
-//void pulse_100ms(unsigned int);
-//
-//void pulse_250ms_RB2(unsigned int);
-//void pulse_100ms_RB2(unsigned int);
 
 ///////////////////////
 
 // vars
 
 ///////////////////////
-//unsigned int msg_num = 0;	// message number
-//						// 0 => version; 1 => greeting
-//
-//unsigned int msg_Len;
-//unsigned int i;			// index for iterator
-//unsigned int flag_Intr = false;
-//unsigned int count;
-
-//int adcH = ADCH, adcL = ADCL, hex = ADCL;
-//
-//char s[20];
-//
-//double ref = 5.0;
-
-//char binary[9];
-//char binary_display[12];
-//char binary_display_16[17];	// 16 chars + 1 null char = 17
-//char binary_display_8[9];	// "3FF 1023" (8 chars + null char)
-//char binary_display_9[10];	// "1DC 1.245\0" (9 chars + null char)
-//
-//char temp_4[4];				// 3-bit decimal number
-//char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
-//
-//char msg_Project_Name[]  = "D-111 v-1.0";
-//char msg_2[]  = "INT!";
-//
-//char msg_Hex_2Digit[3];	// 2-digit hex
-//						// length is 3 => 2 digits and '0' char
-
-//unsigned int flag_Intr = false;
-//
-//unsigned int count;
-
-//int hunds, tens, residue;
-
-//int adcH = ADCH, adcL = ADCL, hex = ADCL;
-//int adcL = ADCL;
-
-//int hex = ADCL;
-//int adcH = 1;
-//int adcL = 0xCD;
-//
-//int hex = adcL;
-
-//double ref = 5.0;
 
 ///////////////////////
 
@@ -201,7 +110,7 @@ void main(void) {
 
 	count = 0;
 
-	pulse_250ms(3);
+//	pulse_250ms(3);
 
 	_Setup_Timer();
 
@@ -214,11 +123,11 @@ void main(void) {
 	///////////////////////
 	SD1602_init_2();	// init LCD
 
-	pulse_250ms(2);
+//	pulse_250ms(2);
 
 	_Display();
 
-	pulse_250ms_RB2(2);
+//	pulse_250ms_RB2(2);
 
 	///////////////////////
 
@@ -229,23 +138,6 @@ void main(void) {
 
 		_While();
 
-//		if (flag_Intr == true) {
-//
-////			hex ++;
-//
-////			hex = TMR0;
-//
-//			adcL ++;
-//
-//			hex = adcL;
-//
-////			_Display__Hex(hex);
-////			_Display__Hex_3Items(hex);
-//			_Display__Hex_2Items(hex);
-//
-//			flag_Intr = false;
-//
-//		}
 	}//while(1)
 
     return;
