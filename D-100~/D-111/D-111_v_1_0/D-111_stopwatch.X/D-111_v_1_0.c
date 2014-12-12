@@ -75,7 +75,9 @@ void _Display__Hex(int);
 void _Display__Hex_3Items(int);
 void _Display__Hex_2Items(int);
 
+// while
 void _While(void);
+void _While_PORTA(void);
 
 //void _Init_Vars(void);
 static void interrupt intr(void);
@@ -136,7 +138,10 @@ void main(void) {
 	///////////////////////
 	while(1) {
 
-		_While();
+//		_While();
+
+		_While_PORTA();
+
 
 	}//while(1)
 
@@ -680,6 +685,20 @@ _While(void) {
 //	_While__Clicked();
 
 }//_While
+
+void
+_While_PORTA(void) {
+
+	PORTAbits.RA4 = 1;
+
+	__delay_ms(250);
+
+	PORTAbits.RA4 = 0;
+
+	__delay_ms(250);
+
+
+}
 
 void
 _Setup_Init_Vars(void) {

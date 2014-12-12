@@ -53,7 +53,7 @@ extern "C" {
 	char temp_4[4];				// 3-bit decimal number
 	char temp_5[5];				// 4-digit number string => ADRESH, ADRESL
 
-	char msg_Project_Name[]  = "D-111 v-1.0-7";
+	char msg_Project_Name[]  = "D-111 v-2.0";
 	char msg_2[]  = "INT!";
 
 	char msg_SW_Start[]  = "SW starts!";
