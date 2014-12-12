@@ -138,9 +138,9 @@ void main(void) {
 	///////////////////////
 	while(1) {
 
-//		_While();
+		_While();
 
-		_While_PORTA();
+//		_While_PORTA();
 
 
 	}//while(1)
@@ -184,7 +184,8 @@ void _Setup(void) {
     /****************
      * PORT
      ****************/
-    PORTA = 0x00;
+    PORTA = 0b00100000;		// RA2 => input
+//    PORTA = 0x00;
     PORTB = 0x00;
 
 //    /****************
@@ -649,6 +650,13 @@ _While(void) {
 
 		///////////////////////
 
+		// debug
+
+		///////////////////////
+		pulse_100ms_RB2(2);
+
+		///////////////////////
+
 		// clear
 
 		///////////////////////
@@ -898,8 +906,21 @@ intr__INT(void) {
 
 	}
 
-//	st_Stopwatch ^= 0x01;
-//	st_Stopwatch ^= st_Stopwatch;
+	///////////////////////
+
+	// capacitor
+
+	///////////////////////
+	while(PORTAbits.RA2 == 1) {
+
+		PORTAbits.RA4 = 1;
+
+	}
+
+	PORTAbits.RA4 = 0;
+
+//	// report
+//	pulse_100ms_RB2(2);
 
 }//intr__INT
 
