@@ -138,9 +138,10 @@ void main(void) {
 	///////////////////////
 	while(1) {
 
-		_While();
+//		_While();
 
-//		_While_PORTA();
+		_While_PORTA();
+
 
 
 	}//while(1)
@@ -697,13 +698,29 @@ _While(void) {
 void
 _While_PORTA(void) {
 
-	PORTAbits.RA4 = 1;
+	if (f_Clicked == true) {
 
-	__delay_ms(250);
+		while(PORTAbits.RA2 == 1) {
 
-	PORTAbits.RA4 = 0;
+			PORTAbits.RA4 = 1;
 
-	__delay_ms(250);
+		}
+
+		// RA4 => back to 0
+		PORTAbits.RA4 = 0;
+
+		// reset flag
+		f_Clicked = false;
+
+	}
+
+//	PORTAbits.RA4 = 1;
+//
+//	__delay_ms(250);
+//
+//	PORTAbits.RA4 = 0;
+//
+//	__delay_ms(250);
 
 
 }
@@ -906,18 +923,18 @@ intr__INT(void) {
 
 	}
 
-	///////////////////////
-
-	// capacitor
-
-	///////////////////////
-	while(PORTAbits.RA2 == 1) {
-
-		PORTAbits.RA4 = 1;
-
-	}
-
-	PORTAbits.RA4 = 0;
+//	///////////////////////
+//
+//	// capacitor
+//
+//	///////////////////////
+//	while(PORTAbits.RA2 == 1) {
+//
+//		PORTAbits.RA4 = 1;
+//
+//	}
+//
+//	PORTAbits.RA4 = 0;
 
 //	// report
 //	pulse_100ms_RB2(2);
