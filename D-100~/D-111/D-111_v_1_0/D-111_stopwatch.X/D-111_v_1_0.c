@@ -181,12 +181,16 @@ void _Setup(void) {
      * TRIS
      ****************/
     TRISB = 0b00000001;		// RB0 => input
-    TRISA = 0x00;
+    TRISA = 0x00001100;		// RA2,3 => input
+    						// RA3 --> ANSEL
+    						// RA2 --> input
+//    TRISA = 0x00;
 
     /****************
      * PORT
      ****************/
-    PORTA = 0b00100000;		// RA2 => input
+    PORTA = 0b00000000;		// initial => no output, no input
+//    PORTA = 0b00100000;		// RA2 => input
 //    PORTA = 0x00;
     PORTB = 0x00;
 
