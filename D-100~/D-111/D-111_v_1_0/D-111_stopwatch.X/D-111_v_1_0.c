@@ -713,12 +713,11 @@ _While_PORTA(void) {
 		// reset flag
 		f_Clicked = false;
 
+	} else {
+
+		PORTAbits.RA4 = 0;
+
 	}
-//	 else {
-//
-//			PORTAbits.RA4 = 0;
-//
-//		}
 
 //	PORTAbits.RA4 = 1;
 //
