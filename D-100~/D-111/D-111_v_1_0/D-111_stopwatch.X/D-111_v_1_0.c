@@ -142,6 +142,7 @@ void main(void) {
 
 		_While_PORTA();
 
+		PORTAbits.RA4 = 0;
 
 
 	}//while(1)
@@ -713,6 +714,11 @@ _While_PORTA(void) {
 		f_Clicked = false;
 
 	}
+//	 else {
+//
+//			PORTAbits.RA4 = 0;
+//
+//		}
 
 //	PORTAbits.RA4 = 1;
 //
