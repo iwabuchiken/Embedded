@@ -1,6 +1,6 @@
 #ifndef SD1602_4BIT_H
 #define SD1602_4BIT_H
-#endif
+//#endif
 
 #ifndef XC_H
 #include <xc.h>
@@ -185,3 +185,5 @@ SD1602_init_2(void) {
 							// (LCD_on)
 
 }//SD1602_init_2
+
+#endif	//SD1602_4BIT_H

@@ -12,7 +12,10 @@
 #include <xc.h>
 #include <stdio.h>
 
+#ifndef SD1602_4BIT_H
 #include "SD1602_4bit_mode.h"
+#endif
+
 #include "debug.h"
 
 #ifndef _XTAL_FREQ
