@@ -7,28 +7,33 @@
 
 
 #include <xc.h>
-//#ifndef XC_H
-//#include <xc.h>
-//#endif
-
 #include <stdio.h>
 
-#ifndef MAIN_H
-#include "main.h"
-#endif
-
-//#include "SD1602_4bit_mode.h"
-#ifndef SD1602_4BIT_H
 #include "SD1602_4bit_mode.h"
-#endif
-
-#ifndef DEBUG_H
 #include "debug.h"
+
+#ifndef _XTAL_FREQ
+#define _XTAL_FREQ 20000000
 #endif
 
-#ifndef INTR_H
-#include "intr.h"
+#ifndef DISP_V_1_H
+#include "disp_v_1.h"
 #endif
+
+#ifndef LIB_D_108_V_2_5_3_H
+#include "lib_v_1.h"
+#endif
+
+/*
+ * lib_D-108_V_2_5_3.h
+ *
+ * 		conv_Dex_to_Binary
+ */
+
+#include <xc.h>
+
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
 
 // CONFIG1
 #pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
@@ -53,24 +58,12 @@
 //#pragma config PWRTE = ON
 //#pragma config CP = OFF
 
-/////////////////////////
-//
-//// protos
-//
-/////////////////////////
-//void _Setup__Registries(void);
-//void _Setup_ANSEL(void);
-//void _Setup__Interrupt(void);
-//void _Display(void);
-//
-//static void interrupt intr(void);
-
 ///////////////////////
 
 // protos
 
 ///////////////////////
-void _Setup__Registries(void);
+void _Setup(void);
 //void _Setup_Interrupt(void);
 void _Setup_Timer(void);
 void _Setup_ANSEL(void);
@@ -113,31 +106,31 @@ void main(void) {
 	// setups
 
 	///////////////////////
-	_Setup__Registries();			// init MCU
+	_Setup();			// init MCU
 
 	_Setup_ANSEL();
 
-	//debug
-	pulse_250ms(3);
+	count = 0;
+
+//	pulse_250ms(3);
 
 	_Setup_Timer();
 
-	//debug
 	pulse_250ms_RB2(3);
 
-//	///////////////////////
-//
-//	// LCD-related
-//
-//	///////////////////////
-//	SD1602_init_2();	// init LCD
-//
-////	pulse_250ms(2);
-//
-//	_Display();
-//
-////	pulse_250ms_RB2(2);
-//
+	///////////////////////
+
+	// LCD-related
+
+	///////////////////////
+	SD1602_init_2();	// init LCD
+
+//	pulse_250ms(2);
+
+	_Display();
+
+//	pulse_250ms_RB2(2);
+
 	///////////////////////
 
 	// while
@@ -145,11 +138,11 @@ void main(void) {
 	///////////////////////
 	while(1) {
 
-////		_While();
-//
-//		_While_PORTA();
-//
-//		PORTAbits.RA4 = 0;
+//		_While();
+
+		_While_PORTA();
+
+		PORTAbits.RA4 = 0;
 
 
 	}//while(1)
@@ -177,7 +170,7 @@ _Setup_ANSEL(void) {
 
 }//_Setup_ANSEL
 
-void _Setup__Registries(void) {
+void _Setup(void) {
 
 	/****************
 	 * OPTION_REG
@@ -213,7 +206,7 @@ void _Setup__Registries(void) {
 //	///////////////////////
 //    msg_num = 0;
 
-}//_Setup__Registries(void)
+}//_Setup
 
 //void _Setup_Interrupt(void) {
 //
@@ -330,94 +323,171 @@ _Setup_Timer(void) {
 //
 //}//_Display
 
-//void _Display__Hex(int num) {
-//
-////	strcpy(s, msg_1);
-//
-//	///////////////////////
-//
-//	// clear: display
-//
-//	///////////////////////
-//	SD1602_clear();
-//
-//	///////////////////////
-//
-//	// line: 1
-//
-//	///////////////////////
-//	SD1602_control(0x02);	// Cursor => at home
-//							// Exec time => 1.64 ms
-//
-//	__delay_ms(2);
-//
-//	SD1602_print(msg_2);
-//
-//	///////////////////////
-//
-//	// line: 2
-//
-//	///////////////////////
-//	SD1602_control(0xC0);	// Cursor => second line
-//							// Exec time => 40 us
-//
-//	conv_Dex_to_Binary(num, binary);
-//
+void _Display__Hex(int num) {
+
+//	strcpy(s, msg_1);
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+	conv_Dex_to_Binary(num, binary);
+
+	for (i = 0; i < 12; i ++) {
+
+		binary_display[3 + i] = binary[i];
+
+	}
+
+	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+
+	binary_display[0] = msg_Hex_2Digit[0];
+	binary_display[1] = msg_Hex_2Digit[1];
+	binary_display[2] = ' ';
+
+	SD1602_print(binary_display);
+
+}//_Display
+
+/*
+ * 3 items
+ * 		=> hex, binary, decimal
+ */
+void
+_Display__Hex_3Items
+(int num) {
+
+//	char temp_4[4];
+
+//	strcpy(s, msg_1);
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+	conv_Dex_to_Binary(num, binary);
+
+	for (i = 0; i < 9; i ++) {
+//	for (i = 3; i < 12; i ++) {
 //	for (i = 0; i < 12; i ++) {
-//
-//		binary_display[3 + i] = binary[i];
-//
-//	}
-//
-//	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
-//
-//	binary_display[0] = msg_Hex_2Digit[0];
-//	binary_display[1] = msg_Hex_2Digit[1];
-//	binary_display[2] = ' ';
-//
+
+//		binary_display_16[i] = binary[i];
+		binary_display_16[3 + i] = binary[i];
+
+	}
+
+	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+
+	binary_display_16[0] = msg_Hex_2Digit[0];
+	binary_display_16[1] = msg_Hex_2Digit[1];
+	binary_display_16[2] = '-';
+//	binary_display_16[2] = ' ';
+
+	///////////////////////
+
+	// decimal chars
+
+	///////////////////////
+	conv_1Hex_to_String(num, temp_4);
+
+	binary_display_16[11] = ' ';	// remove the null char
+
+//	binary_display_16[12] = 'a';
+//	binary_display_16[13] = 'b';
+//	binary_display_16[14] = 'c';
+//	binary_display_16[15] = '\0';
+	binary_display_16[12] = temp_4[0];
+	binary_display_16[13] = temp_4[1];
+	binary_display_16[14] = temp_4[2];
+	binary_display_16[15] = temp_4[3];
+
+
+	SD1602_print(binary_display_16);
 //	SD1602_print(binary_display);
-//
-//}//_Display
-//
-///*
-// * 3 items
-// * 		=> hex, binary, decimal
-// */
-//void
-//_Display__Hex_3Items
-//(int num) {
-//
-////	char temp_4[4];
-//
-////	strcpy(s, msg_1);
-//
-//	///////////////////////
-//
-//	// clear: display
-//
-//	///////////////////////
-//	SD1602_clear();
-//
-//	///////////////////////
-//
-//	// line: 1
-//
-//	///////////////////////
-//	SD1602_control(0x02);	// Cursor => at home
-//							// Exec time => 1.64 ms
-//
-//	__delay_ms(2);
-//
-//	SD1602_print(msg_2);
-//
-//	///////////////////////
-//
-//	// line: 2
-//
-//	///////////////////////
-//	SD1602_control(0xC0);	// Cursor => second line
-//							// Exec time => 40 us
-//
+
+}//_Display__Hex_3Items
+
+/*
+ * 2 items
+ * 		=> hex, decimal
+ */
+void
+_Display__Hex_2Items
+(int num) {
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
 //	conv_Dex_to_Binary(num, binary);
 //
 //	for (i = 0; i < 9; i ++) {
@@ -428,333 +498,256 @@ _Setup_Timer(void) {
 //		binary_display_16[3 + i] = binary[i];
 //
 //	}
-//
+
+	conv_Hex_to_CharCode_2Digits(adcL, msg_Hex_2Digit);
 //	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
-//
-//	binary_display_16[0] = msg_Hex_2Digit[0];
-//	binary_display_16[1] = msg_Hex_2Digit[1];
-//	binary_display_16[2] = '-';
-////	binary_display_16[2] = ' ';
-//
-//	///////////////////////
-//
-//	// decimal chars
-//
-//	///////////////////////
+
+	binary_display_8[0] = adcH + 0x30;
+	binary_display_8[1] = msg_Hex_2Digit[0];
+	binary_display_8[2] = msg_Hex_2Digit[1];
+
+	///////////////////////
+
+	// decimal chars
+
+	///////////////////////
 //	conv_1Hex_to_String(num, temp_4);
+	conv_2Hex_to_String(adcH, adcL, temp_5);
+//	conv_2Hex_to_String(adcH, num, temp_5);
+
+	binary_display_8[3] = ' ';
+
+	binary_display_8[4] = temp_5[0];
+	binary_display_8[5] = temp_5[1];
+	binary_display_8[6] = temp_5[2];
+	binary_display_8[7] = temp_5[3];
+	binary_display_8[8] = temp_5[4];	// '\0'
+
+	SD1602_print(binary_display_8);
+//	SD1602_print(binary_display);
+
+}//_Display__Hex_3Items
+
+/*
+ * 2 items
+ * 		=> hex, decimal
+ */
+
+void
+_Display__ADC_Fractional() {
+
+	char temp[6];
+
+	///////////////////////
+
+	// clear: display
+
+	///////////////////////
+	SD1602_clear();
+
+	///////////////////////
+
+	// line: 1
+
+	///////////////////////
+	SD1602_control(0x02);	// Cursor => at home
+							// Exec time => 1.64 ms
+
+	__delay_ms(2);
+
+	SD1602_print(msg_2);
+
+	///////////////////////
+
+	// line: 2
+
+	///////////////////////
+	SD1602_control(0xC0);	// Cursor => second line
+							// Exec time => 40 us
+
+//	conv_Dex_to_Binary(num, binary);
 //
-//	binary_display_16[11] = ' ';	// remove the null char
+//	for (i = 0; i < 9; i ++) {
+////	for (i = 3; i < 12; i ++) {
+////	for (i = 0; i < 12; i ++) {
 //
-////	binary_display_16[12] = 'a';
-////	binary_display_16[13] = 'b';
-////	binary_display_16[14] = 'c';
-////	binary_display_16[15] = '\0';
-//	binary_display_16[12] = temp_4[0];
-//	binary_display_16[13] = temp_4[1];
-//	binary_display_16[14] = temp_4[2];
-//	binary_display_16[15] = temp_4[3];
+////		binary_display_16[i] = binary[i];
+//		binary_display_16[3 + i] = binary[i];
 //
-//
-//	SD1602_print(binary_display_16);
-////	SD1602_print(binary_display);
-//
-//}//_Display__Hex_3Items
-//
-///*
-// * 2 items
-// * 		=> hex, decimal
-// */
-//void
-//_Display__Hex_2Items
-//(int num) {
-//
-//	///////////////////////
-//
-//	// clear: display
-//
-//	///////////////////////
-//	SD1602_clear();
-//
-//	///////////////////////
-//
-//	// line: 1
-//
-//	///////////////////////
-//	SD1602_control(0x02);	// Cursor => at home
-//							// Exec time => 1.64 ms
-//
-//	__delay_ms(2);
-//
-//	SD1602_print(msg_2);
-//
-//	///////////////////////
-//
-//	// line: 2
-//
-//	///////////////////////
-//	SD1602_control(0xC0);	// Cursor => second line
-//							// Exec time => 40 us
-//
-////	conv_Dex_to_Binary(num, binary);
-////
-////	for (i = 0; i < 9; i ++) {
-//////	for (i = 3; i < 12; i ++) {
-//////	for (i = 0; i < 12; i ++) {
-////
-//////		binary_display_16[i] = binary[i];
-////		binary_display_16[3 + i] = binary[i];
-////
-////	}
-//
-//	conv_Hex_to_CharCode_2Digits(adcL, msg_Hex_2Digit);
-////	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
-//
-//	binary_display_8[0] = adcH + 0x30;
-//	binary_display_8[1] = msg_Hex_2Digit[0];
-//	binary_display_8[2] = msg_Hex_2Digit[1];
-//
-//	///////////////////////
-//
-//	// decimal chars
-//
-//	///////////////////////
-////	conv_1Hex_to_String(num, temp_4);
+//	}
+
+	conv_Hex_to_CharCode_2Digits(adcL, msg_Hex_2Digit);
+//	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
+
+	binary_display_9[0] = adcH + 0x30;
+	binary_display_9[1] = msg_Hex_2Digit[0];
+	binary_display_9[2] = msg_Hex_2Digit[1];
+
+	///////////////////////
+
+	// decimal chars
+
+	///////////////////////
 //	conv_2Hex_to_String(adcH, adcL, temp_5);
-////	conv_2Hex_to_String(adcH, num, temp_5);
+	conv_ADC_to_FloatString(adcH, adcL, ref, temp);
+
+	binary_display_9[3] = ' ';
+
+	binary_display_9[4] = temp[0];
+	binary_display_9[5] = temp[1];
+	binary_display_9[6] = temp[2];
+	binary_display_9[7] = temp[3];
+	binary_display_9[8] = temp[4];	// '\0'
+	binary_display_9[9] = temp[5];	// '\0'
+
+	SD1602_print(binary_display_9);
+//	SD1602_print(binary_display);
+
+}//_Display__ADC_Fractional
+
+
+void
+_While(void) {
+
+//	if (flag_Intr == true) {
 //
-//	binary_display_8[3] = ' ';
+////			hex ++;
 //
-//	binary_display_8[4] = temp_5[0];
-//	binary_display_8[5] = temp_5[1];
-//	binary_display_8[6] = temp_5[2];
-//	binary_display_8[7] = temp_5[3];
-//	binary_display_8[8] = temp_5[4];	// '\0'
+////			hex = TMR0;
 //
-//	SD1602_print(binary_display_8);
-////	SD1602_print(binary_display);
+////		adcL ++;
 //
-//}//_Display__Hex_3Items
+//		hex ++;
 //
-///*
-// * 2 items
-// * 		=> hex, decimal
-// */
-//
-//void
-//_Display__ADC_Fractional() {
-//
-//	char temp[6];
-//
-//	///////////////////////
-//
-//	// clear: display
-//
-//	///////////////////////
-//	SD1602_clear();
-//
-//	///////////////////////
-//
-//	// line: 1
-//
-//	///////////////////////
-//	SD1602_control(0x02);	// Cursor => at home
-//							// Exec time => 1.64 ms
-//
-//	__delay_ms(2);
-//
-//	SD1602_print(msg_2);
-//
-//	///////////////////////
-//
-//	// line: 2
-//
-//	///////////////////////
-//	SD1602_control(0xC0);	// Cursor => second line
-//							// Exec time => 40 us
-//
-////	conv_Dex_to_Binary(num, binary);
-////
-////	for (i = 0; i < 9; i ++) {
-//////	for (i = 3; i < 12; i ++) {
-//////	for (i = 0; i < 12; i ++) {
-////
-//////		binary_display_16[i] = binary[i];
-////		binary_display_16[3 + i] = binary[i];
-////
-////	}
-//
-//	conv_Hex_to_CharCode_2Digits(adcL, msg_Hex_2Digit);
-////	conv_Hex_to_CharCode_2Digits(num, msg_Hex_2Digit);
-//
-//	binary_display_9[0] = adcH + 0x30;
-//	binary_display_9[1] = msg_Hex_2Digit[0];
-//	binary_display_9[2] = msg_Hex_2Digit[1];
-//
-//	///////////////////////
-//
-//	// decimal chars
-//
-//	///////////////////////
-////	conv_2Hex_to_String(adcH, adcL, temp_5);
-//	conv_ADC_to_FloatString(adcH, adcL, ref, temp);
-//
-//	binary_display_9[3] = ' ';
-//
-//	binary_display_9[4] = temp[0];
-//	binary_display_9[5] = temp[1];
-//	binary_display_9[6] = temp[2];
-//	binary_display_9[7] = temp[3];
-//	binary_display_9[8] = temp[4];	// '\0'
-//	binary_display_9[9] = temp[5];	// '\0'
-//
-//	SD1602_print(binary_display_9);
-////	SD1602_print(binary_display);
-//
-//}//_Display__ADC_Fractional
-//
-//
-//void
-//_While(void) {
-//
-////	if (flag_Intr == true) {
-////
-//////			hex ++;
-////
-//////			hex = TMR0;
-////
-//////		adcL ++;
-////
-////		hex ++;
-////
-//////		hex = adcL;
-////
-////		///////////////////////
-////
-////		// ADC
-////
-////		///////////////////////
-////		get_ADC_Values();
-////
-////		///////////////////////
-////
-////		// display
-////
-////		///////////////////////
-//////			_Display__Hex(hex);
-//////			_Display__Hex_3Items(hex);
-//////		_Display__Hex_2Items(hex);
-////		_Display__ADC_Fractional();
-////
-////		///////////////////////
-////
-////		// reset: flag
-////
-////		///////////////////////
-////		flag_Intr = false;
-////
-////	}//if (flag_Intr == true)
-//
-//	///////////////////////
-//
-//	// flag: clicked
-//
-//	///////////////////////
-//	if (f_Clicked == true) {
+////		hex = adcL;
 //
 //		///////////////////////
 //
-//		// debug
+//		// ADC
 //
 //		///////////////////////
-//		pulse_100ms_RB2(2);
-//
-//		///////////////////////
-//
-//		// clear
-//
-//		///////////////////////
-//		SD1602_control(0x01);	// LCD => clear
-//
-//		__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+//		get_ADC_Values();
 //
 //		///////////////////////
 //
-//		// switch
+//		// display
 //
 //		///////////////////////
-//		if (st_Stopwatch == 1) {
+////			_Display__Hex(hex);
+////			_Display__Hex_3Items(hex);
+////		_Display__Hex_2Items(hex);
+//		_Display__ADC_Fractional();
 //
-//			// Start
-//			_While__Clicked(1);		// lib_v_1.h
+//		///////////////////////
 //
-//		} else if (st_Stopwatch == -1) {
+//		// reset: flag
 //
-//			// stop
-//			_While__Clicked(-1);		// lib_v_1.h
+//		///////////////////////
+//		flag_Intr = false;
 //
-//		} else {
+//	}//if (flag_Intr == true)
+
+	///////////////////////
+
+	// flag: clicked
+
+	///////////////////////
+	if (f_Clicked == true) {
+
+		///////////////////////
+
+		// debug
+
+		///////////////////////
+		pulse_100ms_RB2(2);
+
+		///////////////////////
+
+		// clear
+
+		///////////////////////
+		SD1602_control(0x01);	// LCD => clear
+
+		__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+
+		///////////////////////
+
+		// switch
+
+		///////////////////////
+		if (st_Stopwatch == 1) {
+
+			// Start
+			_While__Clicked(1);		// lib_v_1.h
+
+		} else if (st_Stopwatch == -1) {
+
+			// stop
+			_While__Clicked(-1);		// lib_v_1.h
+
+		} else {
+
+			// Unknown
+			_While__Clicked(-2);		// lib_v_1.h
+
+		}
+
+		// reset flag
+		f_Clicked = false;
+
+	}
+//	_While__Clicked();
+
+}//_While
+
+void
+_While_PORTA(void) {
+
+	if (f_Clicked == true) {
+
+		while(PORTAbits.RA2 == 1) {
+
+			PORTAbits.RA4 = 1;
+
+		}
+
+		// RA4 => back to 0
+		PORTAbits.RA4 = 0;
+
+		// reset flag
+		f_Clicked = false;
+
+	} else {
+
+		PORTAbits.RA4 = 0;
+
+	}
+
+//	PORTAbits.RA4 = 1;
 //
-//			// Unknown
-//			_While__Clicked(-2);		// lib_v_1.h
+//	__delay_ms(250);
 //
-//		}
+//	PORTAbits.RA4 = 0;
 //
-//		// reset flag
-//		f_Clicked = false;
-//
-//	}
-////	_While__Clicked();
-//
-//}//_While
-//
-//void
-//_While_PORTA(void) {
-//
-//	if (f_Clicked == true) {
-//
-//		while(PORTAbits.RA2 == 1) {
-//
-//			PORTAbits.RA4 = 1;
-//
-//		}
-//
-//		// RA4 => back to 0
-//		PORTAbits.RA4 = 0;
-//
-//		// reset flag
-//		f_Clicked = false;
-//
-//	} else {
-//
-//		PORTAbits.RA4 = 0;
-//
-//	}
-//
-////	PORTAbits.RA4 = 1;
-////
-////	__delay_ms(250);
-////
-////	PORTAbits.RA4 = 0;
-////
-////	__delay_ms(250);
-//
-//
-//}
-//
-//void
-//_Setup_Init_Vars(void) {
-////_Init_Vars(void) {
-//
-//	///////////////////////
-//
-//	// vars
-//
-//	///////////////////////
-//	msg_num = 0;
-//
-//	st_Stopwatch = -1;	// inital => "Stop"
-//
-//}
+//	__delay_ms(250);
+
+
+}
+
+void
+_Setup_Init_Vars(void) {
+//_Init_Vars(void) {
+
+	///////////////////////
+
+	// vars
+
+	///////////////////////
+	msg_num = 0;
+
+	st_Stopwatch = -1;	// inital => "Stop"
+
+}
 
 
 static void
@@ -769,7 +762,7 @@ interrupt intr() {
 
 	if (INTCONbits.TMR0IF == 1) {
 
-//		intr__TMR();
+		intr__TMR();
 
 //		INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
 //		INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
@@ -791,7 +784,7 @@ interrupt intr() {
 
 	} else if (INTCONbits.INT0IF == 1) {
 
-//		intr__INT();
+		intr__INT();
 
 	} else {
 
@@ -846,241 +839,401 @@ interrupt intr() {
 
 }//interrupt intr()
 
-//void
-//intr__TMR(void) {
+void
+intr__TMR(void) {
+
+	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+
+	///////////////////////
+
+	// ops
+
+	///////////////////////
+	count ++;
+
+	if (count == EQ_500MS) {
+
+		PORTBbits.RB3 ^= 1;
+
+		count = 0;
+
+	}
+
+}//intr__TMR
+
+void
+intr__INT(void) {
+
+	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
+	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
+
+	///////////////////////
+
+	// validate: chattering
+
+	///////////////////////
+	__delay_ms(20);
+
+	if (PORTBbits.RB0 != 0) {
+
+		return;
+
+	}
+
+
+	///////////////////////
+
+	// report: INT starting
+
+	///////////////////////
+	PORTBbits.RB3 = 0;
+
+	__delay_ms(500);
+
+	///////////////////////
+
+	// set: flag
+
+	///////////////////////
+	flag_Intr = true;
+
+	///////////////////////
+
+	// flag: f_Clicked
+
+	///////////////////////
+//	if (f_Clicked == true) {
 //
-//	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
-//	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
-//
-//	///////////////////////
-//
-//	// ops
-//
-//	///////////////////////
-//	count ++;
-//
-//	if (count == EQ_500MS) {
-//
-//		PORTBbits.RB3 ^= 1;
-//
-//		count = 0;
-//
-//	}
-//
-//}//intr__TMR
-//
-//void
-//intr__INT(void) {
-//
-//	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
-//	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
-//
-//	///////////////////////
-//
-//	// validate: chattering
-//
-//	///////////////////////
-//	__delay_ms(20);
-//
-//	if (PORTBbits.RB0 != 0) {
-//
-//		return;
-//
-//	}
-//
-//
-//	///////////////////////
-//
-//	// report: INT starting
-//
-//	///////////////////////
-//	PORTBbits.RB3 = 0;
-//
-//	__delay_ms(500);
-//
-//	///////////////////////
-//
-//	// set: flag
-//
-//	///////////////////////
-//	flag_Intr = true;
-//
-//	///////////////////////
-//
-//	// flag: f_Clicked
-//
-//	///////////////////////
-////	if (f_Clicked == true) {
-////
-////		f_Clicked = false;
-////
-////	} else {
-//
-//		f_Clicked = true;
-//
-////	}
-//
-////	hex ++;
-////
-////	_Display__Hex(hex);
-//
-//	///////////////////////
-//
-//	// invert: st_Stopwatch
-//
-//	///////////////////////
-//	if (st_Stopwatch == 1) {
-//
-//		st_Stopwatch = -1;
+//		f_Clicked = false;
 //
 //	} else {
+
+		f_Clicked = true;
+
+//	}
+
+//	hex ++;
 //
-//		st_Stopwatch = 1;
+//	_Display__Hex(hex);
+
+	///////////////////////
+
+	// invert: st_Stopwatch
+
+	///////////////////////
+	if (st_Stopwatch == 1) {
+
+		st_Stopwatch = -1;
+
+	} else {
+
+		st_Stopwatch = 1;
+
+	}
+
+//	///////////////////////
+//
+//	// capacitor
+//
+//	///////////////////////
+//	while(PORTAbits.RA2 == 1) {
+//
+//		PORTAbits.RA4 = 1;
 //
 //	}
 //
-////	///////////////////////
-////
-////	// capacitor
-////
-////	///////////////////////
-////	while(PORTAbits.RA2 == 1) {
-////
-////		PORTAbits.RA4 = 1;
-////
-////	}
-////
-////	PORTAbits.RA4 = 0;
+//	PORTAbits.RA4 = 0;
+
+//	// report
+//	pulse_100ms_RB2(2);
+
+}//intr__INT
+
+///*
+// * @param
+// * 		num => < 256, >= 0
+// */
+//void conv_1Hex_to_String
+//(int num, char cont[4]) {
 //
-////	// report
-////	pulse_100ms_RB2(2);
+//	// 100s
+//	hunds = num / 100;
 //
-//}//intr__INT
+//	residue = num - hunds * 100;
 //
-/////*
-//// * @param
-//// * 		num => < 256, >= 0
-//// */
-////void conv_1Hex_to_String
-////(int num, char cont[4]) {
+//	// 10s
+//	tens = residue / 10;
+//
+//	residue = residue - tens * 10;
+//
+////	// display
+////	printf("[%d] num = %d\n", __LINE__, num);
+//
+////	sprintf(cont, "%d%d%d", hunds, tens, residue);
+//
+////	cont[0] = 'x';
+////	cont[1] = 'y';
+////	cont[2] = 'z';
+//
+//	cont[0] = hunds + 0x30;
+//	cont[1] = tens + 0x30;
+//	cont[2] = residue + 0x30;
 ////
-////	// 100s
-////	hunds = num / 100;
-////
-////	residue = num - hunds * 100;
-////
-////	// 10s
-////	tens = residue / 10;
-////
-////	residue = residue - tens * 10;
-////
-//////	// display
-//////	printf("[%d] num = %d\n", __LINE__, num);
-////
-//////	sprintf(cont, "%d%d%d", hunds, tens, residue);
-////
-//////	cont[0] = 'x';
-//////	cont[1] = 'y';
-//////	cont[2] = 'z';
-////
-////	cont[0] = hunds + 0x30;
-////	cont[1] = tens + 0x30;
-////	cont[2] = residue + 0x30;
-//////
-////	cont[3] = '\0';
-////
-////
-//////	printf("[%d] cont => %s\n", __LINE__, cont);
-////
-////}//conv_Hex_to_Decimal_String
+//	cont[3] = '\0';
 //
 //
-////
-////void pulse_250ms(unsigned int num) {
-////
-////	int i;
-////
-////	for (i = 0; i < num; i ++) {
-////
-////		PORTBbits.RB1 = 1;
-////
-////		__delay_ms(250);
-////
-////		PORTBbits.RB1 = 0;
-////
-////		__delay_ms(250);
-////
-////	}
-////
-////}
-////
-////void pulse_250ms_RB2(unsigned int num) {
-////
-////	int i;
-////
-////	for (i = 0; i < num; i ++) {
-////
-////		PORTBbits.RB2 = 1;
-////
-////		__delay_ms(250);
-////
-////		PORTBbits.RB2 = 0;
-////
-////		__delay_ms(250);
-////
-////	}
-////
-////}
-////
-////void pulse_100ms(unsigned int num) {
-////
-////	int i;
-////
-////	for (i = 0; i < num; i ++) {
-////
-////		PORTBbits.RB1 = 1;
-////
-////		__delay_ms(100);
-////
-////		PORTBbits.RB1 = 0;
-////
-////		__delay_ms(100);
-////
-////	}
-////
-////}
-////
-////void pulse_100ms_RB2(unsigned int num) {
-////
-////	int i;
-////
-////	for (i = 0; i < num; i ++) {
-////
-////		PORTBbits.RB2 = 1;
-////
-////		__delay_ms(100);
-////
-////		PORTBbits.RB2 = 0;
-////
-////		__delay_ms(100);
-////
-////	}
-////
-////}
-////
+////	printf("[%d] cont => %s\n", __LINE__, cont);
 //
+//}//conv_Hex_to_Decimal_String
+
+
+//
+//void pulse_250ms(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB1 = 1;
+//
+//		__delay_ms(250);
+//
+//		PORTBbits.RB1 = 0;
+//
+//		__delay_ms(250);
+//
+//	}
+//
+//}
+//
+//void pulse_250ms_RB2(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB2 = 1;
+//
+//		__delay_ms(250);
+//
+//		PORTBbits.RB2 = 0;
+//
+//		__delay_ms(250);
+//
+//	}
+//
+//}
+//
+//void pulse_100ms(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB1 = 1;
+//
+//		__delay_ms(100);
+//
+//		PORTBbits.RB1 = 0;
+//
+//		__delay_ms(100);
+//
+//	}
+//
+//}
+//
+//void pulse_100ms_RB2(unsigned int num) {
+//
+//	int i;
+//
+//	for (i = 0; i < num; i ++) {
+//
+//		PORTBbits.RB2 = 1;
+//
+//		__delay_ms(100);
+//
+//		PORTBbits.RB2 = 0;
+//
+//		__delay_ms(100);
+//
+//	}
+//
+//}
+//
+
+void
+get_ADC_Values(void) {
+
+	ADCON0bits.GO = 1;
+
+	while(ADCON0bits.GO == 1) {
+
+	}
+
+	adcH = ADRESH;
+
+	adcL = ADRESL;
+
+}//get_ADC_Values
+
 //void
-//get_ADC_Values(void) {
+//conv_Float_to_String
+//(float num, char cont[6]) {
 //
-//	ADCON0bits.GO = 1;
+//	int num_Int, num_Decimal_int;
+//	float num_Decimal;
 //
-//	while(ADCON0bits.GO == 1) {
+//	char num_Decimal_str[4];
 //
-//	}
+//	///////////////////////
 //
-//	adcH = ADRESH;
+//	// int
 //
-//	adcL = ADRESL;
+//	///////////////////////
+//	num_Int = (int) num;
 //
-//}//get_ADC_Values
+//	///////////////////////
 //
+//	// decimal
+//
+//	///////////////////////
+//	num_Decimal = num - num_Int;
+//
+////	printf("[%d] num = %1.6f, Int = %d, decimal = %1.6f\n",
+////			__LINE__, num, num_Int, num_Decimal);	//=>
+//
+//	///////////////////////
+//
+//	// decimal part => to string
+//
+//	///////////////////////
+//	conv_Hex_to_3Digit_String((int)num_Decimal * 1000, cont);
+//
+////	printf("[%d] num = %1.3f, cont = %s, "
+////			"num_Decimal * 1000 = %d, num_Decimal * 1000(float) = %1.3f\n",
+////			__LINE__, num, cont, (int)(num_Decimal * 1000), (num_Decimal * 1000));
+//
+//	num_Decimal = num_Decimal * 1000;
+//
+////	num_Decimal_int = (int) (num_Decimal * 1000);
+//	num_Decimal_int = (int) num_Decimal;
+//
+////	printf("[%d] num = %1.3f, num_Decimal_int = %d\n",
+////				__LINE__, num, num_Decimal_int);
+//
+//	conv_Hex_to_3Digit_String(num_Decimal_int, num_Decimal_str);
+//
+////	printf("[%d] num = %1.3f, num_Decimal_str = %s\n",
+////					__LINE__, num, num_Decimal_str);
+//
+//
+//	///////////////////////
+//
+//	// build
+//
+//	///////////////////////
+//	cont[0] = num_Int + 0x30;
+//	cont[1] = '.';
+//	cont[2] = num_Decimal_str[0];
+//	cont[3] = num_Decimal_str[1];
+//	cont[4] = num_Decimal_str[2];
+//	cont[5] = num_Decimal_str[3];
+//
+////	printf("[%d] num = %1.3f, cont = %s\n",
+////						__LINE__, num, cont);
+//
+////	printf("[%d] num => %1.3f\n", __LINE__, num);	//=> 3.543
+////
+////	printf("[%d] num(floor) => %d\n", __LINE__, (int)floor(num));	//=> 3
+//////	printf("[%d] num(floor) => %1f\n", __LINE__, floor(num));
+//////	printf("[%d] num(floor) => %d\n", __LINE__, floor(num));
+////
+////	printf("[%d] num(int) => %d\n", __LINE__, (int)num);	//=>
+//
+//
+//
+//}//conv_Float_to_String
+
+//void
+//conv_ADC_to_FloatString
+//(int adcH, int adcL, double ref, char cont[6]) {
+//
+//	char temp[4];
+//
+//	int sum;
+//
+//	double scaled;
+//
+//	///////////////////////
+//
+//	// prep: adcH
+//
+//	///////////////////////
+//	adcH &= 0x03;
+//
+//	///////////////////////
+//
+//	// sum
+//
+//	///////////////////////
+//	sum = adcH * 256 + adcL;
+//
+//	///////////////////////
+//
+//	// decimal part => to string
+//
+//	///////////////////////
+//	conv_Hex_to_3Digit_String(adcL, temp);
+//
+////	printf("[%d] adcL = %d(%%x = %x) (str = %s) \n"
+////			"adcH = %d(%%x = %x)\n"
+////			"(sum = %d)\n",
+////				__LINE__, adcL, adcL, temp, adcH, adcH, sum);
+//
+//	///////////////////////
+//
+//	// convert
+//
+//	///////////////////////
+//	scaled = (sum / (double)MAX_NUM) * ref;
+//
+////	printf("[%d] ref = %f, scaled = %f\n",
+////				__LINE__, ref, scaled);
+//
+//	///////////////////////
+//
+//	// string
+//
+//	///////////////////////
+//	conv_Float_to_String(scaled, cont);
+//
+//}//conv_Float_to_String
+
+//void
+//conv_Hex_to_3Digit_String
+//(int num , char cont[4]) {
+//
+//	int hunds, tens, residue;
+//
+//	// 100s
+//	hunds = num / 100;
+//
+//	residue = num - hunds * 100;
+//
+//	// 10s
+//	tens = residue / 10;
+//
+//	residue = residue - tens * 10;
+//
+//	///////////////////////
+//
+//	// build
+//
+//	///////////////////////
+//	cont[0] = hunds + 0x30;
+//	cont[1] = tens + 0x30;
+//	cont[2] = residue + 0x30;
+//	cont[3] = '\0';
+//
+//}//conv_Hex_to_3Digit_String

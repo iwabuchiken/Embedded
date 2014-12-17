@@ -34,4 +34,4 @@
 // vars
 
 ///////////////////////
-char msg_Project_Name[]  = "D-111 v-3.0";
+//char msg_Project_Name[]  = "D-111 v-3.0";
