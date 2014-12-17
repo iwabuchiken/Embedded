@@ -6,6 +6,9 @@
 #include "main.h"
 #endif
 
+#ifndef SD1602_4BIT_H
+#include "SD1602_4bit_mode.h"
+#endif
 
 
 ///////////////////////
