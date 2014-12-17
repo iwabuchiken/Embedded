@@ -63,6 +63,8 @@ void _Setup_ANSEL(void);
 void _Setup__Interrupt(void);
 void _Display(void);
 
+static void interrupt intr(void);
+
 ///////////////////////
 
 // vars
@@ -125,6 +127,95 @@ void main(void) {
     return;
 }
 
+static void
+interrupt intr() {
+
+	///////////////////////
+
+	// prohibit: further interruption
+
+	///////////////////////
+	INTCON &= 0x7F;		// prohibit: intr			// 0111 1111
+
+//	if (INTCONbits.TMR0IF == 1) {
+//
+//		intr__TMR();
+//
+////		INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+////		INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+////
+////		///////////////////////
+////
+////		// ops
+////
+////		///////////////////////
+////		count ++;
+////
+////		if (count == EQ_500MS) {
+////
+////			PORTBbits.RB3 ^= 1;
+////
+////			count = 0;
+////
+////		}
+//
+//	} else if (INTCONbits.INT0IF == 1) {
+//
+//		intr__INT();
+//
+//	} else {
+//
+//	}
+//
+////	INTCON &= 0xDF;		// prohibit: timer intr		// 1101 1111
+////	INTCON &= 0xFB;		// clear: timer intr flag	// 1111 1011
+//
+////	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
+////	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
+//
+//
+//
+////	///////////////////////
+////
+////	// ops
+////
+////	///////////////////////
+////	count ++;
+////
+////	if (count == EQ_500MS) {
+////
+////		PORTBbits.RB3 ^= 1;
+////
+////		count = 0;
+////
+////	}
+//
+////	if (TMR0 == 255) {
+//
+////		PORTBbits.RB3 ^= 1;
+////
+//////	PORTBbits.RB3 = 1;
+////
+////	__delay_us(200);
+////
+////	PORTBbits.RB3 ^= 1;
+//
+////	PORTBbits.RB3 = 0;
+//
+////	}
+
+	///////////////////////
+
+	// resume: interrupt
+
+	///////////////////////
+	INTCON |= 0x10;		// allow: INT intr
+	INTCON |= 0x20;		// allow: timer intr
+
+	INTCON |= 0x80;		// allow: intr
+
+}//interrupt intr()
+
 void
 _Setup__Interrupt(void) {
 
@@ -137,13 +228,22 @@ _Setup__Interrupt(void) {
 
 	TMR0 = 0;
 
+//	//debug
+//	pulse_100ms_RB2(3);	//=> passes
+
 	INTCON |= 0x10;		// permit: INT intr
 	INTCON |= 0x20;		// permit: timer intr
+
+//	//debug
+//	pulse_100ms_RB2(2);	//=> passes
 
 	INTCON |= 0x80;		// permit: intr
 
 	//debug
-	pulse_100ms_RB2(3);	//=> program stops here
+	pulse_100ms_RB2(2);	//=>
+
+//	//debug
+//	pulse_100ms_RB2(3);	//=> program stops here
 
 }//_Setup_Timer
 
