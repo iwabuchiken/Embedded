@@ -7,7 +7,6 @@
 
 #ifndef DEBUG_H
 #define	DEBUG_H
-//#endif
 
 #ifdef	__cplusplus
 extern "C" {

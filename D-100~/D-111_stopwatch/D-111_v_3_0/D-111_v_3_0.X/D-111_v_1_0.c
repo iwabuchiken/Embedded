@@ -147,7 +147,7 @@ void main(void) {
 
 	}//while(1)
 
-	return;
+    return;
 }
 
 void
@@ -172,27 +172,27 @@ _Setup_ANSEL(void) {
 
 void _Setup(void) {
 
-	/****************
-	 * OPTION_REG
-	 ****************/
-	OPTION_REGbits.nRBPU = 0;
+    /****************
+     * OPTION_REG
+     ****************/
+     OPTION_REGbits.nRBPU = 0;
 
-	/****************
-	 * TRIS
-	 ****************/
-	TRISB = 0b00000001;		// RB0 => input
-	TRISA = 0x00001100;		// RA2,3 => input
-							// RA3 --> ANSEL
-							// RA2 --> input
+    /****************
+     * TRIS
+     ****************/
+    TRISB = 0b00000001;		// RB0 => input
+    TRISA = 0x00001100;		// RA2,3 => input
+    						// RA3 --> ANSEL
+    						// RA2 --> input
 //    TRISA = 0x00;
 
-	/****************
-	 * PORT
-	 ****************/
-	PORTA = 0b00000000;		// initial => no output, no input
+    /****************
+     * PORT
+     ****************/
+    PORTA = 0b00000000;		// initial => no output, no input
 //    PORTA = 0b00100000;		// RA2 => input
 //    PORTA = 0x00;
-	PORTB = 0x00;
+    PORTB = 0x00;
 
 //    /****************
 //     * ANSEL
@@ -738,14 +738,14 @@ void
 _Setup_Init_Vars(void) {
 //_Init_Vars(void) {
 
-	///////////////////////
+    ///////////////////////
 
 	// vars
 
 	///////////////////////
-	msg_num = 0;
+    msg_num = 0;
 
-	st_Stopwatch = -1;	// inital => "Stop"
+    st_Stopwatch = -1;	// inital => "Stop"
 
 }
 
@@ -796,7 +796,7 @@ interrupt intr() {
 //	INTCON &= 0xEF;		// prohibit: INT intr		// 1110 1111
 //	INTCON &= 0xFD;		// clear: INT intr flag		// 1111 1101
 
-
+        
 
 //	///////////////////////
 //
@@ -1067,13 +1067,13 @@ get_ADC_Values(void) {
 
 	ADCON0bits.GO = 1;
 
-	while(ADCON0bits.GO == 1) {
+    while(ADCON0bits.GO == 1) {
 
-	}
+    }
 
-	adcH = ADRESH;
+    adcH = ADRESH;
 
-	adcL = ADRESL;
+    adcL = ADRESL;
 
 }//get_ADC_Values
 
