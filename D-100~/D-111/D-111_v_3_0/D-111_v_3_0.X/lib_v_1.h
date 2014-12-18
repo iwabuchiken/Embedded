@@ -107,10 +107,8 @@ extern "C" {
 	void conv_Float_to_String(float, char[6]);
 	void conv_Hex_to_3Digit_String(int, char[4]);	// 3 digits + null char = 4
 	void conv_ADC_to_FloatString(int, int, double, char[6]);
-
-	void
-	conv_Hex_to_CharCode_2Digits
-	(signed char c, char[]);
+	void conv_Hex_to_CharCode_2Digits (signed char c, char[]);
+	void conv_Hex_to_SecString(int, char[12]);
 
 	void _While__Clicked(int);
 
@@ -712,6 +710,68 @@ extern "C" {
 		SD1602_print(msg_SW_Unknown);
 
 	}//_Display__SW_Unknown
+
+	void
+	conv_Hex_to_SecString(int x, char cont[12]) {
+
+		int d100, d10, d1,dp1, dp2, dp3, residue, residue2;
+
+		d1 = x / 1000;
+
+		residue = x - 1000 * d1;
+
+		dp1 = residue / 100;
+
+		residue = residue - dp1 * 100;
+
+		//debug
+		printf("x = %d, d1 = %d, dp1 = %d, residue = %d\n", x, d1, dp1, residue);
+
+		dp2 = residue / 10;
+
+		residue = residue - dp2 * 10;
+
+		//debug
+		printf("dp2 = %d, residue = %d\n", dp2, residue);
+
+	//	dp3 = x / 1000;
+	//
+
+		///////////////////////
+
+		// integer
+
+		///////////////////////
+		d100 = d1 / 100;
+		residue2 = d1 - d100 * 100;
+
+		d10 = residue2 / 10;
+		residue2 = residue2 - d10 * 10;
+
+		d1 = residue2;
+
+		///////////////////////
+
+		// set
+
+		///////////////////////
+		cont[0] = (d100 == 0) ? ' ' : d100 + 0x30;
+	//	cont[0] = d100 + 0x30;
+
+		cont[1] = (d10 == 0) ? ' ' : d10 + 0x30;
+		cont[2] = d1 + 0x30;
+		cont[3] = '.';
+		cont[4] = dp1+ 0x30;
+		cont[5] = dp2 + 0x30;
+		cont[6] = residue + 0x30;
+		cont[7] = ' ';
+
+		cont[8] = 's';
+		cont[9] = 'e';
+		cont[10] = 'c';
+		cont[11] = '\0';
+
+	}
 
 
 #ifdef	__cplusplus

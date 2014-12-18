@@ -1,3 +1,9 @@
+#D-111 v-3.1
+pushd C:\WORKS\WS\Embedded\TEST\D-111\v_3-1
+gcc -o D-111_v-3_1.exe C:\WORKS\WS\Embedded\TEST\D-111\v_3-1\D-111_v-3_1.c
+C:\WORKS\WS\Embedded\TEST\D-111\v_3-1\D-111_v?3_1.exe
+
+
 gcc C:\WORKS\WS\Embedded\TEST\D-108_v-2-5-3\D-108_v-2-5-3.c
 
 dir C:\WORKS\WS\Embedded\TEST\D-108_v-2-5-3
