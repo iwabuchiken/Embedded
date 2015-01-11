@@ -1,0 +1,6 @@
+__Setup_ANSEL: CODE, 1949 0 11
+_main: CODE, 1928 0 10
+__initialization: CODE, 1990 0 55
+__While: CODE, 1920 0 8
+__Setup: CODE, 1938 0 11
+Total: 95
