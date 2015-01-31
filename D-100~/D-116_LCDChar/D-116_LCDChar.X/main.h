@@ -35,3 +35,7 @@
 
 ///////////////////////
 char msg_Project_Name[]  = "D-116 v-1.0";
+
+char msg_Initial[]  = "Welcome!";
+
+

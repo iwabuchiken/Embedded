@@ -75,14 +75,19 @@ extern "C" {
 
 //		pulse_100ms(3);
 //
-//		///////////////////////
+		///////////////////////
+
+		// line: 2
+
+		///////////////////////
+		SD1602_control(0xC0);	// Cursor => second line
+								// Exec time => 40 us
 //
-//		// line: 2
-//
-//		///////////////////////
-//		SD1602_control(0xC0);	// Cursor => second line
-//								// Exec time => 40 us
-//
+		__delay_us(100);
+
+		SD1602_print(msg_Initial);
+
+
 //		conv_Dex_to_Binary(hex, binary);
 //
 //		for (i = 0; i < 12; i ++) {
