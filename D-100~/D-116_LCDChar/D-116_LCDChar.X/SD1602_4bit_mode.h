@@ -5,48 +5,63 @@
 #define _XTAL_FREQ 20000000
 #endif
 
-#define RS	RA1	// PORTA,RA1
+#define RS		RA1	// PORTA,RA1
 #define ENABLE	RA0	// PORTA,RA0
+
+#define LCD_RS_H	0x02
+#define LCD_RS_L	0xFD
+#define LCD_E_H		0x01
+#define LCD_E_L		0xFE
+
+#define PORT_CONTROL	PORTA
+#define PORT_LCD		PORTB
 
 //#define _XTAL_FREQ 20000000
 
 void SD1602_write(char c, char r) {
-  PORTB = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
+  PORT_LCD = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
 
   if (r == 1) /* 文字コードの場合 */
   {
-    PORTA |= 0x02; /* RSを1にする */
+
+    PORT_CONTROL |= LCD_RS_H; /* RSを1にする */
+//    PORTA |= 0x02; /* RSを1にする */
+
   }
   else /* 制御コードの場合 */
   {
-    PORTA &= 0xFD; /* RSを0にする */
+    PORT_CONTROL &= LCD_RS_L; /* RSを0にする */
+//    PORTA &= 0xFD; /* RSを0にする */
   }
 
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+//  PORTA &= 0xFE; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORTA |= 0x01; /* Eを1にする */
+  PORT_CONTROL |= LCD_E_H; /* Eを1にする */
+//  PORTA |= 0x01; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+//  PORTA &= 0xFE; /* Eを0にする */
 
-}
+}//SD1602_write
 
 void SD1602_write_2(char c, char r) {
-  PORTB = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
+  PORT_LCD = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
 
   if (r == 1) /* 文字コードの場合 */
   {
-    PORTA |= 0x02; /* RSを1にする */
+    PORT_CONTROL |= 0x02; /* RSを1にする */
   }
   else /* 制御コードの場合 */
   {
-    PORTA &= 0xFD; /* RSを0にする */
+    PORT_CONTROL &= 0xFD; /* RSを0にする */
   }
 
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= 0xFE; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORTA |= 0x01; /* Eを1にする */
+  PORT_CONTROL |= 0x01; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= 0xFE; /* Eを0にする */
 
 }
 
