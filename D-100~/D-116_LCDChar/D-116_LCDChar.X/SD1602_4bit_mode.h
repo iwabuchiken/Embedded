@@ -5,48 +5,63 @@
 #define _XTAL_FREQ 20000000
 #endif
 
-#define RS	RA1	// PORTA,RA1
+#define RS		RA1	// PORTA,RA1
 #define ENABLE	RA0	// PORTA,RA0
+
+#define LCD_RS_H	0x02
+#define LCD_RS_L	0xFD
+#define LCD_E_H		0x01
+#define LCD_E_L		0xFE
+
+#define PORT_CONTROL	PORTA
+#define PORT_LCD		PORTB
 
 //#define _XTAL_FREQ 20000000
 
 void SD1602_write(char c, char r) {
-  PORTB = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
+  PORT_LCD = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
 
   if (r == 1) /* 文字コードの場合 */
   {
-    PORTA |= 0x02; /* RSを1にする */
+
+    PORT_CONTROL |= LCD_RS_H; /* RSを1にする */
+//    PORTA |= 0x02; /* RSを1にする */
+
   }
   else /* 制御コードの場合 */
   {
-    PORTA &= 0xFD; /* RSを0にする */
+    PORT_CONTROL &= LCD_RS_L; /* RSを0にする */
+//    PORTA &= 0xFD; /* RSを0にする */
   }
 
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+//  PORTA &= 0xFE; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORTA |= 0x01; /* Eを1にする */
+  PORT_CONTROL |= LCD_E_H; /* Eを1にする */
+//  PORTA |= 0x01; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+//  PORTA &= 0xFE; /* Eを0にする */
 
-}
+}//SD1602_write
 
 void SD1602_write_2(char c, char r) {
-  PORTB = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
+  PORT_LCD = c & 0xF0; /* RB4～RB7にデータの上位4bitをセットする */
 
   if (r == 1) /* 文字コードの場合 */
   {
-    PORTA |= 0x02; /* RSを1にする */
+    PORT_CONTROL |= 0x02; /* RSを1にする */
   }
   else /* 制御コードの場合 */
   {
-    PORTA &= 0xFD; /* RSを0にする */
+    PORT_CONTROL &= 0xFD; /* RSを0にする */
   }
 
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= 0xFE; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORTA |= 0x01; /* Eを1にする */
+  PORT_CONTROL |= 0x01; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORTA &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= 0xFE; /* Eを0にする */
 
 }
 
@@ -84,10 +99,10 @@ void SD1602_init(void) {
   SD1602_write(0x20, 0); /* 4bitモード設定 */
   __delay_ms(5); /* 5ms（40us以上）の時間待ち */
 
-  SD1602_control(0x28); /* 4bitモードで2行表示に設定する */
-  SD1602_control(0x08); /* テキスト表示をオフにする */
-  SD1602_control(0x0C); /* テキスト表示をオンにする */
-  SD1602_control(0x06); /* カーソル移動を右方向に設定する */
+  SD1602_control(0x28); /* 4bitモードで2行表示に設定する */		// Function Set
+  SD1602_control(0x08); /* テキスト表示をオフにする */	// 0000 1000	Display control: on/off
+  SD1602_control(0x0C); /* テキスト表示をオンにする */	// 0000 1100
+  SD1602_control(0x06); /* カーソル移動を右方向に設定する */	// 0000 0110	Entry Mode Set: I/D=1
 
 }
 
