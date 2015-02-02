@@ -34,8 +34,8 @@
 // vars
 
 ///////////////////////
-char msg_Project_Name[]  = "D-116 v-1.1#4";
+char msg_Project_Name[]  = "D-116 v-1.1#6";
 
-char msg_Initial[]  = "LCD_E_L";
+char msg_Initial[]  = "All LCD_E";
 
 

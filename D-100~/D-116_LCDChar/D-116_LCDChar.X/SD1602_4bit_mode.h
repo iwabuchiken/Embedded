@@ -53,18 +53,19 @@ void SD1602_write_2(char c, char r) {
 
   if (r == 1) /* 文字コードの場合 */
   {
-    PORT_CONTROL |= 0x02; /* RSを1にする */
+    PORT_CONTROL |= LCD_RS; /* RSを1にする */
+//    PORT_CONTROL |= 0x02; /* RSを1にする */
   }
   else /* 制御コードの場合 */
   {
-    PORT_CONTROL &= 0xFD; /* RSを0にする */
+    PORT_CONTROL &= ~LCD_RS; /* RSを0にする */
   }
 
-  PORT_CONTROL &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= ~LCD_E; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORT_CONTROL |= 0x01; /* Eを1にする */
+  PORT_CONTROL |= LCD_E; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORT_CONTROL &= 0xFE; /* Eを0にする */
+  PORT_CONTROL &= ~LCD_E; /* Eを0にする */
 
 }
 
