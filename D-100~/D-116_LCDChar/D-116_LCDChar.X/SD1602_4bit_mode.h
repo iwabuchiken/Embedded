@@ -8,8 +8,9 @@
 #define RS		RA1	// PORTA,RA1
 #define ENABLE	RA0	// PORTA,RA0
 
-#define LCD_RS_H	0x02
-#define LCD_RS_L	0xFD
+#define LCD_RS	0x02
+//#define LCD_RS_H	0x02
+//#define LCD_RS_L	0xFD
 #define LCD_E_H		0x01
 #define LCD_E_L		0xFE
 
@@ -24,13 +25,13 @@ void SD1602_write(char c, char r) {
   if (r == 1) /* 文字コードの場合 */
   {
 
-    PORT_CONTROL |= LCD_RS_H; /* RSを1にする */
+    PORT_CONTROL |= LCD_RS; /* RSを1にする */
 //    PORTA |= 0x02; /* RSを1にする */
 
   }
   else /* 制御コードの場合 */
   {
-    PORT_CONTROL &= LCD_RS_L; /* RSを0にする */
+    PORT_CONTROL &= ~LCD_RS; /* RSを0にする */
 //    PORTA &= 0xFD; /* RSを0にする */
   }
 
