@@ -11,8 +11,10 @@
 #define LCD_RS	0x02
 //#define LCD_RS_H	0x02
 //#define LCD_RS_L	0xFD
-#define LCD_E_H		0x01
-#define LCD_E_L		0xFE
+#define LCD_E		0x01
+//#define ~LCD_E		0xFE
+//#define LCD_E_H		0x01
+//#define LCD_E_L		0xFE
 
 #define PORT_CONTROL	PORTA
 #define PORT_LCD		PORTB
@@ -35,13 +37,13 @@ void SD1602_write(char c, char r) {
 //    PORTA &= 0xFD; /* RSを0にする */
   }
 
-  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+  PORT_CONTROL &= ~LCD_E; /* Eを0にする */
 //  PORTA &= 0xFE; /* Eを0にする */
   __delay_us(1); /* 1us（40ns以上）の時間待ち */
-  PORT_CONTROL |= LCD_E_H; /* Eを1にする */
+  PORT_CONTROL |= LCD_E; /* Eを1にする */
 //  PORTA |= 0x01; /* Eを1にする */
   __delay_us(1);  /* 1us（230ns以上）の時間待ち */
-  PORT_CONTROL &= LCD_E_L; /* Eを0にする */
+  PORT_CONTROL &= ~LCD_E; /* Eを0にする */
 //  PORTA &= 0xFE; /* Eを0にする */
 
 }//SD1602_write
