@@ -59,8 +59,6 @@ extern "C" {
 	void
 	_Display(void) {
 
-	//	strcpy(s, msg_1);
-
 		///////////////////////
 
 		// line: 1
@@ -73,8 +71,6 @@ extern "C" {
 
 		SD1602_print(msg_Project_Name);
 
-//		pulse_100ms(3);
-//
 		///////////////////////
 
 		// line: 2
@@ -87,136 +83,46 @@ extern "C" {
 
 		SD1602_print(msg_Initial);
 
-
-//		conv_Dex_to_Binary(hex, binary);
-//
-//		for (i = 0; i < 12; i ++) {
-//
-//			binary_display[3 + i] = binary[i];
-//
-//		}
-//
-//		conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
-//
-//		binary_display[0] = msg_Hex_2Digit[0];
-//		binary_display[1] = msg_Hex_2Digit[1];
-//		binary_display[2] = ' ';
-//
-//		SD1602_print(binary_display);
-
 	}//_Display
 
-//	void _Display(void);
-//	void _Display__SW_Start(void);
-//	void _Display__SW_Stop(void);
+	void
+//	_Display_2Lines(char *line1, const char *line2) {
+	_Display_2Lines(char *line1, char *line2) {
 
-	//	void
-//	_Display(void) {
-//
-//	//	strcpy(s, msg_1);
-//
-//		///////////////////////
-//
-//		// line: 1
-//
-//		///////////////////////
-//		SD1602_control(0x02);	// Cursor => at home
-//								// Exec time => 1.64 ms
-//
-//		__delay_ms(2);
-//
-//		SD1602_print(msg_Project_Name);
-//
-//		pulse_100ms(3);
-//
-//		///////////////////////
-//
-//		// line: 2
-//
-//		///////////////////////
-//		SD1602_control(0xC0);	// Cursor => second line
-//								// Exec time => 40 us
-//
-//		conv_Dex_to_Binary(hex, binary);
-//
-//		for (i = 0; i < 12; i ++) {
-//
-//			binary_display[3 + i] = binary[i];
-//
-//		}
-//
-//		conv_Hex_to_CharCode_2Digits(hex, msg_Hex_2Digit);
-//
-//		binary_display[0] = msg_Hex_2Digit[0];
-//		binary_display[1] = msg_Hex_2Digit[1];
-//		binary_display[2] = ' ';
-//
-//		SD1602_print(binary_display);
-//
-//	}//_Display
-//
-//	void
-//	_Display__SW_Start(void) {
-//
-//	//	strcpy(s, msg_1);
-//
-//		///////////////////////
-//
-//		// line: 1
-//
-//		///////////////////////
-//		SD1602_control(0x02);	// Cursor => at home
-//								// Exec time => 1.64 ms
-//
-//		__delay_ms(2);
-//
-//		SD1602_print(msg_Project_Name);
-//
-//		pulse_100ms(3);
-//
-//		///////////////////////
-//
-//		// line: 2
-//
-//		///////////////////////
-//		SD1602_control(0xC0);	// Cursor => second line
-//								// Exec time => 40 us
-//
-//		SD1602_print(msg_SW_Start);
-//
-//	}//_Display
-//
-//	void
-//	_Display__SW_Stop(void) {
-//
-//	//	strcpy(s, msg_1);
-//
-//		///////////////////////
-//
-//		// line: 1
-//
-//		///////////////////////
-//		SD1602_control(0x02);	// Cursor => at home
-//								// Exec time => 1.64 ms
-//
-//		__delay_ms(2);
-//
-//		SD1602_print(msg_Project_Name);
-//
-//		pulse_100ms(3);
-//
-//		///////////////////////
-//
-//		// line: 2
-//
-//		///////////////////////
-//		SD1602_control(0xC0);	// Cursor => second line
-//								// Exec time => 40 us
-//
-//		SD1602_print(msg_SW_Stop);
-//
-//	}//_Display
+		///////////////////////////////
+		//
+		// clear: display
+		//
+		 ///////////////////////////////
+		SD1602_control(0x01);	// LCD => clear
 
+		__delay_ms(2);			// "Execute time(max.)" => 1.64 ms
+
+		///////////////////////
+
+		// line: 1
+
+		///////////////////////
+//		SD1602_control(0x02);	// Cursor => at home
+//								// Exec time => 1.64 ms
+//
+//		__delay_ms(2);			// delay: wait for completion
+
+		SD1602_print(line1);
+
+		///////////////////////
+
+		// line: 2
+
+		///////////////////////
+		SD1602_control(0xC0);	// Cursor => second line
+								// Exec time => 40 us
+//
+		__delay_us(100);
+
+		SD1602_print(line2);
+
+	}//_Display
 
 
 #ifdef	__cplusplus

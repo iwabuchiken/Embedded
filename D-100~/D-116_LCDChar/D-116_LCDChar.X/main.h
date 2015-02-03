@@ -34,8 +34,12 @@
 // vars
 
 ///////////////////////
-char msg_Project_Name[]  = "D-116 v-1.1#6";
+//char msg_Project_Name[]  = "D-116 v-1.1#7";
+						//  0123456789012345
+char msg_Project_Name[]  = "D-116 v-1.1#16";
 
-char msg_Initial[]  = "All LCD_E";
+					// 01234567890123456
+//char msg_Initial[]  = "ddram addressing";
+char msg_Initial[]  = "register (re,re)";
 
 

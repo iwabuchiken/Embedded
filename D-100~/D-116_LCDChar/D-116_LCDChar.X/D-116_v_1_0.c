@@ -66,6 +66,12 @@ void _While(void);
 ///////////////////////
 void main(void) {
 
+				//  0123456789012345
+	char msg_1[] = "ddram addressing";
+//	char msg_1[] = "display 0x02...";
+//	char msg_1[] = "register done";
+//	char msg_1[] = "register_Char";
+
 	///////////////////////
 
 	// setups
@@ -84,7 +90,35 @@ void main(void) {
 
 //	pulse_250ms(2);
 
-	_Display();
+//	_Display();	// disp.h
+	_Display_2Lines(msg_Project_Name, msg_Initial);	// disp.h
+
+	///////////////////////////////
+	//
+	// register: chars
+	//
+	 ///////////////////////////////
+
+	register_Char();	//	lib.h
+
+	///////////////////////////////
+	//
+	// test
+	//
+	 ///////////////////////////////
+	//report
+	_Display_2Lines(msg_Project_Name, msg_1);	// disp.h
+//	_Display_2Lines(msg_Project_Name, "register_Char");	// disp.h
+
+	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x40 + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x0F + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 | 0x45);	// 2nd line, 6th digit
+
+	SD1602_display(0x02);
+	SD1602_display(0xC0);	// 'タ'
+//	SD1602_write(0x02, 1);
 
 	///////////////////////
 	while(1) {
