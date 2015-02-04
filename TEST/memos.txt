@@ -28,3 +28,12 @@ dir C:\WORKS\WS\Embedded\TEST\D-108\v_2-5-3
 
 []
 REF executable files http://stackoverflow.com/questions/24661377/gcc-on-windows-generated-a-exe-file-vanishes answered Jul 9 at 19:25
+
+---------------------------------------------------------
+#C:\WORKS\WS\Embedded\TEST\D-116\D-116_v-1_2.c
+
+pushd C:\WORKS\WS\Embedded\TEST\D-116
+gcc -o D-116_v-1_2.exe C:\WORKS\WS\Embedded\TEST\D-116\D-116_v-1_2.c
+C:\WORKS\WS\Embedded\TEST\D-116\D-116_v-1_2.exe
+C:\WORKS\Programs\MinGW\bin\gcc -o D-108_v-2-7-0.exe C:\WORKS\WS\Embedded\TEST\D-116\D-116_v-1_2.c
+

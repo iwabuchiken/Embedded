@@ -41,6 +41,10 @@
 #include "disp.h"
 #endif
 
+#ifndef _FONT5X8_H_
+#include "font5x8.h"
+#endif
+
 ///////////////////////
 
 // protos
@@ -50,6 +54,9 @@ void _Setup(void);
 void _Setup_ANSEL(void);
 
 void _Setup_Init_Vars(void);
+
+void _test_Chars(void);
+int register_Chars(void);
 
 void _While(void);
 
@@ -67,7 +74,7 @@ void _While(void);
 void main(void) {
 
 				//  0123456789012345
-	char msg_1[] = "ddram addressing";
+//	char msg_1[] = "ddram addressing";
 //	char msg_1[] = "display 0x02...";
 //	char msg_1[] = "register done";
 //	char msg_1[] = "register_Char";
@@ -98,27 +105,53 @@ void main(void) {
 	// register: chars
 	//
 	 ///////////////////////////////
+	int res = register_Chars();
 
-	register_Char();	//	lib.h
+	/****************************
+	 * validate
+	 *****************************/
+	if (res == false) {
 
-	///////////////////////////////
-	//
-	// test
-	//
-	 ///////////////////////////////
-	//report
-	_Display_2Lines(msg_Project_Name, msg_1);	// disp.h
-//	_Display_2Lines(msg_Project_Name, "register_Char");	// disp.h
+		SD1602_control(0x80 + 0x40 + 0x00);	// 2nd line, 6th digit
 
-	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x40 + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x0F + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 | 0x45);	// 2nd line, 6th digit
+		char msg[] = "can't register!";
 
-	SD1602_display(0x02);
-	SD1602_display(0xC0);	// 'タ'
-//	SD1602_write(0x02, 1);
+		SD1602_print(msg);
+
+//		return;
+
+	} else {
+
+		///////////////////////////////
+		//
+		// test
+		//
+		 ///////////////////////////////
+		_test_Chars();
+
+	}
+
+
+////	register_Char();	//	lib.h
+//	registerChar(0x02, 1);	//	lib.h
+//							// char code is 0x02
+//							// char is => '火'
+
+
+//	//report
+//	_Display_2Lines(msg_Project_Name, msg_1);	// disp.h
+////	_Display_2Lines(msg_Project_Name, "register_Char");	// disp.h
+//
+//	SD1602_control(0x80 + 0x40 + 0x04);	// 2nd line, 6th digit
+////	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
+////	SD1602_control(0x80 + 0x40 + 0x06);	// 2nd line, 6th digit
+////	SD1602_control(0x80 + 0x0F + 0x06);	// 2nd line, 6th digit
+////	SD1602_control(0x80 + 0x06);	// 2nd line, 6th digit
+////	SD1602_control(0x80 | 0x45);	// 2nd line, 6th digit
+//
+//	SD1602_display(0x02);
+////	SD1602_display(0xC0);	// 'タ'
+////	SD1602_write(0x02, 1);
 
 	///////////////////////
 	while(1) {
@@ -129,6 +162,40 @@ void main(void) {
 
 	return;
 }
+
+int register_Chars() {
+
+	//	register_Char();	//	lib.h
+	int res = registerChar(0x08, 1);	//	lib.h
+//	int res = registerChar(0x02, 1);	//	lib.h
+							// char code is 0x02
+							// char is => '火'
+
+
+	return res;
+
+}//register_Chars
+
+void _test_Chars() {
+				//  0123456789012345
+	char msg_1[] = "Using enums...";
+
+	//report
+	_Display_2Lines(msg_Project_Name, msg_1);	// disp.h
+//	_Display_2Lines(msg_Project_Name, "register_Char");	// disp.h
+
+	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x40 + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x0F + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 + 0x06);	// 2nd line, 6th digit
+//	SD1602_control(0x80 | 0x45);	// 2nd line, 6th digit
+
+	SD1602_display(0x02);
+//	SD1602_display(0xC0);	// 'タ'
+//	SD1602_write(0x02, 1);
+
+}//_test_Chars
 
 void
 _Setup_ANSEL(void) {

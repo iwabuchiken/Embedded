@@ -1,13 +1,17 @@
-_SD1602_write: CODE, 1745 0 36
-_SD1602_print: CODE, 1643 0 19
-_SD1602_init_2: CODE, 1937 0 97
-_register_Char: CODE, 1781 0 36
-__Setup_ANSEL: CODE, 1616 0 11
-_SD1602_control: CODE, 1662 0 25
-_SD1602_display: CODE, 1687 0 27
-_main: CODE, 1866 0 71
-__initialization: CODE, 2034 0 11
-__Display_2Lines: CODE, 1714 0 31
-__While: CODE, 1597 0 8
-__Setup: CODE, 1605 0 11
-Total: 383
+_SD1602_write: CODE, 1658 0 36
+_SD1602_print: CODE, 1475 0 19
+_SD1602_init_2: CODE, 1806 0 97
+__stringtab: STRING, 2 0 6
+_registerChar: CODE, 1903 0 120
+__Setup_ANSEL: CODE, 1448 0 11
+_SD1602_control: CODE, 1494 0 25
+_SD1602_display: CODE, 1569 0 27
+_main: CODE, 1733 0 73
+_register_Chars: CODE, 1519 0 25
+_dots: STRING, 8 0 192
+__initialization: CODE, 2023 0 22
+__test_Chars: CODE, 1694 0 39
+__Display_2Lines: CODE, 1596 0 31
+__While: CODE, 1429 0 8
+__Setup: CODE, 1437 0 11
+Total: 742

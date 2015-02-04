@@ -9,6 +9,7 @@
       <itemPath>lib.h</itemPath>
       <itemPath>SD1602_4bit_mode.h</itemPath>
       <itemPath>disp.h</itemPath>
+      <itemPath>font5x8.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
