@@ -1,0 +1,19 @@
+_conv_H2CC_HEX: CODE, 1501 0 26
+_SD1602_write: CODE, 1613 0 36
+_SD1602_print: CODE, 1432 0 19
+_SD1602_init_2: CODE, 1806 0 97
+__stringtab: STRING, 2 0 6
+_registerChar: CODE, 1903 0 120
+_conv_H2CC_HEX_2Digits: CODE, 1649 0 41
+__Setup_ANSEL: CODE, 1389 0 11
+_SD1602_control: CODE, 1451 0 25
+_SD1602_display: CODE, 1527 0 27
+_main: CODE, 1734 0 72
+_register_Chars: CODE, 1476 0 25
+_dots: STRING, 8 0 192
+__initialization: CODE, 2023 0 22
+__N2C: CODE, 1554 0 28
+__Display_2Lines: CODE, 1582 0 31
+__While: CODE, 1370 0 8
+__Setup: CODE, 1378 0 11
+Total: 797
