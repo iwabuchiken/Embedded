@@ -34,12 +34,20 @@
 // vars
 
 ///////////////////////
+						// 01234567890123456
+char msg_Project_Name[]	= "D-117 v-1.1#11";
+char msg_Initial[]		= "Fix-6: ^=";		// register_Chars() => c/o
+
+//char msg_Project_Name[]	= "D-117 v-1.1#6";
+//char msg_Initial[]		= "Fix-2";		// register_Chars() => c/o
+
+//char msg_Project_Name[]  = "D-117 v-1.1#4";
+//char msg_Initial[]  = "Fixed -> while()";
+
 //char msg_Project_Name[]  = "D-116 v-1.1#7";
 						//  0123456789012345
-char msg_Project_Name[]  = "D-117 v-1.0#1";
-
-					// 01234567890123456
 //char msg_Initial[]  = "ddram addressing";
-char msg_Initial[]  = "temperature=";
+//char msg_Initial[]  = "using (...) ?";
+
 
 int lenOf_msg_Initial = sizeof(msg_Initial) / sizeof(msg_Initial[0]);

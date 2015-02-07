@@ -62,11 +62,20 @@ void _While(void);
 
 void _N2C(void);
 
+void _Setup_Interrupt(void);
+
+void interrupt intr(void);
+
+void _Setup_Vars(void);
+
+void _Setup_PORTB(void);
+
 ///////////////////////
 
 // vars
 
 ///////////////////////
+usi count;
 
 ///////////////////////
 
@@ -90,6 +99,12 @@ void main(void) {
 
 	_Setup_ANSEL();
 
+	_Setup_Interrupt();
+
+	_Setup_Vars();
+
+//	_Setup_PORTB();
+
 	///////////////////////
 
 	// LCD-related
@@ -102,25 +117,32 @@ void main(void) {
 
 	///////////////////////////////
 	//
-	// register: chars
+	// setup: PORTB
 	//
 	 ///////////////////////////////
-	int res = register_Chars();
+	_Setup_PORTB();
 
-	/****************************
-	 * validate
-	 *****************************/
-	if (res == false) {
-
-		SD1602_control(0x80 + 0x40 + 0x00);	// 2nd line, 6th digit
-
-		char msg[] = "can't register!";
-
-		SD1602_print(msg);
-
-//		return;
-
-	}
+//	///////////////////////////////
+//	//
+//	// register: chars
+//	//
+//	 ///////////////////////////////
+//	int res = register_Chars();
+//
+//	/****************************
+//	 * validate
+//	 *****************************/
+//	if (res == false) {
+//
+//		SD1602_control(0x80 + 0x40 + 0x00);	// 2nd line, 6th digit
+//
+//		char msg[] = "can't register!";
+//
+//		SD1602_print(msg);
+//
+////		return;
+//
+//	}
 //	} else {
 //
 //		///////////////////////////////
@@ -132,12 +154,12 @@ void main(void) {
 //
 //	}
 
-	///////////////////////////////
-	//
-	// conv: num to chars
-	//
-	 ///////////////////////////////
-	_N2C();
+//	///////////////////////////////
+//	//
+//	// conv: num to chars
+//	//
+//	 ///////////////////////////////
+//	_N2C();
 
 	///////////////////////
 	while(1) {
@@ -148,6 +170,93 @@ void main(void) {
 
 	return;
 }
+
+void interrupt intr(void) {
+
+	INTCON         &= 0x7F;		// prohibit		=> interrupt
+	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
+	INTCON         &= 0xFB;		// TMR0 flag	=> clear
+
+
+	///////////////////////////////
+	//
+	// judge: 1 sec
+	//
+	 ///////////////////////////////
+	count ++;
+
+	if (count == 19531) {
+
+//		if (PORTBbits.RB2 == 0) PORTBbits.RB2 = 1;
+//		else if (PORTBbits.RB2 == 1) PORTBbits.RB2 = 0;
+
+//		PORTB ^= 0b00110000;	// RB2,RB3 --> XOR	//=> both LEDs go blank
+
+//		(PORTBbits.RB2 == 0) ? PORTBbits.RB2 = 1 : PORTBbits.RB2 = 0;
+//		(PORTBbits.RB3 == 0) ? PORTBbits.RB3 = 1 : PORTBbits.RB3 = 0;
+
+//		PORTBbits.RB2 ^= 0x01;
+//		PORTBbits.RB3 ^= 0x01;
+
+//		PORTBbits.RB2 = ~(PORTBbits.RB2);	//=> 2 LEDS blinking simultaneously
+//		PORTBbits.RB3 = ~(PORTBbits.RB3);
+		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
+		PORTBbits.RB3 = ~PORTBbits.RB3;
+
+		count = 0;
+
+	}
+
+	///////////////////////////////
+	//
+	// allow: interrupts
+	//
+	 ///////////////////////////////
+	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+	INTCON         |= 0x80;		// allow		=> interrupt
+
+}//void interrupt intr(void)
+
+void _Setup_PORTB() {
+
+	///////////////////////////////
+	//
+	// initial status
+	//
+	 ///////////////////////////////
+	PORTBbits.RB2 = 0;
+	PORTBbits.RB3 = 1;
+
+}
+
+void _Setup_Vars() {
+
+	count = 0;
+
+}
+
+void _Setup_Interrupt() {
+
+	///////////////////////////////
+	//
+	// OPTION_REG
+	//
+	 ///////////////////////////////
+	OPTION_REG &= 0xDF;		// TMR0 by clock
+
+	/****************************
+	 * TMR0
+	 *****************************/
+	TMR0  = 0;
+
+	/****************
+	* interrupt
+	****************/
+	INTCON         |= 0x20;
+	INTCON         |= 0x80;
+
+
+}//void _Setup_Interrupt()
 
 void _N2C() {
 
@@ -246,28 +355,28 @@ void _Setup(void) {
 void
 _While(void) {
 
-	///////////////////////
-
-	// while RB0 is H => set RB1 H
-
-	///////////////////////
-	while(PORTBbits.RB0 == 1) {
-
-		///////////////////////
-
-		// RB1 => H: transistor is set ON
-
-		///////////////////////
-		PORTBbits.RB1 = 1;
-
-	}
-
-	///////////////////////
-
-	// RB1 => L: transistor is set OFF
-
-	///////////////////////
-	PORTBbits.RB1 = 0;
+//	///////////////////////
+//
+//	// while RB0 is H => set RB1 H
+//
+//	///////////////////////
+//	while(PORTBbits.RB0 == 1) {
+//
+//		///////////////////////
+//
+//		// RB1 => H: transistor is set ON
+//
+//		///////////////////////
+//		PORTBbits.RB1 = 1;
+//
+//	}
+//
+//	///////////////////////
+//
+//	// RB1 => L: transistor is set OFF
+//
+//	///////////////////////
+//	PORTBbits.RB1 = 0;
 
 }//_While
 
