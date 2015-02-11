@@ -35,8 +35,9 @@
 
 ///////////////////////
 						// 01234567890123456
-char msg_Project_Name[]	= "D-117 v-1.1#11";
-char msg_Initial[]		= "Fix-6: ^=";		// register_Chars() => c/o
+char msg_Project_Name[]	= "D-117 v-1.2#1";
+char msg_Initial[]		= "intr: 2000ms";		// register_Chars() => c/o
+//char msg_Initial[]		= "interrupts!!!";		// register_Chars() => c/o
 
 //char msg_Project_Name[]	= "D-117 v-1.1#6";
 //char msg_Initial[]		= "Fix-2";		// register_Chars() => c/o

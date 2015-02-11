@@ -1,5 +1,5 @@
 /*
- * File:   D-117_v_1_0.c
+* File:   D-117_v_1_0.c
  * Author: iwabuchik
  *
  * Created on 05/02/2015 09:11:31
@@ -84,12 +84,6 @@ usi count;
 ///////////////////////
 void main(void) {
 
-				//  0123456789012345
-//	char msg_1[] = "ddram addressing";
-//	char msg_1[] = "display 0x02...";
-//	char msg_1[] = "register done";
-//	char msg_1[] = "register_Char";
-
 	///////////////////////
 
 	// setups
@@ -103,8 +97,6 @@ void main(void) {
 
 	_Setup_Vars();
 
-//	_Setup_PORTB();
-
 	///////////////////////
 
 	// LCD-related
@@ -112,7 +104,6 @@ void main(void) {
 	///////////////////////
 	SD1602_init_2();	// init LCD
 
-//	_Display();	// disp.h
 	_Display_2Lines(msg_Project_Name, msg_Initial);	// disp.h
 
 	///////////////////////////////
@@ -122,46 +113,12 @@ void main(void) {
 	 ///////////////////////////////
 	_Setup_PORTB();
 
-//	///////////////////////////////
-//	//
-//	// register: chars
-//	//
-//	 ///////////////////////////////
-//	int res = register_Chars();
-//
-//	/****************************
-//	 * validate
-//	 *****************************/
-//	if (res == false) {
-//
-//		SD1602_control(0x80 + 0x40 + 0x00);	// 2nd line, 6th digit
-//
-//		char msg[] = "can't register!";
-//
-//		SD1602_print(msg);
-//
-////		return;
-//
-//	}
-//	} else {
-//
-//		///////////////////////////////
-//		//
-//		// test
-//		//
-//		 ///////////////////////////////
-//		_test_Chars();
-//
-//	}
 
-//	///////////////////////////////
-//	//
-//	// conv: num to chars
-//	//
-//	 ///////////////////////////////
-//	_N2C();
-
-	///////////////////////
+	///////////////////////////////
+	//
+	// while
+	//
+	 ///////////////////////////////
 	while(1) {
 
 		_While();
@@ -174,6 +131,45 @@ void main(void) {
 void interrupt intr(void) {
 
 	INTCON         &= 0x7F;		// prohibit		=> interrupt
+
+	///////////////////////////////
+	//
+	// INT
+	//
+	 ///////////////////////////////
+	if (INT0IF == 1) {
+//	if (INTCON.INT0IF == 1) {
+
+		INTCON         &= 0xEF;		// prohibit		=> INT intr
+
+		///////////////////////////////
+		//
+		// reset: flag
+		//
+		 ///////////////////////////////
+		INT0IF = 0;					// clear => INT0 flag
+
+		__delay_ms(2000);
+
+		///////////////////////////////
+		//
+		// reset: flag
+		//
+		 ///////////////////////////////
+//		INT0IF = 0;					// clear => INT0 flag
+
+		INTCON         |= 0x10;		// allow		=> INT intr
+		INTCON         |= 0x80;		// allow		=> intr: global
+
+		return;
+
+	}
+
+	///////////////////////////////
+	//
+	// TMR0
+	//
+	 ///////////////////////////////
 	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
 	INTCON         &= 0xFB;		// TMR0 flag	=> clear
 
@@ -187,25 +183,12 @@ void interrupt intr(void) {
 
 	if (count == 19531) {
 
-//		if (PORTBbits.RB2 == 0) PORTBbits.RB2 = 1;
-//		else if (PORTBbits.RB2 == 1) PORTBbits.RB2 = 0;
-
-//		PORTB ^= 0b00110000;	// RB2,RB3 --> XOR	//=> both LEDs go blank
-
-//		(PORTBbits.RB2 == 0) ? PORTBbits.RB2 = 1 : PORTBbits.RB2 = 0;
-//		(PORTBbits.RB3 == 0) ? PORTBbits.RB3 = 1 : PORTBbits.RB3 = 0;
-
-//		PORTBbits.RB2 ^= 0x01;
-//		PORTBbits.RB3 ^= 0x01;
-
-//		PORTBbits.RB2 = ~(PORTBbits.RB2);	//=> 2 LEDS blinking simultaneously
-//		PORTBbits.RB3 = ~(PORTBbits.RB3);
 		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
 		PORTBbits.RB3 = ~PORTBbits.RB3;
 
 		count = 0;
 
-	}
+	}//if (count == 19531)
 
 	///////////////////////////////
 	//
@@ -243,6 +226,8 @@ void _Setup_Interrupt() {
 	//
 	 ///////////////////////////////
 	OPTION_REG &= 0xDF;		// TMR0 by clock
+	OPTION_REG &= 0x7F;		// pull-up	=> enabled
+	OPTION_REG &= 0xBF;		// INT intr => 5V->0V
 
 	/****************************
 	 * TMR0
@@ -252,8 +237,9 @@ void _Setup_Interrupt() {
 	/****************
 	* interrupt
 	****************/
-	INTCON         |= 0x20;
-	INTCON         |= 0x80;
+	INTCON         |= 0x10;		// allow interrupt: INT
+	INTCON         |= 0x20;		// allow interrupt: TMR0
+	INTCON         |= 0x80;		// allow interrupt: global
 
 
 }//void _Setup_Interrupt()
