@@ -71,6 +71,7 @@ void _Setup_Vars(void);
 void _Setup_PORTB(void);
 
 void _int_INT(void);
+void _int_TMR0(void);
 
 ///////////////////////
 
@@ -140,30 +141,8 @@ void interrupt intr(void) {
 	//
 	 ///////////////////////////////
 	if (INT0IF == 1) {
-//	if (INTCON.INT0IF == 1) {
 
 		_int_INT();
-
-//		INTCON         &= 0xEF;		// prohibit		=> INT intr
-//
-//		///////////////////////////////
-//		//
-//		// reset: flag
-//		//
-//		 ///////////////////////////////
-//		INT0IF = 0;					// clear => INT0 flag
-//
-//		__delay_ms(2000);
-//
-//		///////////////////////////////
-//		//
-//		// reset: flag
-//		//
-//		 ///////////////////////////////
-////		INT0IF = 0;					// clear => INT0 flag
-//
-//		INTCON         |= 0x10;		// allow		=> INT intr
-//		INTCON         |= 0x80;		// allow		=> intr: global
 
 		return;
 
@@ -174,32 +153,41 @@ void interrupt intr(void) {
 	// TMR0
 	//
 	 ///////////////////////////////
-	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
-	INTCON         &= 0xFB;		// TMR0 flag	=> clear
+	if (TMR0IF == 1) {
+
+		_int_TMR0();
+
+		return;
+
+	}
 
 
-	///////////////////////////////
-	//
-	// judge: 1 sec
-	//
-	 ///////////////////////////////
-	count ++;
-
-	if (count == 19531) {
-
-		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
-		PORTBbits.RB3 = ~PORTBbits.RB3;
-
-		count = 0;
-
-	}//if (count == 19531)
-
-	///////////////////////////////
-	//
-	// allow: interrupts
-	//
-	 ///////////////////////////////
-	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+//	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
+//	INTCON         &= 0xFB;		// TMR0 flag	=> clear
+//
+//
+//	///////////////////////////////
+//	//
+//	// judge: 1 sec
+//	//
+//	 ///////////////////////////////
+//	count ++;
+//
+//	if (count == 19531) {
+//
+//		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
+//		PORTBbits.RB3 = ~PORTBbits.RB3;
+//
+//		count = 0;
+//
+//	}//if (count == 19531)
+//
+//	///////////////////////////////
+//	//
+//	// allow: interrupts
+//	//
+//	 ///////////////////////////////
+//	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
 	INTCON         |= 0x80;		// allow		=> interrupt
 
 }//void interrupt intr(void)
@@ -239,6 +227,38 @@ void _int_INT() {
 	INTCON         |= 0x80;		// allow		=> intr: global
 
 }//_int_INT
+
+void _int_TMR0() {
+
+	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
+	INTCON         &= 0xFB;		// TMR0 flag	=> clear
+
+
+	///////////////////////////////
+	//
+	// judge: 1 sec
+	//
+	 ///////////////////////////////
+	count ++;
+
+	if (count == 19531 / 2) {
+//	if (count == 19531) {
+
+		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
+		PORTBbits.RB3 = ~PORTBbits.RB3;
+
+		count = 0;
+
+	}//if (count == 19531)
+
+	///////////////////////////////
+	//
+	// allow: interrupts
+	//
+	 ///////////////////////////////
+	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+
+}//_int_TMR0
 
 void _Setup_PORTB() {
 
