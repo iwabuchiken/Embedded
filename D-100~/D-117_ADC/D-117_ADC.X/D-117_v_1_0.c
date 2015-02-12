@@ -70,6 +70,8 @@ void _Setup_Vars(void);
 
 void _Setup_PORTB(void);
 
+void _int_INT(void);
+
 ///////////////////////
 
 // vars
@@ -140,26 +142,28 @@ void interrupt intr(void) {
 	if (INT0IF == 1) {
 //	if (INTCON.INT0IF == 1) {
 
-		INTCON         &= 0xEF;		// prohibit		=> INT intr
+		_int_INT();
 
-		///////////////////////////////
-		//
-		// reset: flag
-		//
-		 ///////////////////////////////
-		INT0IF = 0;					// clear => INT0 flag
-
-		__delay_ms(2000);
-
-		///////////////////////////////
-		//
-		// reset: flag
-		//
-		 ///////////////////////////////
+//		INTCON         &= 0xEF;		// prohibit		=> INT intr
+//
+//		///////////////////////////////
+//		//
+//		// reset: flag
+//		//
+//		 ///////////////////////////////
 //		INT0IF = 0;					// clear => INT0 flag
-
-		INTCON         |= 0x10;		// allow		=> INT intr
-		INTCON         |= 0x80;		// allow		=> intr: global
+//
+//		__delay_ms(2000);
+//
+//		///////////////////////////////
+//		//
+//		// reset: flag
+//		//
+//		 ///////////////////////////////
+////		INT0IF = 0;					// clear => INT0 flag
+//
+//		INTCON         |= 0x10;		// allow		=> INT intr
+//		INTCON         |= 0x80;		// allow		=> intr: global
 
 		return;
 
@@ -199,6 +203,42 @@ void interrupt intr(void) {
 	INTCON         |= 0x80;		// allow		=> interrupt
 
 }//void interrupt intr(void)
+
+void _int_INT() {
+
+	int tmp1, tmp2;
+
+	INTCON         &= 0xEF;		// prohibit		=> INT intr
+
+	///////////////////////////////
+	//
+	// reset: flag
+	//
+	 ///////////////////////////////
+	INT0IF = 0;					// clear => INT0 flag
+
+	tmp1 = PORTBbits.RB2;
+	tmp2 = PORTBbits.RB3;
+
+	PORTBbits.RB2 = 1;
+	PORTBbits.RB3 = 1;
+
+	__delay_ms(2000);
+
+	PORTBbits.RB2 = tmp1;
+	PORTBbits.RB3 = tmp2;
+
+	///////////////////////////////
+	//
+	// reset: flag
+	//
+	 ///////////////////////////////
+//		INT0IF = 0;					// clear => INT0 flag
+
+	INTCON         |= 0x10;		// allow		=> INT intr
+	INTCON         |= 0x80;		// allow		=> intr: global
+
+}//_int_INT
 
 void _Setup_PORTB() {
 
