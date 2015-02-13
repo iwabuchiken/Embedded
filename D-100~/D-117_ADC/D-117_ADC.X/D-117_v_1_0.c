@@ -161,33 +161,11 @@ void interrupt intr(void) {
 
 	}
 
-
-//	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
-//	INTCON         &= 0xFB;		// TMR0 flag	=> clear
-//
-//
-//	///////////////////////////////
-//	//
-//	// judge: 1 sec
-//	//
-//	 ///////////////////////////////
-//	count ++;
-//
-//	if (count == 19531) {
-//
-//		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
-//		PORTBbits.RB3 = ~PORTBbits.RB3;
-//
-//		count = 0;
-//
-//	}//if (count == 19531)
-//
-//	///////////////////////////////
-//	//
-//	// allow: interrupts
-//	//
-//	 ///////////////////////////////
-//	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+	///////////////////////////////
+	//
+	// allow: interrupts
+	//
+	 ///////////////////////////////
 	INTCON         |= 0x80;		// allow		=> interrupt
 
 }//void interrupt intr(void)
@@ -196,7 +174,19 @@ void _int_INT() {
 
 	int tmp1, tmp2;
 
+	///////////////////////////////
+	//
+	// halt: interrupt
+	//
+	 ///////////////////////////////
 	INTCON         &= 0xEF;		// prohibit		=> INT intr
+
+	///////////////////////////////
+	//
+	// chattering
+	//
+	 ///////////////////////////////
+	__delay_ms(20);		// Aoki[2010].86
 
 	///////////////////////////////
 	//
@@ -257,6 +247,7 @@ void _int_TMR0() {
 	//
 	 ///////////////////////////////
 	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+	INTCON         |= 0x80;		// allow		=> intr: global
 
 }//_int_TMR0
 
