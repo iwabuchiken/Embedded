@@ -71,6 +71,7 @@ void _Setup_Vars(void);
 void _Setup_PORTB(void);
 
 void _int_INT(void);
+void _int_INT__ops(void);
 void _int_TMR0(void);
 
 ///////////////////////
@@ -79,6 +80,8 @@ void _int_TMR0(void);
 
 ///////////////////////
 usi count;
+
+int f_INT = false;
 
 ///////////////////////
 
@@ -113,7 +116,7 @@ void main(void) {
 	//
 	// setup: PORTB
 	//
-	 ///////////////////////////////
+	 ////////////-///////////////////
 	_Setup_PORTB();
 
 
@@ -172,7 +175,7 @@ void interrupt intr(void) {
 
 void _int_INT() {
 
-	int tmp1, tmp2;
+//	int tmp1, tmp2;
 
 	///////////////////////////////
 	//
@@ -195,16 +198,23 @@ void _int_INT() {
 	 ///////////////////////////////
 	INT0IF = 0;					// clear => INT0 flag
 
-	tmp1 = PORTBbits.RB2;
-	tmp2 = PORTBbits.RB3;
+	///////////////////////////////
+	//
+	// ops
+	//
+	 ///////////////////////////////
+	_int_INT__ops();
 
-	PORTBbits.RB2 = 1;
-	PORTBbits.RB3 = 1;
-
-	__delay_ms(2000);
-
-	PORTBbits.RB2 = tmp1;
-	PORTBbits.RB3 = tmp2;
+//	tmp1 = PORTBbits.RB2;
+//	tmp2 = PORTBbits.RB3;
+//
+//	PORTBbits.RB2 = 1;
+//	PORTBbits.RB3 = 1;
+//
+//	__delay_ms(2000);
+//
+//	PORTBbits.RB2 = tmp1;
+//	PORTBbits.RB3 = tmp2;
 
 	///////////////////////////////
 	//
@@ -217,6 +227,43 @@ void _int_INT() {
 	INTCON         |= 0x80;		// allow		=> intr: global
 
 }//_int_INT
+
+void _int_INT__ops() {
+
+	///////////////////////////////
+	//
+	// change: LEDs
+	//
+	 ///////////////////////////////
+	int tmp1, tmp2, tmp_TMR0;
+
+	tmp1 = PORTBbits.RB2;
+	tmp2 = PORTBbits.RB3;
+
+	tmp_TMR0 = TMR0;
+
+	PORTBbits.RB2 = 1;
+	PORTBbits.RB3 = 1;
+
+	__delay_ms(2000);
+
+	PORTBbits.RB2 = tmp1;
+	PORTBbits.RB3 = tmp2;
+
+	TMR0 = tmp_TMR0;
+
+	///////////////////////////////
+	//
+	// flag
+	//
+	 ///////////////////////////////
+	if (f_INT == false) {
+
+		f_INT = true;
+
+	}
+
+}//_int_INT__ops
 
 void _int_TMR0() {
 
@@ -392,28 +439,32 @@ void _Setup(void) {
 void
 _While(void) {
 
-//	///////////////////////
-//
-//	// while RB0 is H => set RB1 H
-//
-//	///////////////////////
-//	while(PORTBbits.RB0 == 1) {
-//
-//		///////////////////////
-//
-//		// RB1 => H: transistor is set ON
-//
-//		///////////////////////
-//		PORTBbits.RB1 = 1;
-//
-//	}
-//
-//	///////////////////////
-//
-//	// RB1 => L: transistor is set OFF
-//
-//	///////////////////////
-//	PORTBbits.RB1 = 0;
+	///////////////////////////////
+	//
+	// flag: f_INT
+	//
+	 ///////////////////////////////
+	if (f_INT == true) {
+
+		///////////////////////////////
+		//
+		// f_INT => reset
+		//
+		 ///////////////////////////////
+		f_INT = false;
+
+		///////////////////////////////
+		//
+		// disp: "Clicked"
+		//
+		 ///////////////////////////////
+		char msg[] = "Clicked!";
+
+		int len = sizeof(msg) / sizeof(msg[0]);
+
+		_Display_Line2(msg, len);
+
+	}//if (f_INT == true)
 
 }//_While
 

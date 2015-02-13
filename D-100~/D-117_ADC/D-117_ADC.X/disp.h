@@ -124,6 +124,59 @@ extern "C" {
 
 	}//_Display
 
+	void
+//	_Display_2Lines(char *line1, const char *line2) {
+	_Display_Line2(char *line, int len) {
+
+		///////////////////////////////
+		//
+		// prep: chars
+		//
+		 ///////////////////////////////
+		char msg[16];
+
+		if (len > 15) {
+
+			len = 15;
+
+		}
+
+		// initialize chars
+		int i;
+
+		for (i = 0; i < 16 - 1; ++i) {
+//		for (i = 0; i < 16; ++i) {
+
+			msg[i] = ' ';
+
+		}
+
+		msg[15] = '\0';
+
+		// set: line
+		// modify len
+		if (line[len - 1] == '\0') {
+
+			len -= 1;
+
+		}
+
+		for (i = 0; i < len; ++i) {
+
+			msg[i] = line[i];
+
+		}
+
+		///////////////////////
+
+		// disp: line
+
+		///////////////////////
+		SD1602_control(0x80 + 0x40);	// 2nd line, 1st digit
+
+		SD1602_print(msg);
+
+	}//_Display_Line2(char *line, int len)
 
 #ifdef	__cplusplus
 }
