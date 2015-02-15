@@ -205,24 +205,6 @@ void _int_INT() {
 	 ///////////////////////////////
 	_int_INT__ops();
 
-//	tmp1 = PORTBbits.RB2;
-//	tmp2 = PORTBbits.RB3;
-//
-//	PORTBbits.RB2 = 1;
-//	PORTBbits.RB3 = 1;
-//
-//	__delay_ms(2000);
-//
-//	PORTBbits.RB2 = tmp1;
-//	PORTBbits.RB3 = tmp2;
-
-	///////////////////////////////
-	//
-	// reset: flag
-	//
-	 ///////////////////////////////
-//		INT0IF = 0;					// clear => INT0 flag
-
 	INTCON         |= 0x10;		// allow		=> INT intr
 	INTCON         |= 0x80;		// allow		=> intr: global
 
@@ -458,7 +440,11 @@ _While(void) {
 		// disp: "Clicked"
 		//
 		 ///////////////////////////////
-		char msg[] = "Clicked!";
+//		char msg[] = "Clicked!";
+
+		char msg[4];
+
+		conv_H2CC_HEX_2Digits(TMR0, msg);
 
 		int len = sizeof(msg) / sizeof(msg[0]);
 
