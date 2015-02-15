@@ -73,6 +73,8 @@ void _Setup_PORTB(void);
 void _int_INT(void);
 void _int_TMR0(void);
 
+void _int_INT__ops(void);
+
 ///////////////////////
 
 // vars
@@ -194,25 +196,30 @@ void interrupt intr(void) {
 
 void _int_INT() {
 
-	int tmp1, tmp2;
 
-	INTCON         &= 0xEF;		// prohibit		=> INT intr
+//	int tmp1, tmp2;
+
+ 	///////////////////////////////
+ 	//
+
+ 	 ///////////////////////////////
+ 	INT0IF = 0;					// clear => INT0 flag
 
 	///////////////////////////////
 	//
-	// reset: flag
+	// ops
 	//
 	 ///////////////////////////////
-	INT0IF = 0;					// clear => INT0 flag
+	_int_INT__ops();
 
 //	tmp1 = PORTBbits.RB2;
 //	tmp2 = PORTBbits.RB3;
 //
 //	PORTBbits.RB2 = 1;
 //	PORTBbits.RB3 = 1;
-
-	__delay_ms(2000);
-
+//
+//	__delay_ms(2000);
+//
 //	PORTBbits.RB2 = tmp1;
 //	PORTBbits.RB3 = tmp2;
 
@@ -228,6 +235,103 @@ void _int_INT() {
 
 }//_int_INT
 
+void _int_INT__ops() {
+
+	///////////////////////////////
+	//
+	// change: LEDs
+	//
+	 ///////////////////////////////
+	int tmp1, tmp2, tmp_TMR0;
+
+ 	tmp1 = PORTBbits.RB2;
+ 	tmp2 = PORTBbits.RB3;
+
+	tmp_TMR0 = TMR0;
+
+ 	PORTBbits.RB2 = 1;
+ 	PORTBbits.RB3 = 1;
+
+
+ 	PORTBbits.RB2 = tmp1;
+ 	PORTBbits.RB3 = tmp2;
+
+	TMR0 = tmp_TMR0;
+
+ 	///////////////////////////////
+ 	//
+
+	// flag
+ 	//
+ 	 ///////////////////////////////
+
+	if (f_INT == false) {
+
+
+
+		f_INT = true;
+
+
+	}
+
+}//_int_INT__ops
+
+ void _int_TMR0() {
+
+
+ void
+ _While(void) {
+
+-//	///////////////////////
+-//
+-//	// while RB0 is H => set RB1 H
+-//
+-//	///////////////////////
+-//	while(PORTBbits.RB0 == 1) {
+-//
+-//		///////////////////////
+-//
+-//		// RB1 => H: transistor is set ON
+-//
+-//		///////////////////////
+-//		PORTBbits.RB1 = 1;
+-//
+-//	}
+-//
+-//	///////////////////////
+-//
+-//	// RB1 => L: transistor is set OFF
+-//
+-//	///////////////////////
+-//	PORTBbits.RB1 = 0;
++	///////////////////////////////
++	//
++	// flag: f_INT
++	//
++	 ///////////////////////////////
++	if (f_INT == true) {
++
++		///////////////////////////////
++		//
++		// f_INT => reset
++		//
++		 ///////////////////////////////
++		f_INT = false;
++
++		///////////////////////////////
++		//
++		// disp: "Clicked"
++		//
++		 ///////////////////////////////
++		char msg[] = "Clicked!";
++
++		int len = sizeof(msg) / sizeof(msg[0]);
++
++		_Display_Line2(msg, len);
++
++	}//if (f_INT == true)
+
+ }//_While
 void _int_TMR0() {
 
 	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
