@@ -252,6 +252,7 @@ void _int_INT__ops() {
  	PORTBbits.RB2 = 1;
  	PORTBbits.RB3 = 1;
 
+ 	__delay_ms(2000);
 
  	PORTBbits.RB2 = tmp1;
  	PORTBbits.RB3 = tmp2;
