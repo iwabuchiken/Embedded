@@ -205,16 +205,16 @@ void _int_INT() {
 	 ///////////////////////////////
 	INT0IF = 0;					// clear => INT0 flag
 
-	tmp1 = PORTBbits.RB2;
-	tmp2 = PORTBbits.RB3;
-
-	PORTBbits.RB2 = 1;
-	PORTBbits.RB3 = 1;
+//	tmp1 = PORTBbits.RB2;
+//	tmp2 = PORTBbits.RB3;
+//
+//	PORTBbits.RB2 = 1;
+//	PORTBbits.RB3 = 1;
 
 	__delay_ms(2000);
 
-	PORTBbits.RB2 = tmp1;
-	PORTBbits.RB3 = tmp2;
+//	PORTBbits.RB2 = tmp1;
+//	PORTBbits.RB3 = tmp2;
 
 	///////////////////////////////
 	//
