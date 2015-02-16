@@ -124,9 +124,8 @@ extern "C" {
 
 	}//_Display
 
-
 	void
-	//	_Display_2Lines(char *line1, const char *line2) {
+//	_Display_2Lines(char *line1, const char *line2) {
 	_Display_Line2(char *line, int len) {
 
 		///////////////////////////////
@@ -145,8 +144,8 @@ extern "C" {
 		// initialize chars
 		int i;
 
-		for (i = 0; i < 16 - 1; i) {
-	//		for (i = 0; i < 16; i) {
+		for (i = 0; i < 16 - 1; ++i) {
+//		for (i = 0; i < 16; ++i) {
 
 			msg[i] = ' ';
 
@@ -162,7 +161,7 @@ extern "C" {
 
 		}
 
-		for (i = 0; i < len; i) {
+		for (i = 0; i < len; ++i) {
 
 			msg[i] = line[i];
 
@@ -173,13 +172,11 @@ extern "C" {
 		// disp: line
 
 		///////////////////////
-		SD1602_control(0xC0);	// 2nd line, 1st digit
-//		SD1602_control(0x40);	// 2nd line, 1st digit
+		SD1602_control(0x80 + 0x40);	// 2nd line, 1st digit
 
 		SD1602_print(msg);
 
 	}//_Display_Line2(char *line, int len)
-
 
 #ifdef	__cplusplus
 }
