@@ -207,6 +207,13 @@ void _int_INT() {
  	 ///////////////////////////////
  	INT0IF = 0;					// clear => INT0 flag
 
+ 	///////////////////////////////
+	//
+	// chattering
+	//
+	 ///////////////////////////////
+	__delay_ms(20);
+
 	///////////////////////////////
 	//
 	// ops
@@ -251,16 +258,6 @@ void _int_INT__ops() {
 
 	tmp_TMR0 = TMR0;
 
- 	PORTBbits.RB2 = 1;
- 	PORTBbits.RB3 = 1;
-
- 	__delay_ms(2000);
-
- 	PORTBbits.RB2 = tmp1;
- 	PORTBbits.RB3 = tmp2;
-
-	TMR0 = tmp_TMR0;
-
  	///////////////////////////////
  	//
 
@@ -272,7 +269,33 @@ void _int_INT__ops() {
 
 		f_INT = true;
 
+	 	PORTBbits.RB2 = 1;
+	 	PORTBbits.RB3 = 1;
+
 	}
+
+// 	PORTBbits.RB2 = 1;
+// 	PORTBbits.RB3 = 1;
+
+ 	__delay_ms(2000);
+
+ 	PORTBbits.RB2 = tmp1;
+ 	PORTBbits.RB3 = tmp2;
+
+	TMR0 = tmp_TMR0;
+
+// 	///////////////////////////////
+// 	//
+//
+//	// flag
+// 	//
+// 	 ///////////////////////////////
+//
+//	if (f_INT == false) {
+//
+//		f_INT = true;
+//
+//	}
 
 }//_int_INT__ops
 

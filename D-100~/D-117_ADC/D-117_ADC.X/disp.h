@@ -173,7 +173,8 @@ extern "C" {
 		// disp: line
 
 		///////////////////////
-		SD1602_control(0x40);	// 2nd line, 1st digit
+		SD1602_control(0xC0);	// 2nd line, 1st digit
+//		SD1602_control(0x40);	// 2nd line, 1st digit
 
 		SD1602_print(msg);
 
