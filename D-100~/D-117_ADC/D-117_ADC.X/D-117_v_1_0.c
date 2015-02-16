@@ -270,10 +270,7 @@ void _int_INT__ops() {
 
 	if (f_INT == false) {
 
-
-
 		f_INT = true;
-
 
 	}
 
@@ -304,7 +301,7 @@ void _While(void) {
 //
 //		msg[2] = '\0';
 //
-//		conv_H2CC_HEX_2Digits(TMR0, msg)
+//		conv_H2CC_HEX_2Digits(TMR0, msg);
 
 		int len = sizeof(msg) / sizeof(msg[0]);
 
