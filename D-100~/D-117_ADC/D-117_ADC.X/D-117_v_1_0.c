@@ -82,6 +82,8 @@ void _int_INT__ops(void);
 ///////////////////////
 usi count;
 
+int f_INT = false;
+
 ///////////////////////
 
 // funcs
@@ -277,62 +279,41 @@ void _int_INT__ops() {
 
 }//_int_INT__ops
 
- void _int_TMR0() {
+void _While(void) {
+	///////////////////////////////
+	//
+	// flag: f_INT
+	//
+	 ///////////////////////////////
+	if (f_INT == true) {
 
+		///////////////////////////////
+		//
+		// f_INT => reset
+		//
+		 ///////////////////////////////
+		f_INT = false;
 
- void
- _While(void) {
+		///////////////////////////////
+		//
+		// disp: "Clicked"
+		//
+		 ///////////////////////////////
+		char msg[] = "Clicked!";
+//		char msg[3];
+//
+//		msg[2] = '\0';
+//
+//		conv_H2CC_HEX_2Digits(TMR0, msg)
 
--//	///////////////////////
--//
--//	// while RB0 is H => set RB1 H
--//
--//	///////////////////////
--//	while(PORTBbits.RB0 == 1) {
--//
--//		///////////////////////
--//
--//		// RB1 => H: transistor is set ON
--//
--//		///////////////////////
--//		PORTBbits.RB1 = 1;
--//
--//	}
--//
--//	///////////////////////
--//
--//	// RB1 => L: transistor is set OFF
--//
--//	///////////////////////
--//	PORTBbits.RB1 = 0;
-+	///////////////////////////////
-+	//
-+	// flag: f_INT
-+	//
-+	 ///////////////////////////////
-+	if (f_INT == true) {
-+
-+		///////////////////////////////
-+		//
-+		// f_INT => reset
-+		//
-+		 ///////////////////////////////
-+		f_INT = false;
-+
-+		///////////////////////////////
-+		//
-+		// disp: "Clicked"
-+		//
-+		 ///////////////////////////////
-+		char msg[] = "Clicked!";
-+
-+		int len = sizeof(msg) / sizeof(msg[0]);
-+
-+		_Display_Line2(msg, len);
-+
-+	}//if (f_INT == true)
+		int len = sizeof(msg) / sizeof(msg[0]);
 
- }//_While
+		_Display_Line2(msg, len);
+
+	}//if (f_INT == true)
+
+}//_While
+
 void _int_TMR0() {
 
 	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
@@ -502,34 +483,6 @@ void _Setup(void) {
 	PORTB = 0x00;
 
 }//_Setup
-
-void
-_While(void) {
-
-//	///////////////////////
-//
-//	// while RB0 is H => set RB1 H
-//
-//	///////////////////////
-//	while(PORTBbits.RB0 == 1) {
-//
-//		///////////////////////
-//
-//		// RB1 => H: transistor is set ON
-//
-//		///////////////////////
-//		PORTBbits.RB1 = 1;
-//
-//	}
-//
-//	///////////////////////
-//
-//	// RB1 => L: transistor is set OFF
-//
-//	///////////////////////
-//	PORTBbits.RB1 = 0;
-
-}//_While
 
 void
 _Setup_Init_Vars(void) {
