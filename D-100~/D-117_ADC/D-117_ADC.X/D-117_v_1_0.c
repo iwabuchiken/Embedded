@@ -140,6 +140,13 @@ void interrupt intr(void) {
 
 	///////////////////////////////
 	//
+	// chattering
+	//
+	 ///////////////////////////////
+//	__delay_ms(20);
+
+	///////////////////////////////
+	//
 	// INT
 	//
 	 ///////////////////////////////
@@ -247,8 +254,10 @@ void _int_INT__ops() {
 
 	__delay_ms(2000);
 
-	PORTBbits.RB2 = tmp1;
-	PORTBbits.RB3 = tmp2;
+//	PORTBbits.RB2 = tmp1;
+//	PORTBbits.RB3 = tmp2;
+	PORTBbits.RB2 = 0;
+	PORTBbits.RB3 = 1;
 
 	TMR0 = tmp_TMR0;
 
@@ -458,7 +467,10 @@ _While(void) {
 		// disp: "Clicked"
 		//
 		 ///////////////////////////////
-		char msg[] = "Clicked!";
+//		char msg[] = "Clicked!";
+		char msg[] = "  ";
+
+		conv_H2CC_HEX_2Digits(TMR0, msg);
 
 		int len = sizeof(msg) / sizeof(msg[0]);
 
