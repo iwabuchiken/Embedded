@@ -309,6 +309,20 @@ void _While(void) {
 
 		///////////////////////////////
 		//
+		// LEDs
+		//
+		 ///////////////////////////////
+		PORTBbits.RB2 = 1;
+		PORTBbits.RB3 = 1;
+
+		__delay_ms(500);
+
+		PORTBbits.RB2 = 0;
+		PORTBbits.RB3 = 1;
+
+
+		///////////////////////////////
+		//
 		// f_INT => reset
 		//
 		 ///////////////////////////////
@@ -330,7 +344,14 @@ void _While(void) {
 
 		_Display_Line2(msg, len);
 
-	}//if (f_INT == true)
+	} else {//if (f_INT == true)
+
+		PORTBbits.RB2 = ~PORTBbits.RB2;
+		PORTBbits.RB3 = ~PORTBbits.RB3;
+
+		__delay_ms(200);
+
+	}
 
 }//_While
 
@@ -338,24 +359,24 @@ void _int_TMR0() {
 
 	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
 	INTCON         &= 0xFB;		// TMR0 flag	=> clear
-
-
-	///////////////////////////////
-	//
-	// judge: 1 sec
-	//
-	 ///////////////////////////////
-	count ++;
-
-	if (count == 19531 / 2) {
-//	if (count == 19531) {
-
-		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
-		PORTBbits.RB3 = ~PORTBbits.RB3;
-
-		count = 0;
-
-	}//if (count == 19531)
+//
+//
+//	///////////////////////////////
+//	//
+//	// judge: 1 sec
+//	//
+//	 ///////////////////////////////
+//	count ++;
+//
+//	if (count == 19531 / 2) {
+////	if (count == 19531) {
+//
+//		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
+//		PORTBbits.RB3 = ~PORTBbits.RB3;
+//
+//		count = 0;
+//
+//	}//if (count == 19531)
 
 	///////////////////////////////
 	//
