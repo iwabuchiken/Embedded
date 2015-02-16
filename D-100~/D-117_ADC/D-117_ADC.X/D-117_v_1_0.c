@@ -71,9 +71,8 @@ void _Setup_Vars(void);
 void _Setup_PORTB(void);
 
 void _int_INT(void);
-void _int_TMR0(void);
-
 void _int_INT__ops(void);
+void _int_TMR0(void);
 
 ///////////////////////
 
@@ -117,7 +116,7 @@ void main(void) {
 	//
 	// setup: PORTB
 	//
-	 ///////////////////////////////
+	 ////////////-///////////////////
 	_Setup_PORTB();
 
 
@@ -165,54 +164,39 @@ void interrupt intr(void) {
 
 	}
 
-
-//	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
-//	INTCON         &= 0xFB;		// TMR0 flag	=> clear
-//
-//
-//	///////////////////////////////
-//	//
-//	// judge: 1 sec
-//	//
-//	 ///////////////////////////////
-//	count ++;
-//
-//	if (count == 19531) {
-//
-//		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
-//		PORTBbits.RB3 = ~PORTBbits.RB3;
-//
-//		count = 0;
-//
-//	}//if (count == 19531)
-//
-//	///////////////////////////////
-//	//
-//	// allow: interrupts
-//	//
-//	 ///////////////////////////////
-//	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+	///////////////////////////////
+	//
+	// allow: interrupts
+	//
+	 ///////////////////////////////
 	INTCON         |= 0x80;		// allow		=> interrupt
 
 }//void interrupt intr(void)
 
 void _int_INT() {
 
-
 //	int tmp1, tmp2;
 
- 	///////////////////////////////
- 	//
+	///////////////////////////////
+	//
+	// halt: interrupt
+	//
+	 ///////////////////////////////
+	INTCON         &= 0xEF;		// prohibit		=> INT intr
 
- 	 ///////////////////////////////
- 	INT0IF = 0;					// clear => INT0 flag
-
- 	///////////////////////////////
+	///////////////////////////////
 	//
 	// chattering
 	//
 	 ///////////////////////////////
-	__delay_ms(20);
+	__delay_ms(20);		// Aoki[2010].86
+
+	///////////////////////////////
+	//
+	// reset: flag
+	//
+	 ///////////////////////////////
+	INT0IF = 0;					// clear => INT0 flag
 
 	///////////////////////////////
 	//
@@ -253,130 +237,56 @@ void _int_INT__ops() {
 	 ///////////////////////////////
 	int tmp1, tmp2, tmp_TMR0;
 
- 	tmp1 = PORTBbits.RB2;
- 	tmp2 = PORTBbits.RB3;
+	tmp1 = PORTBbits.RB2;
+	tmp2 = PORTBbits.RB3;
 
 	tmp_TMR0 = TMR0;
 
- 	///////////////////////////////
- 	//
+	PORTBbits.RB2 = 1;
+	PORTBbits.RB3 = 1;
 
+	__delay_ms(2000);
+
+	PORTBbits.RB2 = tmp1;
+	PORTBbits.RB3 = tmp2;
+
+	TMR0 = tmp_TMR0;
+
+	///////////////////////////////
+	//
 	// flag
- 	//
- 	 ///////////////////////////////
-
+	//
+	 ///////////////////////////////
 	if (f_INT == false) {
 
 		f_INT = true;
 
-	 	PORTBbits.RB2 = 1;
-	 	PORTBbits.RB3 = 1;
-
 	}
-
-// 	PORTBbits.RB2 = 1;
-// 	PORTBbits.RB3 = 1;
-
- 	__delay_ms(2000);
-
- 	PORTBbits.RB2 = tmp1;
- 	PORTBbits.RB3 = tmp2;
-
-	TMR0 = tmp_TMR0;
-
-// 	///////////////////////////////
-// 	//
-//
-//	// flag
-// 	//
-// 	 ///////////////////////////////
-//
-//	if (f_INT == false) {
-//
-//		f_INT = true;
-//
-//	}
 
 }//_int_INT__ops
-
-void _While(void) {
-	///////////////////////////////
-	//
-	// flag: f_INT
-	//
-	 ///////////////////////////////
-	if (f_INT == true) {
-
-		///////////////////////////////
-		//
-		// LEDs
-		//
-		 ///////////////////////////////
-		PORTBbits.RB2 = 1;
-		PORTBbits.RB3 = 1;
-
-		__delay_ms(500);
-
-		PORTBbits.RB2 = 0;
-		PORTBbits.RB3 = 1;
-
-
-		///////////////////////////////
-		//
-		// f_INT => reset
-		//
-		 ///////////////////////////////
-		f_INT = false;
-
-		///////////////////////////////
-		//
-		// disp: "Clicked"
-		//
-		 ///////////////////////////////
-		char msg[] = "Clicked!";
-//		char msg[3];
-//
-//		msg[2] = '\0';
-//
-//		conv_H2CC_HEX_2Digits(TMR0, msg);
-
-		int len = sizeof(msg) / sizeof(msg[0]);
-
-		_Display_Line2(msg, len);
-
-	} else {//if (f_INT == true)
-
-		PORTBbits.RB2 = ~PORTBbits.RB2;
-		PORTBbits.RB3 = ~PORTBbits.RB3;
-
-		__delay_ms(200);
-
-	}
-
-}//_While
 
 void _int_TMR0() {
 
 	INTCON         &= 0xDF;		// prohibit		=> TMR0 interrupt
 	INTCON         &= 0xFB;		// TMR0 flag	=> clear
-//
-//
-//	///////////////////////////////
-//	//
-//	// judge: 1 sec
-//	//
-//	 ///////////////////////////////
-//	count ++;
-//
-//	if (count == 19531 / 2) {
-////	if (count == 19531) {
-//
-//		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
-//		PORTBbits.RB3 = ~PORTBbits.RB3;
-//
-//		count = 0;
-//
-//	}//if (count == 19531)
+
+
+	///////////////////////////////
+	//
+	// judge: 1 sec
+	//
+	 ///////////////////////////////
+	count ++;
+
+	if (count == 19531 / 2) {
+//	if (count == 19531) {
+
+		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
+		PORTBbits.RB3 = ~PORTBbits.RB3;
+
+		count = 0;
+
+	}//if (count == 19531)
 
 	///////////////////////////////
 	//
@@ -384,6 +294,7 @@ void _int_TMR0() {
 	//
 	 ///////////////////////////////
 	INTCON         |= 0x20;		// allow		=> TMR0 interrupt
+	INTCON         |= 0x80;		// allow		=> intr: global
 
 }//_int_TMR0
 
@@ -524,6 +435,38 @@ void _Setup(void) {
 	PORTB = 0x00;
 
 }//_Setup
+
+void
+_While(void) {
+
+	///////////////////////////////
+	//
+	// flag: f_INT
+	//
+	 ///////////////////////////////
+	if (f_INT == true) {
+
+		///////////////////////////////
+		//
+		// f_INT => reset
+		//
+		 ///////////////////////////////
+		f_INT = false;
+
+		///////////////////////////////
+		//
+		// disp: "Clicked"
+		//
+		 ///////////////////////////////
+		char msg[] = "Clicked!";
+
+		int len = sizeof(msg) / sizeof(msg[0]);
+
+		_Display_Line2(msg, len);
+
+	}//if (f_INT == true)
+
+}//_While
 
 void
 _Setup_Init_Vars(void) {
