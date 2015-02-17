@@ -83,6 +83,8 @@ usi count;
 
 int f_INT = false;
 
+usi cycle = 0;	// count: num of display update
+
 ///////////////////////
 
 // funcs
@@ -287,13 +289,24 @@ void _int_TMR0() {
 	 ///////////////////////////////
 	count ++;
 
-	if (count == 19531 / 2) {
-//	if (count == 19531) {
+//	if (count == 19531 / 2) {
+	if (count == 19531) {
 
 		PORTBbits.RB2 = ~PORTBbits.RB2;		//=> 2 LEDS blinking simultaneously
 		PORTBbits.RB3 = ~PORTBbits.RB3;
 
 		count = 0;
+
+		///////////////////////////////
+		//
+		// flag: every 1 second
+		//
+		 ///////////////////////////////
+		if (f_INT == false) {
+
+			f_INT = true;
+
+		}
 
 	}//if (count == 19531)
 
@@ -464,23 +477,46 @@ _While(void) {
 
 		///////////////////////////////
 		//
+		// count
+		//
+		 ///////////////////////////////
+		cycle ++;
+
+		///////////////////////////////
+		//
 		// disp: "Clicked"
 		//
 		 ///////////////////////////////
 //		char msg[] = "Clicked!";
 //		char msg[] = "  ";
 		char msg[3];
+		char msg_2[3];
+		char msg_all[6];
 
-		msg[2] = '\0';
+//		msg[2] = ':';
+//		msg[2] = '\0';
+
+//		msg_2[3] = '\0';
 
 		conv_H2CC_HEX_2Digits(TMR0, msg);
 
-		int len = sizeof(msg) / sizeof(msg[0]);
+		conv_H2CC_HEX_2Digits(cycle, msg_2);
+
+		msg_all[0] = msg[0];
+		msg_all[1] = msg[1];
+		msg_all[2] = ':';
+
+		msg_all[3] = msg_2[0];
+		msg_all[4] = msg_2[1];
+		msg_all[5] = '\0';
+
+		int len = sizeof(msg_all) / sizeof(msg_all[0]);
+//		int len = sizeof(msg) / sizeof(msg[0]);
 
 		int tmp_1 = PORTBbits.RB2;
 		int tmp_2 = PORTBbits.RB3;
 
-		_Display_Line2(msg, len);
+		_Display_Line2(msg_all, len);
 
 		PORTBbits.RB2 = tmp_1;
 		PORTBbits.RB3 = tmp_2;
