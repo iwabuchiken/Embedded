@@ -10,6 +10,12 @@
 #include "SD1602_4bit_mode.h"
 #endif
 
+///////////////////////////////
+//
+// defines
+//
+ ///////////////////////////////
+#define LINE_LENGTH 17
 
 ///////////////////////
 
@@ -133,25 +139,33 @@ extern "C" {
 		// prep: chars
 		//
 		 ///////////////////////////////
-		char msg[16];
+		int line_Len = LINE_LENGTH;
 
-		if (len > 15) {
+		char msg[LINE_LENGTH];
+//		char msg[line_Len];
+//		char msg[16];
 
-			len = 15;
+		if (len > line_Len - 1) {
+//		if (len > 15) {
+
+			len = line_Len - 1;
+//			len = 15;
 
 		}
 
 		// initialize chars
 		int i;
 
-		for (i = 0; i < 16 - 1; ++i) {
+		for (i = 0; i < line_Len - 1; ++i) {
+//		for (i = 0; i < 16 - 1; ++i) {
 //		for (i = 0; i < 16; ++i) {
 
 			msg[i] = ' ';
 
 		}
 
-		msg[15] = '\0';
+		msg[line_Len - 1] = '\0';
+//		msg[15] = '\0';
 
 		// set: line
 		// modify len

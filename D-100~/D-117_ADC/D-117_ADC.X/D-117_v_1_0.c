@@ -468,13 +468,22 @@ _While(void) {
 		//
 		 ///////////////////////////////
 //		char msg[] = "Clicked!";
-		char msg[] = "  ";
+//		char msg[] = "  ";
+		char msg[3];
+
+		msg[2] = '\0';
 
 		conv_H2CC_HEX_2Digits(TMR0, msg);
 
 		int len = sizeof(msg) / sizeof(msg[0]);
 
+		int tmp_1 = PORTBbits.RB2;
+		int tmp_2 = PORTBbits.RB3;
+
 		_Display_Line2(msg, len);
+
+		PORTBbits.RB2 = tmp_1;
+		PORTBbits.RB3 = tmp_2;
 
 	}//if (f_INT == true)
 
