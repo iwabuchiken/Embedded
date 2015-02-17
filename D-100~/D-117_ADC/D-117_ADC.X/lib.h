@@ -63,6 +63,8 @@ void conv_H2CC_HEX_2Digits(signed char, char[]);
 char conv_H2CC_HEX(signed char c);
 void conv_Hex_to_3Digit_String(int, char[4]);
 
+void conv_ADC_to_FractionalString(int, int, float ref, char[6]);
+
 ///////////////////////////////
 //
 // funcs
@@ -249,6 +251,19 @@ conv_H2CC_HEX
 
 }//conv_Hex_to_CharCode
 
+void conv_ADC_to_FractionalString
+(int adh, int adl, float ref, char str[6]) {
+
+	///////////////////////////////
+	//
+	// get: sum
+	//
+	 ///////////////////////////////
+	int sum = adh * 256 + adl;
+
+
+
+}//conv_ADC_to_FractionalString
 
 #ifdef	__cplusplus
 }
