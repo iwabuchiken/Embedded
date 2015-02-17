@@ -35,8 +35,8 @@
 
 ///////////////////////
 						// 01234567890123456
-char msg_Project_Name[]	= "D-117 v-1.5.0#1";
-char msg_Initial[]		= "update display";		// register_Chars() => c/o
+char msg_Project_Name[]	= "D-117 v-1.6.0#1";
+char msg_Initial[]		= "dec numbers";		// register_Chars() => c/o
 //char msg_Initial[]		= "interrupts!!!";		// register_Chars() => c/o
 
 //char msg_Project_Name[]	= "D-117 v-1.1#6";

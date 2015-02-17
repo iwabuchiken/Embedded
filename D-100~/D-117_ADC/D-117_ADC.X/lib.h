@@ -61,6 +61,7 @@ extern "C" {
 void conv_H2CC_HEX_2Digits(signed char, char[]);
 
 char conv_H2CC_HEX(signed char c);
+void conv_Hex_to_3Digit_String(int, char[4]);
 
 ///////////////////////////////
 //
@@ -184,6 +185,39 @@ void conv_H2CC_HEX_2Digits
 	converted[0] = conv_H2CC_HEX(tmp_Chr);
 
 }//conv_Hex_to_CharCode_2Digits
+
+///////////////////////////////
+//
+// originally from: C:\WORKS\WS\Embedded\D-100~\D-110\D-110_v_1_0\D-110_v_1_0.X\D-110_v_1_0.c
+//
+///////////////////////////////
+void
+conv_Hex_to_3Digit_String
+(int num , char cont[4]) {
+
+	int hunds, tens, residue;
+
+	// 100s
+	hunds = num / 100;
+
+	residue = num - hunds * 100;
+
+	// 10s
+	tens = residue / 10;
+
+	residue = residue - tens * 10;
+
+	///////////////////////
+
+	// build
+
+	///////////////////////
+	cont[0] = hunds + 0x30;
+	cont[1] = tens + 0x30;
+	cont[2] = residue + 0x30;
+	cont[3] = '\0';
+
+}//conv_Hex_to_3Digit_String
 
 
 //REF char comparison QA http://forum.htsoft.com/all/showflat.php/Cat/0/Number/171462/Main/171272/

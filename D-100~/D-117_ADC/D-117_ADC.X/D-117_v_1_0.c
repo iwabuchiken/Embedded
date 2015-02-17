@@ -488,27 +488,29 @@ _While(void) {
 		//
 		 ///////////////////////////////
 //		char msg[] = "Clicked!";
-//		char msg[] = "  ";
-		char msg[3];
-		char msg_2[3];
-		char msg_all[6];
 
-//		msg[2] = ':';
-//		msg[2] = '\0';
+		char msg_all[8];
+		char m_1[4];
+		char m_2[4];
 
-//		msg_2[3] = '\0';
+		conv_Hex_to_3Digit_String(TMR0, m_1);
+		conv_Hex_to_3Digit_String(cycle, m_2);
 
-		conv_H2CC_HEX_2Digits(TMR0, msg);
+//		conv_H2CC_HEX_2Digits(TMR0, msg);
+//
+//		conv_H2CC_HEX_2Digits(cycle, msg_2);
 
-		conv_H2CC_HEX_2Digits(cycle, msg_2);
+		msg_all[0] = m_1[0];
+		msg_all[1] = m_1[1];
+		msg_all[2] = m_1[2];
 
-		msg_all[0] = msg[0];
-		msg_all[1] = msg[1];
-		msg_all[2] = ':';
+		msg_all[3] = ':';
 
-		msg_all[3] = msg_2[0];
-		msg_all[4] = msg_2[1];
-		msg_all[5] = '\0';
+		msg_all[4] = m_2[0];
+		msg_all[5] = m_2[1];
+		msg_all[6] = m_2[2];
+
+		msg_all[7] = '\0';
 
 		int len = sizeof(msg_all) / sizeof(msg_all[0]);
 //		int len = sizeof(msg) / sizeof(msg[0]);
