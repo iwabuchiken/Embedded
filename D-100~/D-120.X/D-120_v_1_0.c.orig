@@ -1,5 +1,5 @@
 /*
-* File:   D-117_v_1_0.c
+* File:   D-120_v_1_0.c
  * Author: iwabuchik
  *
  * Created on 05/02/2015 09:11:31
@@ -21,28 +21,12 @@
 #define _XTAL_FREQ 20000000
 #endif
 
-#ifndef LIB__H
-#include "lib.h"
-#endif
-
-#ifndef DEBUG_H
-#include "debug.h"
-#endif
-
-#ifndef SD1602_4BIT_H
-#include "SD1602_4bit_mode.h"
-#endif
-
 #ifndef MAIN_H
 #include "main.h"
 #endif
 
-#ifndef DISP_H
-#include "disp.h"
-#endif
-
-#ifndef _FONT5X8_H_
-#include "font5x8.h"
+#ifndef LIB__H
+#include "lib.h"
 #endif
 
 ///////////////////////
@@ -55,12 +39,7 @@ void _Setup_ANSEL(void);
 
 void _Setup_Init_Vars(void);
 
-void _test_Chars(void);
-int register_Chars(void);
-
 void _While(void);
-
-void _N2C(void);
 
 void _Setup_Interrupt(void);
 
@@ -105,15 +84,6 @@ void main(void) {
 
 	_Setup_Vars();
 
-	///////////////////////
-
-	// LCD-related
-
-	///////////////////////
-	SD1602_init_2();	// init LCD
-
-	_Display_2Lines(msg_Project_Name, msg_Initial);	// disp.h
-
 	///////////////////////////////
 	//
 	// setup: PORTB
@@ -147,18 +117,18 @@ void interrupt intr(void) {
 	 ///////////////////////////////
 //	__delay_ms(20);
 
-	///////////////////////////////
-	//
-	// INT
-	//
-	 ///////////////////////////////
-	if (INT0IF == 1) {
-
-		_int_INT();
-
-		return;
-
-	}
+//	///////////////////////////////
+//	//
+//	// INT
+//	//
+//	 ///////////////////////////////
+//	if (INT0IF == 1) {
+//
+//		_int_INT();
+//
+//		return;
+//
+//	}
 
 	///////////////////////////////
 	//
@@ -297,16 +267,16 @@ void _int_TMR0() {
 
 		count = 0;
 
-		///////////////////////////////
-		//
-		// flag: every 1 second
-		//
-		 ///////////////////////////////
-		if (f_INT == false) {
-
-			f_INT = true;
-
-		}
+//		///////////////////////////////
+//		//
+//		// flag: every 1 second
+//		//
+//		 ///////////////////////////////
+//		if (f_INT == false) {
+//
+//			f_INT = true;
+//
+//		}
 
 	}//if (count == 19531)
 
@@ -364,59 +334,6 @@ void _Setup_Interrupt() {
 
 }//void _Setup_Interrupt()
 
-void _N2C() {
-
-	char degree[3];
-
-	signed char temp_i = 0xCF;
-//	int temp_i = 0xCF;
-
-	conv_H2CC_HEX_2Digits(temp_i, degree);
-
-	degree[2] = '\0';
-
-	SD1602_control(0x80 + 0x40 + (lenOf_msg_Initial - 1));	// 2nd line, 11th digit
-//	SD1602_control(0x80 + 0x40 + 0x0B);	// 2nd line, 11th digit
-
-	SD1602_display(degree[0]);
-	SD1602_display(degree[1]);
-
-}//void _N2C()
-
-int register_Chars() {
-
-	//	register_Char();	//	lib.h
-//	int res = registerChar(0x08, 1);	//	lib.h
-	int res = registerChar(0x02, 1);	//	lib.h
-							// char code is 0x02
-							// char is => '火'
-
-
-	return res;
-
-}//register_Chars
-
-void _test_Chars() {
-				//  0123456789012345
-	char msg_1[] = "Using enums...";
-
-	//report
-	_Display_2Lines(msg_Project_Name, msg_1);	// disp.h
-//	_Display_2Lines(msg_Project_Name, "register_Char");	// disp.h
-
-	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x40 + 0x05);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x40 + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x0F + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 + 0x06);	// 2nd line, 6th digit
-//	SD1602_control(0x80 | 0x45);	// 2nd line, 6th digit
-
-	SD1602_display(0x02);
-//	SD1602_display(0xC0);	// 'タ'
-//	SD1602_write(0x02, 1);
-
-}//_test_Chars
-
 void
 _Setup_ANSEL(void) {
 
@@ -461,69 +378,17 @@ void _Setup(void) {
 void
 _While(void) {
 
-	///////////////////////////////
-	//
-	// flag: f_INT
-	//
-	 ///////////////////////////////
-	if (f_INT == true) {
-
-		///////////////////////////////
-		//
-		// f_INT => reset
-		//
-		 ///////////////////////////////
-		f_INT = false;
-
-		///////////////////////////////
-		//
-		// count
-		//
-		 ///////////////////////////////
-		cycle ++;
-
-		///////////////////////////////
-		//
-		// disp: "Clicked"
-		//
-		 ///////////////////////////////
-//		char msg[] = "Clicked!";
-
-		char msg_all[8];
-		char m_1[4];
-		char m_2[4];
-
-		conv_Hex_to_3Digit_String(TMR0, m_1);
-		conv_Hex_to_3Digit_String(cycle, m_2);
-
-//		conv_H2CC_HEX_2Digits(TMR0, msg);
+//	///////////////////////////////
+//	//
+//	// flag: f_INT
+//	//
+//	 ///////////////////////////////
+//	if (f_INT == true) {
 //
-//		conv_H2CC_HEX_2Digits(cycle, msg_2);
-
-		msg_all[0] = m_1[0];
-		msg_all[1] = m_1[1];
-		msg_all[2] = m_1[2];
-
-		msg_all[3] = ':';
-
-		msg_all[4] = m_2[0];
-		msg_all[5] = m_2[1];
-		msg_all[6] = m_2[2];
-
-		msg_all[7] = '\0';
-
-		int len = sizeof(msg_all) / sizeof(msg_all[0]);
-//		int len = sizeof(msg) / sizeof(msg[0]);
-
-		int tmp_1 = PORTBbits.RB2;
-		int tmp_2 = PORTBbits.RB3;
-
-		_Display_Line2(msg_all, len);
-
-		PORTBbits.RB2 = tmp_1;
-		PORTBbits.RB3 = tmp_2;
-
-	}//if (f_INT == true)
+//		PORTBbits.RB2 = tmp_1;
+//		PORTBbits.RB3 = tmp_2;
+//
+//	}//if (f_INT == true)
 
 }//_While
 
