@@ -1,0 +1,13 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+# default configuration
+CND_ARTIFACT_DIR_default=dist/default/production
+CND_ARTIFACT_NAME_default=D-120-3_84A.X.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/D-120-3_84A.X.production.hex
+CND_PACKAGE_DIR_default=${CND_DISTDIR}/default/package
+CND_PACKAGE_NAME_default=d-120-384a.x.tar
+CND_PACKAGE_PATH_default=${CND_DISTDIR}/default/package/d-120-384a.x.tar

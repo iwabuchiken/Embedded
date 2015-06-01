@@ -1,5 +1,3 @@
-__Setup_ANSEL: CODE, 1966 0 11
-_main: CODE, 1977 0 11
-__initialization: CODE, 2028 0 17
-__Setup: CODE, 1988 0 12
-Total: 51
+_main: CODE, 2005 0 40
+__initialization: CODE, 2045 0 0
+Total: 40
