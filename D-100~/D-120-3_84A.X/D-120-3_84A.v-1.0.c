@@ -2,6 +2,8 @@
  * File:   
  * Author: iwabuchik
  *
+ * REF: http://homepage3.nifty.com/mitt/pic/xc8/xc8_84_01_1.html
+ *
  * Created on 
  */
 
