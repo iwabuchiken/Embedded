@@ -1,0 +1,7 @@
+__Setup__TRIS: CODE, 111 0 8
+__int_TMR0: CODE, 20 0 48
+_main: CODE, 119 0 6
+_intr: CODE, 68 0 23
+__Setup_Interrupt: CODE, 91 0 20
+__initialization: CODE, 16 0 2
+Total: 107
